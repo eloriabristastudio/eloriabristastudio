@@ -26,6 +26,48 @@
       scroll-behavior: smooth;
     }
 
+    /* ─── ANIMACIONES CINEMATOGRÁFICAS SUAVES ─── */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-header {
+      animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-hero-1 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .animate-hero-2 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .animate-hero-3 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    }
+
     /* HEADER EDITORIAL UNIFICADO */
     .header-editorial {
       position: fixed;
@@ -209,8 +251,8 @@
     </video>
   </div>
 
-  <!-- HEADER EDITORIAL -->
-  <header class="header-editorial">
+  <!-- HEADER EDITORIAL CON ANIMACIÓN DE ENTRADA -->
+  <header class="header-editorial animate-header">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
     </a>
@@ -224,20 +266,20 @@
   </header>
 
   <main>
-    <!-- 1. PRIMER PANTALLA: LIMPIA Y CENTRADA -->
+    <!-- 1. PANTALLA PRINCIPAL CON EFECTO DE SUSPENSO ESCALONADO -->
     <section class="hero-center-screen">
       <div class="hero-intro-box">
-        <h1 class="main-hero-text">
+        <h1 class="main-hero-text animate-hero-1">
           Hi, I'm George.
         </h1>
 
-        <p class="sub-hero-text">
+        <p class="sub-hero-text animate-hero-2">
           Audio engineer &amp; music producer specialized in design for brands, evolved into a multidisciplinary creative director.
         </p>
       </div>
 
-      <!-- BOTÓN/INDICADOR ESQUINA INFERIOR DERECHA -->
-      <a href="#more-info" class="scroll-indicator-right">
+      <!-- INDICADOR SCROLL ANIMADO -->
+      <a href="#more-info" class="scroll-indicator-right animate-hero-3">
         More info ↓
       </a>
     </section>
