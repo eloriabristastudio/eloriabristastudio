@@ -7,6 +7,9 @@
   <title>Eloria Brista Studio</title>
   <meta name="description" content="Eloria Brista Studio — Multidisciplinary Boutique. Creative Direction, Branding, Worldbuilding, Music & Audio Engineering." />
   
+  <!-- Favicon para la pestaña del navegador -->
+  <link rel="icon" type="image/png" href="assets/EBS_Logo.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -48,17 +51,14 @@
       z-index: 100;
     }
 
-    .header-editorial .brand-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: #555;
-      transition: color 0.3s ease;
+    /* ESTILO PARA EL LOGOTIPO EN IMAGEN */
+    .header-editorial .brand-logo img {
+      height: 22px; /* Tamaño elegante y proporcionado */
+      width: auto;
+      display: block;
+      transition: opacity 0.3s ease;
     }
-    .header-editorial .brand-logo:hover { color: #0e0e0e; }
+    .header-editorial .brand-logo img:hover { opacity: 0.6; }
 
     .nav-links {
       display: flex;
@@ -124,7 +124,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── CINTA ANIMADA CON EFECTO DE APARICIÓN HACIA ARRIBA (.reveal) ─── */
+    /* ─── CINTA ANIMADA CON EFECTO REVEAL ─── */
     .ticker-connector {
       width: 100%;
       overflow: hidden;
@@ -186,9 +186,11 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL SUTIL -->
+  <!-- HEADER EDITORIAL CON EL LOGO OFICIAL -->
   <header class="header-editorial">
-    <a href="index.html" class="brand-logo">Eloria Brista Studio</a>
+    <a href="index.html" class="brand-logo">
+      <img src="assets/EBS_Logo.png" alt="Eloria Brista Studio" />
+    </a>
     <nav class="nav-links">
       <a href="index.html">Index</a>
       <a href="work.html">Work</a>
@@ -221,7 +223,7 @@
           </div>
         </section>
 
-        <!-- ─── BANDA DE SERVICIOS CON EFECTO REVEAL (APARECE DESDE ABAJO) ─── -->
+        <!-- ─── BANDA DE SERVICIOS CON EFECTO REVEAL ─── -->
         <div class="ticker-connector reveal">
           <div class="ticker-track">
             <!-- Bloque 1 -->
@@ -370,7 +372,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.6</span>
+          <span class="right">v2.7</span>
         </div>
       </footer>
     </div>
