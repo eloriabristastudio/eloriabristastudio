@@ -4,16 +4,52 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0e0e0e" />
-  <title>Axioma — Independent creative agency</title>
-  <meta name="description" content="Axioma is an independent creative agency working in brand identity, web design, art direction, and motion. Editorial creative agency website template — five pages, monochrome with electric lime accent." />
+  <title>Eloria Brista Studio</title>
+  <meta name="description" content="Eloria Brista Studio — Independent creative studio working in brand identity, web design, art direction, and creative coding." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <style>
+    /* Estilos del Hero Editorial - Eloria Brista Studio */
+    .hero-editorial {
+      padding: 120px 40px 80px 40px;
+      width: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: baseline;
+      width: 100%;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 7.5vw, 8.5rem);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      margin: 0;
+    }
+    .hero-left { text-align: left; }
+    .hero-center { text-align: center; }
+    .hero-right { text-align: right; }
+
+    @media (max-width: 768px) {
+      .hero-editorial { padding: 80px 20px 40px 20px; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .hero-center, .hero-right { text-align: left; }
+    }
+  </style>
 </head>
 <body>
   <div class="topbar">
-    <a class="brand" href="index.html"><span class="rail-brand-mark">A</span> Axioma</a>
+    <a class="brand" href="index.html"><span class="rail-brand-mark">E</span> Eloria Brista Studio</a>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
   </div>
   <nav class="mobile-nav" aria-label="Mobile">
@@ -28,8 +64,8 @@
   <div class="shell">
     <aside class="rail" aria-label="Primary">
       <a class="rail-brand" href="index.html">
-        <span class="rail-brand-mark">A</span>
-        <span>Axioma<span class="rail-brand-sub">Creative agency · est. 2017</span></span>
+        <span class="rail-brand-mark">E</span>
+        <span>Eloria Brista<span class="rail-brand-sub">Studio</span></span>
       </a>
       <nav class="rail-nav" aria-label="Sections">
         <a href="index.html" class="active">Index</a>
@@ -39,42 +75,30 @@
         <a href="contact.html">Contact</a>
       </nav>
       <div class="rail-foot">
-        <div class="meta-row"><span>Spring '26</span><span>Issue 14</span></div>
-        <div class="meta-row"><span class="rail-status">Booking Q3</span></div>
+        <div class="meta-row"><span>Spring '26</span><span>Issue 01</span></div>
+        <div class="meta-row"><span class="rail-status">Available Q3</span></div>
         <div class="rail-socials">
           <a href="#" aria-label="Instagram">IG</a>
           <a href="#" aria-label="Are.na">AR</a>
           <a href="#" aria-label="LinkedIn">LI</a>
         </div>
-        <div class="meta-row"><span>NYC · MX</span><span>UTC −5</span></div>
+        <div class="meta-row"><span>MEX</span><span>UTC −5</span></div>
       </div>
     </aside>
 
     <div class="content">
       <main>
-        <section class="hero" aria-label="Welcome">
-          <div class="hero-meta">
-            <span><span class="lime-tag">● Available Q3</span></span>
-            <span>NYC · MEX</span>
-            <span>EST. 2017</span>
-            <span>VOL. XIV</span>
-          </div>
-          <h1 class="hero-headline">
-            Brands built<br/>
-            with<br/>
-            <em class="italic-display">conviction</em><span style="color:var(--lime-deep)">.</span>
-          </h1>
-          <div class="hero-bottom">
-            <p class="hero-pitch">Axioma is an independent creative agency. We build identities, products, and editorial work for ambitious teams who'd rather be specific than safe.</p>
-            <div class="hero-actions">
-              <a class="btn btn-ink" href="work.html">See the work <span class="arrow">→</span></a>
-              <a class="btn btn-ghost" href="contact.html">Start a project</a>
+        <!-- HERO BRUTALISTA / EDITORIAL -->
+        <section class="hero-editorial">
+          <div class="hero-grid">
+            <div class="hero-col hero-left">
+              <h1 class="hero-title">Eloria</h1>
             </div>
-          </div>
-          <div class="hero-marquee" aria-hidden="true">
-            <div class="marquee-track">
-              <span>Brand identity</span><span>Web design</span><span>Art direction</span><span>Digital strategy</span><span>Motion &amp; film</span><span>Editorial design</span>
-              <span>Brand identity</span><span>Web design</span><span>Art direction</span><span>Digital strategy</span><span>Motion &amp; film</span><span>Editorial design</span>
+            <div class="hero-col hero-center">
+              <h1 class="hero-title">Brista</h1>
+            </div>
+            <div class="hero-col hero-right">
+              <h1 class="hero-title">Studio</h1>
             </div>
           </div>
         </section>
@@ -89,8 +113,7 @@
           <div class="work-strip reveal">
             <article class="work-card lg">
               <div class="img-wrap">
-                <!-- REPLACE: Atlas Climate brand campaign · 1200×900 · WebP/JPG -->
-                <img src="assets/img/work-1.svg" alt="Atlas Climate brand identity — black poster with lime accent type" loading="lazy" />
+                <img src="assets/img/work-1.svg" alt="Atlas Climate brand identity" loading="lazy" />
               </div>
               <div class="body">
                 <div class="meta"><span>Brand</span><span>·</span><span>Web</span><span>·</span><span>2025</span></div>
@@ -101,8 +124,7 @@
             </article>
             <article class="work-card">
               <div class="img-wrap">
-                <!-- REPLACE: Hearth & Co restaurant identity · 1200×900 -->
-                <img src="assets/img/work-2.svg" alt="Hearth & Co restaurant editorial — cream poster with lime sun" loading="lazy" />
+                <img src="assets/img/work-2.svg" alt="Hearth & Co restaurant editorial" loading="lazy" />
               </div>
               <div class="body">
                 <div class="meta"><span>Editorial</span><span>·</span><span>2025</span></div>
@@ -113,8 +135,7 @@
             </article>
             <article class="work-card">
               <div class="img-wrap">
-                <!-- REPLACE: Voltage app design mockup · 1200×900 -->
-                <img src="assets/img/work-3.svg" alt="Voltage Mobility app product design — dark phone with lime accents" loading="lazy" />
+                <img src="assets/img/work-3.svg" alt="Voltage Mobility app product design" loading="lazy" />
               </div>
               <div class="body">
                 <div class="meta"><span>Product</span><span>·</span><span>2026</span></div>
@@ -126,12 +147,12 @@
           </div>
         </section>
 
-        <!-- ─── services list (numbered, intentionally NOT a card grid) ─── -->
+        <!-- ─── services list ─── -->
         <section aria-labelledby="services-head">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Practice areas · 6</span>
             <h2 id="services-head">What we make.</h2>
-            <p class="lede">We work across six disciplines, with most engagements pulling from at least three. Pricing and scopes are sent inside 48 hours of an enquiry.</p>
+            <p class="lede">We work across six disciplines, with most engagements pulling from at least three.</p>
           </header>
 
           <div class="services-list reveal">
@@ -195,9 +216,9 @@
               <p>Most agency work is built to win the meeting and survive the launch. We're not interested in that. We work with founders, operators, and editors who plan to keep showing up — and need a brand that can keep up with them.</p>
               <p>That means slower kickoffs, longer arguments, and the kind of identity systems that read just as well in year five as on launch day. We staff small. We say no often. We write everything down.</p>
               <div class="signature">
-                <span>↳ Mira Halden &amp; Tomás Reyes</span>
+                <span>↳ Eloria Brista</span>
                 <span></span>
-                <span>Founders, Axioma</span>
+                <span>Studio</span>
               </div>
             </div>
           </div>
@@ -211,8 +232,7 @@
               <p>Tell us about it. Most fits get a same-week reply with availability and a rough scope to react to.</p>
               <a class="btn btn-ink" href="contact.html" style="margin-top: 24px;">Start a conversation <span class="arrow">→</span></a>
               <div class="meta">
-                <span>hello@axioma.studio</span>
-                <span>+1 (212) 555-0144</span>
+                <span>hello@eloriabrista.com</span>
               </div>
             </div>
           </div>
@@ -223,8 +243,8 @@
         <h2 id="footer-head" class="visually-hidden" style="position:absolute;left:-9999px">Site footer</h2>
         <div class="top">
           <div class="brand-block">
-            <span class="mark"><span class="badge">A</span> Axioma</span>
-            <p style="color:#b0afaa;margin:0;line-height:1.55;">An independent creative agency working in brand identity, web, art direction, and motion. Headquartered in New York, with a second studio in Mexico City.</p>
+            <span class="mark"><span class="badge">E</span> Eloria Brista Studio</span>
+            <p style="color:#b0afaa;margin:0;line-height:1.55;">An independent creative studio working in brand identity, web design, art direction, and creative coding.</p>
           </div>
           <div class="col">
             <h4>Studio</h4>
@@ -247,14 +267,11 @@
             <a href="#">Instagram</a>
             <a href="#">Are.na</a>
             <a href="#">LinkedIn</a>
-            <a href="#">Newsletter</a>
-            <a href="mailto:hello@axioma.studio">hello@axioma.studio</a>
           </div>
         </div>
         <div class="bottom">
-          <span>© <span data-year>2026</span> Axioma Studio LLC</span>
-          <span class="center">Made in New York &amp; Mexico City</span>
-          <span class="right">v14.2 · Spring '26</span>
+          <span>© <span data-year>2026</span> Eloria Brista Studio</span>
+          <span class="right">v1.0</span>
         </div>
       </footer>
     </div>
