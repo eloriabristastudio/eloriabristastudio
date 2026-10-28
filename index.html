@@ -37,7 +37,7 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
-    /* MENU SUPERIOR EDITORIAL SUTIL */
+    /* HEADER EDITORIAL MINIMALISTA */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -51,36 +51,24 @@
       z-index: 100;
     }
 
-    /* ALINEACIÓN Y LOGO EN CURVAS */
+    /* LOGO SOLITARIO CON PRESENCIA Y ESCALA INSPIRADA EN GRANT LAU */
     .header-editorial .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: block;
       text-decoration: none;
-      color: #555;
       transition: opacity 0.3s ease;
     }
 
     .header-editorial .brand-logo img {
-      height: 20px;
+      height: 34px; /* Tamaño destacado, legible y limpio */
       width: auto;
       display: block;
     }
 
-    .header-editorial .brand-logo span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #555;
-      line-height: 1;
-    }
-
     .header-editorial .brand-logo:hover {
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
+    /* MENÚ LIMPIO CON SECCIONES CLAVE */
     .nav-links {
       display: flex;
       align-items: center;
@@ -100,7 +88,7 @@
 
     .nav-links a:hover { color: #0e0e0e; }
 
-    /* PRIMER SLIDE (HERO LIMPIO) */
+    /* PRIMER SLIDE (HERO EDITORIAL) */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
@@ -146,15 +134,15 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── CINTA ANIMADA CON ESPACIADO EDITORIAL ─── */
+    /* CINTA ANIMADA ENMEDIO */
     .ticker-connector {
       width: 100%;
       overflow: hidden;
       background: transparent;
       border-top: 1px solid rgba(14, 14, 14, 0.15);
-      border-bottom: 1px solid rgba(14, 14, 14, 0.15); /* Añadimos borde inferior para enmarcarla perfectamente en medio */
+      border-bottom: 1px solid rgba(14, 14, 14, 0.15);
       padding: 28px 0;
-      margin: 60px 0; /* Agrega un respiro simétrico arriba y abajo para que quede flotando en medio */
+      margin: 60px 0;
       white-space: nowrap;
       box-sizing: border-box;
     }
@@ -211,17 +199,15 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON SVG -->
+  <!-- HEADER EDITORIAL CON LOGO PELÓN MÁS GRANDE (LINK A HOME) Y NAVEGACIÓN -->
   <header class="header-editorial">
-    <a href="index.html" class="brand-logo">
+    <a href="index.html" class="brand-logo" title="Eloria Brista Studio — Home">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
-      <span>Eloria Brista Studio</span>
     </a>
     <nav class="nav-links">
-      <a href="index.html">Index</a>
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">Studio</a>
+      <a href="index.html">Home</a>
+      <a href="#work-section">Work</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
@@ -249,7 +235,7 @@
           </div>
         </section>
 
-        <!-- ─── BANDA DE SERVICIOS ENMEDIO (CON MARGIN Y DOBLE LÍNEA SUTIL) ─── -->
+        <!-- BANDA DE SERVICIOS ENMEDIO -->
         <div class="ticker-connector reveal">
           <div class="ticker-track">
             <!-- Bloque 1 -->
@@ -271,13 +257,14 @@
           </div>
         </div>
 
-        <!-- ─── SEGUNDO SLIDE / FEATURED WORK ─── -->
-        <section aria-labelledby="work-head" style="padding: 60px 3.5vw 120px 3.5vw;">
+        <!-- SECCIÓN FUSIONADA: WORK + SERVICES (CASOS DE ESTUDIO + DISCIPLINAS) -->
+        <section id="work-section" aria-labelledby="work-head" style="padding: 60px 3.5vw 120px 3.5vw;">
           <header class="section-head reveal">
-            <span class="eyebrow"><span class="dot"></span>Selected Projects</span>
+            <span class="eyebrow"><span class="dot"></span>Selected Projects &amp; Capabilities</span>
             <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Case Studies</h2>
           </header>
           
+          <!-- GALERÍA DE PROYECTOS DESTACADOS -->
           <div class="work-strip reveal" style="margin-top: 60px;">
             <article class="work-card lg">
               <div class="img-wrap">
@@ -313,50 +300,50 @@
               </div>
             </article>
           </div>
-        </section>
 
-        <!-- ─── SERVICES LIST ─── -->
-        <section aria-labelledby="services-head" style="padding: 80px 3.5vw;">
-          <header class="section-head reveal">
-            <span class="eyebrow"><span class="dot"></span>Practice areas · 05</span>
-            <h2 id="services-head" style="font-weight: 300; font-size: 2.5rem;">Disciplines</h2>
-          </header>
+          <!-- BLOQUE FUSIONADO DE DISCIPLINAS DENTRO DE WORK -->
+          <div style="margin-top: 100px;">
+            <header class="section-head reveal">
+              <span class="eyebrow"><span class="dot"></span>Practice Areas · 05</span>
+              <h2 style="font-weight: 300; font-size: 2.2rem; margin-top: 8px;">Disciplines</h2>
+            </header>
 
-          <div class="services-list reveal" style="margin-top: 40px;">
-            <article class="row">
-              <span class="num">01 / 05</span>
-              <h3>Creative Direction</h3>
-              <p>Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
-              <span class="arrow">→</span>
-            </article>
-            <article class="row">
-              <span class="num">02 / 05</span>
-              <h3>Branding</h3>
-              <p>Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
-              <span class="arrow">→</span>
-            </article>
-            <article class="row">
-              <span class="num">03 / 05</span>
-              <h3>Worldbuilding</h3>
-              <p>Immersive universe design, narrative environments, and speculative concept frameworks.</p>
-              <span class="arrow">→</span>
-            </article>
-            <article class="row">
-              <span class="num">04 / 05</span>
-              <h3>Music &amp; Sound Design</h3>
-              <p>Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
-              <span class="arrow">→</span>
-            </article>
-            <article class="row">
-              <span class="num">05 / 05</span>
-              <h3>Audio Production &amp; Engineering</h3>
-              <p>Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
-              <span class="arrow">→</span>
-            </article>
+            <div class="services-list reveal" style="margin-top: 40px;">
+              <article class="row">
+                <span class="num">01 / 05</span>
+                <h3>Creative Direction</h3>
+                <p>Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
+                <span class="arrow">→</span>
+              </article>
+              <article class="row">
+                <span class="num">02 / 05</span>
+                <h3>Branding</h3>
+                <p>Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
+                <span class="arrow">→</span>
+              </article>
+              <article class="row">
+                <span class="num">03 / 05</span>
+                <h3>Worldbuilding</h3>
+                <p>Immersive universe design, narrative environments, and speculative concept frameworks.</p>
+                <span class="arrow">→</span>
+              </article>
+              <article class="row">
+                <span class="num">04 / 05</span>
+                <h3>Music &amp; Sound Design</h3>
+                <p>Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
+                <span class="arrow">→</span>
+              </article>
+              <article class="row">
+                <span class="num">05 / 05</span>
+                <h3>Audio Production &amp; Engineering</h3>
+                <p>Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
+                <span class="arrow">→</span>
+              </article>
+            </div>
           </div>
         </section>
 
-        <!-- ─── MANIFESTO ─── -->
+        <!-- MANIFESTO / PHILOSOPHY -->
         <section class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
           <div class="grid">
             <div>
@@ -383,10 +370,9 @@
           </div>
           <div class="col">
             <h4>Navigation</h4>
-            <a href="index.html">Index</a>
-            <a href="work.html">Work</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">Studio</a>
+            <a href="index.html">Home</a>
+            <a href="#work-section">Work</a>
+            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
           </div>
           <div class="col">
@@ -398,7 +384,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v3.4</span>
+          <span class="right">v3.5</span>
         </div>
       </footer>
     </div>
