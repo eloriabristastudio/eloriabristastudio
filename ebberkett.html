@@ -10,7 +10,7 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes: Inter, JetBrains Mono y Pixelify Sans -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -68,7 +68,40 @@
 
     .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
 
-    /* PRIMERA PANTALLA COMPLETA (HERO FULLSCREEN SLIDE) */
+    /* SUBMENÚ ESTILO MUSEO (TIPO JUMEX) */
+    .museum-subnav {
+      position: fixed;
+      top: 100px;
+      left: 0;
+      width: 100%;
+      padding: 15px 3.5vw;
+      display: flex;
+      gap: 30px;
+      background-color: rgba(245, 244, 240, 0.95);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+      z-index: 90;
+      box-sizing: border-box;
+      overflow-x: auto;
+    }
+
+    .museum-subnav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .museum-subnav a:hover {
+      color: #0e0e0e;
+      border-bottom: 1px solid #0e0e0e;
+      padding-bottom: 2px;
+    }
+
+    /* PRIMERA PANTALLA FULLSCREEN SLIDE */
     .pavilion-hero {
       width: 100%;
       height: 100vh;
@@ -82,27 +115,17 @@
       text-align: center;
     }
 
-    /* EFECTO CODING / MATRIX PARA PIXELIFY SANS */
-    .coding-title {
+    /* EFECTO CODING MÁS LENTO Y PROFUNDO PARA TODO EL BLOQUE */
+    .coding-block {
       font-family: 'Pixelify Sans', cursive, monospace;
-      font-size: clamp(2.2rem, 5vw, 5.2rem);
+      font-size: clamp(1.8rem, 3.8vw, 3.8rem);
       font-weight: 500;
       letter-spacing: 0.02em;
       text-transform: uppercase;
       color: #0e0e0e;
       margin: 0;
-      min-height: 1.2em;
-      line-height: 1.1;
-    }
-
-    .hero-sub-description {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-top: 24px;
-      max-width: 600px;
+      line-height: 1.25;
+      max-width: 900px;
     }
 
     .more-info-scroll {
@@ -127,7 +150,7 @@
 
     /* SECCIÓN DE MANIFIESTO Y SALAS MUSEOGRÁFICAS */
     .pavilion-manifesto-section {
-      padding: 120px 3.5vw;
+      padding: 160px 3.5vw 100px 3.5vw;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -154,13 +177,11 @@
       gap: 35px;
     }
 
-    .manifesto-body p {
-      margin: 0;
-    }
+    .manifesto-body p { margin: 0; }
 
-    /* NOMENCLATURA DE SALAS (SALA 1, SALA 2, SALA 3) */
+    /* NOMENCLATURA DE SALAS SEGÚN TU CRITERIO */
     .rooms-nav-block {
-      margin-top: 90px;
+      margin-top: 100px;
       padding-top: 60px;
       border-top: 1px solid rgba(14, 14, 14, 0.15);
       display: flex;
@@ -178,7 +199,7 @@
     .room-card {
       background: rgba(14, 14, 14, 0.03);
       border: 1px solid rgba(14, 14, 14, 0.12);
-      padding: 30px 25px;
+      padding: 35px 25px;
       text-decoration: none;
       color: #0e0e0e;
       transition: all 0.3s ease;
@@ -214,13 +235,15 @@
       color: #777;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      line-height: 1.4;
     }
 
     @media (max-width: 850px) {
       .header-editorial { padding: 20px; }
       .nav-links { display: none; }
+      .museum-subnav { top: 75px; }
       .rooms-grid { grid-template-columns: 1fr; }
-      .pavilion-manifesto-section { padding: 80px 20px; }
+      .pavilion-manifesto-section { padding: 120px 20px 80px 20px; }
     }
   </style>
 </head>
@@ -240,14 +263,18 @@
     </nav>
   </header>
 
+  <!-- SUBMENÚ ESTILO MUSEO (JUMEX STYLE) -->
+  <nav class="museum-subnav">
+    <a href="#manifesto">El Pabellón</a>
+    <a href="#salas">Salas &amp; Exposiciones</a>
+    <a href="#coverart">Cover Art Division</a>
+    <a href="#conversations">Conversaciones &amp; BTS</a>
+  </nav>
+
   <main>
     <!-- PRIMERA PANTALLA FULLSCREEN SLIDE -->
     <section class="pavilion-hero">
-      <h1 class="coding-title" id="codingHeroTitle">WELCOME TO EBBERKETT</h1>
-      
-      <p class="hero-sub-description">
-        A virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio
-      </p>
+      <h1 class="coding-block" id="codingHeroTitle">WELCOME TO EBBERKETT</h1>
 
       <a href="#manifesto" class="more-info-scroll">
         <span>More info</span>
@@ -255,9 +282,9 @@
       </a>
     </section>
 
-    <!-- MANIFIESTO Y CÉDULA DE SALAS DEL MUSEO VIRTUAL -->
+    <!-- MANIFIESTO Y SALAS MUSEOGRÁFICAS -->
     <section id="manifesto" class="pavilion-manifesto-section">
-      <span class="manifesto-tag">EBS · SF / CDMX — Exhibition Pavilion</span>
+      <span class="manifesto-tag">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
 
       <div class="manifesto-body">
         <p>
@@ -271,31 +298,31 @@
         </p>
       </div>
 
-      <!-- ESTRUCTURA DE SALAS DEL MUSEO -->
-      <div class="rooms-nav-block">
+      <!-- ESTRUCTURA DE SALAS SEGÚN TU CRITERIO -->
+      <div id="salas" class="rooms-nav-block">
         <span class="manifesto-tag">Pavilion Architecture — Active Galleries</span>
 
         <div class="rooms-grid">
           <!-- SALA 1 -->
-          <a href="#" class="room-card">
+          <div class="room-card">
             <span class="room-num">01</span>
             <h3 class="room-title">Sala 1 / Main Gallery</h3>
-            <span class="room-meta">Cover Art Collections &amp; Physical Releases[cite: 23, 24]</span>
-          </a>
+            <span class="room-meta">Artistas invitados &amp; exposiciones principales de la escena contemporánea.</span>
+          </div>
 
           <!-- SALA 2 -->
-          <a href="#" class="room-card">
+          <div class="room-card">
             <span class="room-num">02</span>
             <h3 class="room-title">Sala 2 / Resident Works</h3>
-            <span class="room-meta">Featured Artists &amp; Digital Oils on Canvas[cite: 23, 24]</span>
-          </a>
+            <span class="room-meta">Obras del colectivo interno, artistas residentes y colecciones permanentes de EBS[cite: 23].</span>
+          </div>
 
           <!-- SALA 3 -->
-          <a href="#" class="room-card">
+          <div class="room-card">
             <span class="room-num">03</span>
             <h3 class="room-title">Sala 3 / Creative Lab</h3>
-            <span class="room-meta">Avant-Garde Archives &amp; AV Visual Studies[cite: 24]</span>
-          </a>
+            <span class="room-meta">Avant-garde archives, exploraciones experimentales y visuales de alto riesgo.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -328,16 +355,16 @@
 
   <script src="assets/js/main.js"></script>
   
-  <!-- SCRIPT PARA EL EFECTO CODING / MATRIX SCRAMBLE EN EL TÍTULO -->
+  <!-- SCRIPT PARA EFECTO CODING MÁS LENTO Y PROFUNDO -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
-      const finalText = "WELCOME TO EBBERKETT";
+      const finalText = "WELCOME TO EBBERKETT — VIRTUAL MUSEUM & PAVILION";
       const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#$&*@%";
       
       let currentFrame = 0;
-      const totalFrames = 30;
-      const speed = 40; // milisegundos por frame
+      const totalFrames = 60; // Más lento y pausado
+      const speed = 55; // Mayor duración en milisegundos
 
       const interval = setInterval(() => {
         let scrambledText = "";
