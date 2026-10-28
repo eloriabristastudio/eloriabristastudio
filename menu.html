@@ -118,6 +118,19 @@
       transform: translateX(8px);
     }
 
+    /* FLECHA VECTORIAL IDÉNTICA EN GROSOR Y PROPORCIÓN */
+    .custom-arrow-icon {
+      display: inline-block;
+      width: 0.55em;
+      height: 0.55em;
+      stroke: currentColor;
+      stroke-width: 2.2; /* Mismo grosor robusto que la flecha de Work */
+      fill: none;
+      margin-left: 6px;
+      vertical-align: middle;
+      transform: translateY(-4px);
+    }
+
     /* SUBLISTA DE PROYECTOS */
     .sub-projects-list {
       display: none;
@@ -194,9 +207,13 @@
           <a href="about.html" class="directory-link">About</a>
         </div>
 
-        <!-- 04. EBBERKETT CON FLECHA EXTERNA / DIVISION -->
+        <!-- 04. EBBERKETT CON FLECHA VECTORIAL PROPORCIONADA -->
         <div class="directory-item-group">
-          <a href="ebberkett.html" class="directory-link">Ebberkett ↗</a>
+          <a href="ebberkett.html" class="directory-link">Ebberkett 
+            <svg class="custom-arrow-icon" viewBox="0 0 24 24">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
 
         <!-- 05. CONTACT -->
