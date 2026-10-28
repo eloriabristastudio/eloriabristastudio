@@ -9,7 +9,6 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Incluimos FONT MONO/COURIER PARA LA ESTÉTICA DE CÓDIGO -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   
@@ -35,7 +34,7 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
-    /* MENU SUPERIOR EDITORIAL (Alineado con el color y visibilidad de los metadatos) */
+    /* MENU SUPERIOR EDITORIAL SUTIL */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -56,7 +55,7 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #555; /* Color sutil legible igual que el footer */
+      color: #555;
       transition: color 0.3s ease;
     }
     .header-editorial .brand-logo:hover { color: #0e0e0e; }
@@ -73,13 +72,13 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #555; /* Sutil y legible */
+      color: #555;
       transition: color 0.3s ease;
     }
 
     .nav-links a:hover { color: #0e0e0e; }
 
-    /* HERO SLIDE PANTALLA COMPLETA */
+    /* PRIMER SLIDE (HERO LIMPIO) */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
@@ -111,7 +110,7 @@
     .hero-center { text-align: center; }
     .hero-right { text-align: right; }
 
-    /* METADATOS INFERIORES DEL HERO CON Q4 */
+    /* METADATOS INFERIORES DEL HERO (SOLO ESQUINAS, SOBERANO Y LIMPIO) */
     .hero-footer-meta {
       position: absolute;
       bottom: 35px;
@@ -125,49 +124,52 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── CINTA ANIMADA (TICKER) ESTILO CREADOR DE CÓDIGO ─── */
-    .ticker-wrap {
-      position: absolute;
-      bottom: 80px;
-      left: 0;
+    /* ─── CINTA ANIMADA CONECTOR (SOLO UNA LÍNEA ARRIBA, LETRA GRANDE, LOOP CONTINUO) ─── */
+    .ticker-connector {
       width: 100%;
       overflow: hidden;
       background: transparent;
-      border-top: 1px solid rgba(14, 14, 14, 0.15);
-      border-bottom: 1px solid rgba(14, 14, 14, 0.15);
-      padding: 10px 0;
+      border-top: 1px solid rgba(14, 14, 14, 0.15); /* Una sola línea gris superior */
+      padding: 24px 0; /* Más espacio para que luzca la letra grande */
       white-space: nowrap;
       box-sizing: border-box;
     }
 
-    .ticker-move {
-      display: inline-block;
-      animation: tickerAnim 25s linear infinite;
-      font-family: 'JetBrains Mono', monospace; /* Tipografía tipo código cuadriculada legible */
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #0e0e0e;
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: infiniteScroll 30s linear infinite;
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
     }
 
     .ticker-item {
-      display: inline-block;
-      padding: 0 24px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      font-size: 1.4rem; /* Letra más grande y legible como la referencia */
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: #0e0e0e;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
     }
 
     .ticker-dot {
       display: inline-block;
-      width: 4px;
-      height: 4px;
-      background-color: #0e0e0e; /* Puntito en color negro exacto */
+      width: 5px;
+      height: 5px;
+      background-color: #0e0e0e; /* Puntito negro */
       border-radius: 50%;
-      margin-left: 15px;
-      vertical-align: middle;
+      margin-left: 30px;
     }
 
-    @keyframes tickerAnim {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
+    /* ANIMACIÓN DE BUCLE INFINITO CONTINUO SIN PAUSAS */
+    @keyframes infiniteScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     @media (max-width: 768px) {
@@ -179,13 +181,13 @@
       }
       .hero-center, .hero-right { text-align: left; }
       .hero-footer-meta { flex-direction: column; gap: 8px; position: static; margin-top: 40px; }
-      .ticker-wrap { display: none; }
+      .ticker-item { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON VISIBILIDAD SUTIL -->
+  <!-- HEADER EDITORIAL SUTIL -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo">Eloria Brista Studio</a>
     <nav class="nav-links">
@@ -200,7 +202,7 @@
   <div class="shell">
     <div class="content">
       <main>
-        <!-- HERO CON TIKER DE SERVICIOS EN ESTILO CÓDIGO -->
+        <!-- PRIMER SLIDE: HERO TOTALMENTE LIMPIO -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left">
@@ -214,33 +216,37 @@
             </div>
           </div>
 
-          <!-- Tira de servicios en movimiento (Ticker con tipografía Mono/Código y puntos negros) -->
-          <div class="ticker-wrap">
-            <div class="ticker-move">
-              <span class="ticker-item">Creative Direction<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Branding<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Worldbuilding<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Music &amp; Sound Design<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Audio Production &amp; Engineering<span class="ticker-dot"></span></span>
-              <!-- Se repite para hacer el loop infinito fluido -->
-              <span class="ticker-item">Creative Direction<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Branding<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Worldbuilding<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Music &amp; Sound Design<span class="ticker-dot"></span></span>
-              <span class="ticker-item">Audio Production &amp; Engineering<span class="ticker-dot"></span></span>
-            </div>
-          </div>
-
-          <!-- Metadatos inferiores actualizados a Q4 -->
+          <!-- Metadatos de esquinas únicamente -->
           <div class="hero-footer-meta">
             <span>Multidisciplinary Boutique</span>
-            <span>Available Q4 / 2026</span>
             <span>MEX (UTC −5)</span>
           </div>
         </section>
 
+        <!-- ─── BANDA DE SERVICIOS CONECTORA (SOLO LÍNEA ARRIBA + BUCLE INFINITO + LETRA GRANDE) ─── -->
+        <div class="ticker-connector">
+          <div class="ticker-track">
+            <!-- Bloque 1 -->
+            <div class="ticker-group">
+              <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
+            </div>
+            <!-- Bloque 2 (Duplicado exacto para crear el seamless infinite loop) -->
+            <div class="ticker-group">
+              <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
+              <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
+            </div>
+          </div>
+        </div>
+
         <!-- ─── SEGUNDO SLIDE / FEATURED WORK ─── -->
-        <section aria-labelledby="work-head" style="padding: 120px 3.5vw;">
+        <section aria-labelledby="work-head" style="padding: 100px 3.5vw 120px 3.5vw;">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Selected Projects</span>
             <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Case Studies</h2>
@@ -366,7 +372,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.4</span>
+          <span class="right">v2.5</span>
         </div>
       </footer>
     </div>
