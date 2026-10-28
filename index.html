@@ -46,23 +46,23 @@
       padding: 35px 3.5vw;
       display: flex;
       justify-content: space-between;
-      align-items: center; /* Alinea verticalmente los elementos al centro */
+      align-items: center;
       box-sizing: border-box;
       z-index: 100;
     }
 
-    /* ALINEACIÓN PERFECTA DEL LOGO (ISOTIPO + NOMBRE DEL ESTUDIO) */
+    /* PROPORCIÓN EXACTA: ISOTIPO ALINEADO A LA ALTURA DE LA LETRA */
     .header-editorial .brand-logo {
       display: flex;
-      align-items: center; /* Centrado vertical con el menú */
-      gap: 12px;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
       color: #555;
       transition: opacity 0.3s ease;
     }
 
     .header-editorial .brand-logo img {
-      height: 28px; /* Aumentamos el tamaño a 28px para que resalte */
+      height: 0.85rem; /* Altura exacta idéntica a la tipografía del menú (aprox 12px-13px) */
       width: auto;
       display: block;
     }
@@ -207,7 +207,7 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON ISOTIPO + TEXTO PERFECTAMENTE CENTRADOS -->
+  <!-- HEADER EDITORIAL CON PROPORCIÓN EXACTA -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo">
       <img src="assets/EBS_Logo.png" alt="Eloria Brista Studio" />
@@ -394,7 +394,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.8</span>
+          <span class="right">v2.9</span>
         </div>
       </footer>
     </div>
