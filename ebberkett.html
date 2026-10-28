@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0e0e0e" />
   <title>Ebberkett — Virtual Pavilion &amp; Gallery</title>
-  <meta name="description" content="Ebberkett — A virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio." />
+  <meta name="description" content="Ebberkett — Virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio." />
   
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
@@ -27,81 +27,72 @@
       scroll-behavior: smooth;
     }
 
-    /* HEADER EDITORIAL UNIFICADO */
-    .header-editorial {
+    /* HEADER AUTÓNOMO DE EBBERKETT (MUSEUM NAV) */
+    .ebberkett-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 35px 3.5vw;
+      padding: 25px 3.5vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(245, 244, 240, 0.85);
-      backdrop-filter: blur(8px);
+      background-color: rgba(245, 244, 240, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
 
-    .header-editorial .brand-logo img {
-      height: 34px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-links {
+    .ebberkett-brand {
       display: flex;
       align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      gap: 12px;
       text-decoration: none;
-      color: #555;
-      transition: color 0.3s ease;
+      color: #0e0e0e;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
+    .ebberkett-brand img {
+      height: 24px;
+      width: auto;
+    }
 
-    /* SUBMENÚ ESTILO MUSEO (JUMEX STYLE) */
-    .museum-subnav {
-      position: fixed;
-      top: 100px;
-      left: 0;
-      width: 100%;
-      padding: 15px 3.5vw;
+    .ebberkett-nav-links {
       display: flex;
       gap: 30px;
-      background-color: rgba(245, 244, 240, 0.95);
-      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
-      z-index: 90;
-      box-sizing: border-box;
-      overflow-x: auto;
     }
 
-    .museum-subnav a {
+    .ebberkett-nav-links a {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #666;
       text-decoration: none;
-      white-space: nowrap;
       transition: color 0.2s ease;
     }
 
-    .museum-subnav a:hover {
+    .ebberkett-nav-links a:hover {
       color: #0e0e0e;
-      border-bottom: 1px solid #0e0e0e;
-      padding-bottom: 2px;
     }
 
-    /* PRIMERA PANTALLA FULLSCREEN SLIDE */
+    .back-to-studio {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #777;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back-to-studio:hover { color: #0e0e0e; }
+
+    /* HERO FULLSCREEN SLIDE */
     .pavilion-hero {
       width: 100%;
       height: 100vh;
@@ -157,14 +148,14 @@
 
     .more-info-scroll:hover { opacity: 0.5; }
 
-    /* SECCIÓN DE MANIFIESTO Y SALAS MUSEOGRÁFICAS */
+    /* SECCIÓN MANIFIESTO */
     .pavilion-manifesto-section {
-      padding: 160px 3.5vw 100px 3.5vw;
+      padding: 140px 3.5vw 80px 3.5vw;
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    .manifesto-tag {
+    .section-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -219,9 +210,7 @@
       color: #f5f4f0;
     }
 
-    .room-card:hover .room-num, .room-card:hover .room-meta {
-      color: #a0a0a0;
-    }
+    .room-card:hover .room-num, .room-card:hover .room-meta { color: #a0a0a0; }
 
     .room-num {
       font-family: 'Pixelify Sans', cursive, monospace;
@@ -247,41 +236,186 @@
       line-height: 1.4;
     }
 
+    /* COVER ART DIVISION — COMPOSICIÓN EDITORIAL TIPO TRIVEAT */
+    .cover-art-section {
+      padding: 120px 3.5vw;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      background-color: #f5f4f0;
+    }
+
+    .gallery-header-block {
+      max-width: 1100px;
+      margin: 0 auto 80px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .gallery-header-block h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .editorial-cover-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 40px 20px;
+      align-items: start;
+    }
+
+    /* ITEMS DISPERSOS ESTILO MUSEO */
+    .cover-item {
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .cover-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .cover-item.pos-1 { grid-column: 1 / span 5; }
+    .cover-item.pos-2 { grid-column: 7 / span 6; margin-top: 60px; }
+    .cover-item.pos-3 { grid-column: 2 / span 5; margin-top: 40px; }
+    .cover-item.pos-4 { grid-column: 8 / span 5; margin-top: -30px; }
+
+    .cover-img-wrapper {
+      width: 100%;
+      background: #e0dfd9;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .cover-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .cover-item:hover .cover-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .cover-caption {
+      margin-top: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    .cover-caption .fig-num {
+      font-weight: 500;
+      color: #0e0e0e;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* MODAL POP-OUT PARA CASE STUDY + VIDEO BTS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(14, 14, 14, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content-card {
+      background: #f5f4f0;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 50px;
+      box-sizing: border-box;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      background: none;
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #0e0e0e;
+    }
+
+    .modal-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .modal-bts-video-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
     @media (max-width: 850px) {
-      .header-editorial { padding: 20px; }
-      .nav-links { display: none; }
-      .museum-subnav { top: 75px; }
-      .rooms-grid { grid-template-columns: 1fr; }
-      .pavilion-manifesto-section { padding: 120px 20px 80px 20px; }
+      .ebberkett-header { padding: 18px 20px; }
+      .ebberkett-nav-links { display: none; }
+      .editorial-cover-grid { grid-template-columns: 1fr; }
+      .cover-item.pos-1, .cover-item.pos-2, .cover-item.pos-3, .cover-item.pos-4 {
+        grid-column: 1 / -1;
+        margin-top: 0;
+      }
+      .modal-body-grid { grid-template-columns: 1fr; }
+      .modal-content-card { padding: 30px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL -->
-  <header class="header-editorial">
-    <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
-      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+  <!-- HEADER AUTÓNOMO DE EBBERKETT -->
+  <header class="ebberkett-header">
+    <a href="ebberkett.html" class="ebberkett-brand">
+      <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+      <span>EBBERKETT</span>
     </a>
-    <nav class="nav-links">
-      <a href="menu.html">Menu</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="ebberkett.html" class="active">Ebberkett</a>
-      <a href="contact.html">Contact</a>
+
+    <nav class="ebberkett-nav-links">
+      <a href="#manifesto">El Pabellón</a>
+      <a href="#salas">Salas</a>
+      <a href="#coverart">Cover Art Division</a>
+      <a href="#conversations">Conversaciones &amp; BTS</a>
     </nav>
+
+    <a href="index.html" class="back-to-studio">← Eloria Studio</a>
   </header>
 
-  <!-- SUBMENÚ ESTILO MUSEO -->
-  <nav class="museum-subnav">
-    <a href="#manifesto">El Pabellón</a>
-    <a href="#salas">Salas &amp; Exposiciones</a>
-    <a href="#coverart">Cover Art Division</a>
-    <a href="#conversations">Conversaciones &amp; BTS</a>
-  </nav>
-
   <main>
-    <!-- PRIMERA PANTALLA FULLSCREEN SLIDE -->
+    <!-- HERO FULLSCREEN SLIDE -->
     <section class="pavilion-hero">
       <h1 class="coding-title" id="codingHeroTitle">WELCOME TO EBBERKETT</h1>
       
@@ -295,63 +429,163 @@
       </a>
     </section>
 
-    <!-- MANIFIESTO Y SALAS MUSEOGRÁFICAS -->
+    <!-- MANIFIESTO Y SALAS -->
     <section id="manifesto" class="pavilion-manifesto-section">
-      <span class="manifesto-tag">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
+      <span class="section-label">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
 
       <div class="manifesto-body">
         <p>
-          EBBERKETT is the archive, documentation, and exhibition pavilion by <strong>@eloriabristastudio</strong>. We operate as the studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas[cite: 21].
+          EBBERKETT is the archive, documentation, and exhibition pavilion by <strong>@eloriabristastudio</strong>. We operate as the studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas.
         </p>
         <p>
-          Today, tech tools allow us to achieve instant technical perfection. However, we choose to focus on two key factors: the purity of intuition and the stories behind the works[cite: 20]. We don't see technology as an enemy, but as a canvas; we are interested in exploring how software and human sensibility dialogue with each other[cite: 20].
+          Today, tech tools allow us to achieve instant technical perfection. However, we choose to focus on two key factors: the purity of intuition and the stories behind the works. We don't see technology as an enemy, but as a canvas; we are interested in exploring how software and human sensibility dialogue with each other.
         </p>
         <p>
-          More than a static gallery, this pavilion is a living archive and a collaborative ecosystem[cite: 20, 21]. An open platform to connect, incubate, and bring visibility to emerging and resident artists[cite: 21].
+          More than a static gallery, this pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
         </p>
       </div>
 
-      <!-- ESTRUCTURA DE SALAS -->
+      <!-- ESTRUCTURA DE SALAS DEL MUSEO -->
       <div id="salas" class="rooms-nav-block">
-        <span class="manifesto-tag">Pavilion Architecture — Active Galleries</span>
+        <span class="section-label">Pavilion Architecture — Active Galleries</span>
 
         <div class="rooms-grid">
           <!-- SALA 1 -->
           <div class="room-card">
             <span class="room-num">01</span>
             <h3 class="room-title">Sala 1 / Main Gallery</h3>
-            <span class="room-meta">Artistas invitados &amp; exposiciones principales de la escena contemporánea.</span>
+            <span class="room-meta">Exposiciones de artistas invitados de la escena contemporánea.</span>
           </div>
 
           <!-- SALA 2 -->
           <div class="room-card">
             <span class="room-num">02</span>
             <h3 class="room-title">Sala 2 / Resident Works</h3>
-            <span class="room-meta">Obras del colectivo interno, artistas residentes y colecciones permanentes de EBS[cite: 23].</span>
+            <span class="room-meta">Obras del colectivo interno y colecciones permanentes de EBS.</span>
           </div>
 
           <!-- SALA 3 -->
           <div class="room-card">
             <span class="room-num">03</span>
             <h3 class="room-title">Sala 3 / Creative Lab</h3>
-            <span class="room-meta">Avant-garde archives, exploraciones experimentales y visuales de alto riesgo.</span>
+            <span class="room-meta">Avant-garde archives, exploraciones de laboratorio y visuales de alto riesgo.</span>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- COVER ART DIVISION (COMPOSICIÓN TIPO TRIVEAT) -->
+    <section id="coverart" class="cover-art-section">
+      <div class="gallery-header-block">
+        <div>
+          <span class="section-label">Eloria Brista Studio × Ebberkett</span>
+          <h2>Cover Art Division</h2>
+        </div>
+        <p style="max-width: 420px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #555; line-height: 1.5; margin: 0;">
+          Selección de portadas de discos, artes de sencillos y conceptos visuales desarrollados como piezas de arte independiente. Haz clic en cualquier obra para abrir la cédula y el video BTS.
+        </p>
+      </div>
+
+      <div class="editorial-cover-grid">
+        
+        <!-- FIG 01 -->
+        <div class="cover-item pos-1" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <div class="cover-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="AFRO Cover" />
+          </div>
+          <div class="cover-caption">
+            <span class="fig-num">FIG. 01 — AFRO.</span>
+            <span>Art Direction &amp; Digital Canvas</span>
+          </div>
+        </div>
+
+        <!-- FIG 02 -->
+        <div class="cover-item pos-2" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
+          <div class="cover-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Do It Like Me" />
+          </div>
+          <div class="cover-caption">
+            <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
+            <span>Mixed Media Art Direction</span>
+          </div>
+        </div>
+
+        <!-- FIG 03 -->
+        <div class="cover-item pos-3" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
+          <div class="cover-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="In the Name of Love" />
+          </div>
+          <div class="cover-caption">
+            <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
+            <span>Remix Cover &amp; Typographic Direction</span>
+          </div>
+        </div>
+
+        <!-- FIG 04 -->
+        <div class="cover-item pos-4" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
+          <div class="cover-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop" alt="Get Up Cover" />
+          </div>
+          <div class="cover-caption">
+            <span class="fig-num">FIG. 04 — GET UP.</span>
+            <span>Chromatics &amp; Graphic Experimentation</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN CONVERSACIONES & BTS -->
+    <section id="conversations" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
+      <span class="section-label">Ebberkett Dialogues</span>
+      <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 20px;">Featured Artists &amp; Conversations</h2>
+      <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 700px; line-height: 1.6;">
+        Un espacio dedicado a entrevistar creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre tecnología, sensibilidad humana y arte contemporáneo. Próximamente.
+      </p>
+    </section>
   </main>
+
+  <!-- MODAL POP-OUT PARA DETALLE DE PORTADA + VIDEO BTS -->
+  <div class="modal-overlay" id="caseModal">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      
+      <span class="section-label" id="mGalleryLocation">EBS Permanent Collection</span>
+      <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
+      
+      <div class="modal-body-grid">
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails">
+            Artist: Triveat<br/>
+            Medium: Digital Oil on Canvas<br/>
+            Timeline: 2025
+          </p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;" id="mDescription">
+            Exploración inmersiva creada en el laboratorio de Ebberkett para la dirección de arte oficial. Este proyecto indaga en el uso de texturas orgánicas y distorsión tipográfica.
+          </p>
+        </div>
+
+        <div>
+          <span class="section-label">Behind The Scenes (BTS)</span>
+          <div class="modal-bts-video-box" id="mVideoContainer">
+            [ Video BTS Preview / Studio Log ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER UNIFICADO -->
   <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
     <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
       <div class="brand-block" style="max-width: 350px;">
         <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
-        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio[cite: 20, 21]. San Francisco / Mexico City[cite: 21, 22].</p>
+        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio. San Francisco / Mexico City.</p>
       </div>
       <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
         <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Pavilion</h4>
         <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Eloria Studio</a>
-        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Menu</a>
+        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Directory</a>
         <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Inquiries</a>
       </div>
       <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
@@ -362,14 +596,15 @@
     </div>
     <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
       <span>© <span data-year>2026</span> EBBERKETT Pavilion</span>
-      <span>EBS Permanent Collection[cite: 24]</span>
+      <span>EBS Permanent Collection</span>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
-  
-  <!-- SCRIPT PARA EFECTO DE CÓDIGO SOLO EN EL TÍTULO -->
+
+  <!-- SCRIPTS DE INTERACCIÓN -->
   <script>
+    /* EFECTO CODING SCRAMBLE */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
       const finalText = "WELCOME TO EBBERKETT";
@@ -381,7 +616,6 @@
 
       const interval = setInterval(() => {
         let scrambledText = "";
-        
         for (let i = 0; i < finalText.length; i++) {
           if (finalText[i] === " ") {
             scrambledText += " ";
@@ -396,7 +630,6 @@
             }
           }
         }
-
         targetElement.innerText = scrambledText;
         currentFrame++;
 
@@ -406,6 +639,27 @@
         }
       }, speed);
     });
+
+    /* LÓGICA DE MODALES POP-OUT PARA PORTADAS Y VIDEOS */
+    function openModal(title, artist, medium, year, location, videoUrl) {
+      document.getElementById('mTitle').innerText = title;
+      document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
+      document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+      
+      const videoBox = document.getElementById('mVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video BTS / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('caseModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('caseModal').classList.remove('active');
+      document.getElementById('mVideoContainer').innerHTML = '';
+    }
   </script>
 </body>
 </html>
