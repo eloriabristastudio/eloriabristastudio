@@ -20,10 +20,39 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      height: 100vh;
       background-color: #f5f4f0;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      scroll-behavior: smooth;
+      overflow: hidden; /* Mantiene la vista completa sin scroll innecesario */
+    }
+
+    /* ANIMACIÓN DE ENTRADA SUAVE (FADE-IN UP) */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-menu {
+      opacity: 0;
+      animation: fadeInZoom 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    @keyframes fadeInZoom {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* HEADER MÍNIMO SOLO CON LOGO */
@@ -48,18 +77,27 @@
       display: block;
     }
 
-    /* CONTENEDOR DE MENÚ MÁS LIMPIO Y CERCANO */
-    .menu-container {
-      padding: 140px 3.5vw 100px 3.5vw;
-      max-width: 1200px;
-      margin: 0 auto;
+    /* CONTENEDOR CENTRADO EN PANTALLA COMPLETA */
+    .menu-fullscreen-wrapper {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       box-sizing: border-box;
+      padding: 0 5vw;
+    }
+
+    .menu-inner-block {
+      width: fit-content;
+      text-align: left;
     }
 
     .directory-list {
       display: flex;
       flex-direction: column;
-      gap: 16px; /* Espaciado más reducido y elegante entre opciones principales */
+      gap: 14px; /* Espaciado compacto y elegante */
     }
 
     .directory-item-group {
@@ -67,10 +105,10 @@
       flex-direction: column;
     }
 
-    /* ENLACES PRINCIPALES (TAMAÑO GRANDE, INTERLÍNEA TIGHT) */
+    /* ENLACES PRINCIPALES (TAMAÑO MÁS GRANDE Y PROTAGONISTA) */
     .directory-link {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
       font-weight: 300;
       color: #777;
       text-decoration: none;
@@ -88,14 +126,14 @@
 
     .directory-link:hover, .directory-link.active-main {
       color: #0e0e0e;
-      transform: translateX(6px);
+      transform: translateX(8px);
     }
 
-    /* SUBLISTA DE PROYECTOS (MÁS JUNTA Y COMPACTA) */
+    /* SUBLISTA DE PROYECTOS (DESPLEGABLE COMPACTO) */
     .sub-projects-list {
       display: none;
       flex-direction: column;
-      gap: 10px; /* Espaciado ajustado entre proyectos */
+      gap: 10px;
       margin-top: 14px;
       margin-left: 10px;
       padding-left: 20px;
@@ -124,88 +162,63 @@
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .menu-container { padding: 110px 20px 60px 20px; }
-      .directory-list { gap: 12px; }
+      body, html { overflow: auto; height: auto; }
+      .menu-fullscreen-wrapper { padding: 120px 20px 80px 20px; height: auto; justify-content: flex-start; align-items: flex-start; }
+      .menu-inner-block { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER LIMPIO (SOLO LOGO) -->
+  <!-- HEADER MÍNIMO (SOLO LOGO) -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
     </a>
   </header>
 
-  <main class="menu-container">
-    <div class="directory-list">
-      
-      <!-- 01. HOME -->
-      <div class="directory-item-group">
-        <a href="index.html" class="directory-link">Home</a>
-      </div>
-
-      <!-- 02. WORK (CON DESPLEGABLE DE PROYECTOS LIMPIO) -->
-      <div class="directory-item-group">
-        <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
+  <main class="menu-fullscreen-wrapper animate-menu">
+    <div class="menu-inner-block">
+      <div class="directory-list">
         
-        <div class="sub-projects-list" id="workSubList">
-          <a href="work.html" class="sub-project-item">Case 01 — Sukha</a>
-          <a href="work.html" class="sub-project-item">Case 02 — Nueve Cero Nueve</a>
-          <a href="work.html" class="sub-project-item">Case 03 — Hypnia</a>
-          <a href="work.html" class="sub-project-item">Case 04 — Art Cover Collections</a>
-          <a href="work.html" class="sub-project-item">Case 05 — Vibin: The Ambients</a>
-          <a href="work.html" class="sub-project-item">Case 06 — The Human Tapes</a>
-          <a href="work.html" class="sub-project-item">Case 07 — Celeste</a>
+        <!-- 01. HOME -->
+        <div class="directory-item-group">
+          <a href="index.html" class="directory-link">Home</a>
         </div>
-      </div>
 
-      <!-- 03. ABOUT -->
-      <div class="directory-item-group">
-        <a href="about.html" class="directory-link">About</a>
-      </div>
+        <!-- 02. WORK (CON DESPLEGABLE DE PROYECTOS) -->
+        <div class="directory-item-group">
+          <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
+          
+          <div class="sub-projects-list" id="workSubList">
+            <a href="work.html" class="sub-project-item">Case 01 — Sukha</a>
+            <a href="work.html" class="sub-project-item">Case 02 — Nueve Cero Nueve</a>
+            <a href="work.html" class="sub-project-item">Case 03 — Hypnia</a>
+            <a href="work.html" class="sub-project-item">Case 04 — Art Cover Collections</a>
+            <a href="work.html" class="sub-project-item">Case 05 — Vibin: The Ambients</a>
+            <a href="work.html" class="sub-project-item">Case 06 — The Human Tapes</a>
+            <a href="work.html" class="sub-project-item">Case 07 — Celeste</a>
+          </div>
+        </div>
 
-      <!-- 04. EBBERKETT -->
-      <div class="directory-item-group">
-        <a href="ebberkett.html" class="directory-link">Ebberkett</a>
-      </div>
+        <!-- 03. ABOUT -->
+        <div class="directory-item-group">
+          <a href="about.html" class="directory-link">About</a>
+        </div>
 
-      <!-- 05. CONTACT -->
-      <div class="directory-item-group">
-        <a href="contact.html" class="directory-link">Contact</a>
-      </div>
+        <!-- 04. EBBERKETT -->
+        <div class="directory-item-group">
+          <a href="ebberkett.html" class="directory-link">Ebberkett</a>
+        </div>
 
+        <!-- 05. CONTACT -->
+        <div class="directory-item-group">
+          <a href="contact.html" class="directory-link">Contact</a>
+        </div>
+
+      </div>
     </div>
   </main>
-
-  <!-- FOOTER UNIFICADO -->
-  <footer class="site-footer" style="padding: 60px 3.5vw 30px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
-    <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-      <div class="brand-block" style="max-width: 350px;">
-        <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
-        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
-        <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Home</a>
-        <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Work</a>
-        <a href="about.html" style="text-decoration: none; color: #0e0e0e;">About</a>
-        <a href="ebberkett.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett</a>
-        <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Contact</a>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Connect</h4>
-        <a href="#" style="text-decoration: none; color: #0e0e0e;">Instagram</a>
-        <a href="#" style="text-decoration: none; color: #0e0e0e;">Are.na</a>
-        <a href="#" style="text-decoration: none; color: #0e0e0e;">LinkedIn</a>
-      </div>
-    </div>
-    <div class="bottom" style="margin-top: 40px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
-      <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-      <span>MEX (UTC −5)</span>
-    </div>
-  </footer>
 
   <script src="assets/js/main.js"></script>
   <script>
