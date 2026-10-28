@@ -40,7 +40,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 30px 5vw;
+      padding: 35px 3.5vw; /* Ampliado hacia las esquinas */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -52,8 +52,7 @@
     .header-editorial .brand-logo {
       font-size: 0.85rem;
       font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       text-decoration: none;
       color: #0e0e0e;
     }
@@ -66,8 +65,7 @@
     .nav-links a {
       font-size: 0.8rem;
       font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       text-decoration: none;
       color: #0e0e0e;
       transition: opacity 0.3s ease;
@@ -75,11 +73,11 @@
 
     .nav-links a:hover { opacity: 0.5; }
 
-    /* HERO SLIDE PANTALLA COMPLETA CON ESPACIADO EDITORIAL */
+    /* HERO SLIDE PANTALLA COMPLETA - NADA DE TODO MAYÚSCULAS, TAMAÑO REFINED */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
-      padding: 0 6vw;
+      padding: 0 3.5vw; /* Margen reducido a 3.5vw para dar más amplitud horizontal */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -88,18 +86,18 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr auto 1fr; /* Permitir que el centro se ajuste a su contenido y los lados respiren */
+      grid-template-columns: 1fr auto 1fr;
       align-items: baseline;
       width: 100%;
-      gap: 4vw; /* Controla la distancia de separación entre palabras */
     }
 
     .hero-title {
-      font-size: clamp(3rem, 7.5vw, 9rem);
-      font-weight: 300; /* Estilo Helvetica ligero */
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      line-height: 0.85;
+      /* Bajamos el tamaño máximo para que sea más fino y respire más el espacio */
+      font-size: clamp(2.8rem, 6.2vw, 7rem);
+      font-weight: 300; /* Helvetica Light */
+      text-transform: none; /* Mantiene Mayúscula y minúsculas: Eloria Brista Studio */
+      letter-spacing: -0.03em;
+      line-height: 0.9;
       margin: 0;
     }
 
@@ -110,16 +108,15 @@
     /* METADATOS INFERIORES DEL HERO */
     .hero-footer-meta {
       position: absolute;
-      bottom: 40px;
-      left: 6vw;
-      right: 6vw;
+      bottom: 35px;
+      left: 3.5vw;
+      right: 3.5vw;
       display: flex;
       justify-content: space-between;
       font-family: 'Geist Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
 
     @media (max-width: 768px) {
@@ -151,7 +148,7 @@
   <div class="shell">
     <div class="content">
       <main>
-        <!-- PRIMER SLIDE: HERO EDITORIAL CON ESPACIADO Y AIRE -->
+        <!-- HERO CON AMPLITUD Y TIPOGRAFÍA MIXTA -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left">
@@ -174,7 +171,7 @@
         </section>
 
         <!-- ─── SEGUNDO SLIDE / FEATURED WORK ─── -->
-        <section aria-labelledby="work-head" style="padding: 120px 6vw;">
+        <section aria-labelledby="work-head" style="padding: 120px 3.5vw;">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Selected Projects</span>
             <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Case Studies</h2>
@@ -218,7 +215,7 @@
         </section>
 
         <!-- ─── SERVICES LIST ─── -->
-        <section aria-labelledby="services-head" style="padding: 80px 6vw;">
+        <section aria-labelledby="services-head" style="padding: 80px 3.5vw;">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Practice areas · 06</span>
             <h2 id="services-head" style="font-weight: 300; font-size: 2.5rem;">Disciplines</h2>
@@ -265,7 +262,7 @@
         </section>
 
         <!-- ─── MANIFESTO ─── -->
-        <section class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 6vw;">
+        <section class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
           <div class="grid">
             <div>
               <span class="label">— Philosophy</span>
@@ -283,7 +280,7 @@
       </main>
 
       <!-- FOOTER -->
-      <footer class="site-footer" style="padding: 80px 6vw 40px 6vw;">
+      <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw;">
         <div class="top">
           <div class="brand-block">
             <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
@@ -306,7 +303,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.1</span>
+          <span class="right">v2.2</span>
         </div>
       </footer>
     </div>
