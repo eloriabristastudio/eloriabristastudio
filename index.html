@@ -38,7 +38,7 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
-    /* HEADER EDITORIAL SIN "HOME" */
+    /* HEADER EDITORIAL CON NUEVA SECCIÓN */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -73,7 +73,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
     }
 
     .nav-links a {
@@ -220,7 +220,7 @@
       color: #aaa;
     }
 
-    /* ─── NUEVO BLOQUE DE MENSAJE / MANIFIESTO ESTILO REFERENCIA ─── */
+    /* ─── BLOQUE DE MENSAJE / MANIFIESTO ─── */
     .about-statement-section {
       padding: 80px 3.5vw;
       max-width: 1300px;
@@ -256,7 +256,7 @@
       margin: 0;
     }
 
-    .about-statement-text em, .about-statement-text .highlight {
+    .about-statement-text em {
       font-style: italic;
       font-weight: 400;
     }
@@ -277,7 +277,7 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL SIN "HOME" -->
+  <!-- HEADER EDITORIAL CON "EBBERKETT" INTEGRADO -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
@@ -286,6 +286,7 @@
       <a href="#index-section">Index</a>
       <a href="#work-section">Work</a>
       <a href="about.html">About</a>
+      <a href="#ebberkett-section">Ebberkett</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
@@ -349,13 +350,16 @@
             <a href="#disciplines-section" class="index-item">
               <span class="code">Case03—</span> Practice Areas &amp; Capabilities
             </a>
+            <a href="#ebberkett-section" class="index-item">
+              <span class="code">Case04—</span> Ebberkett
+            </a>
             <a href="contact.html" class="index-item">
-              <span class="code">Case04—</span> Initiate Contact
+              <span class="code">Case05—</span> Initiate Contact
             </a>
           </nav>
         </section>
 
-        <!-- ─── MENSAJE / MANIFIESTO "ABOUT US" ANTES DE LOS CASOS DE ESTUDIO ─── -->
+        <!-- ─── MENSAJE / MANIFIESTO "ABOUT US" ─── -->
         <section id="statement-section" class="about-statement-section reveal">
           <div class="eyebrow-custom">About Studio</div>
           <h2 class="about-statement-text">
@@ -449,6 +453,19 @@
           </div>
         </section>
 
+        <!-- ─── NUEVA SECCIÓN: EBBERKETT ─── -->
+        <section id="ebberkett-section" style="padding: 100px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
+          <header class="section-head reveal">
+            <span class="eyebrow"><span class="dot"></span>Case04 — Special Initiative</span>
+            <h2 style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Ebberkett</h2>
+          </header>
+          <div class="reveal" style="margin-top: 40px; max-width: 800px;">
+            <p style="font-size: 1.2rem; line-height: 1.6; color: #333; font-weight: 300;">
+              Explorations, parallel ventures, and experimental design frameworks developed under the Ebberkett umbrella. A dedicated space for specialized concepts.
+            </p>
+          </div>
+        </section>
+
         <!-- MANIFESTO / PHILOSOPHY -->
         <section id="manifesto-section" class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
           <div class="grid">
@@ -479,6 +496,7 @@
             <a href="#index-section">Index</a>
             <a href="#statement-section">About Studio</a>
             <a href="#work-section">Work</a>
+            <a href="#ebberkett-section">Ebberkett</a>
             <a href="contact.html">Contact</a>
           </div>
           <div class="col">
@@ -490,7 +508,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v3.7</span>
+          <span class="right">v3.8</span>
         </div>
       </footer>
     </div>
