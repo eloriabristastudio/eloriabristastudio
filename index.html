@@ -7,8 +7,8 @@
   <title>Eloria Brista Studio</title>
   <meta name="description" content="Eloria Brista Studio — Multidisciplinary Boutique. Creative Direction, Branding, Worldbuilding, Music & Audio Engineering." />
   
-  <!-- Favicon para la pestaña del navegador -->
-  <link rel="icon" type="image/png" href="assets/EBS_Logo.png" />
+  <!-- Favicon vectorial para la pestaña del navegador -->
+  <link rel="icon" type="image/svg+xml" href="assets/EBS_Logo.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,18 +51,18 @@
       z-index: 100;
     }
 
-    /* PROPORCIÓN EXACTA: ISOTIPO ALINEADO A LA ALTURA DE LA LETRA */
+    /* ALINEACIÓN PERFECTA DEL LOGO EN CURVAS (SVG) CON EL TEXTO */
     .header-editorial .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       text-decoration: none;
       color: #555;
       transition: opacity 0.3s ease;
     }
 
     .header-editorial .brand-logo img {
-      height: 0.85rem; /* Altura exacta idéntica a la tipografía del menú (aprox 12px-13px) */
+      height: 20px; /* Tamaño vectorial nítido y balanceado */
       width: auto;
       display: block;
     }
@@ -74,6 +74,7 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: #555;
+      line-height: 1;
     }
 
     .header-editorial .brand-logo:hover {
@@ -207,10 +208,10 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON PROPORCIÓN EXACTA -->
+  <!-- HEADER EDITORIAL CON SVG EN CURVAS PERFECTAMENTE INTEGRADO -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo">
-      <img src="assets/EBS_Logo.png" alt="Eloria Brista Studio" />
+      <img src="assets/EBS_Logo.svg" alt="Eloria Brista Studio" />
       <span>Eloria Brista Studio</span>
     </a>
     <nav class="nav-links">
@@ -394,7 +395,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.9</span>
+          <span class="right">v3.0</span>
         </div>
       </footer>
     </div>
