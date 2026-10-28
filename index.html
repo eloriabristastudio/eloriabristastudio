@@ -38,6 +38,60 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
+    /* ─── ANIMACIONES DE ENTRADA Y REVELACIÓN ─── */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-header {
+      animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-hero-1 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .animate-hero-2 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .animate-hero-3 {
+      opacity: 0;
+      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    /* EFECTO REVEAL AL HACER SCROLL PARA EL MANIFIESTO */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-on-scroll.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* HEADER EDITORIAL UNIFICADO */
     .header-editorial {
       position: fixed;
@@ -188,7 +242,7 @@
 
     /* BLOQUE DE MENSAJE / MANIFIESTO */
     .about-statement-section {
-      padding: 80px 3.5vw;
+      padding: 100px 3.5vw;
       max-width: 1300px;
     }
 
@@ -243,8 +297,8 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL -->
-  <header class="header-editorial">
+  <!-- HEADER EDITORIAL CON ANIMACIÓN DE ENTRADA -->
+  <header class="header-editorial animate-header">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
     </a>
@@ -260,21 +314,21 @@
   <div class="shell">
     <div class="content">
       <main>
-        <!-- PRIMER SLIDE: HERO TOTALMENTE LIMPIO -->
+        <!-- PRIMER SLIDE: HERO CON ANIMACIÓN ESCALONADA SUAVE -->
         <section class="hero-editorial">
           <div class="hero-grid">
-            <div class="hero-col hero-left">
+            <div class="hero-col hero-left animate-hero-1">
               <h1 class="hero-title">Eloria</h1>
             </div>
-            <div class="hero-col hero-center">
+            <div class="hero-col hero-center animate-hero-2">
               <h1 class="hero-title">Brista</h1>
             </div>
-            <div class="hero-col hero-right">
+            <div class="hero-col hero-right animate-hero-3">
               <h1 class="hero-title">Studio</h1>
             </div>
           </div>
 
-          <div class="hero-footer-meta">
+          <div class="hero-footer-meta animate-hero-3">
             <span>Multidisciplinary Boutique</span>
             <span>MEX (UTC −5)</span>
           </div>
@@ -302,8 +356,8 @@
           </div>
         </div>
 
-        <!-- MENSAJE / MANIFIESTO "ABOUT US" -->
-        <section id="statement-section" class="about-statement-section reveal">
+        <!-- MENSAJE / MANIFIESTO "ABOUT US" CON EFECTO REVEAL AL HACER SCROLL -->
+        <section id="statement-section" class="about-statement-section reveal-on-scroll">
           <div class="eyebrow-custom">About Studio</div>
           <h2 class="about-statement-text">
             We're a multidisciplinary boutique and strategic partner whose mission is summarized by our passion to create and connect. We are dedicated to building <em>better brands, better stories, better experiences and better projects.</em>
@@ -315,13 +369,13 @@
 
         <!-- SECCIÓN: WORK (CASOS DE ESTUDIO DESTACADOS) -->
         <section id="work-section" aria-labelledby="work-head" style="padding: 40px 3.5vw 120px 3.5vw;">
-          <header class="section-head reveal">
+          <header class="section-head reveal-on-scroll">
             <span class="eyebrow"><span class="dot"></span>Case02 — Selected Projects</span>
             <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Featured Work</h2>
           </header>
           
           <!-- GALERÍA DE PROYECTOS DESTACADOS -->
-          <div class="work-strip reveal" style="margin-top: 60px;">
+          <div class="work-strip reveal-on-scroll" style="margin-top: 60px;">
             <article class="work-card lg">
               <div class="img-wrap">
                 <img src="assets/img/work-1.svg" alt="Sukha branding" loading="lazy" />
@@ -358,18 +412,18 @@
           </div>
 
           <!-- BOTÓN PARA VER TODOS LOS TRABAJOS -->
-          <div class="reveal" style="margin-top: 60px; text-align: center;">
+          <div class="reveal-on-scroll" style="margin-top: 60px; text-align: center;">
             <a href="work.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; letter-spacing: 0.05em; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">View All Selected Works (Archived) →</a>
           </div>
 
           <!-- BLOQUE DE DISCIPLINAS -->
           <div id="disciplines-section" style="margin-top: 100px;">
-            <header class="section-head reveal">
+            <header class="section-head reveal-on-scroll">
               <span class="eyebrow"><span class="dot"></span>Case03 — Practice Areas · 05</span>
               <h2 style="font-weight: 300; font-size: 2.2rem; margin-top: 8px;">Disciplines</h2>
             </header>
 
-            <div class="services-list reveal" style="margin-top: 40px;">
+            <div class="services-list reveal-on-scroll" style="margin-top: 40px;">
               <article class="row">
                 <span class="num">01 / 05</span>
                 <h3>Creative Direction</h3>
@@ -405,13 +459,13 @@
         </section>
 
         <!-- MANIFESTO / PHILOSOPHY -->
-        <section id="manifesto-section" class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
+        <section id="manifesto-section" class="manifesto reveal-on-scroll" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
           <div class="grid">
             <div>
               <span class="label">— Philosophy</span>
-              <h2 id="manifesto-head" class="reveal" style="font-weight: 300;">We build multidisciplinary worlds through <span class="lime-text">design &amp; sound</span>.</h2>
+              <h2 id="manifesto-head" style="font-weight: 300;">We build multidisciplinary worlds through <span class="lime-text">design &amp; sound</span>.</h2>
             </div>
-            <div class="reveal">
+            <div>
               <p>Eloria Brista Studio operates as a boutique practice. We merge spatial branding, worldbuilding, and sound engineering into unified creative direction.</p>
               <div class="signature">
                 <span>↳ Eloria Brista Studio</span>
@@ -453,5 +507,26 @@
   </div>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    /* SCRIPT SENCILLO PARA ACTIVAR EL EFECTO REVEAL AL HACER SCROLL */
+    document.addEventListener("DOMContentLoaded", function() {
+      const reveals = document.querySelectorAll(".reveal-on-scroll");
+
+      function revealOnScroll() {
+        reveals.forEach(element => {
+          const windowHeight = window.innerHeight;
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 100;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll(); // Comprobar al cargar por si acaso
+    });
+  </script>
 </body>
 </html>
