@@ -27,7 +27,7 @@
       scroll-behavior: smooth;
     }
 
-    /* HEADER AUTÓNOMO DE EBBERKETT (MUSEUM NAV) */
+    /* HEADER AUTÓNOMO DE EBBERKETT */
     .ebberkett-header {
       position: fixed;
       top: 0;
@@ -52,7 +52,7 @@
       color: #0e0e0e;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 700; /* BOLD ACERTADO */
       letter-spacing: 0.05em;
     }
 
@@ -80,12 +80,13 @@
       color: #0e0e0e;
     }
 
+    /* BOTÓN DE RETORNO CON LA TIPOGRAFÍA DE ELORIA (INTER / CLEAN) */
     .back-to-studio {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #777;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #555;
       text-decoration: none;
       transition: color 0.2s ease;
     }
@@ -236,7 +237,7 @@
       line-height: 1.4;
     }
 
-    /* COVER ART DIVISION — COMPOSICIÓN EDITORIAL TIPO TRIVEAT */
+    /* COVER ART DIVISION (CON ENFOQUE PIXEL / DIGITAL) */
     .cover-art-section {
       padding: 120px 3.5vw;
       border-top: 1px solid rgba(14, 14, 14, 0.15);
@@ -254,11 +255,12 @@
     }
 
     .gallery-header-block h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      letter-spacing: -0.03em;
+      font-family: 'Pixelify Sans', cursive, monospace;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
       margin: 0;
+      text-transform: lowercase;
     }
 
     .editorial-cover-grid {
@@ -270,7 +272,6 @@
       align-items: start;
     }
 
-    /* ITEMS DISPERSOS ESTILO MUSEO */
     .cover-item {
       cursor: pointer;
       position: relative;
@@ -319,7 +320,7 @@
       margin-bottom: 2px;
     }
 
-    /* MODAL POP-OUT PARA CASE STUDY + VIDEO BTS */
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -407,8 +408,8 @@
     <nav class="ebberkett-nav-links">
       <a href="#manifesto">El Pabellón</a>
       <a href="#salas">Salas</a>
-      <a href="#coverart">Cover Art Division</a>
-      <a href="#conversations">Conversaciones &amp; BTS</a>
+      <a href="#coverart">cover art / dvision</a>
+      <a href="#tapes">The Human Tapes</a>
     </nav>
 
     <a href="index.html" class="back-to-studio">← Eloria Studio</a>
@@ -445,7 +446,7 @@
         </p>
       </div>
 
-      <!-- ESTRUCTURA DE SALAS DEL MUSEO -->
+      <!-- ESTRUCTURA DE SALAS -->
       <div id="salas" class="rooms-nav-block">
         <span class="section-label">Pavilion Architecture — Active Galleries</span>
 
@@ -474,12 +475,12 @@
       </div>
     </section>
 
-    <!-- COVER ART DIVISION (COMPOSICIÓN TIPO TRIVEAT) -->
+    <!-- COVER ART DIVISION (COVER ART / DVISION) -->
     <section id="coverart" class="cover-art-section">
       <div class="gallery-header-block">
         <div>
           <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-          <h2>Cover Art Division</h2>
+          <h2>cover art / dvision</h2>
         </div>
         <p style="max-width: 420px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #555; line-height: 1.5; margin: 0;">
           Selección de portadas de discos, artes de sencillos y conceptos visuales desarrollados como piezas de arte independiente. Haz clic en cualquier obra para abrir la cédula y el video BTS.
@@ -535,17 +536,22 @@
       </div>
     </section>
 
-    <!-- SECCIÓN CONVERSACIONES & BTS -->
-    <section id="conversations" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
+    <!-- SECCIÓN THE HUMAN TAPES -->
+    <section id="tapes" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
       <span class="section-label">Ebberkett Dialogues</span>
-      <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin-bottom: 20px;">Featured Artists &amp; Conversations</h2>
-      <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 700px; line-height: 1.6;">
-        Un espacio dedicado a entrevistar creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre tecnología, sensibilidad humana y arte contemporáneo. Próximamente.
+      <h2 style="font-family: 'Pixelify Sans', cursive, monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; margin-bottom: 20px; text-transform: lowercase;">The Human Tapes</h2>
+      <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 750px; line-height: 1.6; margin-bottom: 30px;">
+        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
       </p>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Apple Podcasts</a>
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Amazon Music</a>
+      </div>
     </section>
   </main>
 
-  <!-- MODAL POP-OUT PARA DETALLE DE PORTADA + VIDEO BTS -->
+  <!-- MODAL POP-OUT -->
   <div class="modal-overlay" id="caseModal">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -640,7 +646,7 @@
       }, speed);
     });
 
-    /* LÓGICA DE MODALES POP-OUT PARA PORTADAS Y VIDEOS */
+    /* LÓGICA DE MODALES POP-OUT */
     function openModal(title, artist, medium, year, location, videoUrl) {
       document.getElementById('mTitle').innerText = title;
       document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
