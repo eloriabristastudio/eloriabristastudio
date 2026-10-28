@@ -38,7 +38,7 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
-    /* HEADER EDITORIAL CON NUEVA SECCIÓN */
+    /* HEADER EDITORIAL UNIFICADO */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -277,14 +277,14 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON "EBBERKETT" INTEGRADO -->
+  <!-- HEADER EDITORIAL -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
     </a>
     <nav class="nav-links">
-      <a href="#index-section">Index</a>
-      <a href="#work-section">Work</a>
+      <a href="index.html">Index</a>
+      <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="#ebberkett-section">Ebberkett</a>
       <a href="contact.html">Contact</a>
@@ -336,22 +336,22 @@
           </div>
         </div>
 
-        <!-- ─── ÍNDICE INTERACTIVO DE NAVEGACIÓN ─── -->
+        <!-- ─── ÍNDICE INTERACTIVO CON ENLACES A PÁGINAS EXTERNAS ─── -->
         <section id="index-section" class="index-navigation-section reveal">
           <span class="eyebrow"><span class="dot"></span>Navigation Index</span>
           
           <nav class="index-list">
-            <a href="#statement-section" class="index-item">
-              <span class="code">Case01—</span> About Studio
+            <a href="about.html" class="index-item">
+              <span class="code">Case01—</span> Explore About Studio
             </a>
-            <a href="#work-section" class="index-item">
-              <span class="code">Case02—</span> Selected Projects
+            <a href="work.html" class="index-item">
+              <span class="code">Case02—</span> Explore Selected Works <span>→</span>
             </a>
             <a href="#disciplines-section" class="index-item">
               <span class="code">Case03—</span> Practice Areas &amp; Capabilities
             </a>
             <a href="#ebberkett-section" class="index-item">
-              <span class="code">Case04—</span> Ebberkett
+              <span class="code">Case04—</span> Explore Ebberkett
             </a>
             <a href="contact.html" class="index-item">
               <span class="code">Case05—</span> Initiate Contact
@@ -365,9 +365,12 @@
           <h2 class="about-statement-text">
             We're a multidisciplinary boutique and strategic partner whose mission is summarized by our passion to create and connect. We are dedicated to building <em>better brands, better stories, better experiences and better projects.</em>
           </h2>
+          <div style="margin-top: 30px;">
+            <a href="about.html" class="arrow-link" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; letter-spacing: 0.05em;">Read full studio philosophy <span>→</span></a>
+          </div>
         </section>
 
-        <!-- SECCIÓN: WORK (CASOS DE ESTUDIO) -->
+        <!-- SECCIÓN: WORK (CASOS DE ESTUDIO DESTACADOS EN LA PORTADA) -->
         <section id="work-section" aria-labelledby="work-head" style="padding: 40px 3.5vw 120px 3.5vw;">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Case02 — Selected Projects</span>
@@ -409,6 +412,11 @@
                 <a class="arrow-link" href="work.html">Case study <span>→</span></a>
               </div>
             </article>
+          </div>
+
+          <!-- BOTÓN PARA VER TODOS LOS TRABAJOS -->
+          <div class="reveal" style="margin-top: 60px; text-align: center;">
+            <a href="work.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; letter-spacing: 0.05em; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">View All Selected Works (Archived) →</a>
           </div>
 
           <!-- BLOQUE DE DISCIPLINAS -->
@@ -453,7 +461,7 @@
           </div>
         </section>
 
-        <!-- ─── NUEVA SECCIÓN: EBBERKETT ─── -->
+        <!-- SECCIÓN: EBBERKETT -->
         <section id="ebberkett-section" style="padding: 100px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Case04 — Special Initiative</span>
@@ -493,9 +501,9 @@
           </div>
           <div class="col">
             <h4>Navigation</h4>
-            <a href="#index-section">Index</a>
-            <a href="#statement-section">About Studio</a>
-            <a href="#work-section">Work</a>
+            <a href="index.html">Index</a>
+            <a href="work.html">Work</a>
+            <a href="about.html">About</a>
             <a href="#ebberkett-section">Ebberkett</a>
             <a href="contact.html">Contact</a>
           </div>
@@ -508,7 +516,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v3.8</span>
+          <span class="right">v3.9</span>
         </div>
       </footer>
     </div>
