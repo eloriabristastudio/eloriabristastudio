@@ -146,13 +146,15 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── CINTA ANIMADA CON EFECTO REVEAL ─── */
+    /* ─── CINTA ANIMADA CON ESPACIADO EDITORIAL ─── */
     .ticker-connector {
       width: 100%;
       overflow: hidden;
       background: transparent;
       border-top: 1px solid rgba(14, 14, 14, 0.15);
-      padding: 24px 0;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.15); /* Añadimos borde inferior para enmarcarla perfectamente en medio */
+      padding: 28px 0;
+      margin: 60px 0; /* Agrega un respiro simétrico arriba y abajo para que quede flotando en medio */
       white-space: nowrap;
       box-sizing: border-box;
     }
@@ -203,6 +205,7 @@
       .hero-center, .hero-right { text-align: left; }
       .hero-footer-meta { flex-direction: column; gap: 8px; position: static; margin-top: 40px; }
       .ticker-item { font-size: 1.1rem; }
+      .ticker-connector { margin: 40px 0; }
     }
   </style>
 </head>
@@ -246,7 +249,7 @@
           </div>
         </section>
 
-        <!-- ─── BANDA DE SERVICIOS CON EFECTO REVEAL ─── -->
+        <!-- ─── BANDA DE SERVICIOS ENMEDIO (CON MARGIN Y DOBLE LÍNEA SUTIL) ─── -->
         <div class="ticker-connector reveal">
           <div class="ticker-track">
             <!-- Bloque 1 -->
@@ -269,7 +272,7 @@
         </div>
 
         <!-- ─── SEGUNDO SLIDE / FEATURED WORK ─── -->
-        <section aria-labelledby="work-head" style="padding: 100px 3.5vw 120px 3.5vw;">
+        <section aria-labelledby="work-head" style="padding: 60px 3.5vw 120px 3.5vw;">
           <header class="section-head reveal">
             <span class="eyebrow"><span class="dot"></span>Selected Projects</span>
             <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Case Studies</h2>
@@ -395,7 +398,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v3.3</span>
+          <span class="right">v3.4</span>
         </div>
       </footer>
     </div>
