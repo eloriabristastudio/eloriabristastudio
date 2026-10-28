@@ -73,9 +73,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start; /* Alineado a la izquierda */
+      align-items: flex-start;
       box-sizing: border-box;
-      padding: 0 8vw; /* Margen izquierdo elegante */
+      padding: 0 8vw;
     }
 
     .menu-inner-block {
@@ -86,7 +86,7 @@
     .directory-list {
       display: flex;
       flex-direction: column;
-      gap: 10px; /* Interlineado muy compacto entre opciones principales */
+      gap: 10px;
     }
 
     .directory-item-group {
@@ -118,11 +118,11 @@
       transform: translateX(8px);
     }
 
-    /* SUBLISTA DE PROYECTOS (INTERLÍNEA MÁS ESTRECHA Y COMPACTA) */
+    /* SUBLISTA DE PROYECTOS */
     .sub-projects-list {
       display: none;
       flex-direction: column;
-      gap: 6px; /* Espacio mínimo y súper junto entre cada "Case" */
+      gap: 6px;
       margin-top: 10px;
       margin-left: 12px;
       padding-left: 20px;
@@ -140,7 +140,7 @@
       color: #666;
       text-decoration: none;
       letter-spacing: -0.02em;
-      line-height: 1.15; /* Interlineado más estrecho pedido */
+      line-height: 1.15;
       transition: color 0.2s ease, transform 0.2s ease;
     }
 
@@ -174,7 +174,7 @@
           <a href="index.html" class="directory-link">Home</a>
         </div>
 
-        <!-- 02. WORK (CON DESPLEGABLE COMPACTO) -->
+        <!-- 02. WORK -->
         <div class="directory-item-group">
           <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
           
@@ -194,9 +194,9 @@
           <a href="about.html" class="directory-link">About</a>
         </div>
 
-        <!-- 04. EBBERKETT -->
+        <!-- 04. EBBERKETT CON FLECHA EXTERNA / DIVISION -->
         <div class="directory-item-group">
-          <a href="ebberkett.html" class="directory-link">Ebberkett</a>
+          <a href="ebberkett.html" class="directory-link">Ebberkett ↗</a>
         </div>
 
         <!-- 05. CONTACT -->
