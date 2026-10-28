@@ -6,89 +6,154 @@
   <meta name="theme-color" content="#0e0e0e" />
   <title>Eloria Brista Studio</title>
   <meta name="description" content="Eloria Brista Studio — Independent creative studio working in brand identity, web design, art direction, and creative coding." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
-    /* Estilos del Hero Editorial - Eloria Brista Studio */
-    .hero-editorial {
-      padding: 120px 40px 80px 40px;
+    /* RESET & PANTALLA COMPLETA */
+    body, html {
+      margin: 0;
+      padding: 0;
       width: 100%;
-      box-sizing: border-box;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: #f5f4f0;
+      color: #0e0e0e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     }
+
+    /* Sobrescribir contenedor antiguo */
+    .shell {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    .rail { display: none !important; } /* Oculta la solapa lateral */
+    .content { margin-left: 0 !important; width: 100% !important; }
+
+    /* MENU SUPERIOR EDITORIAL */
+    .header-editorial {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+
+    .header-editorial .brand-logo {
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #0e0e0e;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: #0e0e0e;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.5;
+    }
+
+    /* HERO SLIDE PANTALLA COMPLETA */
+    .hero-editorial {
+      min-height: 100vh;
+      width: 100%;
+      padding: 0 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       align-items: baseline;
       width: 100%;
     }
+
     .hero-title {
-      font-size: clamp(3rem, 7.5vw, 8.5rem);
-      font-weight: 500;
+      font-size: clamp(3.5rem, 10vw, 11rem);
+      font-weight: 300; /* Tipografía más ligera / estilo Helvetica Light */
       text-transform: uppercase;
-      letter-spacing: -0.04em;
-      line-height: 0.9;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
       margin: 0;
     }
+
     .hero-left { text-align: left; }
     .hero-center { text-align: center; }
     .hero-right { text-align: right; }
 
+    /* METADATOS INFERIORES DEL HERO */
+    .hero-footer-meta {
+      position: absolute;
+      bottom: 40px;
+      left: 5vw;
+      right: 5vw;
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     @media (max-width: 768px) {
-      .hero-editorial { padding: 80px 20px 40px 20px; }
+      .header-editorial { padding: 20px; }
+      .nav-links { display: none; } /* En móvil se puede desplegar luego */
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
       }
       .hero-center, .hero-right { text-align: left; }
+      .hero-footer-meta { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <a class="brand" href="index.html"><span class="rail-brand-mark">E</span> Eloria Brista Studio</a>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile">
-    <button class="mobile-close" aria-label="Close menu">Close ✕</button>
-    <a href="index.html">Index</a>
-    <a href="work.html">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">Studio</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+
+  <!-- HEADER MINIMALISTA FLOTANTE -->
+  <header class="header-editorial">
+    <a href="index.html" class="brand-logo">Eloria Brista Studio</a>
+    <nav class="nav-links">
+      <a href="index.html">Index</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">Studio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
   <div class="shell">
-    <aside class="rail" aria-label="Primary">
-      <a class="rail-brand" href="index.html">
-        <span class="rail-brand-mark">E</span>
-        <span>Eloria Brista<span class="rail-brand-sub">Studio</span></span>
-      </a>
-      <nav class="rail-nav" aria-label="Sections">
-        <a href="index.html" class="active">Index</a>
-        <a href="work.html">Work</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">Studio</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="rail-foot">
-        <div class="meta-row"><span>Spring '26</span><span>Issue 01</span></div>
-        <div class="meta-row"><span class="rail-status">Available Q3</span></div>
-        <div class="rail-socials">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Are.na">AR</a>
-          <a href="#" aria-label="LinkedIn">LI</a>
-        </div>
-        <div class="meta-row"><span>MEX</span><span>UTC −5</span></div>
-      </div>
-    </aside>
-
     <div class="content">
       <main>
-        <!-- HERO BRUTALISTA / EDITORIAL -->
+        <!-- PRIMER SLIDE: HERO EDITORIAL A PANTALLA COMPLETA -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left">
@@ -101,16 +166,23 @@
               <h1 class="hero-title">Studio</h1>
             </div>
           </div>
+
+          <!-- Metadatos discreetos en la parte inferior del slide -->
+          <div class="hero-footer-meta">
+            <span>Creative Direction &amp; Coding</span>
+            <span>Available Q3 / 2026</span>
+            <span>MEX (UTC −5)</span>
+          </div>
         </section>
 
-        <!-- ─── featured work ─── -->
-        <section aria-labelledby="work-head">
+        <!-- ─── SEGUNDO SLIDE / FEATURED WORK ─── -->
+        <section aria-labelledby="work-head" style="padding: 120px 5vw;">
           <header class="section-head reveal">
-            <span class="eyebrow"><span class="dot"></span>Recent work · Selected</span>
-            <h2 id="work-head">A small studio. <em class="italic-display">Big rooms.</em></h2>
-            <p class="lede">Four projects from the last twelve months. The full portfolio lives on the work page.</p>
+            <span class="eyebrow"><span class="dot"></span>Selected Projects</span>
+            <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Case Studies</h2>
           </header>
-          <div class="work-strip reveal">
+          
+          <div class="work-strip reveal" style="margin-top: 60px;">
             <article class="work-card lg">
               <div class="img-wrap">
                 <img src="assets/img/work-1.svg" alt="Atlas Climate brand identity" loading="lazy" />
@@ -147,107 +219,80 @@
           </div>
         </section>
 
-        <!-- ─── services list ─── -->
-        <section aria-labelledby="services-head">
+        <!-- ─── SERVICES LIST ─── -->
+        <section aria-labelledby="services-head" style="padding: 80px 5vw;">
           <header class="section-head reveal">
-            <span class="eyebrow"><span class="dot"></span>Practice areas · 6</span>
-            <h2 id="services-head">What we make.</h2>
-            <p class="lede">We work across six disciplines, with most engagements pulling from at least three.</p>
+            <span class="eyebrow"><span class="dot"></span>Practice areas · 06</span>
+            <h2 id="services-head" style="font-weight: 300; font-size: 2.5rem;">Disciplines</h2>
           </header>
 
-          <div class="services-list reveal">
+          <div class="services-list reveal" style="margin-top: 40px;">
             <article class="row">
               <span class="num">01 / 06</span>
               <h3>Brand Identity</h3>
-              <p>Naming, mark, type system, color, voice, and the long-form rationale that holds it all together.</p>
+              <p>Naming, mark, type system, color, voice, and visual identity rationale.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
               <span class="num">02 / 06</span>
               <h3>Web Design &amp; Development</h3>
-              <p>Marketing sites, product surfaces, and editorial publications — designed and built in-house.</p>
+              <p>Interactive web surfaces, digital platforms, and creative coding systems.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
               <span class="num">03 / 06</span>
               <h3>Art Direction</h3>
-              <p>Photography, illustration, and image-making for campaigns, launches, and ongoing programs.</p>
+              <p>Photography, 3D visual language, and custom image-making.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
               <span class="num">04 / 06</span>
               <h3>Digital Strategy</h3>
-              <p>Positioning, narrative architecture, content systems, and the operating model that ships them.</p>
+              <p>Brand positioning, spatial design systems, and digital strategy.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
               <span class="num">05 / 06</span>
-              <h3>Motion &amp; Film</h3>
-              <p>Brand films, product motion, and short-form social — concept through final delivery.</p>
+              <h3>Creative Coding</h3>
+              <p>Generative visuals, webGL canvas experiments, and interactive shaders.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
               <span class="num">06 / 06</span>
               <h3>Editorial Design</h3>
-              <p>Books, magazines, annual reports, and the kinds of printed objects people keep on a shelf.</p>
+              <p>Books, monographs, printed objects, and high-contrast typography publications.</p>
               <span class="arrow">→</span>
             </article>
           </div>
         </section>
 
-        <!-- ─── client logos marquee ─── -->
-        <section style="padding: 0;" aria-label="Selected clients">
-          <div class="clients-marquee">
-            <div class="track">
-              <span>Atlas Climate</span><span>Hearth &amp; Co.</span><span>Voltage</span><span>Northform</span><span>Lumen Studio</span><span>Pier 47</span><span>Field Notes</span><span>Solis</span><span>Mercantile</span><span>Plover</span>
-              <span>Atlas Climate</span><span>Hearth &amp; Co.</span><span>Voltage</span><span>Northform</span><span>Lumen Studio</span><span>Pier 47</span><span>Field Notes</span><span>Solis</span><span>Mercantile</span><span>Plover</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ─── manifesto ─── -->
-        <section class="manifesto" aria-labelledby="manifesto-head">
+        <!-- ─── MANIFESTO ─── -->
+        <section class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 5vw;">
           <div class="grid">
             <div>
-              <span class="label">— A note from the studio</span>
-              <h2 id="manifesto-head" class="reveal">We make work for people who plan to be here in <span class="lime-text">ten years</span>.</h2>
+              <span class="label">— Philosophy</span>
+              <h2 id="manifesto-head" class="reveal" style="font-weight: 300;">We balance minimal structure with <span class="lime-text">creative coding</span> aesthetics.</h2>
             </div>
             <div class="reveal">
-              <p>Most agency work is built to win the meeting and survive the launch. We're not interested in that. We work with founders, operators, and editors who plan to keep showing up — and need a brand that can keep up with them.</p>
-              <p>That means slower kickoffs, longer arguments, and the kind of identity systems that read just as well in year five as on launch day. We staff small. We say no often. We write everything down.</p>
+              <p>Most digital work is overloaded with noise. We focus on structural whitespace, clear typographic hierarchy, and subtle origami-like interactions that enhance without fatiguing.</p>
               <div class="signature">
-                <span>↳ Eloria Brista</span>
-                <span></span>
-                <span>Studio</span>
+                <span>↳ Eloria Brista Studio</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- ─── CTA ─── -->
-        <section class="cta-band" aria-labelledby="cta-head">
-          <div class="inner">
-            <h2 id="cta-head">Have a project that <em>should</em> exist?</h2>
-            <div class="right">
-              <p>Tell us about it. Most fits get a same-week reply with availability and a rough scope to react to.</p>
-              <a class="btn btn-ink" href="contact.html" style="margin-top: 24px;">Start a conversation <span class="arrow">→</span></a>
-              <div class="meta">
-                <span>hello@eloriabrista.com</span>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
-      <footer class="site-footer" aria-labelledby="footer-head">
-        <h2 id="footer-head" class="visually-hidden" style="position:absolute;left:-9999px">Site footer</h2>
+      <!-- FOOTER -->
+      <footer class="site-footer" style="padding: 80px 5vw 40px 5vw;">
         <div class="top">
           <div class="brand-block">
-            <span class="mark"><span class="badge">E</span> Eloria Brista Studio</span>
-            <p style="color:#b0afaa;margin:0;line-height:1.55;">An independent creative studio working in brand identity, web design, art direction, and creative coding.</p>
+            <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
+            <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Independent creative studio bridging art direction, editorial typography, and generative creative code.</p>
           </div>
           <div class="col">
-            <h4>Studio</h4>
+            <h4>Navigation</h4>
             <a href="index.html">Index</a>
             <a href="work.html">Work</a>
             <a href="services.html">Services</a>
@@ -255,23 +300,15 @@
             <a href="contact.html">Contact</a>
           </div>
           <div class="col">
-            <h4>Practice</h4>
-            <a href="services.html">Brand Identity</a>
-            <a href="services.html">Web Design</a>
-            <a href="services.html">Art Direction</a>
-            <a href="services.html">Motion &amp; Film</a>
-            <a href="services.html">Editorial</a>
-          </div>
-          <div class="col">
-            <h4>Find us</h4>
+            <h4>Connect</h4>
             <a href="#">Instagram</a>
             <a href="#">Are.na</a>
             <a href="#">LinkedIn</a>
           </div>
         </div>
-        <div class="bottom">
+        <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v1.0</span>
+          <span class="right">v2.0</span>
         </div>
       </footer>
     </div>
