@@ -110,7 +110,7 @@
     .hero-center { text-align: center; }
     .hero-right { text-align: right; }
 
-    /* METADATOS INFERIORES DEL HERO (SOLO ESQUINAS, SOBERANO Y LIMPIO) */
+    /* METADATOS INFERIORES DEL HERO */
     .hero-footer-meta {
       position: absolute;
       bottom: 35px;
@@ -124,13 +124,13 @@
       letter-spacing: 0.02em;
     }
 
-    /* ─── CINTA ANIMADA CONECTOR (SOLO UNA LÍNEA ARRIBA, LETRA GRANDE, LOOP CONTINUO) ─── */
+    /* ─── CINTA ANIMADA CON EFECTO DE APARICIÓN HACIA ARRIBA (.reveal) ─── */
     .ticker-connector {
       width: 100%;
       overflow: hidden;
       background: transparent;
-      border-top: 1px solid rgba(14, 14, 14, 0.15); /* Una sola línea gris superior */
-      padding: 24px 0; /* Más espacio para que luzca la letra grande */
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 24px 0;
       white-space: nowrap;
       box-sizing: border-box;
     }
@@ -148,7 +148,7 @@
 
     .ticker-item {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      font-size: 1.4rem; /* Letra más grande y legible como la referencia */
+      font-size: 1.4rem;
       font-weight: 400;
       letter-spacing: -0.01em;
       color: #0e0e0e;
@@ -161,12 +161,11 @@
       display: inline-block;
       width: 5px;
       height: 5px;
-      background-color: #0e0e0e; /* Puntito negro */
+      background-color: #0e0e0e;
       border-radius: 50%;
       margin-left: 30px;
     }
 
-    /* ANIMACIÓN DE BUCLE INFINITO CONTINUO SIN PAUSAS */
     @keyframes infiniteScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -216,15 +215,14 @@
             </div>
           </div>
 
-          <!-- Metadatos de esquinas únicamente -->
           <div class="hero-footer-meta">
             <span>Multidisciplinary Boutique</span>
             <span>MEX (UTC −5)</span>
           </div>
         </section>
 
-        <!-- ─── BANDA DE SERVICIOS CONECTORA (SOLO LÍNEA ARRIBA + BUCLE INFINITO + LETRA GRANDE) ─── -->
-        <div class="ticker-connector">
+        <!-- ─── BANDA DE SERVICIOS CON EFECTO REVEAL (APARECE DESDE ABAJO) ─── -->
+        <div class="ticker-connector reveal">
           <div class="ticker-track">
             <!-- Bloque 1 -->
             <div class="ticker-group">
@@ -234,7 +232,7 @@
               <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
               <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
             </div>
-            <!-- Bloque 2 (Duplicado exacto para crear el seamless infinite loop) -->
+            <!-- Bloque 2 (Bucle infinito) -->
             <div class="ticker-group">
               <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
               <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
@@ -372,7 +370,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.5</span>
+          <span class="right">v2.6</span>
         </div>
       </footer>
     </div>
