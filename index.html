@@ -186,42 +186,6 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* NAVEGADOR TIPO ÍNDICE EDITORIAL */
-    .index-navigation-section {
-      padding: 60px 3.5vw 40px 3.5vw;
-    }
-
-    .index-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .index-item {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      color: #888;
-      text-decoration: none;
-      transition: color 0.25s ease, transform 0.25s ease;
-      display: flex;
-      align-items: baseline;
-      gap: 15px;
-    }
-
-    .index-item:hover {
-      color: #0e0e0e;
-      transform: translateX(8px);
-    }
-
-    .index-item .code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem;
-      color: #aaa;
-    }
-
     /* BLOQUE DE MENSAJE / MANIFIESTO */
     .about-statement-section {
       padding: 80px 3.5vw;
@@ -279,7 +243,7 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON ENLACE CORRECTO A MENU.HTML -->
+  <!-- HEADER EDITORIAL -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
@@ -337,29 +301,6 @@
             </div>
           </div>
         </div>
-
-        <!-- ÍNDICE INTERACTIVO CON ENLACES A PÁGINAS EXTERNAS -->
-        <section id="index-section" class="index-navigation-section reveal">
-          <span class="eyebrow"><span class="dot"></span>Navigation Index</span>
-          
-          <nav class="index-list">
-            <a href="about.html" class="index-item">
-              <span class="code">Case01—</span> Explore About Studio
-            </a>
-            <a href="work.html" class="index-item">
-              <span class="code">Case02—</span> Explore Selected Works <span>→</span>
-            </a>
-            <a href="#disciplines-section" class="index-item">
-              <span class="code">Case03—</span> Practice Areas &amp; Capabilities
-            </a>
-            <a href="ebberkett.html" class="index-item">
-              <span class="code">Case04—</span> Explore Ebberkett
-            </a>
-            <a href="contact.html" class="index-item">
-              <span class="code">Case05—</span> Initiate Contact
-            </a>
-          </nav>
-        </section>
 
         <!-- MENSAJE / MANIFIESTO "ABOUT US" -->
         <section id="statement-section" class="about-statement-section reveal">
