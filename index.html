@@ -46,22 +46,43 @@
       padding: 35px 3.5vw;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: center; /* Alinea verticalmente los elementos al centro */
       box-sizing: border-box;
       z-index: 100;
     }
 
-    /* ESTILO PARA EL LOGOTIPO EN IMAGEN */
-    .header-editorial .brand-logo img {
-      height: 22px; /* Tamaño elegante y proporcionado */
-      width: auto;
-      display: block;
+    /* ALINEACIÓN PERFECTA DEL LOGO (ISOTIPO + NOMBRE DEL ESTUDIO) */
+    .header-editorial .brand-logo {
+      display: flex;
+      align-items: center; /* Centrado vertical con el menú */
+      gap: 12px;
+      text-decoration: none;
+      color: #555;
       transition: opacity 0.3s ease;
     }
-    .header-editorial .brand-logo img:hover { opacity: 0.6; }
+
+    .header-editorial .brand-logo img {
+      height: 28px; /* Aumentamos el tamaño a 28px para que resalte */
+      width: auto;
+      display: block;
+    }
+
+    .header-editorial .brand-logo span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .header-editorial .brand-logo:hover {
+      opacity: 0.6;
+    }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 32px;
     }
 
@@ -186,10 +207,11 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL CON EL LOGO OFICIAL -->
+  <!-- HEADER EDITORIAL CON ISOTIPO + TEXTO PERFECTAMENTE CENTRADOS -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo">
       <img src="assets/EBS_Logo.png" alt="Eloria Brista Studio" />
+      <span>Eloria Brista Studio</span>
     </a>
     <nav class="nav-links">
       <a href="index.html">Index</a>
@@ -372,7 +394,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.7</span>
+          <span class="right">v2.8</span>
         </div>
       </footer>
     </div>
