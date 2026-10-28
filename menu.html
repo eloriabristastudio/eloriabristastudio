@@ -26,7 +26,7 @@
       scroll-behavior: smooth;
     }
 
-    /* HEADER MÍNIMO SOLO CON LOGO (SIN ENLACES PEQUEÑOS ARRIBA) */
+    /* HEADER MÍNIMO SOLO CON LOGO */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -48,25 +48,18 @@
       display: block;
     }
 
-    /* DIRECTORIO PRINCIPAL GRANDE Y LIMPIO */
+    /* CONTENEDOR DE MENÚ MÁS LIMPIO Y CERCANO */
     .menu-container {
-      padding: 160px 3.5vw 120px 3.5vw;
+      padding: 140px 3.5vw 100px 3.5vw;
       max-width: 1200px;
       margin: 0 auto;
       box-sizing: border-box;
     }
 
-    .directory-title {
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      margin: 15px 0 60px 0;
-    }
-
     .directory-list {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 16px; /* Espaciado más reducido y elegante entre opciones principales */
     }
 
     .directory-item-group {
@@ -74,14 +67,15 @@
       flex-direction: column;
     }
 
-    /* ENLACES PRINCIPALES (TAMAÑO "NAVIGATION DIRECTORY") */
+    /* ENLACES PRINCIPALES (TAMAÑO GRANDE, INTERLÍNEA TIGHT) */
     .directory-link {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
       font-weight: 300;
       color: #777;
       text-decoration: none;
       letter-spacing: -0.03em;
+      line-height: 1.05;
       transition: color 0.25s ease, transform 0.25s ease;
       display: inline-block;
       width: fit-content;
@@ -94,17 +88,17 @@
 
     .directory-link:hover, .directory-link.active-main {
       color: #0e0e0e;
-      transform: translateX(8px);
+      transform: translateX(6px);
     }
 
-    /* SUBLISTA DE PROYECTOS (DESPLEGABLE SIMPLE) */
+    /* SUBLISTA DE PROYECTOS (MÁS JUNTA Y COMPACTA) */
     .sub-projects-list {
-      display: none; /* Oculto por defecto, se abre al hacer clic o se mantiene si prefieres desplegable */
+      display: none;
       flex-direction: column;
-      gap: 14px;
-      margin-top: 24px;
-      margin-left: 15px;
-      padding-left: 25px;
+      gap: 10px; /* Espaciado ajustado entre proyectos */
+      margin-top: 14px;
+      margin-left: 10px;
+      padding-left: 20px;
       border-left: 1px solid rgba(14, 14, 14, 0.2);
     }
 
@@ -119,6 +113,7 @@
       color: #666;
       text-decoration: none;
       letter-spacing: -0.02em;
+      line-height: 1.2;
       transition: color 0.2s ease, transform 0.2s ease;
     }
 
@@ -129,8 +124,8 @@
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .menu-container { padding: 120px 20px 80px 20px; }
-      .sub-projects-list { margin-left: 5px; padding-left: 15px; }
+      .menu-container { padding: 110px 20px 60px 20px; }
+      .directory-list { gap: 12px; }
     }
   </style>
 </head>
@@ -144,12 +139,6 @@
   </header>
 
   <main class="menu-container">
-    <span class="eyebrow" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #777;">
-      <span class="dot"></span> Site Directory
-    </span>
-    
-    <h1 class="directory-title">Navigation Directory</h1>
-
     <div class="directory-list">
       
       <!-- 01. HOME -->
@@ -157,7 +146,7 @@
         <a href="index.html" class="directory-link">Home</a>
       </div>
 
-      <!-- 02. WORK (CON DESPLEGABLE DIRECTO DE PROYECTOS) -->
+      <!-- 02. WORK (CON DESPLEGABLE DE PROYECTOS LIMPIO) -->
       <div class="directory-item-group">
         <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
         
@@ -191,7 +180,7 @@
   </main>
 
   <!-- FOOTER UNIFICADO -->
-  <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
+  <footer class="site-footer" style="padding: 60px 3.5vw 30px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
     <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
       <div class="brand-block" style="max-width: 350px;">
         <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
@@ -212,7 +201,7 @@
         <a href="#" style="text-decoration: none; color: #0e0e0e;">LinkedIn</a>
       </div>
     </div>
-    <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+    <div class="bottom" style="margin-top: 40px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
       <span>© <span data-year>2026</span> Eloria Brista Studio</span>
       <span>MEX (UTC −5)</span>
     </div>
