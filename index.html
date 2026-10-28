@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0e0e0e" />
   <title>Eloria Brista Studio</title>
-  <meta name="description" content="Eloria Brista Studio — Independent creative studio working in brand identity, web design, art direction, and creative coding." />
+  <meta name="description" content="Eloria Brista Studio — Multidisciplinary Boutique. Creative Direction, Branding, Worldbuilding, Music & Audio Engineering." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Incluimos FONT MONO/COURIER PARA LA ESTÉTICA DE CÓDIGO -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
@@ -34,28 +35,31 @@
     .rail { display: none !important; }
     .content { margin-left: 0 !important; width: 100% !important; }
 
-    /* MENU SUPERIOR EDITORIAL */
+    /* MENU SUPERIOR EDITORIAL (Alineado con el color y visibilidad de los metadatos) */
     .header-editorial {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 35px 3.5vw; /* Ampliado hacia las esquinas */
+      padding: 35px 3.5vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      mix-blend-mode: difference;
     }
 
     .header-editorial .brand-logo {
-      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       text-decoration: none;
-      color: #0e0e0e;
+      color: #555; /* Color sutil legible igual que el footer */
+      transition: color 0.3s ease;
     }
+    .header-editorial .brand-logo:hover { color: #0e0e0e; }
 
     .nav-links {
       display: flex;
@@ -63,25 +67,28 @@
     }
 
     .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       text-decoration: none;
-      color: #0e0e0e;
-      transition: opacity 0.3s ease;
+      color: #555; /* Sutil y legible */
+      transition: color 0.3s ease;
     }
 
-    .nav-links a:hover { opacity: 0.5; }
+    .nav-links a:hover { color: #0e0e0e; }
 
-    /* HERO SLIDE PANTALLA COMPLETA - NADA DE TODO MAYÚSCULAS, TAMAÑO REFINED */
+    /* HERO SLIDE PANTALLA COMPLETA */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
-      padding: 0 3.5vw; /* Margen reducido a 3.5vw para dar más amplitud horizontal */
+      padding: 0 3.5vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
       box-sizing: border-box;
+      position: relative;
     }
 
     .hero-grid {
@@ -92,10 +99,9 @@
     }
 
     .hero-title {
-      /* Bajamos el tamaño máximo para que sea más fino y respire más el espacio */
       font-size: clamp(2.8rem, 6.2vw, 7rem);
-      font-weight: 300; /* Helvetica Light */
-      text-transform: none; /* Mantiene Mayúscula y minúsculas: Eloria Brista Studio */
+      font-weight: 300;
+      text-transform: none;
       letter-spacing: -0.03em;
       line-height: 0.9;
       margin: 0;
@@ -105,7 +111,7 @@
     .hero-center { text-align: center; }
     .hero-right { text-align: right; }
 
-    /* METADATOS INFERIORES DEL HERO */
+    /* METADATOS INFERIORES DEL HERO CON Q4 */
     .hero-footer-meta {
       position: absolute;
       bottom: 35px;
@@ -113,10 +119,55 @@
       right: 3.5vw;
       display: flex;
       justify-content: space-between;
-      font-family: 'Geist Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      color: #666;
-      letter-spacing: 0.03em;
+      color: #555;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── CINTA ANIMADA (TICKER) ESTILO CREADOR DE CÓDIGO ─── */
+    .ticker-wrap {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      background: transparent;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 10px 0;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .ticker-move {
+      display: inline-block;
+      animation: tickerAnim 25s linear infinite;
+      font-family: 'JetBrains Mono', monospace; /* Tipografía tipo código cuadriculada legible */
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0e0e0e;
+    }
+
+    .ticker-item {
+      display: inline-block;
+      padding: 0 24px;
+    }
+
+    .ticker-dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background-color: #0e0e0e; /* Puntito en color negro exacto */
+      border-radius: 50%;
+      margin-left: 15px;
+      vertical-align: middle;
+    }
+
+    @keyframes tickerAnim {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     @media (max-width: 768px) {
@@ -127,13 +178,14 @@
         gap: 15px;
       }
       .hero-center, .hero-right { text-align: left; }
-      .hero-footer-meta { flex-direction: column; gap: 8px; }
+      .hero-footer-meta { flex-direction: column; gap: 8px; position: static; margin-top: 40px; }
+      .ticker-wrap { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER MINIMALISTA FLOTANTE -->
+  <!-- HEADER EDITORIAL CON VISIBILIDAD SUTIL -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo">Eloria Brista Studio</a>
     <nav class="nav-links">
@@ -148,7 +200,7 @@
   <div class="shell">
     <div class="content">
       <main>
-        <!-- HERO CON AMPLITUD Y TIPOGRAFÍA MIXTA -->
+        <!-- HERO CON TIKER DE SERVICIOS EN ESTILO CÓDIGO -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left">
@@ -162,10 +214,27 @@
             </div>
           </div>
 
-          <!-- Metadatos inferiores -->
+          <!-- Tira de servicios en movimiento (Ticker con tipografía Mono/Código y puntos negros) -->
+          <div class="ticker-wrap">
+            <div class="ticker-move">
+              <span class="ticker-item">Creative Direction<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Branding<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Worldbuilding<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Music &amp; Sound Design<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Audio Production &amp; Engineering<span class="ticker-dot"></span></span>
+              <!-- Se repite para hacer el loop infinito fluido -->
+              <span class="ticker-item">Creative Direction<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Branding<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Worldbuilding<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Music &amp; Sound Design<span class="ticker-dot"></span></span>
+              <span class="ticker-item">Audio Production &amp; Engineering<span class="ticker-dot"></span></span>
+            </div>
+          </div>
+
+          <!-- Metadatos inferiores actualizados a Q4 -->
           <div class="hero-footer-meta">
-            <span>Creative Direction &amp; Coding</span>
-            <span>Available Q3 / 2026</span>
+            <span>Multidisciplinary Boutique</span>
+            <span>Available Q4 / 2026</span>
             <span>MEX (UTC −5)</span>
           </div>
         </section>
@@ -217,45 +286,39 @@
         <!-- ─── SERVICES LIST ─── -->
         <section aria-labelledby="services-head" style="padding: 80px 3.5vw;">
           <header class="section-head reveal">
-            <span class="eyebrow"><span class="dot"></span>Practice areas · 06</span>
+            <span class="eyebrow"><span class="dot"></span>Practice areas · 05</span>
             <h2 id="services-head" style="font-weight: 300; font-size: 2.5rem;">Disciplines</h2>
           </header>
 
           <div class="services-list reveal" style="margin-top: 40px;">
             <article class="row">
-              <span class="num">01 / 06</span>
-              <h3>Brand Identity</h3>
-              <p>Naming, mark, type system, color, voice, and visual identity rationale.</p>
+              <span class="num">01 / 05</span>
+              <h3>Creative Direction</h3>
+              <p>Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
-              <span class="num">02 / 06</span>
-              <h3>Web Design &amp; Development</h3>
-              <p>Interactive web surfaces, digital platforms, and creative coding systems.</p>
+              <span class="num">02 / 05</span>
+              <h3>Branding</h3>
+              <p>Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
-              <span class="num">03 / 06</span>
-              <h3>Art Direction</h3>
-              <p>Photography, 3D visual language, and custom image-making.</p>
+              <span class="num">03 / 05</span>
+              <h3>Worldbuilding</h3>
+              <p>Immersive universe design, narrative environments, and speculative concept frameworks.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
-              <span class="num">04 / 06</span>
-              <h3>Digital Strategy</h3>
-              <p>Brand positioning, spatial design systems, and digital strategy.</p>
+              <span class="num">04 / 05</span>
+              <h3>Music &amp; Sound Design</h3>
+              <p>Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
               <span class="arrow">→</span>
             </article>
             <article class="row">
-              <span class="num">05 / 06</span>
-              <h3>Creative Coding</h3>
-              <p>Generative visuals, webGL canvas experiments, and interactive shaders.</p>
-              <span class="arrow">→</span>
-            </article>
-            <article class="row">
-              <span class="num">06 / 06</span>
-              <h3>Editorial Design</h3>
-              <p>Books, monographs, printed objects, and high-contrast typography publications.</p>
+              <span class="num">05 / 05</span>
+              <h3>Audio Production &amp; Engineering</h3>
+              <p>Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
               <span class="arrow">→</span>
             </article>
           </div>
@@ -266,10 +329,10 @@
           <div class="grid">
             <div>
               <span class="label">— Philosophy</span>
-              <h2 id="manifesto-head" class="reveal" style="font-weight: 300;">We balance minimal structure with <span class="lime-text">creative coding</span> aesthetics.</h2>
+              <h2 id="manifesto-head" class="reveal" style="font-weight: 300;">We build multidisciplinary worlds through <span class="lime-text">design &amp; sound</span>.</h2>
             </div>
             <div class="reveal">
-              <p>Most digital work is overloaded with noise. We focus on structural whitespace, clear typographic hierarchy, and subtle origami-like interactions that enhance without fatiguing.</p>
+              <p>Eloria Brista Studio operates as a boutique practice. We merge spatial branding, worldbuilding, and sound engineering into unified creative direction.</p>
               <div class="signature">
                 <span>↳ Eloria Brista Studio</span>
               </div>
@@ -284,7 +347,7 @@
         <div class="top">
           <div class="brand-block">
             <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
-            <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Independent creative studio bridging art direction, editorial typography, and generative creative code.</p>
+            <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
           </div>
           <div class="col">
             <h4>Navigation</h4>
@@ -303,7 +366,7 @@
         </div>
         <div class="bottom" style="margin-top: 60px;">
           <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span class="right">v2.2</span>
+          <span class="right">v2.4</span>
         </div>
       </footer>
     </div>
