@@ -4,192 +4,456 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0e0e0e" />
-  <title>Contact — Axioma Creative Agency</title>
-  <meta name="description" content="Get in touch with Axioma. Studios in New York and Mexico City. Most enquiries get a written response inside 48 hours." />
+  <title>Contact — Eloria Brista Studio</title>
+  <meta name="description" content="Initiate project enquiry — Eloria Brista Studio." />
+  
+  <!-- Favicon vectorial -->
+  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f5f4f0;
+      color: #0e0e0e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* HEADER EDITORIAL UNIFICADO */
+    .header-editorial {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 35px 3.5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 100;
+      background-color: rgba(245, 244, 240, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .header-editorial .brand-logo img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
+
+    /* CONTENEDOR MULTI-STEP FULLSCREEN */
+    .multistep-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 140px 3.5vw 80px 3.5vw;
+      box-sizing: border-box;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      max-width: 600px;
+      height: 2px;
+      background-color: rgba(14, 14, 14, 0.1);
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #0e0e0e;
+      width: 12.5%; /* 1/8 pasos */
+      transition: width 0.4s ease;
+    }
+
+    /* PASOS DEL FORMULARIO */
+    .step-panel {
+      display: none;
+      width: 100%;
+      max-width: 650px;
+      text-align: center;
+      animation: fadeInStep 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .step-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeInStep {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .step-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 35px;
+      letter-spacing: 0.02em;
+    }
+
+    /* INPUTS & CONTROLES ESTÍLO BRUTALISTA */
+    .input-line {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #0e0e0e;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 300;
+      padding: 12px 0;
+      text-align: center;
+      outline: none;
+      color: #0e0e0e;
+      box-sizing: border-box;
+    }
+
+    .input-textarea {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      padding: 16px;
+      min-height: 120px;
+      outline: none;
+      color: #0e0e0e;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-item input[type="checkbox"], .checkbox-item input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #0e0e0e;
+      cursor: pointer;
+    }
+
+    .budget-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      background: rgba(14, 14, 14, 0.06);
+      padding: 8px 14px;
+      display: inline-block;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* BOTONES DE NAVEGACIÓN */
+    .nav-buttons-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .btn-step {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 28px;
+      cursor: pointer;
+      border: 1px solid #0e0e0e;
+      transition: all 0.25s ease;
+      font-weight: 500;
+    }
+
+    .btn-next {
+      background: #0e0e0e;
+      color: #f5f4f0;
+    }
+
+    .btn-next:hover { opacity: 0.8; }
+
+    .btn-back {
+      background: transparent;
+      color: #0e0e0e;
+    }
+
+    .btn-back:hover { background: rgba(14, 14, 14, 0.05); }
+
+    /* ESTADO FINAL COMPLETO */
+    .success-panel {
+      display: none;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .header-editorial { padding: 20px; }
+      .nav-links { display: none; }
+      .multistep-wrapper { padding-top: 120px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="topbar">
-    <a class="brand" href="index.html"><span class="rail-brand-mark">A</span> Axioma</a>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">Menu</button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile">
-    <button class="mobile-close" aria-label="Close menu">Close ✕</button>
-    <a href="index.html">Index</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">Studio</a><a href="contact.html">Contact</a>
-  </nav>
 
-  <div class="shell">
-    <aside class="rail" aria-label="Primary">
-      <a class="rail-brand" href="index.html"><span class="rail-brand-mark">A</span><span>Axioma<span class="rail-brand-sub">Creative agency · est. 2017</span></span></a>
-      <nav class="rail-nav" aria-label="Sections">
-        <a href="index.html">Index</a>
-        <a href="work.html">Work</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">Studio</a>
-        <a href="contact.html" class="active">Contact</a>
-      </nav>
-      <div class="rail-foot">
-        <div class="meta-row"><span>Spring '26</span><span>Issue 14</span></div>
-        <div class="meta-row"><span class="rail-status">Booking Q3</span></div>
-        <div class="rail-socials"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Are.na">AR</a><a href="#" aria-label="LinkedIn">LI</a></div>
-        <div class="meta-row"><span>NYC · MX</span><span>UTC −5</span></div>
-      </div>
-    </aside>
+  <!-- HEADER EDITORIAL -->
+  <header class="header-editorial">
+    <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
+      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+    </a>
+    <nav class="nav-links">
+      <a href="menu.html">Menu</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="ebberkett.html">Ebberkett</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
 
-    <div class="content">
-      <main>
-        <section class="page-hero">
-          <p class="crumb">Index → <span style="color:var(--ink)">Contact</span></p>
-          <h1>Tell us about <em class="italic-display">the project.</em></h1>
-          <p class="lede">Most fits get a written response inside 48 hours with availability and a rough scope to react to. If we're not the right fit we'll tell you that too — usually with a recommendation.</p>
-        </section>
-
-        <section class="contact-grid" aria-label="Contact details">
-          <aside class="contact-info">
-            <h3>Two studios</h3>
-            <div class="office">
-              <p class="city">New York</p>
-              <address>
-                164 Wythe Avenue, Floor 3<br/>
-                Brooklyn, NY 11211<br/>
-                United States
-              </address>
-            </div>
-            <div class="office">
-              <p class="city">Mexico City</p>
-              <address>
-                Calle Colima 264, Roma Norte<br/>
-                Cuauhtémoc, 06700<br/>
-                Ciudad de México
-              </address>
-            </div>
-
-            <div class="channels">
-              <a href="mailto:hello@axioma.studio">
-                <span class="lab">New work</span>
-                <span>hello@axioma.studio</span>
-              </a>
-              <a href="mailto:press@axioma.studio">
-                <span class="lab">Press</span>
-                <span>press@axioma.studio</span>
-              </a>
-              <a href="mailto:careers@axioma.studio">
-                <span class="lab">Careers</span>
-                <span>careers@axioma.studio</span>
-              </a>
-              <a href="tel:+12125550144">
-                <span class="lab">Phone</span>
-                <span>+1 (212) 555-0144</span>
-              </a>
-              <a href="#">
-                <span class="lab">Studio hrs</span>
-                <span>Mon–Fri · 09:30–18:30 ET</span>
-              </a>
-            </div>
-          </aside>
-
-          <form class="contact-form" aria-label="Project enquiry form" novalidate>
-            <h3 style="font-size:1.4rem; margin-bottom:6px;">Project enquiry</h3>
-            <p style="font-family:var(--mono); font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-dim); margin: 0 0 14px;">All fields except message are required</p>
-            <div class="row">
-              <label>Your name
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-              <label>Email address
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-            </div>
-            <div class="row">
-              <label>Company / organisation
-                <input type="text" name="company" autocomplete="organization" required />
-              </label>
-              <label>Your role
-                <input type="text" name="role" required />
-              </label>
-            </div>
-            <div class="row">
-              <label>Project type
-                <select name="project_type" required>
-                  <option value="">Select…</option>
-                  <option>Brand identity</option>
-                  <option>Web design &amp; build</option>
-                  <option>Product / app design</option>
-                  <option>Art direction / campaign</option>
-                  <option>Motion &amp; film</option>
-                  <option>Editorial / print</option>
-                  <option>Strategy retainer</option>
-                  <option>Not sure yet</option>
-                </select>
-              </label>
-              <label>Estimated budget
-                <select name="budget" required>
-                  <option value="">Select…</option>
-                  <option>Under $50,000</option>
-                  <option>$50,000 — $100,000</option>
-                  <option>$100,000 — $250,000</option>
-                  <option>$250,000 — $500,000</option>
-                  <option>$500,000+</option>
-                  <option>Not yet decided</option>
-                </select>
-              </label>
-            </div>
-            <div class="row">
-              <label>Ideal start
-                <select name="start" required>
-                  <option value="">Select…</option>
-                  <option>This quarter</option>
-                  <option>Next quarter</option>
-                  <option>Later this year</option>
-                  <option>Flexible</option>
-                </select>
-              </label>
-              <label>How did you find us?
-                <input type="text" name="referral" />
-              </label>
-            </div>
-            <label>A bit about the project
-              <textarea name="message" placeholder="What you're working on, what success looks like, what made you reach out — long is fine."></textarea>
-            </label>
-            <div class="submit-row">
-              <p class="small">We'll only ever use this to reply to you.</p>
-              <button type="submit" class="btn btn-ink">Send enquiry <span class="arrow">→</span></button>
-            </div>
-          </form>
-        </section>
-
-        <section class="cta-band">
-          <div class="inner">
-            <h2>Prefer to <em>email?</em></h2>
-            <div class="right">
-              <p>Skip the form. Send the kickoff brief, the relevant links, and the deadline — we read everything.</p>
-              <a class="btn btn-ink" href="mailto:hello@axioma.studio" style="margin-top: 24px;">hello@axioma.studio <span class="arrow">→</span></a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="top">
-          <div class="brand-block">
-            <span class="mark"><span class="badge">A</span> Axioma</span>
-            <p style="color:#b0afaa;margin:0;">An independent creative agency working in brand identity, web, art direction, and motion. Headquartered in New York, with a second studio in Mexico City.</p>
-          </div>
-          <div class="col"><h4>Studio</h4><a href="index.html">Index</a><a href="work.html">Work</a><a href="services.html">Services</a><a href="about.html">Studio</a><a href="contact.html">Contact</a></div>
-          <div class="col"><h4>Practice</h4><a href="services.html">Brand Identity</a><a href="services.html">Web Design</a><a href="services.html">Art Direction</a><a href="services.html">Motion &amp; Film</a><a href="services.html">Editorial</a></div>
-          <div class="col"><h4>Find us</h4><a href="#">Instagram</a><a href="#">Are.na</a><a href="#">LinkedIn</a><a href="#">Newsletter</a><a href="mailto:hello@axioma.studio">hello@axioma.studio</a></div>
-        </div>
-        <div class="bottom">
-          <span>© <span data-year>2026</span> Axioma Studio LLC</span>
-          <span class="center">Made in New York &amp; Mexico City</span>
-          <span class="right">v14.2 · Spring '26</span>
-        </div>
-      </footer>
+  <main class="multistep-wrapper">
+    
+    <!-- BARRA DE PROGRESO -->
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progressFill"></div>
     </div>
-  </div>
+
+    <form id="enquiryForm" action="mailto:george@eloriabrista.com" method="POST" enctype="text/plain">
+
+      <!-- PASO 1: NOMBRE -->
+      <div class="step-panel active" data-step="1">
+        <h1 class="step-title">Hello, what's your name?</h1>
+        <p class="step-subtitle">FIRST AND LAST NAME</p>
+        <input type="text" name="Name" class="input-line" placeholder="Type your full name..." required />
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-next" onclick="nextStep(1)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 2: EMAIL -->
+      <div class="step-panel" data-step="2">
+        <h2 class="step-title">What is your email address?</h2>
+        <p class="step-subtitle">WE'LL GET BACK TO YOU WITHIN 48 HOURS</p>
+        <input type="email" name="Email" class="input-line" placeholder="name@domain.com" required />
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(2)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(2)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 3: PROJECT NAME -->
+      <div class="step-panel" data-step="3">
+        <h2 class="step-title">What is your Project or Brand name?</h2>
+        <p class="step-subtitle">COMPANY, ORGANIZATION, OR ARTIST ALIAS</p>
+        <input type="text" name="Project_Name" class="input-line" placeholder="e.g. Sukha / Nueve Cero Nueve..." />
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(3)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(3)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 4: YOUR ROLE -->
+      <div class="step-panel" data-step="4">
+        <h2 class="step-title">What is your role in this project?</h2>
+        <p class="step-subtitle">E.G. FOUNDER, CREATIVE DIRECTOR, PRODUCER</p>
+        <input type="text" name="Role" class="input-line" placeholder="Type your role..." />
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(4)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(4)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 5: SERVICES OF INTEREST (MULTIPLE CHOICE) -->
+      <div class="step-panel" data-step="5">
+        <h2 class="step-title">What core services are you interested in?</h2>
+        <p class="step-subtitle">SELECT ALL THAT APPLY</p>
+        
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Creative Direction"> Creative Direction</label>
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Branding & Visual Identity"> Branding &amp; Visual Identity</label>
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Worldbuilding & Concept Curation"> Worldbuilding &amp; Concept Curation</label>
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Music & Sound Design"> Music &amp; Sound Design</label>
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Audio Production & Engineering"> Audio Production &amp; Engineering</label>
+          <label class="checkbox-item"><input type="checkbox" name="Service" value="Album Art / Editorial Cover Design"> Album Art / Editorial Cover Design</label>
+        </div>
+
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(5)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(5)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 6: ESTIMATED BUDGET (USD Explicit) -->
+      <div class="step-panel" data-step="6">
+        <h2 class="step-title">What is your estimated budget?</h2>
+        <div class="budget-note">Note: All estimations are calculated in USD ($)</div>
+        
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="radio" name="Budget_USD" value="Under $5,000 USD"> Under $5,000 USD</label>
+          <label class="checkbox-item"><input type="radio" name="Budget_USD" value="$5,000 — $10,000 USD"> $5,000 — $10,000 USD</label>
+          <label class="checkbox-item"><input type="radio" name="Budget_USD" value="$10,000 — $25,000 USD"> $10,000 — $25,000 USD</label>
+          <label class="checkbox-item"><input type="radio" name="Budget_USD" value="$25,000+ USD"> $25,000+ USD</label>
+          <label class="checkbox-item"><input type="radio" name="Budget_USD" value="Not yet decided"> Not yet decided</label>
+        </div>
+
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(6)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(6)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 7: CURRENT WEBSITE / INSTAGRAM -->
+      <div class="step-panel" data-step="7">
+        <h2 class="step-title">Current Website or Instagram page?</h2>
+        <p class="step-subtitle">OPTIONAL — HELPS US REVIEW YOUR CURRENT PRESENCE</p>
+        <input type="text" name="Reference_URL" class="input-line" placeholder="https://instagram.com/yourhandle" />
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(7)">Back</button>
+          <button type="button" class="btn-step btn-next" onclick="nextStep(7)">Next →</button>
+        </div>
+      </div>
+
+      <!-- PASO 8: PROJECT DETAILS & SUBMIT -->
+      <div class="step-panel" data-step="8">
+        <h2 class="step-title">Tell us more about your brand &amp; vision</h2>
+        <p class="step-subtitle">WHAT ARE YOU WORKING ON? WHAT DOES SUCCESS LOOK LIKE?</p>
+        <textarea name="Project_Details" class="input-textarea" placeholder="Feel free to share timelines, inspiration, or specific deliverables..."></textarea>
+        
+        <div class="nav-buttons-row">
+          <button type="button" class="btn-step btn-back" onclick="prevStep(8)">Back</button>
+          <button type="submit" class="btn-step btn-next">Send Enquiry →</button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- PANTALLA DE CONFIRMACIÓN -->
+    <div class="success-panel" id="successPanel">
+      <h2 style="font-size: 2.5rem; font-weight: 300;">Enquiry Received.</h2>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #555; margin-top: 15px;">
+        Thank you for reaching out. Most project enquiries receive a written response within 48 hours.
+      </p>
+      <div style="margin-top: 30px;">
+        <a href="index.html" class="btn-step btn-next" style="text-decoration: none;">Return to Home →</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER UNIFICADO -->
+  <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15); margin-top: 80px;">
+    <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+      <div class="brand-block" style="max-width: 350px;">
+        <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
+        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
+      </div>
+      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
+        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
+        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Menu</a>
+        <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Work</a>
+        <a href="about.html" style="text-decoration: none; color: #0e0e0e;">About</a>
+        <a href="ebberkett.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett</a>
+        <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Contact</a>
+      </div>
+      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
+        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Direct Contact</h4>
+        <a href="mailto:george@eloriabrista.com" style="text-decoration: none; color: #0e0e0e;">george@eloriabrista.com</a>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #777;">MEX (UTC −5)</span>
+      </div>
+    </div>
+    <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+      <span>© <span data-year>2026</span> Eloria Brista Studio</span>
+      <span>CDMX / San Francisco</span>
+    </div>
+  </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    const totalSteps = 8;
+
+    function updateProgress(step) {
+      const percentage = (step / totalSteps) * 100;
+      document.getElementById("progressFill").style.width = percentage + "%";
+    }
+
+    function nextStep(currentStep) {
+      const currentPanel = document.querySelector(`.step-panel[data-step="${currentStep}"]`);
+      const input = currentPanel.querySelector("input[required]");
+
+      // Validar si es requerido antes de avanzar
+      if (input && !input.value.trim()) {
+        input.reportValidity();
+        return;
+      }
+
+      currentPanel.classList.remove("active");
+      const nextPanel = document.querySelector(`.step-panel[data-step="${currentStep + 1}"]`);
+      if (nextPanel) {
+        nextPanel.classList.add("active");
+        updateProgress(currentStep + 1);
+      }
+    }
+
+    function prevStep(currentStep) {
+      const currentPanel = document.querySelector(`.step-panel[data-step="${currentStep}"]`);
+      currentPanel.classList.remove("active");
+      const prevPanel = document.querySelector(`.step-panel[data-step="${currentStep - 1}"]`);
+      if (prevPanel) {
+        prevPanel.classList.add("active");
+        updateProgress(currentStep - 1);
+      }
+    }
+  </script>
 </body>
 </html>
