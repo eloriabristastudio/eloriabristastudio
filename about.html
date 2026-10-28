@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
@@ -77,9 +77,9 @@
       z-index: 0;
       overflow: hidden;
       pointer-events: none;
-      filter: blur(16px); /* EFECTO BLUR EN TODO EL VIDEO */
+      filter: blur(16px);
       opacity: 0.25;
-      transform: scale(1.05); /* Evita bordes blancos por el blur */
+      transform: scale(1.05);
     }
 
     .global-video-bg video {
@@ -107,17 +107,8 @@
       max-width: 900px;
     }
 
-    .pixel-name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(2.2rem, 5.5vw, 4.8rem);
-      color: #0e0e0e;
-      letter-spacing: -0.02em;
-      display: inline-block;
-      margin-left: 10px;
-    }
-
     .main-hero-text {
-      font-size: clamp(2.5rem, 5.2vw, 5.2rem);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
       font-weight: 300;
       letter-spacing: -0.03em;
       line-height: 1.1;
@@ -236,12 +227,8 @@
     <!-- 1. PRIMER PANTALLA: LIMPIA Y CENTRADA -->
     <section class="hero-center-screen">
       <div class="hero-intro-box">
-        <span class="eyebrow" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #666; display: block; margin-bottom: 15px;">
-          <span class="dot"></span> Core Identity
-        </span>
-
         <h1 class="main-hero-text">
-          Hi, I'm <span class="pixel-name">George</span>.
+          Hi, I'm George.
         </h1>
 
         <p class="sub-hero-text">
@@ -257,10 +244,6 @@
 
     <!-- 2. SEGUNDA PANTALLA: INFORMACIÓN DETALLADA -->
     <section id="more-info" class="about-details-section">
-      <span class="eyebrow" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #666; display: block; margin-bottom: 20px;">
-        <span class="dot"></span> Studio Rationale
-      </span>
-
       <div class="about-intro-grid">
         <div class="about-text-block">
           <p>
