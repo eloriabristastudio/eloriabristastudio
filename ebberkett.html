@@ -68,7 +68,7 @@
 
     .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
 
-    /* SUBMENÚ ESTILO MUSEO (TIPO JUMEX) */
+    /* SUBMENÚ ESTILO MUSEO (JUMEX STYLE) */
     .museum-subnav {
       position: fixed;
       top: 100px;
@@ -115,17 +115,26 @@
       text-align: center;
     }
 
-    /* EFECTO CODING MÁS LENTO Y PROFUNDO PARA TODO EL BLOQUE */
-    .coding-block {
+    .coding-title {
       font-family: 'Pixelify Sans', cursive, monospace;
-      font-size: clamp(1.8rem, 3.8vw, 3.8rem);
+      font-size: clamp(2.2rem, 5vw, 5.2rem);
       font-weight: 500;
       letter-spacing: 0.02em;
       text-transform: uppercase;
       color: #0e0e0e;
       margin: 0;
-      line-height: 1.25;
-      max-width: 900px;
+      min-height: 1.2em;
+      line-height: 1.1;
+    }
+
+    .hero-sub-description {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 24px;
+      max-width: 600px;
     }
 
     .more-info-scroll {
@@ -179,7 +188,7 @@
 
     .manifesto-body p { margin: 0; }
 
-    /* NOMENCLATURA DE SALAS SEGÚN TU CRITERIO */
+    /* NOMENCLATURA DE SALAS */
     .rooms-nav-block {
       margin-top: 100px;
       padding-top: 60px;
@@ -263,7 +272,7 @@
     </nav>
   </header>
 
-  <!-- SUBMENÚ ESTILO MUSEO (JUMEX STYLE) -->
+  <!-- SUBMENÚ ESTILO MUSEO -->
   <nav class="museum-subnav">
     <a href="#manifesto">El Pabellón</a>
     <a href="#salas">Salas &amp; Exposiciones</a>
@@ -274,7 +283,11 @@
   <main>
     <!-- PRIMERA PANTALLA FULLSCREEN SLIDE -->
     <section class="pavilion-hero">
-      <h1 class="coding-block" id="codingHeroTitle">WELCOME TO EBBERKETT</h1>
+      <h1 class="coding-title" id="codingHeroTitle">WELCOME TO EBBERKETT</h1>
+      
+      <p class="hero-sub-description">
+        A virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio
+      </p>
 
       <a href="#manifesto" class="more-info-scroll">
         <span>More info</span>
@@ -298,7 +311,7 @@
         </p>
       </div>
 
-      <!-- ESTRUCTURA DE SALAS SEGÚN TU CRITERIO -->
+      <!-- ESTRUCTURA DE SALAS -->
       <div id="salas" class="rooms-nav-block">
         <span class="manifesto-tag">Pavilion Architecture — Active Galleries</span>
 
@@ -355,16 +368,16 @@
 
   <script src="assets/js/main.js"></script>
   
-  <!-- SCRIPT PARA EFECTO CODING MÁS LENTO Y PROFUNDO -->
+  <!-- SCRIPT PARA EFECTO DE CÓDIGO SOLO EN EL TÍTULO -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
-      const finalText = "WELCOME TO EBBERKETT — VIRTUAL MUSEUM & PAVILION";
+      const finalText = "WELCOME TO EBBERKETT";
       const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#$&*@%";
       
       let currentFrame = 0;
-      const totalFrames = 60; // Más lento y pausado
-      const speed = 55; // Mayor duración en milisegundos
+      const totalFrames = 45; 
+      const speed = 45; 
 
       const interval = setInterval(() => {
         let scrambledText = "";
