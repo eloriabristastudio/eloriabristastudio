@@ -26,7 +26,7 @@
       scroll-behavior: smooth;
     }
 
-    /* HEADER EDITORIAL UNIFICADO */
+    /* HEADER MÍNIMO SOLO CON LOGO (SIN ENLACES PEQUEÑOS ARRIBA) */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -48,26 +48,7 @@
       display: block;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: #555;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
-
-    /* CONTENEDOR DEL DIRECTORIO TIPO MENÚ */
+    /* DIRECTORIO PRINCIPAL GRANDE Y LIMPIO */
     .menu-container {
       padding: 160px 3.5vw 120px 3.5vw;
       max-width: 1200px;
@@ -76,17 +57,16 @@
     }
 
     .directory-title {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
       font-weight: 300;
       letter-spacing: -0.03em;
       margin: 15px 0 60px 0;
     }
 
-    /* LISTA ESTILO EDITORIAL CONDENSADO */
     .directory-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 32px;
     }
 
     .directory-item-group {
@@ -94,74 +74,73 @@
       flex-direction: column;
     }
 
+    /* ENLACES PRINCIPALES (TAMAÑO "NAVIGATION DIRECTORY") */
     .directory-link {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.8rem);
       font-weight: 300;
       color: #777;
       text-decoration: none;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       transition: color 0.25s ease, transform 0.25s ease;
       display: inline-block;
       width: fit-content;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
     }
 
-    .directory-link:hover {
+    .directory-link:hover, .directory-link.active-main {
       color: #0e0e0e;
-      transform: translateX(6px);
+      transform: translateX(8px);
     }
 
-    .directory-link.active-main {
-      color: #0e0e0e;
-    }
-
-    /* SUBLISTA DE PROYECTOS (ESTILO CONDENSADO REFERENCIA) */
+    /* SUBLISTA DE PROYECTOS (DESPLEGABLE SIMPLE) */
     .sub-projects-list {
-      display: flex;
+      display: none; /* Oculto por defecto, se abre al hacer clic o se mantiene si prefieres desplegable */
       flex-direction: column;
-      gap: 10px;
-      margin-top: 18px;
-      margin-left: 20px;
-      padding-left: 20px;
-      border-left: 1px solid rgba(14, 14, 14, 0.15);
+      gap: 14px;
+      margin-top: 24px;
+      margin-left: 15px;
+      padding-left: 25px;
+      border-left: 1px solid rgba(14, 14, 14, 0.2);
+    }
+
+    .sub-projects-list.open {
+      display: flex;
     }
 
     .sub-project-item {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-size: clamp(1.2rem, 2.2vw, 1.8rem);
       font-weight: 300;
       color: #666;
       text-decoration: none;
-      letter-spacing: -0.01em;
-      transition: color 0.2s ease;
+      letter-spacing: -0.02em;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .sub-project-item:hover {
       color: #0e0e0e;
+      transform: translateX(6px);
     }
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .nav-links { display: none; }
       .menu-container { padding: 120px 20px 80px 20px; }
-      .sub-projects-list { margin-left: 10px; padding-left: 12px; }
+      .sub-projects-list { margin-left: 5px; padding-left: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL -->
+  <!-- HEADER LIMPIO (SOLO LOGO) -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
     </a>
-    <nav class="nav-links">
-      <a href="menu.html" class="active">Menu</a>
-      <a href="work.html">Work</a>
-      <a href="about.html">About</a>
-      <a href="ebberkett.html">Ebberkett</a>
-      <a href="contact.html">Contact</a>
-    </nav>
   </header>
 
   <main class="menu-container">
@@ -173,39 +152,39 @@
 
     <div class="directory-list">
       
-      <!-- 01. HOME LANDING -->
+      <!-- 01. HOME -->
       <div class="directory-item-group">
-        <a href="index.html" class="directory-link">Main01—Home Landing</a>
+        <a href="index.html" class="directory-link">Home</a>
       </div>
 
-      <!-- 02. SELECTED WORKS + SUBLISTA DE PROYECTOS -->
+      <!-- 02. WORK (CON DESPLEGABLE DIRECTO DE PROYECTOS) -->
       <div class="directory-item-group">
-        <a href="work.html" class="directory-link active-main">Main02—Selected Works</a>
+        <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
         
-        <div class="sub-projects-list">
-          <a href="work.html" class="sub-project-item">Main02.01—Sukha (Punk Underground CDMX)</a>
-          <a href="work.html" class="sub-project-item">Main02.02—Nueve Cero Nueve (Club &amp; Venue)</a>
-          <a href="work.html" class="sub-project-item">Main02.03—Hypnia (Sonic Spaces)</a>
-          <a href="work.html" class="sub-project-item">Main02.04—Art Cover Collections</a>
-          <a href="work.html" class="sub-project-item">Main02.05—Vibin: The Ambients (Album)</a>
-          <a href="work.html" class="sub-project-item">Main02.06—The Human Tapes (Podcast)</a>
-          <a href="work.html" class="sub-project-item">Main02.07—Celeste (Original Soundtrack)</a>
+        <div class="sub-projects-list" id="workSubList">
+          <a href="work.html" class="sub-project-item">Case 01 — Sukha</a>
+          <a href="work.html" class="sub-project-item">Case 02 — Nueve Cero Nueve</a>
+          <a href="work.html" class="sub-project-item">Case 03 — Hypnia</a>
+          <a href="work.html" class="sub-project-item">Case 04 — Art Cover Collections</a>
+          <a href="work.html" class="sub-project-item">Case 05 — Vibin: The Ambients</a>
+          <a href="work.html" class="sub-project-item">Case 06 — The Human Tapes</a>
+          <a href="work.html" class="sub-project-item">Case 07 — Celeste</a>
         </div>
       </div>
 
-      <!-- 03. STUDIO & PHILOSOPHY -->
+      <!-- 03. ABOUT -->
       <div class="directory-item-group">
-        <a href="about.html" class="directory-link">Main03—Studio &amp; Philosophy</a>
+        <a href="about.html" class="directory-link">About</a>
       </div>
 
       <!-- 04. EBBERKETT -->
       <div class="directory-item-group">
-        <a href="ebberkett.html" class="directory-link">Main04—Ebberkett Initiative</a>
+        <a href="ebberkett.html" class="directory-link">Ebberkett</a>
       </div>
 
       <!-- 05. CONTACT -->
       <div class="directory-item-group">
-        <a href="contact.html" class="directory-link">Main05—Initiate Contact</a>
+        <a href="contact.html" class="directory-link">Contact</a>
       </div>
 
     </div>
@@ -220,7 +199,7 @@
       </div>
       <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
         <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
-        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Menu</a>
+        <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Home</a>
         <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Work</a>
         <a href="about.html" style="text-decoration: none; color: #0e0e0e;">About</a>
         <a href="ebberkett.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett</a>
@@ -240,5 +219,17 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    function toggleWork() {
+      const subList = document.getElementById('workSubList');
+      const toggleBtn = document.getElementById('workToggle');
+      subList.classList.toggle('open');
+      if (subList.classList.contains('open')) {
+        toggleBtn.innerHTML = 'Work <span>↑</span>';
+      } else {
+        toggleBtn.innerHTML = 'Work <span>↓</span>';
+      }
+    }
+  </script>
 </body>
 </html>
