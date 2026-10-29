@@ -157,7 +157,7 @@
 
     .more-info-scroll:hover { opacity: 0.5; }
 
-    /* 1. TEXTO INSTITUCIONAL REDUCIDO Y PROPORCIONADO */
+    /* TEXTO INSTITUCIONAL */
     .pavilion-manifesto-slide {
       width: 100%;
       min-height: 90vh;
@@ -173,7 +173,7 @@
 
     .manifesto-body-statement {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.1rem, 1.6vw, 1.4rem); /* Ajuste más proporcionado y legible */
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
       font-weight: 300;
       line-height: 1.7;
       letter-spacing: -0.01em;
@@ -195,7 +195,7 @@
       display: block;
     }
 
-    /* 3. EXHIBICIÓN EN MUESTRA (ALINEADO Y AMPLIADO) */
+    /* EXHIBICIÓN EN MUESTRA (AMPLIADO Y ALINEADO) */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 0;
@@ -223,24 +223,31 @@
 
     .exhibition-slider-outer {
       width: 100%;
-      overflow: hidden;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+
+    .exhibition-slider-outer::-webkit-scrollbar {
+      display: none;
     }
 
     .exhibition-track {
       display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change: transform;
       width: 100%;
     }
 
     .exhibition-slide {
       min-width: 100%;
+      scroll-snap-align: center;
       box-sizing: border-box;
     }
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 8.8;
+      aspect-ratio: 16 / 8.5;
       background: #e0dfd9;
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
@@ -287,22 +294,25 @@
       letter-spacing: 0.05em;
     }
 
-    /* 2. FLECHAS ESTANDARIZADAS LIMPIAS */
-    .expo-arrow-btn {
+    /* FLECHAS MINIMALISTAS FINAS (REFERENCIA EXACTA) */
+    .minimal-arrow-btn {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
       color: #0e0e0e;
       padding: 10px;
       transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.8;
+      opacity: 0.7;
       user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .expo-arrow-btn:hover {
+    .minimal-arrow-btn:hover {
       opacity: 1;
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
 
     /* SALAS - GRILLA */
@@ -390,7 +400,7 @@
       line-height: 1.5;
     }
 
-    /* 4. TÍTULO / DVISION CON EFECTO MÁQUINA DE ESCRIBIR EN LOOP */
+    /* SECCIÓN DVISION CON MÁQUINA DE ESCRIBIR EN LOOP */
     .division-hero-slide {
       width: 100%;
       min-height: 85vh;
@@ -438,7 +448,7 @@
       max-width: 950px;
     }
 
-    /* 7. HOMOLOGACIÓN CARRUSEL DVISION A FORMATO POP-OUT (SOPORTE TRACKPAD / MAGIC MOUSE) */
+    /* CARRUSEL DVISION AMPLIADO Y HOMOLOGADO A FICHA POP-OUT + TRACKPAD / MAGIC MOUSE */
     .cover-art-section {
       padding: 80px 4vw 120px 4vw;
       background-color: #f5f4f0;
@@ -448,7 +458,7 @@
 
     .carousel-outer-frame {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1250px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -458,29 +468,30 @@
 
     .carousel-container {
       width: 100%;
-      max-width: 750px;
+      max-width: 900px;
       margin: 0 auto;
       position: relative;
     }
 
     .carousel-track-wrapper {
-      overflow-x: auto; /* Permite scroll natural fluido con Trackpad y Magic Mouse */
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Oculta barra en Firefox */
-      -ms-overflow-style: none; /* Oculta barra en IE */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
       width: 100%;
       display: flex;
       scroll-behavior: smooth;
     }
 
     .carousel-track-wrapper::-webkit-scrollbar {
-      display: none; /* Oculta barra en Chrome/Safari */
+      display: none;
     }
 
     .carousel-track {
       display: flex;
       gap: 20px;
       will-change: transform;
+      width: 100%;
     }
 
     .carousel-item {
@@ -489,19 +500,18 @@
       box-sizing: border-box;
     }
 
-    /* Tarjeta estilo cédula exacta a la página modal pop-out */
     .cover-card-cedula {
       background: #f5f4f0;
       border: 1px solid rgba(14, 14, 14, 0.12);
-      padding: 40px;
+      padding: 45px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.04);
       box-sizing: border-box;
     }
 
     .modal-layout-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 45px;
       align-items: center;
     }
 
@@ -545,24 +555,14 @@
 
     .cedula-process-link:hover { opacity: 0.6; }
 
-    .space-nav-arrow {
-      background: none;
-      border: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-      color: #0e0e0e;
-      padding: 10px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.8;
-      user-select: none;
+    /* SECCIÓN SHOP EN LANDING */
+    #shop {
+      padding: 120px 4vw;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    .space-nav-arrow:hover {
-      opacity: 1;
-      transform: scale(1.15);
-    }
-
-    /* 6. CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, ROTACIÓN 360° Y SOMBRA FLOTANTE) */
+    /* CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, ROTACIÓN 360°, SIN CAJA BLANCA, SOMBRA FLOTANTE Y TRACKPAD) */
     .tapes-section {
       padding: 120px 4vw;
       background-color: #f5f4f0;
@@ -577,7 +577,7 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 650px;
+      max-width: 700px;
       margin: 0 auto 60px auto;
       display: flex;
       align-items: center;
@@ -587,39 +587,45 @@
 
     .tapes-track-wrapper {
       width: 100%;
-      overflow: hidden;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+
+    .tapes-track-wrapper::-webkit-scrollbar {
+      display: none;
     }
 
     .tapes-track {
       display: flex;
-      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       width: 100%;
     }
 
     .tape-card-retro {
       min-width: 100%;
-      background: #ffffff;
-      border: 1px solid rgba(14,14,14,0.08);
-      padding: 45px 30px;
+      scroll-snap-align: center;
+      background: transparent; /* Fondo transparente para que flote orgánicamente */
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       box-sizing: border-box;
     }
 
-    /* Animación de rotación 360° sobre su eje tipo GIF con sombra inferior flotante */
+    /* Animación 360° en bucle con sombra inferior flotante realista */
     .tape-object-animated {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
-      border: 3px solid #333;
-      margin-bottom: 25px;
+      background: radial-gradient(circle, #333 20%, #1a1a1a 70%, #000 100%);
+      border: 3px solid #444;
+      margin-bottom: 30px;
       position: relative;
       animation: spinRetro 12s linear infinite;
-      filter: drop-shadow(0px 22px 14px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0px 25px 15px rgba(0, 0, 0, 0.35)); /* Sombra inferior flotante */
     }
 
     .tape-object-animated::after {
@@ -628,11 +634,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 35px;
-      height: 35px;
+      width: 40px;
+      height: 40px;
       background: #f5f4f0;
       border-radius: 50%;
-      border: 2px solid #111;
+      border: 2px solid #222;
     }
 
     @keyframes spinRetro {
@@ -642,36 +648,16 @@
 
     .tape-card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 400;
       margin: 10px 0 6px 0;
+      color: #0e0e0e;
     }
 
     .tape-card-meta {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       color: #666;
-    }
-
-    /* 6. FLECHA IZQUIERDA CORREGIDA Y DERECHA */
-    .tape-nav-btn {
-      background: none;
-      border: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-      color: #0e0e0e;
-      padding: 10px;
-      transition: transform 0.2s ease;
-      user-select: none;
-    }
-
-    .tape-nav-btn:hover { transform: scale(1.15); }
-
-    /* SECCIÓN SHOP EN LANDING */
-    #shop {
-      padding: 120px 4vw;
-      background-color: #f5f4f0;
-      border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
     /* MODAL POP-OUT */
@@ -783,7 +769,7 @@
       </a>
     </section>
 
-    <!-- 1. TEXTO INSTITUCIONAL REDUCIDO -->
+    <!-- TEXTO INSTITUCIONAL -->
     <section id="manifesto" class="pavilion-manifesto-slide">
       <div class="manifesto-body-statement">
         <p>
@@ -795,15 +781,17 @@
       </div>
     </section>
 
-    <!-- 3. EXHIBICIÓN EN MUESTRA (ALINEADO Y AMPLIADO) -->
+    <!-- EXHIBICIÓN EN MUESTRA (AMPLIADO, ALINEADO Y CON TRACKPAD SUPPORT) -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
 
         <div class="exhibition-frame-outer">
-          <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">◀</button>
+          <button class="minimal-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
 
-          <div class="exhibition-slider-outer">
+          <div class="exhibition-slider-outer" id="expoSliderWrapper">
             <div class="exhibition-track" id="expoTrack">
               
               <!-- SLIDE 01 -->
@@ -823,7 +811,7 @@
                 </div>
               </div>
 
-              <!-- SLIDE 02 (SIN TEXTO al-hur) -->
+              <!-- SLIDE 02 -->
               <div class="exhibition-slide">
                 <div class="exhibition-banner-wrapper">
                   <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
@@ -843,7 +831,9 @@
             </div>
           </div>
 
-          <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">▶</button>
+          <button class="minimal-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -890,7 +880,7 @@
       </div>
     </section>
 
-    <!-- 4. TÍTULO / DVISION CON EFECTO MÁQUINA DE ESCRIBIR EN LOOP Y SALTO DE LÍNEA -->
+    <!-- TÍTULO / DVISION CON MÁQUINA DE ESCRIBIR EN LOOP -->
     <section id="division" class="division-hero-slide">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
       
@@ -904,10 +894,12 @@
       </p>
     </section>
 
-    <!-- 7. HOMOLOGACIÓN CARRUSEL DVISION A FORMATO POP-OUT + SOPORTE TRACKPAD / MAGIC MOUSE -->
+    <!-- CARRUSEL DVISION AMPLIADO Y HOMOLOGADO A FICHA POP-OUT + TRACKPAD / MAGIC MOUSE -->
     <section class="cover-art-section">
       <div class="carousel-outer-frame">
-        <button class="space-nav-arrow" onclick="moveCarousel(-1)" aria-label="Anterior">◀</button>
+        <button class="minimal-arrow-btn" onclick="moveCarousel(-1)" aria-label="Anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
 
         <div class="carousel-container">
           <div class="carousel-track-wrapper" id="carouselTrackWrapper">
@@ -1009,11 +1001,13 @@
           </div>
         </div>
 
-        <button class="space-nav-arrow" onclick="moveCarousel(1)" aria-label="Siguiente">▶</button>
+        <button class="minimal-arrow-btn" onclick="moveCarousel(1)" aria-label="Siguiente">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
     </section>
 
-    <!-- 5. SECCIÓN EBBERKETT SHOP EN LANDING -->
+    <!-- SECCIÓN EBBERKETT SHOP EN LANDING (TEXTO ACTUALIZADO Y CONVERSIÓN) -->
     <section id="shop">
       <div style="max-width: 1350px; margin: 0 auto;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
@@ -1063,7 +1057,7 @@
       </div>
     </section>
 
-    <!-- 6. CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, FLECHAS CORREGIDAS Y ROTACIÓN 360°) -->
+    <!-- CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, ROTACIÓN 360°, SIN CAJA BLANCA, SOMBRA FLOTANTE Y TRACKPAD) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1074,10 +1068,11 @@
       </div>
 
       <div class="tapes-carousel-frame">
-        <!-- Flecha izquierda corregida -->
-        <button class="tape-nav-btn" onclick="moveTapes(-1)">←</button>
+        <button class="minimal-arrow-btn" onclick="moveTapes(-1)" aria-label="Anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
 
-        <div class="tapes-track-wrapper">
+        <div class="tapes-track-wrapper" id="tapesTrackWrapper">
           <div class="tapes-track" id="tapesTrack">
             
             <div class="tape-card-retro">
@@ -1101,7 +1096,9 @@
           </div>
         </div>
 
-        <button class="tape-nav-btn" onclick="moveTapes(1)">➔</button>
+        <button class="minimal-arrow-btn" onclick="moveTapes(1)" aria-label="Siguiente">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
 
       <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 40px;">
@@ -1212,7 +1209,7 @@
       }, speed);
     });
 
-    /* 4. MÁQUINA DE ESCRIBIR EN LOOP PARA DVISION */
+    /* MÁQUINA DE ESCRIBIR EN LOOP PARA DVISION */
     const wordToType = "dvision";
     const typedWordElement = document.getElementById("typedWord");
     let charIndex = 0;
@@ -1228,7 +1225,6 @@
         charIndex++;
         typingSpeed = 150;
       } else if (!isDeleting && charIndex === wordToType.length) {
-        // Pausa al terminar de escribir antes de borrar
         isDeleting = true;
         typingSpeed = 2000; 
       } else if (isDeleting && charIndex > 0) {
@@ -1243,34 +1239,27 @@
     }
     document.addEventListener("DOMContentLoaded", typeWriterLoop);
 
-    /* SLIDER EXHIBICIÓN */
+    /* SLIDER EXHIBICIÓN (SOPORTE TRACKPAD / MAGIC MOUSE) */
     let currentExpo = 0;
     const totalExpos = 2;
-    let expoInterval = setInterval(autoExpoSlide, 5000);
 
     function updateExpoSlide() {
-      const track = document.getElementById('expoTrack');
-      track.style.transform = `translateX(-${currentExpo * 100}%)`;
-    }
-
-    function autoExpoSlide() {
-      currentExpo = (currentExpo + 1) % totalExpos;
-      updateExpoSlide();
+      const wrapper = document.getElementById('expoSliderWrapper');
+      const itemWidth = wrapper.clientWidth;
+      wrapper.scrollTo({ left: currentExpo * itemWidth, behavior: 'smooth' });
     }
 
     function nextExpoSlide() {
-      clearInterval(expoInterval);
       currentExpo = (currentExpo + 1) % totalExpos;
       updateExpoSlide();
     }
 
     function prevExpoSlide() {
-      clearInterval(expoInterval);
       currentExpo = (currentExpo - 1 + totalExpos) % totalExpos;
       updateExpoSlide();
     }
 
-    /* CARRUSEL DVISION CON SOPORTE TRACKPAD / MAGIC MOUSE */
+    /* CARRUSEL DVISION (SOPORTE TRACKPAD / MAGIC MOUSE) */
     let currentSlide = 0;
     const totalSlides = 4;
 
@@ -1287,15 +1276,18 @@
       wrapper.scrollTo({ left: currentSlide * itemWidth, behavior: 'smooth' });
     }
 
-    /* CARRUSEL TAPES (1 A LA VEZ) */
+    /* CARRUSEL TAPES (1 A LA VEZ + TRACKPAD) */
     let currentTape = 0;
     const totalTapes = 3;
+
     function moveTapes(dir) {
       currentTape += dir;
-      if (currentTape < 0) currentTape = 0;
-      if (currentTape >= totalTapes) currentTape = totalTapes - 1;
-      const track = document.getElementById('tapesTrack');
-      track.style.transform = `translateX(-${currentTape * 100}%)`;
+      if (currentTape < 0) currentTape = totalTapes - 1;
+      if (currentTape >= totalTapes) currentTape = 0;
+      
+      const wrapper = document.getElementById('tapesTrackWrapper');
+      const itemWidth = wrapper.clientWidth;
+      wrapper.scrollTo({ left: currentTape * itemWidth, behavior: 'smooth' });
     }
 
     /* MODAL POP-OUT */
