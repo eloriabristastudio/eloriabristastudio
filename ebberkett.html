@@ -195,7 +195,7 @@
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA */
+    /* EXHIBICIÓN EN MUESTRA (MARCO AMPLIADO UN 30% MÁS ALTO) */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -205,7 +205,7 @@
     }
 
     .exhibition-inner-container {
-      max-width: 1550px;
+      max-width: 1650px; /* Amplitud horizontal expandida */
       margin: 0 auto;
       padding: 0 3vw;
       box-sizing: border-box;
@@ -245,19 +245,27 @@
       box-sizing: border-box;
     }
 
+    /* CONTENEDOR TEASER: 30% MÁS GRANDE Y FORZADO A RELLENAR */
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 7.8;
+      aspect-ratio: 16 / 10.2; /* Incremento ~30% en altura respecto al anterior 16/7.8 */
       background: #e0dfd9;
       overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+      cursor: pointer;
     }
 
     .exhibition-banner-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Obliga a la imagen a rellenar el marco creando el encuadre/close-up teaser */
+      object-position: center;
       display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exhibition-banner-wrapper:hover img {
+      transform: scale(1.03); /* Leve zoom sutil al pasar el mouse */
     }
 
     .exhibition-meta-bar {
@@ -556,7 +564,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES (GIGANTE A 880PX Y LIBRE DE CORTES/SOMBRAS) */
+    /* CARRUSEL THE HUMAN TAPES (700PX × 700PX) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -571,8 +579,8 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 1250px; 
-      margin: 0 auto 70px auto;
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -609,14 +617,13 @@
       box-sizing: border-box;
     }
 
-    /* CONTENEDOR GIGANTE A 880PX Y COMPLETAMENTE LIBRE (SIN SOMBRAS QUE CORTEN) */
     .tape-gif-container {
-      width: 880px;  /* ¡Al doble de tamaño exacto! */
-      height: 880px;
+      width: 700px;
+      height: 700px;
       aspect-ratio: 1 / 1;
-      margin-bottom: 50px; /* Gran respiro inferior para que destaque la portada */
+      margin-bottom: 45px;
       position: relative;
-      overflow: visible; /* Cero recortes en la animación */
+      overflow: visible;
       background: transparent;
       display: flex;
       align-items: center;
@@ -630,28 +637,26 @@
       display: block;
     }
 
-    /* TÍTULO Y METADATOS BAJADOS Y CON ESPACIO AMPLIO PARA QUE RESPIRÉN */
     .tape-card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.75rem;
+      font-size: 1.65rem;
       font-weight: 400;
-      margin: 25px 0 12px 0;
+      margin: 20px 0 10px 0;
       color: #0e0e0e;
     }
 
     .tape-card-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #666;
     }
 
-    /* BLOQUE INFERIOR DE PLATAFORMAS (MUCHO MÁS ABAJO PARA DAR AIRE) */
     .tapes-platforms-container {
       max-width: 900px; 
-      margin: 80px auto 0 auto; 
+      margin: 75px auto 0 auto; 
       text-align: center; 
       border-top: 1px solid rgba(14,14,14,0.08); 
-      padding-top: 65px;
+      padding-top: 55px;
     }
 
     /* MODAL POP-OUT */
@@ -778,7 +783,7 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA -->
+    <!-- EXHIBICIÓN EN MUESTRA (CON MARCO EXPANDIDO UN 30% Y CLOSE-UP TEASER) -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
@@ -1054,7 +1059,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES (GIGANTE A 880PX, LIBRE DE CORTES Y CON TÍTULOS CON AIRE) -->
+    <!-- CARRUSEL THE HUMAN TAPES -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1107,7 +1112,6 @@
         </button>
       </div>
 
-      <!-- SECCIÓN DE PLATAFORMAS BIEN ABAJO PARA MÁXIMA ELEGANCIA -->
       <div class="tapes-platforms-container">
         <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
           Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
