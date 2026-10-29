@@ -160,12 +160,12 @@
     /* TEXTO INSTITUCIONAL */
     .pavilion-manifesto-slide {
       width: 100%;
-      min-height: 90vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 100px 6vw;
+      padding: 80px 6vw;
       box-sizing: border-box;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.08);
@@ -195,19 +195,19 @@
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA (AMPLIADO Y ALINEADO) */
+    /* 4. EXHIBICIÓN EN MUESTRA (IMPONENTE, MÁS ANCHA Y VISIBLE) */
     .current-exhibition-section {
       width: 100%;
-      padding: 100px 0;
+      padding: 90px 0;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
     }
 
     .exhibition-inner-container {
-      max-width: 1350px;
+      max-width: 1550px; /* Contenedor mucho más ancho para impacto total estilo museo */
       margin: 0 auto;
-      padding: 0 4vw;
+      padding: 0 3vw;
       box-sizing: border-box;
     }
 
@@ -247,10 +247,10 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 8.5;
+      aspect-ratio: 16 / 7.8; /* Fotografía sumamente panorámica e imponente */
       background: #e0dfd9;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.1);
     }
 
     .exhibition-banner-wrapper img {
@@ -272,7 +272,7 @@
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
@@ -281,7 +281,7 @@
 
     .exhibition-artist {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #666;
       margin-top: 6px;
       display: block;
@@ -289,12 +289,12 @@
 
     .exhibition-dates {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
     }
 
-    /* FLECHAS MINIMALISTAS FINAS (REFERENCIA EXACTA) */
+    /* FLECHAS MINIMALISTAS FINAS */
     .minimal-arrow-btn {
       background: none;
       border: none;
@@ -308,6 +308,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 10;
     }
 
     .minimal-arrow-btn:hover {
@@ -318,14 +319,14 @@
     /* SALAS - GRILLA */
     .immersive-salas-section {
       width: 100%;
-      padding: 120px 4vw;
+      padding: 110px 4vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
     }
 
     .salas-content-wrapper {
-      max-width: 1350px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -400,26 +401,21 @@
       line-height: 1.5;
     }
 
-    /* SECCIÓN DVISION CON MÁQUINA DE ESCRIBIR EN LOOP */
+    /* 2. SECCIÓN DVISION (MÁQUINA DE ESCRIBIR Y MENOS ESPACIO / ACERCAMIENTO) */
     .division-hero-slide {
       width: 100%;
-      min-height: 85vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      text-align: left;
-      padding: 100px 8vw;
+      padding: 90px 8vw 40px 8vw; /* Reducción drástica del espacio inferior para acercar el carrusel */
       box-sizing: border-box;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       background-color: #f5f4f0;
+      text-align: left;
     }
 
     .typewriter-wrapper {
       font-family: 'GeistPixelLocal', monospace;
       font-size: clamp(2.5rem, 5vw, 5.5rem);
       color: #0e0e0e;
-      margin: 15px 0 30px 0;
+      margin: 15px 0 25px 0;
       display: flex;
       align-items: center;
     }
@@ -448,9 +444,9 @@
       max-width: 950px;
     }
 
-    /* CARRUSEL DVISION AMPLIADO Y HOMOLOGADO A FICHA POP-OUT + TRACKPAD / MAGIC MOUSE */
+    /* 2. CARRUSEL DVISION AMPLIADO Y PEGADO AL TEXTO */
     .cover-art-section {
-      padding: 80px 4vw 120px 4vw;
+      padding: 20px 4vw 110px 4vw; /* Espacio superior ajustado para pegarlo al texto introductorio */
       background-color: #f5f4f0;
       width: 100%;
       box-sizing: border-box;
@@ -458,7 +454,7 @@
 
     .carousel-outer-frame {
       width: 100%;
-      max-width: 1250px;
+      max-width: 1400px; /* Ampliado para que la obra luzca imponente */
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -468,7 +464,7 @@
 
     .carousel-container {
       width: 100%;
-      max-width: 900px;
+      max-width: 1100px; /* Tamaño generoso de ficha artística de museo */
       margin: 0 auto;
       position: relative;
     }
@@ -503,15 +499,15 @@
     .cover-card-cedula {
       background: #f5f4f0;
       border: 1px solid rgba(14, 14, 14, 0.12);
-      padding: 45px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+      padding: 55px; /* Mayor espacio interior elegante */
+      box-shadow: 0 20px 45px rgba(0,0,0,0.05);
       box-sizing: border-box;
     }
 
     .modal-layout-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 45px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 55px;
       align-items: center;
     }
 
@@ -539,7 +535,7 @@
 
     .cedula-process-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #0e0e0e;
       text-decoration: none;
       border-bottom: 1px solid #0e0e0e;
@@ -557,14 +553,14 @@
 
     /* SECCIÓN SHOP EN LANDING */
     #shop {
-      padding: 120px 4vw;
+      padding: 110px 4vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, ROTACIÓN 360°, SIN CAJA BLANCA, SOMBRA FLOTANTE Y TRACKPAD) */
+    /* 1. CARRUSEL THE HUMAN TAPES (TAMAÑO EXACTO GARGANTUA BAY #5 Y TEXTO INFERIOR CON RESPIRO) */
     .tapes-section {
-      padding: 120px 4vw;
+      padding: 110px 4vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       width: 100%;
@@ -572,13 +568,13 @@
     }
 
     .tapes-header-block {
-      max-width: 1350px;
+      max-width: 1400px;
       margin: 0 auto 50px auto;
     }
 
     .tapes-carousel-frame {
-      max-width: 700px;
-      margin: 0 auto 60px auto;
+      max-width: 750px; /* Tamaño estandarizado idéntico al de las obras de shop / Gargantua Bay */
+      margin: 0 auto 70px auto; /* Mayor margen inferior para dejar "respirar" al producto */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -606,7 +602,7 @@
     .tape-card-retro {
       min-width: 100%;
       scroll-snap-align: center;
-      background: transparent; /* Fondo transparente para que flote orgánicamente */
+      background: transparent;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -615,17 +611,17 @@
       box-sizing: border-box;
     }
 
-    /* Animación 360° en bucle con sombra inferior flotante realista */
+    /* Objeto central giratorio 360° con sombra flotante */
     .tape-object-animated {
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       background: radial-gradient(circle, #333 20%, #1a1a1a 70%, #000 100%);
       border: 3px solid #444;
       margin-bottom: 30px;
       position: relative;
       animation: spinRetro 12s linear infinite;
-      filter: drop-shadow(0px 25px 15px rgba(0, 0, 0, 0.35)); /* Sombra inferior flotante */
+      filter: drop-shadow(0px 28px 18px rgba(0, 0, 0, 0.35));
     }
 
     .tape-object-animated::after {
@@ -634,8 +630,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       background: #f5f4f0;
       border-radius: 50%;
       border: 2px solid #222;
@@ -648,7 +644,7 @@
 
     .tape-card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 400;
       margin: 10px 0 6px 0;
       color: #0e0e0e;
@@ -656,11 +652,11 @@
 
     .tape-card-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #666;
     }
 
-    /* MODAL POP-OUT */
+    /* 3. MODAL POP-OUT (CIERRE CON CLIC EN CUALQUIER ZONA OSCURA DE FONDO) */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -675,20 +671,22 @@
       align-items: center;
       padding: 20px;
       box-sizing: border-box;
+      cursor: pointer; /* Indica que se puede hacer clic fuera para cerrar */
     }
 
     .modal-overlay.active { display: flex; }
 
     .modal-content-card {
       background: #f5f4f0;
-      max-width: 900px;
+      max-width: 950px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 50px;
+      padding: 55px;
       box-sizing: border-box;
       position: relative;
       border: 1px solid rgba(255,255,255,0.2);
+      cursor: default; /* Evita que el clic dentro de la tarjeta la cierre accidentalmente */
     }
 
     .modal-close-btn {
@@ -781,7 +779,7 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA (AMPLIADO, ALINEADO Y CON TRACKPAD SUPPORT) -->
+    <!-- EXHIBICIÓN EN MUESTRA (IMPONENTE Y PANORÁMICA) -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
@@ -880,7 +878,7 @@
       </div>
     </section>
 
-    <!-- TÍTULO / DVISION CON MÁQUINA DE ESCRIBIR EN LOOP -->
+    <!-- TÍTULO / DVISION CON MÁQUINA DE ESCRIBIR EN LOOP Y MENOS ESPACIO -->
     <section id="division" class="division-hero-slide">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
       
@@ -894,7 +892,7 @@
       </p>
     </section>
 
-    <!-- CARRUSEL DVISION AMPLIADO Y HOMOLOGADO A FICHA POP-OUT + TRACKPAD / MAGIC MOUSE -->
+    <!-- CARRUSEL DVISION AMPLIADO Y PEGADO AL TEXTO -->
     <section class="cover-art-section">
       <div class="carousel-outer-frame">
         <button class="minimal-arrow-btn" onclick="moveCarousel(-1)" aria-label="Anterior">
@@ -914,8 +912,8 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 0;">AFRO — Single Cover</h3>
-                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5; margin: 0;">
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">AFRO — Single Cover</h3>
+                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Digital Oil on Canvas<br/>
                         Timeline: 2025
@@ -937,8 +935,8 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 0;">DO IT LIKE ME</h3>
-                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5; margin: 0;">
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">DO IT LIKE ME</h3>
+                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: 3D Form &amp; Graphic Study<br/>
                         Timeline: 2024
@@ -960,8 +958,8 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 3 / Creative Lab</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 0;">IN THE NAME OF LOVE</h3>
-                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5; margin: 0;">
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">IN THE NAME OF LOVE</h3>
+                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Visual Art &amp; Typography<br/>
                         Timeline: 2024
@@ -983,8 +981,8 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 0;">GET UP</h3>
-                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5; margin: 0;">
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">GET UP</h3>
+                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Color Field &amp; Motion Still<br/>
                         Timeline: 2025
@@ -1007,9 +1005,9 @@
       </div>
     </section>
 
-    <!-- SECCIÓN EBBERKETT SHOP EN LANDING (TEXTO ACTUALIZADO Y CONVERSIÓN) -->
+    <!-- SECCIÓN SHOP -->
     <section id="shop">
-      <div style="max-width: 1350px; margin: 0 auto;">
+      <div style="max-width: 1400px; margin: 0 auto;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
           <div>
             <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin: 0;">Ebberkett Shop</h2>
@@ -1057,7 +1055,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL RETRO THE HUMAN TAPES (1 A LA VEZ, ROTACIÓN 360°, SIN CAJA BLANCA, SOMBRA FLOTANTE Y TRACKPAD) -->
+    <!-- 1. CARRUSEL THE HUMAN TAPES (TAMAÑO GARGANTUA BAY #5 Y RESPIRO INFERIOR) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1101,7 +1099,8 @@
         </button>
       </div>
 
-      <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 40px;">
+      <!-- Texto de plataformas con buen respiro visual respecto al producto -->
+      <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 50px;">
         <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
           Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
         </p>
@@ -1114,8 +1113,8 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT -->
-  <div class="modal-overlay" id="caseModal">
+  <!-- 3. MODAL POP-OUT (CIERRE CON CLIC EN CUALQUIER ZONA OSCURA) -->
+  <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
@@ -1146,7 +1145,7 @@
 
   <!-- FOOTER -->
   <footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15); background-color: #f5f4f0;">
-    <div class="top" style="max-width: 1350px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+    <div class="top" style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
       <div class="brand-block" style="max-width: 350px;">
         <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
         <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio. San Francisco / Mexico City.</p>
@@ -1163,7 +1162,7 @@
         <a href="#" style="text-decoration: none; color: #0e0e0e;">Permanent Collection</a>
       </div>
     </div>
-    <div class="bottom" style="max-width: 1350px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+    <div class="bottom" style="max-width: 1400px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
       <span>© <span data-year>2026</span> EBBERKETT Pavilion</span>
       <span>EBS Permanent Collection</span>
     </div>
@@ -1239,7 +1238,7 @@
     }
     document.addEventListener("DOMContentLoaded", typeWriterLoop);
 
-    /* SLIDER EXHIBICIÓN (SOPORTE TRACKPAD / MAGIC MOUSE) */
+    /* SLIDER EXHIBICIÓN */
     let currentExpo = 0;
     const totalExpos = 2;
 
@@ -1259,7 +1258,7 @@
       updateExpoSlide();
     }
 
-    /* CARRUSEL DVISION (SOPORTE TRACKPAD / MAGIC MOUSE) */
+    /* CARRUSEL DVISION */
     let currentSlide = 0;
     const totalSlides = 4;
 
@@ -1276,7 +1275,7 @@
       wrapper.scrollTo({ left: currentSlide * itemWidth, behavior: 'smooth' });
     }
 
-    /* CARRUSEL TAPES (1 A LA VEZ + TRACKPAD) */
+    /* CARRUSEL TAPES */
     let currentTape = 0;
     const totalTapes = 3;
 
@@ -1309,6 +1308,13 @@
     function closeModal() {
       document.getElementById('caseModal').classList.remove('active');
       document.getElementById('mVideoContainer').innerHTML = '';
+    }
+
+    /* Cierra el modal al hacer clic en el fondo oscuro */
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('caseModal')) {
+        closeModal();
+      }
     }
   </script>
 </body>
