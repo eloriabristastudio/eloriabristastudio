@@ -499,7 +499,6 @@
       background: #f5f4f0;
       border: 1px solid rgba(14, 14, 14, 0.12);
       padding: 55px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.05);
       box-sizing: border-box;
     }
 
@@ -557,7 +556,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES (FORMATO CUADRADO IMPOENTE Y SIN CORTES DE SOMBRA) */
+    /* CARRUSEL THE HUMAN TAPES (GIGANTE A 880PX Y LIBRE DE CORTES/SOMBRAS) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -572,7 +571,7 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 1000px; /* Amplitud total idéntica a las great cards */
+      max-width: 1250px; 
       margin: 0 auto 70px auto;
       display: flex;
       align-items: center;
@@ -610,19 +609,18 @@
       box-sizing: border-box;
     }
 
-    /* CONTENEDOR CUADRADO IMPOENTE SIN CORTES EXTRAÑOS DE SOMBRA */
+    /* CONTENEDOR GIGANTE A 880PX Y COMPLETAMENTE LIBRE (SIN SOMBRAS QUE CORTEN) */
     .tape-gif-container {
-      width: 440px;  /* Magnífica amplitud y presencia visual */
-      height: 440px;
+      width: 880px;  /* ¡Al doble de tamaño exacto! */
+      height: 880px;
       aspect-ratio: 1 / 1;
-      margin-bottom: 35px;
+      margin-bottom: 50px; /* Gran respiro inferior para que destaque la portada */
       position: relative;
-      overflow: visible; /* Evita cualquier corte en las sombras laterales o inferiores */
+      overflow: visible; /* Cero recortes en la animación */
       background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0px 30px 30px rgba(0, 0, 0, 0.22)); /* Sombra envolvente limpia y elegante */
     }
 
     .tape-gif-container img {
@@ -632,18 +630,28 @@
       display: block;
     }
 
+    /* TÍTULO Y METADATOS BAJADOS Y CON ESPACIO AMPLIO PARA QUE RESPIRÉN */
     .tape-card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.45rem;
+      font-size: 1.75rem;
       font-weight: 400;
-      margin: 10px 0 8px 0;
+      margin: 25px 0 12px 0;
       color: #0e0e0e;
     }
 
     .tape-card-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       color: #666;
+    }
+
+    /* BLOQUE INFERIOR DE PLATAFORMAS (MUCHO MÁS ABAJO PARA DAR AIRE) */
+    .tapes-platforms-container {
+      max-width: 900px; 
+      margin: 80px auto 0 auto; 
+      text-align: center; 
+      border-top: 1px solid rgba(14,14,14,0.08); 
+      padding-top: 65px;
     }
 
     /* MODAL POP-OUT */
@@ -711,14 +719,14 @@
       font-size: 0.75rem;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 950px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; }
       .salas-grid-shop { grid-template-columns: 1fr; }
       .modal-layout-grid { grid-template-columns: 1fr; }
-      .tape-gif-container { width: 280px; height: 280px; }
+      .tape-gif-container { width: 320px; height: 320px; }
     }
   </style>
 </head>
@@ -1046,7 +1054,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES (IMPOENTE, CUADRADO Y LIBRE DE CORTES) -->
+    <!-- CARRUSEL THE HUMAN TAPES (GIGANTE A 880PX, LIBRE DE CORTES Y CON TÍTULOS CON AIRE) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1099,7 +1107,8 @@
         </button>
       </div>
 
-      <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 50px;">
+      <!-- SECCIÓN DE PLATAFORMAS BIEN ABAJO PARA MÁXIMA ELEGANCIA -->
+      <div class="tapes-platforms-container">
         <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
           Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
         </p>
