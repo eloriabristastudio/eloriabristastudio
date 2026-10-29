@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* HEADER CON NAVEGACIÓN A SHOP */
+    /* HEADER */
     .ebberkett-header {
       position: fixed;
       top: 0;
@@ -87,9 +87,7 @@
       transition: color 0.2s ease;
     }
 
-    .ebberkett-nav-links a:hover {
-      color: #0e0e0e;
-    }
+    .ebberkett-nav-links a:hover { color: #0e0e0e; }
 
     .back-to-studio {
       font-family: 'Inter', sans-serif;
@@ -159,14 +157,14 @@
 
     .more-info-scroll:hover { opacity: 0.5; }
 
-    /* SLIDE 2: MANIFIESTO INSTITUCIONAL SOLEMNE */
+    /* 1. BLOQUE DE INTRODUCCIÓN (CONTENEDOR CENTRADO, TEXTO ALINEADO A LA IZQUIERDA) */
     .pavilion-manifesto-slide {
       width: 100%;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: center; /* Contenedor centrado */
       padding: 100px 6vw;
       box-sizing: border-box;
       background-color: #f5f4f0;
@@ -175,16 +173,16 @@
 
     .manifesto-body-statement {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      font-size: clamp(1.3rem, 2vw, 1.75rem);
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.65;
       letter-spacing: -0.02em;
       color: #111;
       display: flex;
       flex-direction: column;
       gap: 35px;
       max-width: 950px;
-      text-align: center;
+      text-align: left; /* Lectura fluida de izquierda a derecha */
     }
 
     .section-label {
@@ -197,7 +195,7 @@
       display: block;
     }
 
-    /* SECCIÓN EXHIBICIÓN EN MUESTRA */
+    /* 2. SECCIÓN EXHIBICIÓN EN MUESTRA (FOTO MÁS GRANDE, SIN (al-hur)) */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 4vw;
@@ -207,7 +205,7 @@
     }
 
     .exhibition-frame-outer {
-      max-width: 1250px;
+      max-width: 1300px; /* Tamaño aumentado sutilmente */
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -235,11 +233,11 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 9.5;
+      aspect-ratio: 16 / 9;
       background: #e0dfd9;
       overflow: hidden;
       margin-top: 15px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     }
 
     .exhibition-banner-wrapper img {
@@ -283,7 +281,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* FLECHAS GORDITAS Y CORTAS */
     .expo-arrow-btn {
       background: none;
       border: none;
@@ -301,7 +298,7 @@
       transform: scale(1.25);
     }
 
-    /* SECCIÓN SALAS - GRILLA DE 3 ESTILO SHOP / MUSEO */
+    /* SALAS - GRILLA */
     .immersive-salas-section {
       width: 100%;
       padding: 120px 4vw;
@@ -354,9 +351,7 @@
       transition: transform 0.5s ease;
     }
 
-    .room-card-shop:hover .room-img-container img {
-      transform: scale(1.04);
-    }
+    .room-card-shop:hover .room-img-container img { transform: scale(1.04); }
 
     .room-info-box {
       padding: 25px;
@@ -388,10 +383,10 @@
       line-height: 1.5;
     }
 
-    /* SLIDE HERO PARA / DVISION CON EFECTO GLITCH Y TEXTO EXPANDIDO A LA IZQUIERDA */
+    /* 3. TÍTULO / DVISION CON EFECTO GLITCH FLUIDO Y SALTO DE LÍNEA EXACTO */
     .division-hero-slide {
       width: 100%;
-      min-height: 90vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -405,12 +400,22 @@
 
     .glitch-title {
       font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-size: clamp(2.8rem, 5.5vw, 5.8rem);
       font-weight: normal;
       color: #0e0e0e;
       margin: 15px 0 30px 0;
       position: relative;
-      animation: fadeInGlitch 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      display: inline-block;
+      animation: glitchAnimation 2.5s infinite alternate;
+    }
+
+    @keyframes glitchAnimation {
+      0% { transform: translate(0); text-shadow: none; filter: none; }
+      92% { transform: translate(0); text-shadow: none; filter: none; }
+      93% { transform: translate(-2px, 1px); text-shadow: 2px 0 #00ffff, -2px 0 #ff0055; }
+      95% { transform: translate(2px, -1px); text-shadow: -1px 0 #00ffff, 1px 0 #ff0055; filter: blur(0.5px); }
+      97% { transform: translate(-1px, -1px); text-shadow: none; }
+      100% { transform: translate(0); text-shadow: none; filter: none; }
     }
 
     .division-expanded-text {
@@ -420,26 +425,12 @@
       color: #333;
       line-height: 1.8;
       letter-spacing: -0.01em;
-      max-width: 900px;
-      animation: fadeInProgressive 1.8s ease-out forwards;
+      max-width: 950px;
     }
 
-    @keyframes fadeInGlitch {
-      0% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
-      30% { opacity: 0.6; transform: translateY(-2px); filter: blur(1px); }
-      60% { opacity: 0.4; transform: translateY(4px); }
-      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-
-    @keyframes fadeInProgressive {
-      0% { opacity: 0; transform: translateY(20px); }
-      50% { opacity: 0; }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* CARRUSEL / DVISION SLIDE CENTRADO */
+    /* 4. REDISEÑO DEL CARRUSEL PRINCIPAL (ESTRUCTURA DE CÉDULA CON ENLACE POP-OUT) */
     .cover-art-section {
-      padding: 80px 4vw 120px 4vw;
+      padding: 60px 4vw 120px 4vw;
       background-color: #f5f4f0;
       width: 100%;
       box-sizing: border-box;
@@ -457,7 +448,7 @@
 
     .carousel-container {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
       position: relative;
     }
@@ -477,14 +468,19 @@
       min-width: 100%;
       box-sizing: border-box;
       padding: 0 5px;
-      cursor: pointer;
+    }
+
+    .cover-card-cedula {
+      background: #ffffff;
+      border: 1px solid rgba(14, 14, 14, 0.1);
+      padding: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     }
 
     .cover-img-wrapper {
       width: 100%;
       aspect-ratio: 1 / 1;
       background: #e0dfd9;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
       overflow: hidden;
       position: relative;
     }
@@ -494,30 +490,48 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
     }
 
-    .carousel-item:hover .cover-img-wrapper img {
-      transform: scale(1.03);
-    }
-
-    .cover-caption {
-      margin-top: 18px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #444;
-      line-height: 1.4;
+    /* Cédula inferior con enlace al proceso creativo */
+    .cedula-footer-bar {
+      margin-top: 20px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
+      font-family: 'JetBrains Mono', monospace;
     }
 
-    .cover-caption .fig-num {
+    .cedula-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .cedula-fig {
+      font-size: 0.82rem;
       font-weight: 500;
       color: #0e0e0e;
-      display: block;
-      margin-bottom: 3px;
     }
+
+    .cedula-sub {
+      font-size: 0.72rem;
+      color: #666;
+    }
+
+    .cedula-process-link {
+      font-size: 0.72rem;
+      color: #0e0e0e;
+      text-decoration: none;
+      border-bottom: 1px solid #0e0e0e;
+      padding-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .cedula-process-link:hover { opacity: 0.6; }
 
     .space-nav-arrow {
       background: none;
@@ -535,6 +549,108 @@
       opacity: 1;
       transform: scale(1.25);
     }
+
+    /* 5. NUEVO CARRUSEL INTERACTIVO RETRO PARA THE HUMAN TAPES (ANIMACIÓN GIF ROTATIVA CON SOMBRA) */
+    .tapes-section {
+      padding: 120px 4vw;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.12);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .tapes-header-block {
+      max-width: 1100px;
+      margin: 0 auto 50px auto;
+    }
+
+    .tapes-carousel-frame {
+      max-width: 1100px;
+      margin: 0 auto 80px auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .tapes-track-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .tapes-track {
+      display: flex;
+      gap: 30px;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .tape-card-retro {
+      min-width: 320px;
+      background: #ffffff;
+      border: 1px solid rgba(14,14,14,0.08);
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+
+    /* Animación de rotación lenta 360° sobre su eje tipo GIF con sombra en el fondo */
+    .tape-object-animated {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #222 30%, #111 70%, #000 100%);
+      border: 3px solid #333;
+      margin-bottom: 25px;
+      position: relative;
+      animation: spinRetro 12s linear infinite;
+      filter: drop-shadow(0px 18px 12px rgba(0, 0, 0, 0.25)); /* Sombra inferior de profundidad */
+    }
+
+    .tape-object-animated::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 35px;
+      height: 35px;
+      background: #f5f4f0;
+      border-radius: 50%;
+      border: 2px solid #111;
+    }
+
+    @keyframes spinRetro {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .tape-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin: 10px 0 5px 0;
+    }
+
+    .tape-card-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+    }
+
+    /* Flechas específicas ➔ */
+    .tape-nav-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #0e0e0e;
+      padding: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .tape-nav-btn:hover { transform: scale(1.2); }
 
     /* SECCIÓN SHOP EN LANDING */
     #shop {
@@ -619,7 +735,7 @@
 </head>
 <body>
 
-  <!-- HEADER CON ENLACE DIRECTO A EBSHOP.HTML -->
+  <!-- HEADER NAVEGACIÓN -->
   <header class="ebberkett-header">
     <a href="ebberkett.html" class="ebberkett-brand">
       <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
@@ -653,7 +769,7 @@
       </a>
     </section>
 
-    <!-- SLIDE 2: MANIFIESTO INSTITUCIONAL SOLEMNE -->
+    <!-- 1. BLOQUE DE INTRODUCCIÓN CENTRADO CON TEXTO ALINEADO A LA IZQUIERDA -->
     <section id="manifesto" class="pavilion-manifesto-slide">
       <div class="manifesto-body-statement">
         <p>
@@ -665,20 +781,19 @@
       </div>
     </section>
 
-    <!-- SECCIÓN EXHIBICIÓN EN MUESTRA -->
+    <!-- 2. SECCIÓN EXHIBICIÓN EN MUESTRA (FOTO AUMENTADA, SIN (al-hur)) -->
     <section id="exhibicion" class="current-exhibition-section">
-      <div style="max-width: 1250px; margin: 0 auto 15px auto;">
+      <div style="max-width: 1300px; margin: 0 auto 15px auto;">
         <span class="section-label" style="margin-bottom:0;">Exhibición en Muestra</span>
       </div>
 
       <div class="exhibition-frame-outer">
-        <!-- Flecha gordita corta -->
         <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">◀</button>
 
         <div class="exhibition-slider-outer">
           <div class="exhibition-track" id="expoTrack">
             
-            <!-- SLIDE 01: ÁLVARO URBANO -->
+            <!-- SLIDE 01 -->
             <div class="exhibition-slide">
               <div class="exhibition-banner-wrapper">
                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
@@ -695,7 +810,7 @@
               </div>
             </div>
 
-            <!-- SLIDE 02: EL SUSURRO DE LOS 1000 TULIPANES -->
+            <!-- SLIDE 02 (SIN TEXTO al-hur) -->
             <div class="exhibition-slide">
               <div class="exhibition-banner-wrapper">
                 <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
@@ -703,7 +818,7 @@
               <div class="exhibition-meta-bar">
                 <div>
                   <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
-                  <span class="exhibition-artist">Artista: Haidar Hikmah (al-hur)</span>
+                  <span class="exhibition-artist">Artista: Haidar Hikmah</span>
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
                   <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
@@ -715,12 +830,11 @@
           </div>
         </div>
 
-        <!-- Flecha gordita corta -->
         <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">▶</button>
       </div>
     </section>
 
-    <!-- ARQUITECTURA / SALAS EN GRILLA TIPO SHOP -->
+    <!-- ARQUITECTURA / SALAS EN GRILLA -->
     <section id="salas" class="immersive-salas-section">
       <div class="salas-content-wrapper">
         <span class="section-label">Explora nuestras galerías</span>
@@ -765,79 +879,95 @@
       </div>
     </section>
 
-    <!-- SLIDE HERO PARA / DVISION CON EFECTO GLITCH Y TEXTO EXPANDIDO A LA IZQUIERDA -->
+    <!-- 3. TÍTULO / DVISION CON GLITCH Y SALTO DE LÍNEA TRAS 'BRANDING.' -->
     <section id="division" class="division-hero-slide">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
       <h2 class="glitch-title">/ dvision</h2>
       
       <p class="division-expanded-text">
-        Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos del pabellón para desarrollar y direccionar universos gráficos de nuestros clientes, transformando su visión en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
+        Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la integración de arte visual único para proyectos de branding.<br/><br/>
+        Conectamos la investigación de nuestros artistas internos del pabellón para desarrollar y direccionar universos gráficos de nuestros clientes, transformando su visión en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
       </p>
     </section>
 
-    <!-- CARRUSEL / DVISION SLIDE CENTRADO -->
+    <!-- 4. REDISEÑO DEL CARRUSEL CON FICHAS POP-OUT (ENLACE A PROCESO CREATIVO EN ESQUINA INF. DER.) -->
     <section class="cover-art-section">
       <div class="carousel-outer-frame">
-        <!-- Flecha gordita izquierda -->
         <button class="space-nav-arrow" onclick="moveCarousel(-1)" aria-label="Anterior">◀</button>
 
         <div class="carousel-container">
           <div class="carousel-track-wrapper">
             <div class="carousel-track" id="carouselTrack">
               
-              <!-- FIG 01 -->
-              <div class="carousel-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="cover-img-wrapper">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
-                </div>
-                <div class="cover-caption">
-                  <div>
-                    <span class="fig-num">FIG. 01 — AFRO.</span>
-                    <span>Art Direction &amp; Digital Canvas</span>
+              <!-- OBRA 01 -->
+              <div class="carousel-item">
+                <div class="cover-card-cedula">
+                  <div class="cover-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
                   </div>
-                  <span style="font-size: 0.68rem; color: #888;">01 / 04</span>
+                  <div class="cedula-footer-bar">
+                    <div class="cedula-title-block">
+                      <span class="cedula-fig">FIG. 01 — AFRO.</span>
+                      <span class="cedula-sub">Art Direction &amp; Digital Canvas</span>
+                    </div>
+                    <span class="cedula-process-link" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                      proceso creativo de la obra ↗
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <!-- FIG 02 -->
-              <div class="carousel-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
-                <div class="cover-img-wrapper">
-                  <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
-                </div>
-                <div class="cover-caption">
-                  <div>
-                    <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
-                    <span>Mixed Media Art Direction</span>
+              <!-- OBRA 02 -->
+              <div class="carousel-item">
+                <div class="cover-card-cedula">
+                  <div class="cover-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
                   </div>
-                  <span style="font-size: 0.68rem; color: #888;">02 / 04</span>
+                  <div class="cedula-footer-bar">
+                    <div class="cedula-title-block">
+                      <span class="cedula-fig">FIG. 02 — DO IT LIKE ME.</span>
+                      <span class="cedula-sub">Mixed Media Art Direction</span>
+                    </div>
+                    <span class="cedula-process-link" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
+                      proceso creativo de la obra ↗
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <!-- FIG 03 -->
-              <div class="carousel-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
-                <div class="cover-img-wrapper">
-                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
-                </div>
-                <div class="cover-caption">
-                  <div>
-                    <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
-                    <span>Remix Cover &amp; Typographic Direction</span>
+              <!-- OBRA 03 -->
+              <div class="carousel-item">
+                <div class="cover-card-cedula">
+                  <div class="cover-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
                   </div>
-                  <span style="font-size: 0.68rem; color: #888;">03 / 04</span>
+                  <div class="cedula-footer-bar">
+                    <div class="cedula-title-block">
+                      <span class="cedula-fig">FIG. 03 — IN THE NAME OF LOVE.</span>
+                      <span class="cedula-sub">Remix Cover &amp; Typographic Direction</span>
+                    </div>
+                    <span class="cedula-process-link" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
+                      proceso creativo de la obra ↗
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <!-- FIG 04 -->
-              <div class="carousel-item" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
-                <div class="cover-img-wrapper">
-                  <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Get Up Cover" />
-                </div>
-                <div class="cover-caption">
-                  <div>
-                    <span class="fig-num">FIG. 04 — GET UP.</span>
-                    <span>Chromatics &amp; Graphic Experimentation</span>
+              <!-- OBRA 04 -->
+              <div class="carousel-item">
+                <div class="cover-card-cedula">
+                  <div class="cover-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Get Up Cover" />
                   </div>
-                  <span style="font-size: 0.68rem; color: #888;">04 / 04</span>
+                  <div class="cedula-footer-bar">
+                    <div class="cedula-title-block">
+                      <span class="cedula-fig">FIG. 04 — GET UP.</span>
+                      <span class="cedula-sub">Chromatics &amp; Graphic Experimentation</span>
+                    </div>
+                    <span class="cedula-process-link" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
+                      proceso creativo de la obra ↗
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -845,12 +975,11 @@
           </div>
         </div>
 
-        <!-- Flecha gordita derecha -->
         <button class="space-nav-arrow" onclick="moveCarousel(1)" aria-label="Siguiente">▶</button>
       </div>
     </section>
 
-    <!-- SECCIÓN SHOP EN LANDING (CON BOTÓN DE ACCESO A EBSHOP.HTML) -->
+    <!-- SECCIÓN SHOP LANDING -->
     <section id="shop">
       <div style="max-width: 1250px; margin: 0 auto;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
@@ -865,7 +994,6 @@
         </div>
 
         <div class="salas-grid-shop">
-          <!-- PRODUCTO 1 -->
           <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Print 1" />
@@ -877,7 +1005,6 @@
             </div>
           </a>
 
-          <!-- PRODUCTO 2 -->
           <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Print 2" />
@@ -889,7 +1016,6 @@
             </div>
           </a>
 
-          <!-- PRODUCTO 3 -->
           <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Print 3" />
@@ -904,13 +1030,51 @@
       </div>
     </section>
 
-    <!-- SECCIÓN THE HUMAN TAPES -->
-    <section id="tapes" class="pavilion-manifesto-slide" style="border-top: 1px solid rgba(14,14,14,0.12);">
-      <div style="max-width: 900px; text-align: center;">
+    <!-- 5. NUEVO CARRUSEL INTERACTIVO RETRO DE THE HUMAN TAPES (OBJETO ANIMADO + FLECHAS ➔) -->
+    <section id="tapes" class="tapes-section">
+      <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
-        <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; line-height: 1.6; margin-bottom: 30px;">
-          Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 500; margin: 10px 0 20px 0;">The Human Tapes</h2>
+        <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #555; max-width: 800px; line-height: 1.6;">
+          Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana.
+        </p>
+      </div>
+
+      <!-- Carrusel horizontal interactivo animado -->
+      <div class="tapes-carousel-frame">
+        <button class="tape-nav-btn" onclick="moveTapes(-1)">➔</button>
+
+        <div class="tapes-track-wrapper">
+          <div class="tapes-track" id="tapesTrack">
+            
+            <div class="tape-card-retro">
+              <div class="tape-object-animated"></div>
+              <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
+              <span class="tape-card-meta">Diálogo con Eloria Studio · 45 min</span>
+            </div>
+
+            <div class="tape-card-retro">
+              <div class="tape-object-animated"></div>
+              <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
+              <span class="tape-card-meta">Curaduría Dvision · 52 min</span>
+            </div>
+
+            <div class="tape-card-retro">
+              <div class="tape-object-animated"></div>
+              <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
+              <span class="tape-card-meta">Residencia Ebberkett · 38 min</span>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="tape-nav-btn" onclick="moveTapes(1)">➔</button>
+      </div>
+
+      <!-- Reubicación integrada en la parte inferior -->
+      <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 40px;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
+          Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
         </p>
         <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
           <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
@@ -921,7 +1085,7 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT -->
+  <!-- MODAL POP-OUT DE FOTOS / VIDEO -->
   <div class="modal-overlay" id="caseModal">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -951,8 +1115,8 @@
     </div>
   </div>
 
-  <!-- FOOTER UNIFICADO -->
-  <footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
+  <!-- FOOTER -->
+  <footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15); background-color: #f5f4f0;">
     <div class="top" style="max-width: 1250px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
       <div class="brand-block" style="max-width: 350px;">
         <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
@@ -978,9 +1142,9 @@
 
   <script src="assets/js/main.js"></script>
 
-  <!-- SCRIPTS -->
+  <!-- SCRIPTS DE INTERACCIÓN -->
   <script>
-    /* EFECTO CODING SCRAMBLE HERO */
+    /* CODING SCRAMBLE HERO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
       const finalText = "Welcome to Ebberkett";
@@ -1016,7 +1180,7 @@
       }, speed);
     });
 
-    /* LÓGICA SLIDER EXHIBICIÓN EN MUESTRA */
+    /* SLIDER EXHIBICIÓN */
     let currentExpo = 0;
     const totalExpos = 2;
     let expoInterval = setInterval(autoExpoSlide, 5000);
@@ -1043,7 +1207,7 @@
       updateExpoSlide();
     }
 
-    /* LÓGICA CARRUSEL DVISION */
+    /* CARRUSEL DVISION */
     let currentSlide = 0;
     const totalSlides = 4;
 
@@ -1059,7 +1223,17 @@
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    /* LÓGICA MODAL POP-OUT */
+    /* CARRUSEL TAPES */
+    let currentTape = 0;
+    function moveTapes(dir) {
+      currentTape += dir;
+      if (currentTape < 0) currentTape = 0;
+      if (currentTape > 1) currentTape = 1;
+      const track = document.getElementById('tapesTrack');
+      track.style.transform = `translateX(-${currentTape * 300}px)`;
+    }
+
+    /* MODAL POP-OUT */
     function openModal(title, artist, medium, year, location, videoUrl) {
       document.getElementById('mTitle').innerText = title;
       document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
