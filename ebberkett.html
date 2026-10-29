@@ -10,7 +10,7 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes: Inter, JetBrains Mono, Pixelify Sans y Space Grotesk -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -52,7 +52,7 @@
       color: #0e0e0e;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
-      font-weight: 400; /* Peso normal original sin bold */
+      font-weight: 400;
       letter-spacing: 0.05em;
     }
 
@@ -80,7 +80,7 @@
       color: #0e0e0e;
     }
 
-    /* BOTÓN DE RETORNO COMPLETO CON TIPOGRAFÍA ELORIA */
+    /* BOTÓN DE RETORNO COMPLETO */
     .back-to-studio {
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
@@ -180,7 +180,7 @@
 
     .manifesto-body p { margin: 0; }
 
-    /* NOMENCLATURA DE SALAS */
+    /* NOMENCLATURA DE SALAS (CON NÚMEROS PIXELIFY) */
     .rooms-nav-block {
       margin-top: 100px;
       padding-top: 60px;
@@ -214,8 +214,8 @@
     .room-card:hover .room-num, .room-card:hover .room-meta { color: #a0a0a0; }
 
     .room-num {
-      font-family: 'Pixelify Sans', cursive, monospace;
-      font-size: 2.2rem;
+      font-family: 'Pixelify Sans', cursive, monospace; /* NÚMEROS MANTENIDOS EN PIXEL */
+      font-size: 2.4rem;
       color: #555;
       margin-bottom: 15px;
       display: block;
@@ -237,16 +237,33 @@
       line-height: 1.4;
     }
 
+    /* SECCIÓN DVISION (INTRODUCCIÓN DE LA DIVISIÓN) */
+    .division-intro-block {
+      padding: 100px 3.5vw 60px 3.5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+    }
+
+    .division-intro-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: #333;
+      max-width: 850px;
+      margin-top: 25px;
+    }
+
     /* COVER ART DIVISION */
     .cover-art-section {
-      padding: 120px 3.5vw;
-      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 60px 3.5vw 120px 3.5vw;
       background-color: #f5f4f0;
     }
 
     .gallery-header-block {
       max-width: 1100px;
-      margin: 0 auto 80px auto;
+      margin: 0 auto 60px auto;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -255,12 +272,18 @@
     }
 
     .gallery-header-block h2 {
-      font-family: 'Pixelify Sans', cursive, monospace;
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
-      font-weight: 500;
-      letter-spacing: -0.01em;
+      font-family: 'Inter', sans-serif; /* SANS-SERIF PARA COVER ART */
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
       margin: 0;
+    }
+
+    .gallery-header-block h2 span.pixel-part {
+      font-family: 'Pixelify Sans', cursive, monospace; /* PIXEL PARA DVISION */
+      font-weight: 500;
       text-transform: lowercase;
+      letter-spacing: 0.02em;
     }
 
     .editorial-cover-grid {
@@ -406,9 +429,9 @@
     </a>
 
     <nav class="ebberkett-nav-links">
-      <a href="#manifesto">El Pabellón</a>
+      <a href="#manifesto">Intro</a>
       <a href="#salas">Salas</a>
-      <a href="#coverart">cover art / dvision</a>
+      <a href="#division">/ Dvision</a>
       <a href="#tapes">The Human Tapes</a>
     </nav>
 
@@ -475,12 +498,21 @@
       </div>
     </section>
 
-    <!-- COVER ART DIVISION -->
-    <section id="coverart" class="cover-art-section">
+    <!-- INTRO / DVISION -->
+    <section id="division" class="division-intro-block">
+      <span class="section-label">Eloria Brista Studio × Ebberkett</span>
+      <h2 style="font-family: 'Pixelify Sans', cursive, monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; margin: 0; text-transform: lowercase;">/ dvision</h2>
+      
+      <p class="division-intro-text">
+        Una división dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
+      </p>
+    </section>
+
+    <!-- COVER ART DIVISION (TÍTULO MIXTO SANS + PIXEL) -->
+    <section class="cover-art-section">
       <div class="gallery-header-block">
         <div>
-          <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-          <h2>cover art / dvision</h2>
+          <h2>Cover Art / <span class="pixel-part">dvision</span></h2>
         </div>
         <p style="max-width: 420px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #555; line-height: 1.5; margin: 0;">
           Selección de portadas de discos, artes de sencillos y conceptos visuales desarrollados como piezas de arte independiente. Haz clic en cualquier obra para abrir la cédula y el video BTS.
@@ -536,7 +568,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN THE HUMAN TAPES (CON FUENTE SPACE GROTESK) -->
+    <!-- SECCIÓN THE HUMAN TAPES -->
     <section id="tapes" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
       <span class="section-label">Ebberkett Dialogues</span>
       <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
