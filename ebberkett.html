@@ -10,14 +10,23 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes limpias y sólidas -->
+  <!-- Fuentes secundarias (Inter y Space Grotesk para textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
+    /* CARGA DE TU ARCHIVO LOCAL EXACTO DE GEIST PIXEL */
+    @font-face {
+      font-family: 'GeistPixelLocal';
+      src: url('assets/Geist-Pixel.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -107,11 +116,11 @@
       text-align: center;
     }
 
-    /* TÍTULO PRINCIPAL CON PIXELIFY SANS SÓLIDO Y LIMPIO */
+    /* TÍTULO PRINCIPAL CON TU FUENTE LOCAL */
     .coding-title {
-      font-family: 'Pixelify Sans', monospace;
+      font-family: 'GeistPixelLocal', monospace;
       font-size: clamp(2.2rem, 5vw, 5.2rem);
-      font-weight: 600;
+      font-weight: normal;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       color: #0e0e0e;
@@ -181,7 +190,7 @@
 
     .manifesto-body p { margin: 0; }
 
-    /* SALAS (NÚMEROS SÓLIDOS Y LIMPIOS) */
+    /* SALAS (NÚMEROS CON TU FUENTE LOCAL) */
     .rooms-nav-block {
       margin-top: 100px;
       padding-top: 60px;
@@ -215,7 +224,7 @@
     .room-card:hover .room-num, .room-card:hover .room-meta { color: #a0a0a0; }
 
     .room-num {
-      font-family: 'Pixelify Sans', monospace;
+      font-family: 'GeistPixelLocal', monospace;
       font-size: 2.4rem;
       color: #555;
       margin-bottom: 15px;
@@ -281,8 +290,8 @@
     }
 
     .gallery-header-block h2 span.pixel-part {
-      font-family: 'Pixelify Sans', monospace;
-      font-weight: 600;
+      font-family: 'GeistPixelLocal', monospace;
+      font-weight: normal;
       text-transform: lowercase;
       letter-spacing: 0.02em;
     }
@@ -502,7 +511,7 @@
     <!-- INTRO / DVISION -->
     <section id="division" class="division-intro-block">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-      <h2 style="font-family: 'Pixelify Sans', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; margin: 0; text-transform: lowercase;">/ dvision</h2>
+      <h2 style="font-family: 'GeistPixelLocal', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: normal; margin: 0; text-transform: lowercase;">/ dvision</h2>
       
       <p class="division-intro-text">
         Una división dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
@@ -574,7 +583,7 @@
       <span class="section-label">Ebberkett Dialogues</span>
       <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
       <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 750px; line-height: 1.6; margin-bottom: 30px;">
-        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
+        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes in Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
       </p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
         <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
