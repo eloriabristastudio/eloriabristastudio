@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0e0e0e" />
+  <title>Ebberkett Editions — Shop</title>
+  <meta name="description" content="Ebberkett Editions — Original art, limited prints, and objects." />
+  
+  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains-Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  
+  <style>
+    @font-face {
+      font-family: 'GeistPixelLocal';
+      src: url('assets/Geist-Pixel.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: #f5f4f0;
+      color: #0e0e0e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+
+    /* HEADER EDITORIAL CENTRADO ESTILO STUDIO/MUSEO */
+    .shop-header {
+      width: 100%;
+      padding: 30px 4vw 15px 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      background-color: #f5f4f0;
+    }
+
+    .shop-header-icon {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #0e0e0e;
+      padding: 5px;
+    }
+
+    .shop-brand-title {
+      font-family: 'GeistPixelLocal', monospace;
+      font-size: 1.8rem;
+      text-decoration: none;
+      color: #0e0e0e;
+      letter-spacing: 0.05em;
+    }
+
+    /* SUBMENÚ DE CATEGORÍAS */
+    .shop-categories-nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      padding: 15px 4vw 25px 4vw;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+    }
+
+    .shop-categories-nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #666;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 5px;
+      transition: color 0.2s ease;
+    }
+
+    .shop-categories-nav a:hover,
+    .shop-categories-nav a.active {
+      color: #0e0e0e;
+    }
+
+    .shop-categories-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #0e0e0e;
+    }
+
+    /* BARRA DE FILTROS Y CONTADOR */
+    .shop-filter-bar {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 30px 4vw 20px 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 25px;
+    }
+
+    .filter-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .filter-item:hover { color: #0e0e0e; }
+
+    /* GRILLA VERTICAL TIPO STUDIO DE ARTE (FOTO REFERENCIA 2) */
+    .shop-products-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px 4vw 120px 4vw;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .product-card {
+      text-decoration: none;
+      color: #0e0e0e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-image-frame {
+      width: 100%;
+      aspect-ratio: 4 / 5; /* Formato vertical impecable */
+      background-color: #ebeae5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      box-sizing: border-box;
+      overflow: hidden;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-image-frame img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image-frame {
+      background-color: #e3e2dd;
+    }
+
+    .product-card:hover .product-image-frame img {
+      transform: scale(1.03);
+    }
+
+    .product-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      margin: 0 0 8px 0;
+      color: #111;
+    }
+
+    .product-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    /* FOOTER UNIFICADO */
+    .site-footer {
+      padding: 80px 4vw 40px 4vw;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      background-color: #f5f4f0;
+    }
+
+    @media (max-width: 850px) {
+      .shop-products-grid { grid-template-columns: 1fr; gap: 50px; }
+      .shop-categories-nav { gap: 15px; overflow-x: auto; justify-content: flex-start; }
+      .shop-filter-bar { flex-direction: column; gap: 15px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER SHOP -->
+  <header class="shop-header">
+    <button class="shop-header-icon" aria-label="Search">🔍</button>
+    <a href="ebberkett.html" class="shop-brand-title">EBBERKETT EDITIONS</a>
+    <button class="shop-header-icon" aria-label="Cart">🛍️</button>
+  </header>
+
+  <!-- NAVEGACIÓN DE CATEGORÍAS (REFERENCIA FOTO 2) -->
+  <nav class="shop-categories-nav">
+    <a href="#">Prints</a>
+    <a href="#" class="active">Originals</a>
+    <a href="#">Art Objects</a>
+    <a href="#">Shop by Artist ▾</a>
+    <a href="#">Gift Cards</a>
+    <a href="ebberkett.html">About ▾</a>
+  </nav>
+
+  <main>
+    <!-- BARRA DE FILTROS -->
+    <div class="shop-filter-bar">
+      <div class="filter-group">
+        <span class="filter-item">Filter: Availability ▾</span>
+        <span class="filter-item">Price ▾</span>
+      </div>
+      <div class="filter-group">
+        <span class="filter-item">Sort by: Featured ▾</span>
+        <span>37 products</span>
+      </div>
+    </div>
+
+    <!-- GRILLA DE PRODUCTOS EDITORIAL (REFERENCIA FOTO 2) -->
+    <section class="shop-products-grid">
+      
+      <!-- PIEZA 1 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop" alt="What You Ingest You Become #4" />
+        </div>
+        <h3 class="product-title">What You Ingest You Become #4</h3>
+        <span class="product-price">$325.00 USD</span>
+      </a>
+
+      <!-- PIEZA 2 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Gargantua Bay #5" />
+        </div>
+        <h3 class="product-title">Gargantua Bay #5</h3>
+        <span class="product-price">$325.00 USD</span>
+      </a>
+
+      <!-- PIEZA 3 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Where You End and I begin" />
+        </div>
+        <h3 class="product-title">Where You End and I begin (study 2)</h3>
+        <span class="product-price">$300.00 USD</span>
+      </a>
+
+      <!-- PIEZA 4 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="Interior Study #1" />
+        </div>
+        <h3 class="product-title">Interior Study #1 — Ebberkett Lab</h3>
+        <span class="product-price">$450.00 USD</span>
+      </a>
+
+      <!-- PIEZA 5 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="Chromatic Form" />
+        </div>
+        <h3 class="product-title">Chromatic Form &amp; Distortion</h3>
+        <span class="product-price">$280.00 USD</span>
+      </a>
+
+      <!-- PIEZA 6 -->
+      <a href="#" class="product-card">
+        <div class="product-image-frame">
+          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop" alt="Passage Ways" />
+        </div>
+        <h3 class="product-title">Passage Ways (Live Archive)</h3>
+        <span class="product-price">$380.00 USD</span>
+      </a>
+
+    </section>
+  </main>
+
+  <!-- FOOTER UNIFICADO -->
+  <footer class="site-footer">
+    <div style="max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+      <div style="max-width: 350px;">
+        <span style="font-size: 1.2rem; font-weight: 300;">EBBERKETT EDITIONS</span>
+        <p style="color:#777;margin-top:10px;line-height:1.55;font-size:0.85rem;">Official shop for limited prints, original canvas, and art objects. San Francisco / Mexico City.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
+        <a href="ebberkett.html" style="text-decoration: none; color: #0e0e0e;">Virtual Pavilion</a>
+        <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Eloria Studio</a>
+        <a href="#" style="text-decoration: none; color: #0e0e0e;">Shipping &amp; Returns</a>
+      </div>
+    </div>
+    <div style="max-width: 1300px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+      <span>© 2026 EBBERKETT Editions</span>
+      <span>All Rights Reserved</span>
+    </div>
+  </footer>
+
+</body>
+</html>
