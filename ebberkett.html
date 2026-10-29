@@ -10,7 +10,7 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes secundarias (Inter, JetBrains Mono y Space Grotesk) -->
+  <!-- Fuentes secundarias -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
-    /* CARGA DE TU ARCHIVO LOCAL EXACTO DE GEIST PIXEL */
+    /* FUENTE LOCAL GEIST PIXEL */
     @font-face {
       font-family: 'GeistPixelLocal';
       src: url('assets/Geist-Pixel.woff2') format('woff2');
@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* HEADER AUTÓNOMO DE EBBERKETT */
+    /* HEADER CON MAYOR ESPACIADO DE NAVEGACIÓN */
     .ebberkett-header {
       position: fixed;
       top: 0;
@@ -74,14 +74,14 @@
 
     .ebberkett-nav-links {
       display: flex;
-      gap: 30px;
+      gap: 45px; /* Espaciado amplio para apreciar cada sección */
     }
 
     .ebberkett-nav-links a {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: #666;
       text-decoration: none;
       transition: color 0.2s ease;
@@ -103,7 +103,7 @@
 
     .back-to-studio:hover { color: #0e0e0e; }
 
-    /* HERO FULLSCREEN SLIDE */
+    /* HERO PRINCIPAL */
     .pavilion-hero {
       width: 100%;
       height: 100vh;
@@ -117,7 +117,6 @@
       text-align: center;
     }
 
-    /* TÍTULO PRINCIPAL CON FUENTE LOCAL */
     .coding-title {
       font-family: 'GeistPixelLocal', monospace;
       font-size: clamp(2.2rem, 5vw, 5.2rem);
@@ -136,7 +135,8 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-top: 24px;
-      max-width: 600px;
+      max-width: 650px;
+      line-height: 1.6;
     }
 
     .more-info-scroll {
@@ -159,11 +159,32 @@
 
     .more-info-scroll:hover { opacity: 0.5; }
 
-    /* MANIFIESTO */
-    .pavilion-manifesto-section {
-      padding: 140px 4vw 100px 4vw;
+    /* SLIDE 2: MANIFIESTO SOLEMNE Y LLAMATIVO */
+    .pavilion-manifesto-slide {
       width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 100px 6vw;
       box-sizing: border-box;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.08);
+    }
+
+    .manifesto-body-statement {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      max-width: 1000px;
+      text-align: center;
     }
 
     .section-label {
@@ -172,32 +193,16 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #777;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       display: block;
     }
 
-    .manifesto-body {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.3rem, 2.5vw, 2.2rem);
-      font-weight: 300;
-      line-height: 1.5;
-      letter-spacing: -0.02em;
-      color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .manifesto-body p { margin: 0; }
-
-    /* SECCIÓN EN EXHIBICIÓN - LEIBLE Y CONTROLADO EN ANCHO */
+    /* SECCIÓN EXHIBICIÓN EN MUESTRA */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 4vw;
       background-color: #f5f4f0;
-      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
     }
 
@@ -230,7 +235,7 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 9; /* Formato de proporción legible */
+      aspect-ratio: 16 / 9;
       background: #e0dfd9;
       overflow: hidden;
       margin-top: 15px;
@@ -277,26 +282,25 @@
       letter-spacing: 0.05em;
     }
 
-    /* FLECHAS NEGRAS CORTAS Y GORDITAS EN ESPACIO NEGATIVO LATERALL */
+    /* FLECHAS GORDITAS Y CORTAS */
     .expo-arrow-btn {
       background: none;
       border: none;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 1.6rem;
       cursor: pointer;
       color: #0e0e0e;
       padding: 10px;
       transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.75;
+      opacity: 0.8;
       user-select: none;
     }
 
     .expo-arrow-btn:hover {
       opacity: 1;
-      transform: scale(1.2);
+      transform: scale(1.25);
     }
 
-    /* SECCIÓN ARQUITECTURA / SALAS VIRTUALES INMERSIVAS CON FOTO DE MUSEO */
+    /* ARQUITECTURA Y SALAS VIRTUALES CON SEÑALÉTICA DE MUSEO */
     .immersive-salas-section {
       width: 100%;
       min-height: 100vh;
@@ -318,7 +322,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(14, 14, 14, 0.78);
+      background: rgba(14, 14, 14, 0.82);
       z-index: 1;
     }
 
@@ -338,9 +342,9 @@
     }
 
     .room-card-immersive {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       padding: 45px 35px;
       text-decoration: none;
       color: #f5f4f0;
@@ -381,35 +385,63 @@
       line-height: 1.5;
     }
 
-    /* INTRO / DVISION EXPANDIDO */
-    .division-intro-block {
-      padding: 120px 4vw 60px 4vw;
+    /* SLIDE HERO PARA / DVISION CON EFECTO GLITCH Y FADE IN */
+    .division-hero-slide {
       width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 4vw;
       box-sizing: border-box;
-      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      border-top: 1px solid rgba(14, 14, 14, 0.12);
+      background-color: #f5f4f0;
     }
 
-    .division-intro-text {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.2rem, 2vw, 1.7rem);
-      font-weight: 300;
-      line-height: 1.6;
-      color: #333;
-      max-width: 1100px;
-      margin: 25px auto 0 auto;
+    /* ANIMACIÓN GLITCH & FADE IN PROGRESIVO */
+    .glitch-title {
+      font-family: 'GeistPixelLocal', monospace;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-weight: normal;
+      color: #0e0e0e;
+      margin: 0;
+      position: relative;
+      animation: fadeInGlitch 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
-    /* COVER ART / DVISION EXPANDIDO CON FLECHAS EN ESPACIO NEGATIVO */
+    .glitch-subtitle {
+      animation: fadeInProgressive 1.8s ease-out forwards;
+    }
+
+    @keyframes fadeInGlitch {
+      0% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
+      30% { opacity: 0.6; transform: translateY(-2px); filter: blur(1px); }
+      60% { opacity: 0.4; transform: translateY(4px); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    @keyframes fadeInProgressive {
+      0% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 0; }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CARRUSEL / DVISION SLIDE CENTRADO */
     .cover-art-section {
-      padding: 60px 4vw 140px 4vw;
+      padding: 100px 4vw;
       background-color: #f5f4f0;
       width: 100%;
       box-sizing: border-box;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
     }
 
     .carousel-outer-frame {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -485,20 +517,20 @@
       background: none;
       border: none;
       font-size: 1.8rem;
-      font-weight: bold;
       cursor: pointer;
       color: #0e0e0e;
       padding: 10px;
       transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.75;
+      opacity: 0.8;
+      user-select: none;
     }
 
     .space-nav-arrow:hover {
       opacity: 1;
-      transform: scale(1.2);
+      transform: scale(1.25);
     }
 
-    /* MODAL POP-OUT (CÉDULA Y PROCESO) */
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -568,13 +600,13 @@
       .modal-content-card { padding: 30px 20px; }
       .salas-grid-wide { grid-template-columns: 1fr; }
       .exhibition-frame-outer { gap: 5px; }
-      .expo-arrow-btn { font-size: 1.4rem; padding: 5px; }
+      .expo-arrow-btn { font-size: 1.3rem; padding: 5px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER AUTÓNOMO DE EBBERKETT -->
+  <!-- HEADER CON NAVEGACIÓN AMPLIADA -->
   <header class="ebberkett-header">
     <a href="ebberkett.html" class="ebberkett-brand">
       <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
@@ -583,7 +615,7 @@
 
     <nav class="ebberkett-nav-links">
       <a href="#manifesto">Intro</a>
-      <a href="#exhibicion">En Exhibición</a>
+      <a href="#exhibicion">Exhibición en Muestra</a>
       <a href="#salas">Salas</a>
       <a href="#division">/ Dvision</a>
       <a href="#tapes">The Human Tapes</a>
@@ -593,7 +625,7 @@
   </header>
 
   <main>
-    <!-- HERO FULLSCREEN SLIDE -->
+    <!-- HERO PRINCIPAL -->
     <section class="pavilion-hero">
       <h1 class="coding-title" id="codingHeroTitle">Welcome to Ebberkett</h1>
       
@@ -607,32 +639,27 @@
       </a>
     </section>
 
-    <!-- MANIFIESTO -->
-    <section id="manifesto" class="pavilion-manifesto-section">
-      <span class="section-label" style="max-width: 1200px; margin: 0 auto 30px auto;">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
-
-      <div class="manifesto-body">
+    <!-- SLIDE 2: MANIFIESTO INSTITUCIONAL SOLEMNE -->
+    <section id="manifesto" class="pavilion-manifesto-slide">
+      <div class="manifesto-body-statement">
         <p>
-          EBBERKETT is the archive, documentation, and exhibition pavilion by <strong>@eloriabristastudio</strong>. We operate as the studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas.
+          Ebberkett operates as an independent studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas.
         </p>
         <p>
-          Today, tech tools allow us to achieve instant technical perfection. However, we choose to focus on two key factors: the purity of intuition and the stories behind the works. We don't see technology as an enemy, but as a canvas; we are interested in exploring how software and human sensibility dialogue with each other.
-        </p>
-        <p>
-          More than a static gallery, this pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
+          This pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
         </p>
       </div>
     </section>
 
-    <!-- SECCIÓN EN EXHIBICIÓN - LEIBLE Y CON FLECHAS EN ESPACIO NEGATIVO LATERALL -->
+    <!-- SECCIÓN EXHIBICIÓN EN MUESTRA -->
     <section id="exhibicion" class="current-exhibition-section">
       <div style="max-width: 1100px; margin: 0 auto 15px auto;">
-        <span class="section-label" style="margin-bottom:0;">En Exhibición — Muestra Vigente</span>
+        <span class="section-label" style="margin-bottom:0;">Exhibición en Muestra</span>
       </div>
 
       <div class="exhibition-frame-outer">
-        <!-- Flecha Izquierda corta y gordita en espacio negativo -->
-        <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">←</button>
+        <!-- Flecha gordita corta -->
+        <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">◀</button>
 
         <div class="exhibition-slider-outer">
           <div class="exhibition-track" id="expoTrack">
@@ -674,15 +701,15 @@
           </div>
         </div>
 
-        <!-- Flecha Derecha corta y gordita en espacio negativo -->
-        <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">→</button>
+        <!-- Flecha gordita corta -->
+        <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">▶</button>
       </div>
     </section>
 
-    <!-- SECCIÓN ARQUITECTURA / SALAS VIRTUALES CON IMAGEN DE MUSEO INMERSIVA -->
+    <!-- ARQUITECTURA / SEÑALÉTICA DE GALERÍAS -->
     <section id="salas" class="immersive-salas-section">
       <div class="salas-content-wrapper">
-        <span class="section-label" style="color: #aaa;">Pavilion Architecture — Active Galleries</span>
+        <span class="section-label" style="color: #aaa;">Pavilion Architecture — Explora las siguientes galerías</span>
 
         <div class="salas-grid-wide">
           <!-- SALA 1 -->
@@ -709,28 +736,21 @@
       </div>
     </section>
 
-    <!-- INTRO / DVISION -->
-    <section id="division" class="division-intro-block">
-      <div style="max-width: 1100px; margin: 0 auto;">
-        <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-        <h2 style="font-family: 'GeistPixelLocal', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: normal; margin: 0; text-transform: lowercase;">/ dvision</h2>
-      </div>
+    <!-- SLIDE HERO PARA / DVISION CON EFECTO GLITCH Y FADE IN -->
+    <section id="division" class="division-hero-slide">
+      <span class="section-label">Eloria Brista Studio × Ebberkett</span>
+      <h2 class="glitch-title">/ dvision</h2>
       
-      <p class="division-intro-text">
-        Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
+      <p class="hero-sub-description glitch-subtitle">
+        Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos del pabellón para desarrollar y direccionar universos gráficos de nuestros clientes, transformando su visión en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
       </p>
     </section>
 
-    <!-- COVER ART / DVISION CON FLECHAS EN ESPACIO NEGATIVO -->
+    <!-- CARRUSEL / DVISION SLIDE CENTRADO -->
     <section class="cover-art-section">
-      <div style="max-width: 1100px; margin: 0 auto 30px auto; display: flex; justify-content: space-between; align-items: flex-end;">
-        <span class="section-label" style="margin-bottom:0;">Selección Curada — Colección Permanente</span>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #777;">Haz clic en cualquier obra para ver su ficha y descubrir el proceso creativo detrás</span>
-      </div>
-
       <div class="carousel-outer-frame">
-        <!-- Flecha Izquierda -->
-        <button class="space-nav-arrow" onclick="moveCarousel(-1)" aria-label="Anterior">←</button>
+        <!-- Flecha gordita izquierda -->
+        <button class="space-nav-arrow" onclick="moveCarousel(-1)" aria-label="Anterior">◀</button>
 
         <div class="carousel-container">
           <div class="carousel-track-wrapper">
@@ -796,20 +816,20 @@
           </div>
         </div>
 
-        <!-- Flecha Derecha -->
-        <button class="space-nav-arrow" onclick="moveCarousel(1)" aria-label="Siguiente">→</button>
+        <!-- Flecha gordita derecha -->
+        <button class="space-nav-arrow" onclick="moveCarousel(1)" aria-label="Siguiente">▶</button>
       </div>
     </section>
 
     <!-- SECCIÓN THE HUMAN TAPES -->
-    <section id="tapes" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
-      <div style="max-width: 1200px; margin: 0 auto;">
+    <section id="tapes" class="pavilion-manifesto-slide" style="border-top: 1px solid rgba(14,14,14,0.12);">
+      <div style="max-width: 900px; text-align: center;">
         <span class="section-label">Ebberkett Dialogues</span>
         <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
-        <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 850px; line-height: 1.6; margin-bottom: 30px;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; line-height: 1.6; margin-bottom: 30px;">
           Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
         </p>
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
+        <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
           <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
           <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Apple Podcasts</a>
           <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Amazon Music</a>
@@ -818,7 +838,7 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT (CÉDULA Y PROCESO) -->
+  <!-- MODAL POP-OUT -->
   <div class="modal-overlay" id="caseModal">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -875,9 +895,9 @@
 
   <script src="assets/js/main.js"></script>
 
-  <!-- SCRIPTS DE INTERACCIÓN, SLIDER AUTO-PLAY Y CARRUSEL -->
+  <!-- SCRIPTS -->
   <script>
-    /* EFECTO CODING SCRAMBLE */
+    /* EFECTO CODING SCRAMBLE HERO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
       const finalText = "Welcome to Ebberkett";
@@ -913,7 +933,7 @@
       }, speed);
     });
 
-    /* LÓGICA SLIDER EN EXHIBICIÓN CON AUTOPLAY AUTOMÁTICO */
+    /* LÓGICA SLIDER EXHIBICIÓN EN MUESTRA */
     let currentExpo = 0;
     const totalExpos = 2;
     let expoInterval = setInterval(autoExpoSlide, 5000);
@@ -940,7 +960,7 @@
       updateExpoSlide();
     }
 
-    /* LÓGICA DEL CARRUSEL DVISION */
+    /* LÓGICA CARRUSEL DVISION */
     let currentSlide = 0;
     const totalSlides = 4;
 
@@ -956,7 +976,7 @@
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    /* LÓGICA DE MODALES POP-OUT */
+    /* LÓGICA MODAL POP-OUT */
     function openModal(title, artist, medium, year, location, videoUrl) {
       document.getElementById('mTitle').innerText = title;
       document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
