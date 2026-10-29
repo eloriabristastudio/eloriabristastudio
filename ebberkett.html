@@ -159,7 +159,7 @@
 
     .more-info-scroll:hover { opacity: 0.5; }
 
-    /* MANIFIESTO FULL-WIDTH EXPANDIDO */
+    /* MANIFIESTO */
     .pavilion-manifesto-section {
       padding: 140px 4vw 100px 4vw;
       width: 100%;
@@ -186,24 +186,33 @@
       display: flex;
       flex-direction: column;
       gap: 40px;
-      max-width: 1400px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .manifesto-body p { margin: 0; }
 
-    /* SECCIÓN EN EXHIBICIÓN - SLIDER AUTOPLAY FULL-WIDTH */
+    /* SECCIÓN EN EXHIBICIÓN - LEIBLE Y CONTROLADO EN ANCHO */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 4vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.15);
       box-sizing: border-box;
+    }
+
+    .exhibition-frame-outer {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
       position: relative;
     }
 
     .exhibition-slider-outer {
       width: 100%;
-      position: relative;
       overflow: hidden;
     }
 
@@ -221,11 +230,11 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 21 / 9; /* Ultra-wide editorial */
+      aspect-ratio: 16 / 9; /* Formato de proporción legible */
       background: #e0dfd9;
       overflow: hidden;
-      margin-top: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      margin-top: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
     }
 
     .exhibition-banner-wrapper img {
@@ -239,14 +248,14 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 30px;
+      margin-top: 25px;
       flex-wrap: wrap;
       gap: 20px;
     }
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.8rem, 3.8vw, 3.5rem);
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
@@ -255,7 +264,7 @@
 
     .exhibition-artist {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #666;
       margin-top: 6px;
       display: block;
@@ -263,22 +272,23 @@
 
     .exhibition-dates {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
     }
 
-    /* FLECHAS NEGRAS CHIQUITAS Y GORDITAS DE CONTROL SLIDE */
+    /* FLECHAS NEGRAS CORTAS Y GORDITAS EN ESPACIO NEGATIVO LATERALL */
     .expo-arrow-btn {
       background: none;
       border: none;
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 1.8rem;
+      font-weight: 700;
       cursor: pointer;
       color: #0e0e0e;
-      padding: 10px 15px;
+      padding: 10px;
       transition: transform 0.2s ease, opacity 0.2s ease;
       opacity: 0.75;
+      user-select: none;
     }
 
     .expo-arrow-btn:hover {
@@ -301,7 +311,6 @@
       color: #f5f4f0;
     }
 
-    /* Máscara oscura para legibilidad perfecta */
     .immersive-salas-section::before {
       content: '';
       position: absolute;
@@ -317,7 +326,8 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 1400px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .salas-grid-wide {
@@ -381,12 +391,12 @@
 
     .division-intro-text {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
       font-weight: 300;
       line-height: 1.6;
       color: #333;
-      max-width: 1200px;
-      margin-top: 25px;
+      max-width: 1100px;
+      margin: 25px auto 0 auto;
     }
 
     /* COVER ART / DVISION EXPANDIDO CON FLECHAS EN ESPACIO NEGATIVO */
@@ -409,7 +419,7 @@
 
     .carousel-container {
       width: 100%;
-      max-width: 650px;
+      max-width: 600px;
       margin: 0 auto;
       position: relative;
     }
@@ -557,7 +567,8 @@
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; }
       .salas-grid-wide { grid-template-columns: 1fr; }
-      .exhibition-banner-wrapper { aspect-ratio: 16 / 10; }
+      .exhibition-frame-outer { gap: 5px; }
+      .expo-arrow-btn { font-size: 1.4rem; padding: 5px; }
     }
   </style>
 </head>
@@ -598,7 +609,7 @@
 
     <!-- MANIFIESTO -->
     <section id="manifesto" class="pavilion-manifesto-section">
-      <span class="section-label">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
+      <span class="section-label" style="max-width: 1200px; margin: 0 auto 30px auto;">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
 
       <div class="manifesto-body">
         <p>
@@ -613,55 +624,58 @@
       </div>
     </section>
 
-    <!-- SECCIÓN EN EXHIBICIÓN (SLIDER AUTO-PLAY CON CONTROLES CHICOS) -->
+    <!-- SECCIÓN EN EXHIBICIÓN - LEIBLE Y CON FLECHAS EN ESPACIO NEGATIVO LATERALL -->
     <section id="exhibicion" class="current-exhibition-section">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;">
+      <div style="max-width: 1100px; margin: 0 auto 15px auto;">
         <span class="section-label" style="margin-bottom:0;">En Exhibición — Muestra Vigente</span>
-        <div style="display: flex; gap: 10px;">
-          <!-- Flechas chiquitas y gorditas -->
-          <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">◀</button>
-          <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">▶</button>
-        </div>
       </div>
 
-      <div class="exhibition-slider-outer">
-        <div class="exhibition-track" id="expoTrack">
-          
-          <!-- SLIDE 01: ÁLVARO URBANO -->
-          <div class="exhibition-slide">
-            <div class="exhibition-banner-wrapper">
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
-            </div>
-            <div class="exhibition-meta-bar">
-              <div>
-                <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
-                <span class="exhibition-artist">Artista: Álvaro Urbano</span>
-              </div>
-              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
-                <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
-                <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
-              </div>
-            </div>
-          </div>
+      <div class="exhibition-frame-outer">
+        <!-- Flecha Izquierda corta y gordita en espacio negativo -->
+        <button class="expo-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">←</button>
 
-          <!-- SLIDE 02: EL SUSURRO DE LOS 1000 TULIPANES -->
-          <div class="exhibition-slide">
-            <div class="exhibition-banner-wrapper">
-              <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
-            </div>
-            <div class="exhibition-meta-bar">
-              <div>
-                <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
-                <span class="exhibition-artist">Artista: Haidar Hikmah (al-hur)</span>
+        <div class="exhibition-slider-outer">
+          <div class="exhibition-track" id="expoTrack">
+            
+            <!-- SLIDE 01: ÁLVARO URBANO -->
+            <div class="exhibition-slide">
+              <div class="exhibition-banner-wrapper">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
               </div>
-              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
-                <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
-                <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
+              <div class="exhibition-meta-bar">
+                <div>
+                  <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
+                  <span class="exhibition-artist">Artista: Álvaro Urbano</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                  <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+                  <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
+                </div>
               </div>
             </div>
-          </div>
 
+            <!-- SLIDE 02: EL SUSURRO DE LOS 1000 TULIPANES -->
+            <div class="exhibition-slide">
+              <div class="exhibition-banner-wrapper">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
+              </div>
+              <div class="exhibition-meta-bar">
+                <div>
+                  <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
+                  <span class="exhibition-artist">Artista: Haidar Hikmah (al-hur)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                  <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
+                  <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
+        <!-- Flecha Derecha corta y gordita en espacio negativo -->
+        <button class="expo-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">→</button>
       </div>
     </section>
 
@@ -697,8 +711,10 @@
 
     <!-- INTRO / DVISION -->
     <section id="division" class="division-intro-block">
-      <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-      <h2 style="font-family: 'GeistPixelLocal', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: normal; margin: 0; text-transform: lowercase;">/ dvision</h2>
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <span class="section-label">Eloria Brista Studio × Ebberkett</span>
+        <h2 style="font-family: 'GeistPixelLocal', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: normal; margin: 0; text-transform: lowercase;">/ dvision</h2>
+      </div>
       
       <p class="division-intro-text">
         Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
@@ -787,15 +803,17 @@
 
     <!-- SECCIÓN THE HUMAN TAPES -->
     <section id="tapes" class="pavilion-manifesto-section" style="border-top: 1px solid rgba(14,14,14,0.15);">
-      <span class="section-label">Ebberkett Dialogues</span>
-      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
-      <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 850px; line-height: 1.6; margin-bottom: 30px;">
-        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
-      </p>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
-        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
-        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Apple Podcasts</a>
-        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Amazon Music</a>
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <span class="section-label">Ebberkett Dialogues</span>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
+        <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 850px; line-height: 1.6; margin-bottom: 30px;">
+          Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
+        </p>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
+          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
+          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Apple Podcasts</a>
+          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Amazon Music</a>
+        </div>
       </div>
     </section>
   </main>
@@ -832,7 +850,7 @@
 
   <!-- FOOTER UNIFICADO -->
   <footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15);">
-    <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+    <div class="top" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
       <div class="brand-block" style="max-width: 350px;">
         <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
         <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio. San Francisco / Mexico City.</p>
@@ -849,7 +867,7 @@
         <a href="#" style="text-decoration: none; color: #0e0e0e;">Permanent Collection</a>
       </div>
     </div>
-    <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+    <div class="bottom" style="max-width: 1200px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
       <span>© <span data-year>2026</span> EBBERKETT Pavilion</span>
       <span>EBS Permanent Collection</span>
     </div>
@@ -898,7 +916,7 @@
     /* LÓGICA SLIDER EN EXHIBICIÓN CON AUTOPLAY AUTOMÁTICO */
     let currentExpo = 0;
     const totalExpos = 2;
-    let expoInterval = setInterval(autoExpoSlide, 5000); // Cambia solo cada 5 segundos
+    let expoInterval = setInterval(autoExpoSlide, 5000);
 
     function updateExpoSlide() {
       const track = document.getElementById('expoTrack');
@@ -911,13 +929,13 @@
     }
 
     function nextExpoSlide() {
-      clearInterval(expoInterval); // Apaga el autoplay automático si el usuario toma control
+      clearInterval(expoInterval);
       currentExpo = (currentExpo + 1) % totalExpos;
       updateExpoSlide();
     }
 
     function prevExpoSlide() {
-      clearInterval(expoInterval); // Apaga el autoplay automático si el usuario toma control
+      clearInterval(expoInterval);
       currentExpo = (currentExpo - 1 + totalExpos) % totalExpos;
       updateExpoSlide();
     }
