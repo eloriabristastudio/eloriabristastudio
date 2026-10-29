@@ -10,7 +10,7 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes secundarias (Inter y Space Grotesk para textos) -->
+  <!-- Fuentes secundarias (Inter, JetBrains Mono y Space Grotesk) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -122,7 +122,6 @@
       font-size: clamp(2.2rem, 5vw, 5.2rem);
       font-weight: normal;
       letter-spacing: 0.03em;
-      text-transform: uppercase;
       color: #0e0e0e;
       margin: 0;
       min-height: 1.2em;
@@ -583,7 +582,7 @@
       <span class="section-label">Ebberkett Dialogues</span>
       <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 500; margin-bottom: 20px; letter-spacing: -0.03em;">The Human Tapes</h2>
       <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 300; color: #555; max-width: 750px; line-height: 1.6; margin-bottom: 30px;">
-        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes in Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
+        Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana. <strong>Escucha The Human Tapes en Spotify, Apple Podcasts y Amazon Music for Podcasters.</strong>
       </p>
       <div style="display: flex; gap: 20px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
         <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
@@ -655,8 +654,8 @@
     /* EFECTO CODING SCRAMBLE */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
-      const finalText = "WELCOME TO EBBERKETT";
-      const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_#$&*@%";
+      const finalText = "Welcome to Ebberkett";
+      const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_#$&*@%";
       
       let currentFrame = 0;
       const totalFrames = 45; 
