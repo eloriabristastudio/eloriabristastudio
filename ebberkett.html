@@ -264,95 +264,106 @@
       margin-top: 25px;
     }
 
-    /* COVER ART DIVISION */
+    /* COVER ART / DVISION CARRUSEL MANUAL ESTILO INSTAGRAM */
     .cover-art-section {
-      padding: 60px 3.5vw 120px 3.5vw;
+      padding: 60px 3.5vw 140px 3.5vw;
       background-color: #f5f4f0;
     }
 
-    .gallery-header-block {
-      max-width: 1100px;
-      margin: 0 auto 60px auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .gallery-header-block h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.8rem);
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      margin: 0;
-    }
-
-    .gallery-header-block h2 span.pixel-part {
-      font-family: 'GeistPixelLocal', monospace;
-      font-weight: normal;
-      text-transform: lowercase;
-      letter-spacing: 0.02em;
-    }
-
-    .editorial-cover-grid {
-      max-width: 1200px;
+    .carousel-container {
+      max-width: 700px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 40px 20px;
-      align-items: start;
-    }
-
-    .cover-item {
-      cursor: pointer;
       position: relative;
-      transition: transform 0.3s ease;
     }
 
-    .cover-item:hover {
-      transform: translateY(-6px);
+    .carousel-track-wrapper {
+      overflow: hidden;
+      width: 100%;
     }
 
-    .cover-item.pos-1 { grid-column: 1 / span 5; }
-    .cover-item.pos-2 { grid-column: 7 / span 6; margin-top: 60px; }
-    .cover-item.pos-3 { grid-column: 2 / span 5; margin-top: 40px; }
-    .cover-item.pos-4 { grid-column: 8 / span 5; margin-top: -30px; }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 0 10px;
+      cursor: pointer;
+    }
 
     .cover-img-wrapper {
       width: 100%;
+      aspect-ratio: 1 / 1; /* Corte cuadrado perfecto listo para 1500x1500px o 3000x3000px */
       background: #e0dfd9;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
       overflow: hidden;
+      position: relative;
     }
 
     .cover-img-wrapper img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
     }
 
-    .cover-item:hover .cover-img-wrapper img {
+    .carousel-item:hover .cover-img-wrapper img {
       transform: scale(1.03);
     }
 
     .cover-caption {
-      margin-top: 15px;
+      margin-top: 18px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: #444;
       line-height: 1.4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .cover-caption .fig-num {
       font-weight: 500;
       color: #0e0e0e;
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
-    /* MODAL POP-OUT */
+    /* BOTONES DE CONTROL ESTILO INSTAGRAM */
+    .carousel-btn {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(14, 14, 14, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: all 0.2s ease;
+      color: #0e0e0e;
+      font-size: 1.1rem;
+    }
+
+    .carousel-btn:hover {
+      background: #ffffff;
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+
+    /* MODAL POP-OUT (CÉDULA Y PROCESO) */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -418,13 +429,10 @@
     @media (max-width: 850px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
-      .editorial-cover-grid { grid-template-columns: 1fr; }
-      .cover-item.pos-1, .cover-item.pos-2, .cover-item.pos-3, .cover-item.pos-4 {
-        grid-column: 1 / -1;
-        margin-top: 0;
-      }
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; }
+      .carousel-btn.prev { left: 10px; }
+      .carousel-btn.next { right: 10px; }
     }
   </style>
 </head>
@@ -513,67 +521,85 @@
       <h2 style="font-family: 'GeistPixelLocal', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: normal; margin: 0; text-transform: lowercase;">/ dvision</h2>
       
       <p class="division-intro-text">
-        Una división dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
+        Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
       </p>
     </section>
 
-    <!-- COVER ART DIVISION -->
+    <!-- COVER ART / DVISION CARRUSEL MANUAL -->
     <section class="cover-art-section">
-      <div class="gallery-header-block">
-        <div>
-          <h2>Cover Art / <span class="pixel-part">dvision</span></h2>
-        </div>
-        <p style="max-width: 420px; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #555; line-height: 1.5; margin: 0;">
-          Selección de portadas de discos, artes de sencillos y conceptos visuales desarrollados como piezas de arte independiente. Haz clic en cualquier obra para abrir la cédula y el video BTS.
-        </p>
+      <div style="max-width: 700px; margin: 0 auto 30px auto; display: flex; justify-content: space-between; align-items: flex-end;">
+        <span class="section-label" style="margin-bottom:0;">Selección Curada — Colección Permanente</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #777;">Haz clic en cualquier obra para ver su ficha y descubrir el proceso creativo detrás</span>
       </div>
 
-      <div class="editorial-cover-grid">
-        
-        <!-- FIG 01 -->
-        <div class="cover-item pos-1" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-          <div class="cover-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="AFRO Cover" />
-          </div>
-          <div class="cover-caption">
-            <span class="fig-num">FIG. 01 — AFRO.</span>
-            <span>Art Direction &amp; Digital Canvas</span>
+      <div class="carousel-container">
+        <!-- Botón Izquierda -->
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Anterior">‹</button>
+
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            
+            <!-- FIG 01 -->
+            <div class="carousel-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="cover-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
+              </div>
+              <div class="cover-caption">
+                <div>
+                  <span class="fig-num">FIG. 01 — AFRO.</span>
+                  <span>Art Direction &amp; Digital Canvas</span>
+                </div>
+                <span style="font-size: 0.68rem; color: #888;">01 / 04</span>
+              </div>
+            </div>
+
+            <!-- FIG 02 -->
+            <div class="carousel-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
+              <div class="cover-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
+              </div>
+              <div class="cover-caption">
+                <div>
+                  <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
+                  <span>Mixed Media Art Direction</span>
+                </div>
+                <span style="font-size: 0.68rem; color: #888;">02 / 04</span>
+              </div>
+            </div>
+
+            <!-- FIG 03 -->
+            <div class="carousel-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
+              <div class="cover-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
+              </div>
+              <div class="cover-caption">
+                <div>
+                  <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
+                  <span>Remix Cover &amp; Typographic Direction</span>
+                </div>
+                <span style="font-size: 0.68rem; color: #888;">03 / 04</span>
+              </div>
+            </div>
+
+            <!-- FIG 04 -->
+            <div class="carousel-item" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
+              <div class="cover-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Get Up Cover" />
+              </div>
+              <div class="cover-caption">
+                <div>
+                  <span class="fig-num">FIG. 04 — GET UP.</span>
+                  <span>Chromatics &amp; Graphic Experimentation</span>
+                </div>
+                <span style="font-size: 0.68rem; color: #888;">04 / 04</span>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- FIG 02 -->
-        <div class="cover-item pos-2" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
-          <div class="cover-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Do It Like Me" />
-          </div>
-          <div class="cover-caption">
-            <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
-            <span>Mixed Media Art Direction</span>
-          </div>
-        </div>
-
-        <!-- FIG 03 -->
-        <div class="cover-item pos-3" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
-          <div class="cover-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="In the Name of Love" />
-          </div>
-          <div class="cover-caption">
-            <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
-            <span>Remix Cover &amp; Typographic Direction</span>
-          </div>
-        </div>
-
-        <!-- FIG 04 -->
-        <div class="cover-item pos-4" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
-          <div class="cover-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop" alt="Get Up Cover" />
-          </div>
-          <div class="cover-caption">
-            <span class="fig-num">FIG. 04 — GET UP.</span>
-            <span>Chromatics &amp; Graphic Experimentation</span>
-          </div>
-        </div>
-
+        <!-- Botón Derecha -->
+        <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Siguiente">›</button>
       </div>
     </section>
 
@@ -592,7 +618,7 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT -->
+  <!-- MODAL POP-OUT (CÉDULA Y PROCESO) -->
   <div class="modal-overlay" id="caseModal">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -613,9 +639,9 @@
         </div>
 
         <div>
-          <span class="section-label">Behind The Scenes (BTS)</span>
+          <span class="section-label">Proceso Creativo de la Obra</span>
           <div class="modal-bts-video-box" id="mVideoContainer">
-            [ Video BTS Preview / Studio Log ]
+            [ Video Proceso / Studio Log - Pending Upload ]
           </div>
         </div>
       </div>
@@ -649,7 +675,7 @@
 
   <script src="assets/js/main.js"></script>
 
-  <!-- SCRIPTS DE INTERACCIÓN -->
+  <!-- SCRIPTS DE INTERACCIÓN Y CARRUSEL -->
   <script>
     /* EFECTO CODING SCRAMBLE */
     document.addEventListener("DOMContentLoaded", function() {
@@ -687,6 +713,22 @@
       }, speed);
     });
 
+    /* LÓGICA DEL CARRUSEL MANUAL */
+    let currentSlide = 0;
+    const totalSlides = 4;
+
+    function moveCarousel(direction) {
+      currentSlide += direction;
+      if (currentSlide < 0) {
+        currentSlide = totalSlides - 1;
+      } else if (currentSlide >= totalSlides) {
+        currentSlide = 0;
+      }
+      
+      const track = document.getElementById('carouselTrack');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
     /* LÓGICA DE MODALES POP-OUT */
     function openModal(title, artist, medium, year, location, videoUrl) {
       document.getElementById('mTitle').innerText = title;
@@ -697,7 +739,7 @@
       if (videoUrl) {
         videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
       } else {
-        videoBox.innerHTML = `[ Video BTS / Studio Log - Pending Upload ]`;
+        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
       }
 
       document.getElementById('caseModal').classList.add('active');
