@@ -195,7 +195,7 @@
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA (ANCHO AMPLIADO Y BLOQUES SEPARADOS PARA EVITAR TRASLAPPINGS) */
+    /* EXHIBICIÓN EN MUESTRA (MARCO MÁS ANCHO Y PANORÁMICO) */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -205,9 +205,9 @@
     }
 
     .exhibition-inner-container {
-      max-width: 1650px;
+      max-width: 1750px; /* Contenedor general significativamente más ancho para dar respiro */
       margin: 0 auto;
-      padding: 0 3vw;
+      padding: 0 4vw;
       box-sizing: border-box;
     }
 
@@ -216,7 +216,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 25px;
       position: relative;
       margin-top: 15px;
     }
@@ -245,9 +245,10 @@
       box-sizing: border-box;
     }
 
+    /* BANNER MÁS ANCHO Y ESTILIZADO */
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 9; /* Proporción panorámica ideal y amplia para los teasers */
+      aspect-ratio: 16 / 8.5; /* Formato panorámico ancho ideal para exhibiciones */
       background: #e0dfd9;
       overflow: hidden;
       box-shadow: 0 25px 50px rgba(0,0,0,0.08);
@@ -267,13 +268,13 @@
       transform: scale(1.03);
     }
 
-    /* BARRA DE METADATOS ESTRICTAMENTE SEPARADA POR GRILLA */
+    /* BARRA INFERIOR CON COLUMNAS RIGUROSAMENTE SEPARADAS */
     .exhibition-meta-bar {
       display: grid;
-      grid-template-columns: 1fr auto; /* Columna izquierda para títulos largos, columna derecha fija para fechas y enlaces */
+      grid-template-columns: 1fr auto;
       align-items: flex-end;
       margin-top: 30px;
-      gap: 40px;
+      gap: 50px; /* Gran espacio de separación en blanco entre títulos y fechas */
       text-align: left;
     }
 
@@ -281,7 +282,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      min-width: 0; /* Evita que los textos largos empujen el layout */
+      min-width: 0;
     }
 
     .exhibition-title {
@@ -293,7 +294,7 @@
       color: #0e0e0e;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis; /* Corta elegantemente con puntos si excede el ancho máximo */
+      text-overflow: ellipsis;
     }
 
     .exhibition-artist {
@@ -309,6 +310,7 @@
       align-items: flex-end;
       gap: 8px;
       flex-shrink: 0;
+      padding-left: 20px; /* Margen interno de seguridad adicional */
     }
 
     .exhibition-dates {
@@ -316,6 +318,7 @@
       font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
+      white-space: nowrap;
     }
 
     .minimal-arrow-btn {
@@ -747,8 +750,8 @@
       .salas-grid-shop { grid-template-columns: 1fr; }
       .modal-layout-grid { grid-template-columns: 1fr; }
       .tape-gif-container { width: 320px; height: 320px; }
-      .exhibition-meta-bar { grid-template-columns: 1fr; }
-      .exhibition-info-right { align-items: flex-start; }
+      .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
+      .exhibition-info-right { align-items: flex-start; padding-left: 0; }
     }
   </style>
 </head>
@@ -800,7 +803,7 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA (CON BARRAS SEPARADAS Y ESTABLES) -->
+    <!-- EXHIBICIÓN EN MUESTRA (MARCO ANCHO Y PANORÁMICO) -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
@@ -1324,4 +1327,26 @@
       document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
       document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
       
-      ...
+      const videoBox = document.getElementById('mVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('caseModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('caseModal').classList.remove('active');
+      document.getElementById('mVideoContainer').innerHTML = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('caseModal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
