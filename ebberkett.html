@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* HEADER CON NUEVO APARTADO SHOP Y ESPACIADO AMPLIADO */
+    /* HEADER CON NAVEGACIÓN A SHOP */
     .ebberkett-header {
       position: fixed;
       top: 0;
@@ -197,7 +197,7 @@
       display: block;
     }
 
-    /* SECCIÓN EXHIBICIÓN EN MUESTRA (IMAGEN MÁS GRANDE Y TEXTO ALINEADO A LA IZQUIERDA) */
+    /* SECCIÓN EXHIBICIÓN EN MUESTRA */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 4vw;
@@ -207,7 +207,7 @@
     }
 
     .exhibition-frame-outer {
-      max-width: 1250px; /* Ancho ampliado para que la imagen se vea más grande */
+      max-width: 1250px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -256,12 +256,12 @@
       margin-top: 25px;
       flex-wrap: wrap;
       gap: 20px;
-      text-align: left; /* Alineado a la izquierda como pediste */
+      text-align: left;
     }
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.4rem, 2.6vw, 2.2rem); /* Letra un poco más chica y elegante */
+      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
@@ -395,7 +395,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start; /* Alineado a la izquierda */
+      align-items: flex-start;
       text-align: left;
       padding: 100px 8vw;
       box-sizing: border-box;
@@ -418,7 +418,7 @@
       font-size: clamp(1rem, 1.4vw, 1.25rem);
       font-weight: 300;
       color: #333;
-      line-height: 1.8; /* Expandido para facilitar la lectura */
+      line-height: 1.8;
       letter-spacing: -0.01em;
       max-width: 900px;
       animation: fadeInProgressive 1.8s ease-out forwards;
@@ -536,7 +536,7 @@
       transform: scale(1.25);
     }
 
-    /* SECCIÓN SHOP (NUEVA) */
+    /* SECCIÓN SHOP EN LANDING */
     #shop {
       padding: 120px 4vw;
       background-color: #f5f4f0;
@@ -619,7 +619,7 @@
 </head>
 <body>
 
-  <!-- HEADER CON NAVEGACIÓN Y APARTADO SHOP -->
+  <!-- HEADER CON ENLACE DIRECTO A EBSHOP.HTML -->
   <header class="ebberkett-header">
     <a href="ebberkett.html" class="ebberkett-brand">
       <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
@@ -631,7 +631,7 @@
       <a href="#exhibicion">Exhibiciones</a>
       <a href="#salas">Salas</a>
       <a href="#division">/ Dvision</a>
-      <a href="#shop">Shop</a>
+      <a href="EBshop.html">Shop</a>
       <a href="#tapes">The Human Tapes</a>
     </nav>
 
@@ -665,7 +665,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN EXHIBICIÓN EN MUESTRA (IMAGEN MÁS GRANDE Y TEXTO AL IZQ) -->
+    <!-- SECCIÓN EXHIBICIÓN EN MUESTRA -->
     <section id="exhibicion" class="current-exhibition-section">
       <div style="max-width: 1250px; margin: 0 auto 15px auto;">
         <span class="section-label" style="margin-bottom:0;">Exhibición en Muestra</span>
@@ -850,15 +850,23 @@
       </div>
     </section>
 
-    <!-- SECCIÓN SHOP (ESTILO TIENDA DE ARTE / FOTO 2) -->
+    <!-- SECCIÓN SHOP EN LANDING (CON BOTÓN DE ACCESO A EBSHOP.HTML) -->
     <section id="shop">
       <div style="max-width: 1250px; margin: 0 auto;">
-        <span class="section-label">Ebberkett Editions — Shop</span>
-        <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin: 10px 0 40px 0;">Ediciones Limitadas y Objetos</h2>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="section-label" style="margin-bottom: 8px;">Ebberkett Editions</span>
+            <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin: 0;">Ediciones Limitadas y Objetos</h2>
+          </div>
+          
+          <a href="EBshop.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">
+            Ver catálogo completo ↗
+          </a>
+        </div>
 
         <div class="salas-grid-shop">
           <!-- PRODUCTO 1 -->
-          <div class="room-card-shop">
+          <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Print 1" />
             </div>
@@ -867,10 +875,10 @@
               <h3 class="room-title-shop">What You Ingest You Become #4</h3>
               <span class="room-desc-shop">$325.00 USD</span>
             </div>
-          </div>
+          </a>
 
           <!-- PRODUCTO 2 -->
-          <div class="room-card-shop">
+          <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Print 2" />
             </div>
@@ -879,10 +887,10 @@
               <h3 class="room-title-shop">Gargantua Bay #5</h3>
               <span class="room-desc-shop">$325.00 USD</span>
             </div>
-          </div>
+          </a>
 
           <!-- PRODUCTO 3 -->
-          <div class="room-card-shop">
+          <a href="EBshop.html" class="room-card-shop">
             <div class="room-img-container">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Print 3" />
             </div>
@@ -891,7 +899,7 @@
               <h3 class="room-title-shop">Where You End and I Begin</h3>
               <span class="room-desc-shop">$300.00 USD</span>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -953,7 +961,7 @@
       <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
         <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Pavilion</h4>
         <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Eloria Studio</a>
-        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Directory</a>
+        <a href="EBshop.html" style="text-decoration: none; color: #0e0e0e;">Editions Shop</a>
         <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Inquiries</a>
       </div>
       <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
