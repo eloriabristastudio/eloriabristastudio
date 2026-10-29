@@ -354,10 +354,10 @@
       border-color: rgba(14, 14, 14, 0.2);
     }
 
-    /* FORMATO VERTICAL / RETRATO PARA PRODUCTOS DE LA SHOP (RESTAURADO) */
+    /* FORMATO VERTICAL / RETRATO PARA PRODUCTOS DE LA SHOP */
     .product-img-container-portrait {
       width: 100%;
-      aspect-ratio: 3 / 4; /* Formato retrato vertical ideal para prints y productos */
+      aspect-ratio: 3 / 4;
       overflow: hidden;
       background: #e0dfd9;
     }
@@ -557,7 +557,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES (MÁS GRANDE E IMPONENTE) */
+    /* CARRUSEL THE HUMAN TAPES (FORMATO CUADRADO IMPOENTE Y SIN CORTES DE SOMBRA) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -572,7 +572,7 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 900px; /* Contenedor más amplio */
+      max-width: 1000px; /* Amplitud total idéntica a las great cards */
       margin: 0 auto 70px auto;
       display: flex;
       align-items: center;
@@ -610,23 +610,25 @@
       box-sizing: border-box;
     }
 
-    /* CONTENEDOR DEL GIF AMPLIADO A UN TAMAÑO CONSIDERABLE E IMPONENTE */
+    /* CONTENEDOR CUADRADO IMPOENTE SIN CORTES EXTRAÑOS DE SOMBRA */
     .tape-gif-container {
-      width: 380px;  /* Tamaño grande y destacado */
-      height: 380px;
-      border-radius: 50%;
+      width: 440px;  /* Magnífica amplitud y presencia visual */
+      height: 440px;
+      aspect-ratio: 1 / 1;
       margin-bottom: 35px;
       position: relative;
-      filter: drop-shadow(0px 35px 25px rgba(0, 0, 0, 0.38)); /* Sombra profunda para mayor flotación */
-      overflow: hidden;
+      overflow: visible; /* Evita cualquier corte en las sombras laterales o inferiores */
       background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0px 30px 30px rgba(0, 0, 0, 0.22)); /* Sombra envolvente limpia y elegante */
     }
 
     .tape-gif-container img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 50%;
       display: block;
     }
 
@@ -716,7 +718,7 @@
       .modal-content-card { padding: 30px 20px; }
       .salas-grid-shop { grid-template-columns: 1fr; }
       .modal-layout-grid { grid-template-columns: 1fr; }
-      .tape-gif-container { width: 260px; height: 260px; }
+      .tape-gif-container { width: 280px; height: 280px; }
     }
   </style>
 </head>
@@ -994,7 +996,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN EBBERKETT SHOP (FORMATO RETRATO RESTRUCTURADO) -->
+    <!-- SECCIÓN EBBERKETT SHOP -->
     <section id="shop">
       <div style="max-width: 1400px; margin: 0 auto;">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
@@ -1044,7 +1046,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES (GRANDE E IMPONENTE) -->
+    <!-- CARRUSEL THE HUMAN TAPES (IMPOENTE, CUADRADO Y LIBRE DE CORTES) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
