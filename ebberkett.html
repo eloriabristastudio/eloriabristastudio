@@ -247,7 +247,7 @@
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA */
+    /* EXHIBICIÓN EN MUESTRA (SIN FLECHAS, FLUJO LIBRE Y LIMPIO) */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -257,20 +257,10 @@
     }
 
     .exhibition-inner-container {
-      max-width: 1750px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 4vw;
       box-sizing: border-box;
-    }
-
-    .exhibition-frame-outer {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-      position: relative;
-      margin-top: 15px;
     }
 
     .exhibition-slider-outer {
@@ -280,6 +270,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       scroll-behavior: smooth;
+      margin-top: 15px;
     }
 
     .exhibition-slider-outer::-webkit-scrollbar {
@@ -288,6 +279,7 @@
 
     .exhibition-track {
       display: flex;
+      gap: 40px;
       width: 100%;
     }
 
@@ -299,10 +291,10 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 8.5;
+      aspect-ratio: 16 / 9;
       background: #e0dfd9;
       overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
       cursor: pointer;
     }
 
@@ -320,24 +312,25 @@
     }
 
     .exhibition-meta-bar {
-      display: grid;
-      grid-template-columns: 1fr auto;
+      display: flex;
+      justify-content: space-between;
       align-items: flex-end;
-      margin-top: 30px;
-      gap: 50px;
+      margin-top: 25px;
+      gap: 30px;
+      flex-wrap: wrap;
       text-align: left;
     }
 
     .exhibition-info-left {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       min-width: 0;
     }
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+      font-size: clamp(1.3rem, 2.2vw, 2rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
@@ -348,7 +341,6 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
       color: #666;
-      display: block;
     }
 
     .exhibition-info-right {
@@ -356,36 +348,27 @@
       flex-direction: column;
       align-items: flex-end;
       gap: 8px;
-      flex-shrink: 0;
     }
 
     .exhibition-dates {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: #555;
       letter-spacing: 0.05em;
     }
 
-    .minimal-arrow-btn {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
+    .expo-visit-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
       color: #0e0e0e;
-      padding: 10px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.7;
-      user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
+      text-decoration: none;
+      border-bottom: 1px solid #0e0e0e;
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
     }
 
-    .minimal-arrow-btn:hover {
-      opacity: 1;
-      transform: scale(1.1);
-    }
+    .expo-visit-link:hover { opacity: 0.6; }
 
     /* SALAS Y GRILLAS UNIFICADAS */
     .immersive-salas-section {
@@ -434,7 +417,6 @@
       background: #e0dfd9;
     }
 
-    /* NUEVO: CONTENEDOR CUADRADO (1:1) PARA PORTADAS DE DVISION */
     .product-img-container-square {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -502,7 +484,7 @@
     /* SECCIÓN DVISION HERO */
     .division-hero-slide {
       width: 100%;
-      padding: 90px 8vw 20px 8vw;
+      padding: 90px 4vw 20px 4vw;
       box-sizing: border-box;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       background-color: #f5f4f0;
@@ -549,7 +531,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES */
+    /* CARRUSEL THE HUMAN TAPES (SIN FLECHAS, CON INDICADOR DE SLIDE) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -564,12 +546,11 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 0 auto 60px auto;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
     }
 
     .tapes-track-wrapper {
@@ -594,7 +575,7 @@
       min-width: 100%;
       scroll-snap-align: center;
       background: transparent;
-      padding: 20px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -602,14 +583,13 @@
       box-sizing: border-box;
     }
 
+    /* CONTENEDOR DE GIF ADAPTADO PARA NO CORTARSE EN MÓVIL */
     .tape-gif-container {
-      width: 700px;
-      height: 700px;
+      width: 100%;
+      max-width: 500px;
       aspect-ratio: 1 / 1;
-      margin-bottom: 45px;
+      margin-bottom: 30px;
       position: relative;
-      overflow: visible;
-      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -624,17 +604,27 @@
 
     .tape-card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.65rem;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
       font-weight: 400;
-      margin: 20px 0 10px 0;
+      margin: 15px 0 10px 0;
       color: #0e0e0e;
-      word-break: break-word;
     }
 
     .tape-card-meta {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       color: #666;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .slide-hint {
+      color: #0e0e0e;
+      font-weight: 500;
+      letter-spacing: 0.05em;
     }
 
     .tapes-platforms-container {
@@ -645,7 +635,7 @@
       padding-top: 55px;
     }
 
-    /* MODAL POP-OUT OPTIMIZADO PARA MÓVIL */
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -721,9 +711,6 @@
       .salas-grid-shop { grid-template-columns: 1fr; }
       .modal-layout-grid { grid-template-columns: 1fr; gap: 20px; }
       
-      .tape-gif-container { width: 300px; height: 300px; margin-bottom: 25px; }
-      .tape-card-title { font-size: 1.35rem; }
-      
       .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
       .exhibition-info-right { align-items: flex-start; }
     }
@@ -796,59 +783,49 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA -->
+    <!-- EXHIBICIÓN EN MUESTRA (SIN FLECHAS, DISEÑO LIMPIO) -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
 
-        <div class="exhibition-frame-outer">
-          <button class="minimal-arrow-btn" onclick="prevExpoSlide()" aria-label="Anterior">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-
-          <div class="exhibition-slider-outer" id="expoSliderWrapper">
-            <div class="exhibition-track" id="expoTrack">
-              
-              <!-- SLIDE 01 -->
-              <div class="exhibition-slide">
-                <div class="exhibition-banner-wrapper">
-                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
+        <div class="exhibition-slider-outer">
+          <div class="exhibition-track">
+            
+            <!-- SLIDE 01 -->
+            <div class="exhibition-slide">
+              <div class="exhibition-banner-wrapper" onclick="openModal('ÁLVARO URBANO: HELEN', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01 / Main Gallery', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
+              </div>
+              <div class="exhibition-meta-bar">
+                <div class="exhibition-info-left">
+                  <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
+                  <span class="exhibition-artist">Artista: Álvaro Urbano</span>
                 </div>
-                <div class="exhibition-meta-bar">
-                  <div class="exhibition-info-left">
-                    <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
-                    <span class="exhibition-artist">Artista: Álvaro Urbano</span>
-                  </div>
-                  <div class="exhibition-info-right">
-                    <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
-                    <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
-                  </div>
+                <div class="exhibition-info-right">
+                  <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+                  <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
                 </div>
               </div>
-
-              <!-- SLIDE 02 -->
-              <div class="exhibition-slide">
-                <div class="exhibition-banner-wrapper">
-                  <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
-                </div>
-                <div class="exhibition-meta-bar">
-                  <div class="exhibition-info-left">
-                    <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
-                    <span class="exhibition-artist">Artista: Haidar Hikmah</span>
-                  </div>
-                  <div class="exhibition-info-right">
-                    <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
-                    <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
-                  </div>
-                </div>
-              </div>
-
             </div>
-          </div>
 
-          <button class="minimal-arrow-btn" onclick="nextExpoSlide()" aria-label="Siguiente">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
+            <!-- SLIDE 02 -->
+            <div class="exhibition-slide">
+              <div class="exhibition-banner-wrapper" onclick="openModal('EL SUSURRO DE LOS 1000 TULIPANES', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01 / Main Gallery', '')">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
+              </div>
+              <div class="exhibition-meta-bar">
+                <div class="exhibition-info-left">
+                  <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
+                  <span class="exhibition-artist">Artista: Haidar Hikmah</span>
+                </div>
+                <div class="exhibition-info-right">
+                  <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
+                  <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -895,7 +872,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DVISION (CON GRILLA DE 3 COLUMNAS Y FORMATO CUADRADO 1:1) -->
+    <!-- SECCIÓN DVISION (GRILLA 3 COLUMNAS Y FORMATO CUADRADO 1:1) -->
     <section id="division" class="division-hero-slide">
       <div class="salas-content-wrapper">
         <span class="section-label">Eloria Brista Studio × Ebberkett</span>
@@ -1003,7 +980,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES -->
+    <!-- CARRUSEL THE HUMAN TAPES (SIN FLECHAS Y CON INDICADOR DE SLIDE) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1014,12 +991,8 @@
       </div>
 
       <div class="tapes-carousel-frame">
-        <button class="minimal-arrow-btn" onclick="moveTapes(-1)" aria-label="Anterior">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-
         <div class="tapes-track-wrapper" id="tapesTrackWrapper">
-          <div class="tapes-track" id="tapesTrack">
+          <div class="tapes-track">
             
             <!-- TAPE 01 -->
             <div class="tape-card-retro">
@@ -1027,7 +1000,10 @@
                 <img src="assets/TRT_beta.gif" alt="Tape #01 — Intuición Digital" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
-              <span class="tape-card-meta">Diálogo con Eloria Studio · 45 min</span>
+              <div class="tape-card-meta">
+                <span>Diálogo con Eloria Studio · 45 min</span>
+                <span class="slide-hint">haz slide →</span>
+              </div>
             </div>
 
             <!-- TAPE 02 -->
@@ -1036,7 +1012,10 @@
                 <img src="assets/TRT_beta.gif" alt="Tape #02 — Universos Gráficos" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
-              <span class="tape-card-meta">Curaduría Dvision · 52 min</span>
+              <div class="tape-card-meta">
+                <span>Curaduría Dvision · 52 min</span>
+                <span class="slide-hint">haz slide →</span>
+              </div>
             </div>
 
             <!-- TAPE 03 -->
@@ -1045,15 +1024,14 @@
                 <img src="assets/TRT_beta.gif" alt="Tape #03 — Arte de Galería Virtual" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
-              <span class="tape-card-meta">Residencia Ebberkett · 38 min</span>
+              <div class="tape-card-meta">
+                <span>Residencia Ebberkett · 38 min</span>
+                <span class="slide-hint">fin de cintas ↺</span>
+              </div>
             </div>
 
           </div>
         </div>
-
-        <button class="minimal-arrow-btn" onclick="moveTapes(1)" aria-label="Siguiente">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
       </div>
 
       <div class="tapes-platforms-container">
@@ -1199,40 +1177,6 @@
       setTimeout(typeWriterLoop, typingSpeed);
     }
     document.addEventListener("DOMContentLoaded", typeWriterLoop);
-
-    /* SLIDER EXHIBICIÓN */
-    let currentExpo = 0;
-    const totalExpos = 2;
-
-    function updateExpoSlide() {
-      const wrapper = document.getElementById('expoSliderWrapper');
-      const itemWidth = wrapper.clientWidth;
-      wrapper.scrollTo({ left: currentExpo * itemWidth, behavior: 'smooth' });
-    }
-
-    function nextExpoSlide() {
-      currentExpo = (currentExpo + 1) % totalExpos;
-      updateExpoSlide();
-    }
-
-    function prevExpoSlide() {
-      currentExpo = (currentExpo - 1 + totalExpos) % totalExpos;
-      updateExpoSlide();
-    }
-
-    /* CARRUSEL TAPES */
-    let currentTape = 0;
-    const totalTapes = 3;
-
-    function moveTapes(dir) {
-      currentTape += dir;
-      if (currentTape < 0) currentTape = totalTapes - 1;
-      if (currentTape >= totalTapes) currentTape = 0;
-      
-      const wrapper = document.getElementById('tapesTrackWrapper');
-      const itemWidth = wrapper.clientWidth;
-      wrapper.scrollTo({ left: currentTape * itemWidth, behavior: 'smooth' });
-    }
 
     /* MODAL POP-OUT */
     function openModal(title, artist, medium, year, location, videoUrl) {
