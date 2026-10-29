@@ -38,19 +38,19 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* HEADER Y MENÚ HAMBURGUESA MÓVIL */
     .ebberkett-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 25px 4vw;
+      padding: 22px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(245, 244, 240, 0.92);
+      background-color: rgba(245, 244, 240, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
@@ -74,7 +74,8 @@
 
     .ebberkett-nav-links {
       display: flex;
-      gap: 40px;
+      gap: 35px;
+      align-items: center;
     }
 
     .ebberkett-nav-links a {
@@ -100,6 +101,57 @@
     }
 
     .back-to-studio:hover { color: #0e0e0e; }
+
+    /* BOTÓN HAMBURGUESA (OCULTO EN DESKTOP) */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 300;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: #0e0e0e;
+      margin: 6px 0;
+      transition: 0.3s;
+    }
+
+    /* MENÚ MÓVIL DESPLEGABLE */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background-color: #f5f4f0;
+      z-index: 250;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      padding: 40px;
+    }
+
+    .mobile-nav-overlay.active {
+      right: 0;
+    }
+
+    .mobile-nav-overlay a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0e0e0e;
+      text-decoration: none;
+    }
 
     /* HERO PRINCIPAL */
     .pavilion-hero {
@@ -195,7 +247,7 @@
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA (MARCO MÁS ANCHO Y PANORÁMICO) */
+    /* EXHIBICIÓN EN MUESTRA (CORREGIDO PARA MÓVIL Y ESCRITORIO) */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -205,7 +257,7 @@
     }
 
     .exhibition-inner-container {
-      max-width: 1750px; /* Contenedor general significativamente más ancho para dar respiro */
+      max-width: 1750px;
       margin: 0 auto;
       padding: 0 4vw;
       box-sizing: border-box;
@@ -245,10 +297,9 @@
       box-sizing: border-box;
     }
 
-    /* BANNER MÁS ANCHO Y ESTILIZADO */
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 8.5; /* Formato panorámico ancho ideal para exhibiciones */
+      aspect-ratio: 16 / 8.5;
       background: #e0dfd9;
       overflow: hidden;
       box-shadow: 0 25px 50px rgba(0,0,0,0.08);
@@ -268,13 +319,13 @@
       transform: scale(1.03);
     }
 
-    /* BARRA INFERIOR CON COLUMNAS RIGUROSAMENTE SEPARADAS */
+    /* BARRA INFERIOR DE EXHIBICIÓN BLINDADA */
     .exhibition-meta-bar {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: flex-end;
       margin-top: 30px;
-      gap: 50px; /* Gran espacio de separación en blanco entre títulos y fechas */
+      gap: 50px;
       text-align: left;
     }
 
@@ -287,14 +338,11 @@
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+      font-size: clamp(1.3rem, 2.4vw, 2.2rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
       color: #0e0e0e;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .exhibition-artist {
@@ -310,7 +358,6 @@
       align-items: flex-end;
       gap: 8px;
       flex-shrink: 0;
-      padding-left: 20px; /* Margen interno de seguridad adicional */
     }
 
     .exhibition-dates {
@@ -318,7 +365,6 @@
       font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
-      white-space: nowrap;
     }
 
     .minimal-arrow-btn {
@@ -582,7 +628,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES (700PX × 700PX) */
+    /* CARRUSEL THE HUMAN TAPES (ADAPTATIVO PARA MÓVIL) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -661,6 +707,7 @@
       font-weight: 400;
       margin: 20px 0 10px 0;
       color: #0e0e0e;
+      word-break: break-word;
     }
 
     .tape-card-meta {
@@ -742,16 +789,25 @@
       font-size: 0.75rem;
     }
 
+    /* RESPONSIVE MEDIA QUERIES PARA MÓVILES */
     @media (max-width: 950px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      .modal-layout-grid { grid-template-columns: 1fr; }
-      .tape-gif-container { width: 320px; height: 320px; }
+      .modal-layout-grid { grid-template-columns: 1fr; gap: 20px; }
+      
+      /* Ajuste específico tamaño GIF y títulos para celulares */
+      .tape-gif-container { width: 300px; height: 300px; margin-bottom: 25px; }
+      .tape-card-title { font-size: 1.35rem; }
+      
+      /* Corrección de apilamiento en la sección de exhibición móvil */
       .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
-      .exhibition-info-right { align-items: flex-start; padding-left: 0; }
+      .exhibition-info-right { align-items: flex-start; }
+      .cover-card-cedula { padding: 25px; }
     }
   </style>
 </head>
@@ -773,8 +829,27 @@
       <a href="#tapes">The Human Tapes</a>
     </nav>
 
-    <a href="index.html" class="back-to-studio">← Eloria Brista Studio</a>
+    <!-- BOTÓN MENÚ HAMBURGUESA MÓVIL -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a href="index.html" class="back-to-studio" style="display: none;">← Eloria Brista Studio</a>
   </header>
+
+  <!-- OVERLAY MENÚ MÓVIL -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <button onclick="toggleMobileMenu()" style="position: absolute; top: 25px; right: 25px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
+    <a href="#manifesto" onclick="toggleMobileMenu()">Intro</a>
+    <a href="#exhibicion" onclick="toggleMobileMenu()">Exhibiciones</a>
+    <a href="#salas" onclick="toggleMobileMenu()">Salas</a>
+    <a href="#division" onclick="toggleMobileMenu()">/ Dvision</a>
+    <a href="EBshop.html" onclick="toggleMobileMenu()">Shop</a>
+    <a href="#tapes" onclick="toggleMobileMenu()">The Human Tapes</a>
+    <a href="index.html" style="font-size: 0.8rem; color: #666; margin-top: 20px;">← Eloria Brista Studio</a>
+  </div>
 
   <main>
     <!-- HERO PRINCIPAL -->
@@ -803,7 +878,7 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA (MARCO ANCHO Y PANORÁMICO) -->
+    <!-- EXHIBICIÓN EN MUESTRA -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
@@ -936,7 +1011,7 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">AFRO — Single Cover</h3>
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; margin: 0;">AFRO — Single Cover</h3>
                       <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Digital Oil on Canvas<br/>
@@ -959,7 +1034,7 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">DO IT LIKE ME</h3>
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; margin: 0;">DO IT LIKE ME</h3>
                       <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: 3D Form &amp; Graphic Study<br/>
@@ -982,7 +1057,7 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 3 / Creative Lab</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">IN THE NAME OF LOVE</h3>
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; margin: 0;">IN THE NAME OF LOVE</h3>
                       <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Visual Art &amp; Typography<br/>
@@ -1005,7 +1080,7 @@
                     </div>
                     <div class="cedula-info-box">
                       <span class="section-label" style="margin-bottom:0;">Sala 2 / Resident Works</span>
-                      <h3 style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 0;">GET UP</h3>
+                      <h3 style="font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; margin: 0;">GET UP</h3>
                       <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6; margin: 0;">
                         Artist: Triveat (MX)<br/>
                         Medium: Color Field &amp; Motion Still<br/>
@@ -1204,6 +1279,12 @@
 
   <!-- SCRIPTS -->
   <script>
+    /* MENÚ HAMBURGUESA MÓVIL */
+    function toggleMobileMenu() {
+      const overlay = document.getElementById('mobileNavOverlay');
+      overlay.classList.toggle('active');
+    }
+
     /* CODING SCRAMBLE HERO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
