@@ -195,7 +195,7 @@
       display: block;
     }
 
-    /* 4. EXHIBICIÓN EN MUESTRA (IMPONENTE, MÁS ANCHA Y VISIBLE) */
+    /* EXHIBICIÓN EN MUESTRA */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -205,7 +205,7 @@
     }
 
     .exhibition-inner-container {
-      max-width: 1550px; /* Contenedor mucho más ancho para impacto total estilo museo */
+      max-width: 1550px;
       margin: 0 auto;
       padding: 0 3vw;
       box-sizing: border-box;
@@ -247,7 +247,7 @@
 
     .exhibition-banner-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 7.8; /* Fotografía sumamente panorámica e imponente */
+      aspect-ratio: 16 / 7.8;
       background: #e0dfd9;
       overflow: hidden;
       box-shadow: 0 25px 50px rgba(0,0,0,0.1);
@@ -294,7 +294,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* FLECHAS MINIMALISTAS FINAS */
     .minimal-arrow-btn {
       background: none;
       border: none;
@@ -401,10 +400,10 @@
       line-height: 1.5;
     }
 
-    /* 2. SECCIÓN DVISION (MÁQUINA DE ESCRIBIR Y MENOS ESPACIO / ACERCAMIENTO) */
+    /* SECCIÓN DVISION */
     .division-hero-slide {
       width: 100%;
-      padding: 90px 8vw 40px 8vw; /* Reducción drástica del espacio inferior para acercar el carrusel */
+      padding: 90px 8vw 40px 8vw;
       box-sizing: border-box;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       background-color: #f5f4f0;
@@ -444,9 +443,8 @@
       max-width: 950px;
     }
 
-    /* 2. CARRUSEL DVISION AMPLIADO Y PEGADO AL TEXTO */
     .cover-art-section {
-      padding: 20px 4vw 110px 4vw; /* Espacio superior ajustado para pegarlo al texto introductorio */
+      padding: 20px 4vw 110px 4vw;
       background-color: #f5f4f0;
       width: 100%;
       box-sizing: border-box;
@@ -454,7 +452,7 @@
 
     .carousel-outer-frame {
       width: 100%;
-      max-width: 1400px; /* Ampliado para que la obra luzca imponente */
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -464,7 +462,7 @@
 
     .carousel-container {
       width: 100%;
-      max-width: 1100px; /* Tamaño generoso de ficha artística de museo */
+      max-width: 1100px;
       margin: 0 auto;
       position: relative;
     }
@@ -499,7 +497,7 @@
     .cover-card-cedula {
       background: #f5f4f0;
       border: 1px solid rgba(14, 14, 14, 0.12);
-      padding: 55px; /* Mayor espacio interior elegante */
+      padding: 55px;
       box-shadow: 0 20px 45px rgba(0,0,0,0.05);
       box-sizing: border-box;
     }
@@ -551,14 +549,14 @@
 
     .cedula-process-link:hover { opacity: 0.6; }
 
-    /* SECCIÓN SHOP EN LANDING */
+    /* SECCIÓN SHOP */
     #shop {
       padding: 110px 4vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* 1. CARRUSEL THE HUMAN TAPES (TAMAÑO EXACTO GARGANTUA BAY #5 Y TEXTO INFERIOR CON RESPIRO) */
+    /* CARRUSEL THE HUMAN TAPES (APUNTA A assets/TRT_beta.gif) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -573,8 +571,8 @@
     }
 
     .tapes-carousel-frame {
-      max-width: 750px; /* Tamaño estandarizado idéntico al de las obras de shop / Gargantua Bay */
-      margin: 0 auto 70px auto; /* Mayor margen inferior para dejar "respirar" al producto */
+      max-width: 750px;
+      margin: 0 auto 70px auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -611,35 +609,23 @@
       box-sizing: border-box;
     }
 
-    /* Objeto central giratorio 360° con sombra flotante */
-    .tape-object-animated {
-      width: 180px;
-      height: 180px;
+    .tape-gif-container {
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      background: radial-gradient(circle, #333 20%, #1a1a1a 70%, #000 100%);
-      border: 3px solid #444;
       margin-bottom: 30px;
       position: relative;
-      animation: spinRetro 12s linear infinite;
       filter: drop-shadow(0px 28px 18px rgba(0, 0, 0, 0.35));
+      overflow: hidden;
+      background: transparent;
     }
 
-    .tape-object-animated::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 45px;
-      height: 45px;
-      background: #f5f4f0;
+    .tape-gif-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       border-radius: 50%;
-      border: 2px solid #222;
-    }
-
-    @keyframes spinRetro {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      display: block;
     }
 
     .tape-card-title {
@@ -656,7 +642,7 @@
       color: #666;
     }
 
-    /* 3. MODAL POP-OUT (CIERRE CON CLIC EN CUALQUIER ZONA OSCURA DE FONDO) */
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -671,7 +657,7 @@
       align-items: center;
       padding: 20px;
       box-sizing: border-box;
-      cursor: pointer; /* Indica que se puede hacer clic fuera para cerrar */
+      cursor: pointer;
     }
 
     .modal-overlay.active { display: flex; }
@@ -686,7 +672,7 @@
       box-sizing: border-box;
       position: relative;
       border: 1px solid rgba(255,255,255,0.2);
-      cursor: default; /* Evita que el clic dentro de la tarjeta la cierre accidentalmente */
+      cursor: default;
     }
 
     .modal-close-btn {
@@ -779,7 +765,7 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA (IMPONENTE Y PANORÁMICA) -->
+    <!-- EXHIBICIÓN EN MUESTRA -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
         <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
@@ -878,7 +864,7 @@
       </div>
     </section>
 
-    <!-- TÍTULO / DVISION CON MÁQUINA DE ESCRIBIR EN LOOP Y MENOS ESPACIO -->
+    <!-- TÍTULO / DVISION -->
     <section id="division" class="division-hero-slide">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
       
@@ -892,7 +878,7 @@
       </p>
     </section>
 
-    <!-- CARRUSEL DVISION AMPLIADO Y PEGADO AL TEXTO -->
+    <!-- CARRUSEL DVISION -->
     <section class="cover-art-section">
       <div class="carousel-outer-frame">
         <button class="minimal-arrow-btn" onclick="moveCarousel(-1)" aria-label="Anterior">
@@ -1055,7 +1041,7 @@
       </div>
     </section>
 
-    <!-- 1. CARRUSEL THE HUMAN TAPES (TAMAÑO GARGANTUA BAY #5 Y RESPIRO INFERIOR) -->
+    <!-- CARRUSEL THE HUMAN TAPES (APUNTA A assets/TRT_beta.gif) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1073,20 +1059,29 @@
         <div class="tapes-track-wrapper" id="tapesTrackWrapper">
           <div class="tapes-track" id="tapesTrack">
             
+            <!-- TAPE 01 (APUNTA A assets/TRT_beta.gif) -->
             <div class="tape-card-retro">
-              <div class="tape-object-animated"></div>
+              <div class="tape-gif-container">
+                <img src="assets/TRT_beta.gif" alt="Tape #01 — Intuición Digital" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
+              </div>
               <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
               <span class="tape-card-meta">Diálogo con Eloria Studio · 45 min</span>
             </div>
 
+            <!-- TAPE 02 -->
             <div class="tape-card-retro">
-              <div class="tape-object-animated"></div>
+              <div class="tape-gif-container">
+                <img src="assets/TRT_beta.gif" alt="Tape #02 — Universos Gráficos" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
+              </div>
               <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
               <span class="tape-card-meta">Curaduría Dvision · 52 min</span>
             </div>
 
+            <!-- TAPE 03 -->
             <div class="tape-card-retro">
-              <div class="tape-object-animated"></div>
+              <div class="tape-gif-container">
+                <img src="assets/TRT_beta.gif" alt="Tape #03 — Arte de Galería Virtual" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
+              </div>
               <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
               <span class="tape-card-meta">Residencia Ebberkett · 38 min</span>
             </div>
@@ -1099,7 +1094,6 @@
         </button>
       </div>
 
-      <!-- Texto de plataformas con buen respiro visual respecto al producto -->
       <div style="max-width: 900px; margin: 0 auto; text-align: center; border-top: 1px solid rgba(14,14,14,0.08); padding-top: 50px;">
         <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
           Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
@@ -1113,7 +1107,7 @@
     </section>
   </main>
 
-  <!-- 3. MODAL POP-OUT (CIERRE CON CLIC EN CUALQUIER ZONA OSCURA) -->
+  <!-- MODAL POP-OUT -->
   <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -1310,7 +1304,6 @@
       document.getElementById('mVideoContainer').innerHTML = '';
     }
 
-    /* Cierra el modal al hacer clic en el fondo oscuro */
     function closeModalOnBackdrop(event) {
       if (event.target === document.getElementById('caseModal')) {
         closeModal();
