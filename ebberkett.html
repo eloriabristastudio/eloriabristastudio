@@ -10,10 +10,16 @@
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes -->
+  <!-- Fuentes: Inter, JetBrains Mono, Geist Pixel (vía CDN de fuentes o Google si disponible), Pixelify Sans y Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <!-- Importación de fuente Geist Pixel desde CDN tipográfico compatible -->
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/geist-pixel'); /* O respaldo tipográfico pixel */
+  </style>
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
@@ -107,11 +113,12 @@
       text-align: center;
     }
 
+    /* TÍTULO PRINCIPAL CON GEIST PIXEL */
     .coding-title {
-      font-family: 'Pixelify Sans', cursive, monospace;
-      font-size: clamp(2.2rem, 5vw, 5.2rem);
+      font-family: 'Geist Pixel', 'Pixelify Sans', monospace;
+      font-size: clamp(2rem, 4.5vw, 4.8rem);
       font-weight: 500;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       color: #0e0e0e;
       margin: 0;
@@ -180,7 +187,7 @@
 
     .manifesto-body p { margin: 0; }
 
-    /* NOMENCLATURA DE SALAS (CON NÚMEROS PIXELIFY) */
+    /* NOMENCLATURA DE SALAS (NÚMEROS PIXEL) */
     .rooms-nav-block {
       margin-top: 100px;
       padding-top: 60px;
@@ -214,7 +221,7 @@
     .room-card:hover .room-num, .room-card:hover .room-meta { color: #a0a0a0; }
 
     .room-num {
-      font-family: 'Pixelify Sans', cursive, monospace; /* NÚMEROS MANTENIDOS EN PIXEL */
+      font-family: 'Geist Pixel', 'Pixelify Sans', monospace;
       font-size: 2.4rem;
       color: #555;
       margin-bottom: 15px;
@@ -237,7 +244,7 @@
       line-height: 1.4;
     }
 
-    /* SECCIÓN DVISION (INTRODUCCIÓN DE LA DIVISIÓN) */
+    /* SECCIÓN DVISION */
     .division-intro-block {
       padding: 100px 3.5vw 60px 3.5vw;
       max-width: 1100px;
@@ -272,7 +279,7 @@
     }
 
     .gallery-header-block h2 {
-      font-family: 'Inter', sans-serif; /* SANS-SERIF PARA COVER ART */
+      font-family: 'Inter', sans-serif;
       font-size: clamp(2rem, 4vw, 3.8rem);
       font-weight: 300;
       letter-spacing: -0.03em;
@@ -280,7 +287,7 @@
     }
 
     .gallery-header-block h2 span.pixel-part {
-      font-family: 'Pixelify Sans', cursive, monospace; /* PIXEL PARA DVISION */
+      font-family: 'Geist Pixel', 'Pixelify Sans', monospace;
       font-weight: 500;
       text-transform: lowercase;
       letter-spacing: 0.02em;
@@ -501,14 +508,14 @@
     <!-- INTRO / DVISION -->
     <section id="division" class="division-intro-block">
       <span class="section-label">Eloria Brista Studio × Ebberkett</span>
-      <h2 style="font-family: 'Pixelify Sans', cursive, monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; margin: 0; text-transform: lowercase;">/ dvision</h2>
+      <h2 style="font-family: 'Geist Pixel', 'Pixelify Sans', monospace; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; margin: 0; text-transform: lowercase;">/ dvision</h2>
       
       <p class="division-intro-text">
         Una división dedicada a la identidad visual de lanzamientos musicales. Conectamos la investigación de nuestro pabellón de arte, desarrollamos y direccionamos el universo gráfico de tu Single, EP o Álbum para transformar tu música en un universo visual único y de colección, dentro y fuera de las plataformas digitales.
       </p>
     </section>
 
-    <!-- COVER ART DIVISION (TÍTULO MIXTO SANS + PIXEL) -->
+    <!-- COVER ART DIVISION -->
     <section class="cover-art-section">
       <div class="gallery-header-block">
         <div>
