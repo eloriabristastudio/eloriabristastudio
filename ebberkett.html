@@ -116,7 +116,7 @@
       text-align: center;
     }
 
-    /* TÍTULO PRINCIPAL CON TU FUENTE LOCAL */
+    /* TÍTULO PRINCIPAL CON FUENTE LOCAL */
     .coding-title {
       font-family: 'GeistPixelLocal', monospace;
       font-size: clamp(2.2rem, 5vw, 5.2rem);
@@ -189,7 +189,62 @@
 
     .manifesto-body p { margin: 0; }
 
-    /* SALAS (NÚMEROS CON TU FUENTE LOCAL) */
+    /* SECCIÓN EN EXHIBICIÓN (WIDE / ANCHO COMPLETO) */
+    .current-exhibition-section {
+      width: 100%;
+      padding: 100px 3.5vw;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      box-sizing: border-box;
+    }
+
+    .exhibition-wide-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .exhibition-banner-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #e0dfd9;
+      overflow: hidden;
+      margin-top: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .exhibition-banner-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .exhibition-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .exhibition-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: #0e0e0e;
+    }
+
+    .exhibition-dates {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #555;
+      letter-spacing: 0.05em;
+    }
+
+    /* SALAS (NÚMEROS CON FUENTE LOCAL) */
     .rooms-nav-block {
       margin-top: 100px;
       padding-top: 60px;
@@ -264,14 +319,24 @@
       margin-top: 25px;
     }
 
-    /* COVER ART / DVISION CARRUSEL MANUAL ESTILO INSTAGRAM */
+    /* COVER ART / DVISION CARRUSEL CON FLECHAS EN ESPACIO NEGATIVO */
     .cover-art-section {
       padding: 60px 3.5vw 140px 3.5vw;
       background-color: #f5f4f0;
     }
 
+    .carousel-outer-frame {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
     .carousel-container {
-      max-width: 700px;
+      width: 100%;
+      max-width: 550px;
       margin: 0 auto;
       position: relative;
     }
@@ -290,13 +355,13 @@
     .carousel-item {
       min-width: 100%;
       box-sizing: border-box;
-      padding: 0 10px;
+      padding: 0 5px;
       cursor: pointer;
     }
 
     .cover-img-wrapper {
       width: 100%;
-      aspect-ratio: 1 / 1; /* Corte cuadrado perfecto listo para 1500x1500px o 3000x3000px */
+      aspect-ratio: 1 / 1; /* Cuadrado perfecto */
       background: #e0dfd9;
       box-shadow: 0 15px 35px rgba(0,0,0,0.08);
       overflow: hidden;
@@ -333,35 +398,22 @@
       margin-bottom: 3px;
     }
 
-    /* BOTONES DE CONTROL ESTILO INSTAGRAM */
-    .carousel-btn {
-      position: absolute;
-      top: 45%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(14, 14, 14, 0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    /* FLECHAS NEGRAS MINIMALISTAS EN ESPACIO NEGATIVO */
+    .space-nav-arrow {
+      background: none;
+      border: none;
+      font-size: 2rem;
       cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-      transition: all 0.2s ease;
       color: #0e0e0e;
-      font-size: 1.1rem;
+      padding: 10px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.7;
     }
 
-    .carousel-btn:hover {
-      background: #ffffff;
-      transform: translateY(-50%) scale(1.08);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    .space-nav-arrow:hover {
+      opacity: 1;
+      transform: scale(1.15);
     }
-
-    .carousel-btn.prev { left: -22px; }
-    .carousel-btn.next { right: -22px; }
 
     /* MODAL POP-OUT (CÉDULA Y PROCESO) */
     .modal-overlay {
@@ -431,8 +483,7 @@
       .ebberkett-nav-links { display: none; }
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; }
-      .carousel-btn.prev { left: 10px; }
-      .carousel-btn.next { right: 10px; }
+      .rooms-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -447,6 +498,7 @@
 
     <nav class="ebberkett-nav-links">
       <a href="#manifesto">Intro</a>
+      <a href="#exhibicion">En Exhibición</a>
       <a href="#salas">Salas</a>
       <a href="#division">/ Dvision</a>
       <a href="#tapes">The Human Tapes</a>
@@ -470,7 +522,7 @@
       </a>
     </section>
 
-    <!-- MANIFIESTO Y SALAS -->
+    <!-- MANIFIESTO -->
     <section id="manifesto" class="pavilion-manifesto-section">
       <span class="section-label">EBS · SF / CDMX — Virtual Exhibition Pavilion</span>
 
@@ -485,32 +537,53 @@
           More than a static gallery, this pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
         </p>
       </div>
+    </section>
 
-      <!-- ESTRUCTURA DE SALAS -->
-      <div id="salas" class="rooms-nav-block">
-        <span class="section-label">Pavilion Architecture — Active Galleries</span>
+    <!-- SECCIÓN EN EXHIBICIÓN (WIDE / ANCHO COMPLETO) -->
+    <section id="exhibicion" class="current-exhibition-section">
+      <div class="exhibition-wide-container">
+        <span class="section-label">En Exhibición — Muestra Vigente</span>
+        
+        <div class="exhibition-banner-wrapper">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="En Exhibición" />
+        </div>
 
-        <div class="rooms-grid">
-          <!-- SALA 1 -->
-          <div class="room-card">
-            <span class="room-num">01</span>
-            <h3 class="room-title">Sala 1 / Main Gallery</h3>
-            <span class="room-meta">Exposiciones de artistas invitados de la escena contemporánea.</span>
+        <div class="exhibition-meta-bar">
+          <div>
+            <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
           </div>
-
-          <!-- SALA 2 -->
-          <div class="room-card">
-            <span class="room-num">02</span>
-            <h3 class="room-title">Sala 2 / Resident Works</h3>
-            <span class="room-meta">Obras del colectivo interno y colecciones permanentes de EBS.</span>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+            <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+            <a href="#salas" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">Todas las exposiciones ↗</a>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- SALA 3 -->
-          <div class="room-card">
-            <span class="room-num">03</span>
-            <h3 class="room-title">Sala 3 / Creative Lab</h3>
-            <span class="room-meta">Avant-garde archives, exploraciones de laboratorio y visuales de alto riesgo.</span>
-          </div>
+    <!-- SALAS Y ARQUITECTURA -->
+    <section id="salas" class="pavilion-manifesto-section" style="padding-top: 80px;">
+      <span class="section-label">Pavilion Architecture — Active Galleries</span>
+
+      <div class="rooms-grid">
+        <!-- SALA 1 -->
+        <div class="room-card">
+          <span class="room-num">01</span>
+          <h3 class="room-title">Sala 1 / Main Gallery</h3>
+          <span class="room-meta">Exposiciones de artistas invitados de la escena contemporánea.</span>
+        </div>
+
+        <!-- SALA 2 -->
+        <div class="room-card">
+          <span class="room-num">02</span>
+          <h3 class="room-title">Sala 2 / Resident Works</h3>
+          <span class="room-meta">Obras del colectivo interno y colecciones permanentes de EBS.</span>
+        </div>
+
+        <!-- SALA 3 -->
+        <div class="room-card">
+          <span class="room-num">03</span>
+          <h3 class="room-title">Sala 3 / Creative Lab</h3>
+          <span class="room-meta">Avant-garde archives, exploraciones de laboratorio y visuales de alto riesgo.</span>
         </div>
       </div>
     </section>
@@ -525,81 +598,83 @@
       </p>
     </section>
 
-    <!-- COVER ART / DVISION CARRUSEL MANUAL -->
+    <!-- COVER ART / DVISION CON FLECHAS EN ESPACIO NEGATIVO -->
     <section class="cover-art-section">
-      <div style="max-width: 700px; margin: 0 auto 30px auto; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="max-width: 900px; margin: 0 auto 30px auto; display: flex; justify-content: space-between; align-items: flex-end;">
         <span class="section-label" style="margin-bottom:0;">Selección Curada — Colección Permanente</span>
         <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #777;">Haz clic en cualquier obra para ver su ficha y descubrir el proceso creativo detrás</span>
       </div>
 
-      <div class="carousel-container">
-        <!-- Botón Izquierda -->
-        <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Anterior">‹</button>
+      <div class="carousel-outer-frame">
+        <!-- Flecha Izquierda en espacio negativo -->
+        <button class="space-nav-arrow" onclick="moveCarousel(-1)" aria-label="Anterior">←</button>
 
-        <div class="carousel-track-wrapper">
-          <div class="carousel-track" id="carouselTrack">
-            
-            <!-- FIG 01 -->
-            <div class="carousel-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-              <div class="cover-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
-              </div>
-              <div class="cover-caption">
-                <div>
-                  <span class="fig-num">FIG. 01 — AFRO.</span>
-                  <span>Art Direction &amp; Digital Canvas</span>
+        <div class="carousel-container">
+          <div class="carousel-track-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+              
+              <!-- FIG 01 -->
+              <div class="carousel-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="cover-img-wrapper">
+                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
                 </div>
-                <span style="font-size: 0.68rem; color: #888;">01 / 04</span>
-              </div>
-            </div>
-
-            <!-- FIG 02 -->
-            <div class="carousel-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
-              <div class="cover-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
-              </div>
-              <div class="cover-caption">
-                <div>
-                  <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
-                  <span>Mixed Media Art Direction</span>
+                <div class="cover-caption">
+                  <div>
+                    <span class="fig-num">FIG. 01 — AFRO.</span>
+                    <span>Art Direction &amp; Digital Canvas</span>
+                  </div>
+                  <span style="font-size: 0.68rem; color: #888;">01 / 04</span>
                 </div>
-                <span style="font-size: 0.68rem; color: #888;">02 / 04</span>
               </div>
-            </div>
 
-            <!-- FIG 03 -->
-            <div class="carousel-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
-              <div class="cover-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
-              </div>
-              <div class="cover-caption">
-                <div>
-                  <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
-                  <span>Remix Cover &amp; Typographic Direction</span>
+              <!-- FIG 02 -->
+              <div class="carousel-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form &amp; Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
+                <div class="cover-img-wrapper">
+                  <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
                 </div>
-                <span style="font-size: 0.68rem; color: #888;">03 / 04</span>
-              </div>
-            </div>
-
-            <!-- FIG 04 -->
-            <div class="carousel-item" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
-              <div class="cover-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Get Up Cover" />
-              </div>
-              <div class="cover-caption">
-                <div>
-                  <span class="fig-num">FIG. 04 — GET UP.</span>
-                  <span>Chromatics &amp; Graphic Experimentation</span>
+                <div class="cover-caption">
+                  <div>
+                    <span class="fig-num">FIG. 02 — DO IT LIKE ME.</span>
+                    <span>Mixed Media Art Direction</span>
+                  </div>
+                  <span style="font-size: 0.68rem; color: #888;">02 / 04</span>
                 </div>
-                <span style="font-size: 0.68rem; color: #888;">04 / 04</span>
               </div>
-            </div>
 
+              <!-- FIG 03 -->
+              <div class="carousel-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art &amp; Typography Study', '2024', 'Sala 3 / Creative Lab', '')">
+                <div class="cover-img-wrapper">
+                  <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
+                </div>
+                <div class="cover-caption">
+                  <div>
+                    <span class="fig-num">FIG. 03 — IN THE NAME OF LOVE.</span>
+                    <span>Remix Cover &amp; Typographic Direction</span>
+                  </div>
+                  <span style="font-size: 0.68rem; color: #888;">03 / 04</span>
+                </div>
+              </div>
+
+              <!-- FIG 04 -->
+              <div class="carousel-item" onclick="openModal('GET UP', 'Triveat (MX)', 'Color Field &amp; Motion Graphic Still', '2025', 'Sala 2 / Resident Works', '')">
+                <div class="cover-img-wrapper">
+                  <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Get Up Cover" />
+                </div>
+                <div class="cover-caption">
+                  <div>
+                    <span class="fig-num">FIG. 04 — GET UP.</span>
+                    <span>Chromatics &amp; Graphic Experimentation</span>
+                  </div>
+                  <span style="font-size: 0.68rem; color: #888;">04 / 04</span>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <!-- Botón Derecha -->
-        <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Siguiente">›</button>
+        <!-- Flecha Derecha en espacio negativo -->
+        <button class="space-nav-arrow" onclick="moveCarousel(1)" aria-label="Siguiente">→</button>
       </div>
     </section>
 
