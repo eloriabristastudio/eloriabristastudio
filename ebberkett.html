@@ -366,6 +366,14 @@
       flex-direction: column;
       align-items: flex-end;
       gap: 10px;
+      width: 100%;
+    }
+
+    .exhibition-dates-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
     }
 
     .exhibition-dates {
@@ -388,9 +396,17 @@
 
     .expo-visit-link:hover { opacity: 0.6; }
 
+    /* CONTENEDOR SEPARADO PARA HAZ SLIDE (ESCRITORIO: DERECHA, 2 RENGLONES ABAJO) */
+    .slide-hint-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 22px;
+    }
+
     .slide-hint {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #0e0e0e;
       font-weight: 500;
       letter-spacing: 0.05em;
@@ -550,6 +566,23 @@
       max-width: 950px;
     }
 
+    .division-all-projects-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: #0e0e0e;
+      text-decoration: none;
+      border-bottom: 1px solid #0e0e0e;
+      padding-bottom: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 25px;
+      transition: opacity 0.2s ease;
+    }
+
+    .division-all-projects-link:hover { opacity: 0.6; }
+
     /* SECCIÓN SHOP */
     #shop {
       padding: 110px 4vw;
@@ -640,10 +673,17 @@
       font-size: 0.82rem;
       color: #666;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .tape-meta-info-row {
+      display: flex;
       justify-content: center;
+      align-items: center;
+      width: 100%;
     }
 
     .tapes-platforms-container {
@@ -654,7 +694,7 @@
       padding-top: 55px;
     }
 
-    /* MODAL POP-OUT */
+    /* MODAL POP-OUT LIMPIO (SIN TEXTO SOBRANTE) */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -732,6 +772,12 @@
       
       .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
       .exhibition-info-right { align-items: flex-start; }
+      
+      /* Alineación a la derecha inferior en móvil para haz slide */
+      .slide-hint-container {
+        justify-content: flex-end;
+        margin-top: 15px;
+      }
     }
   </style>
 </head>
@@ -776,7 +822,7 @@
   </div>
 
   <main>
-    <!-- HERO PRINCIPAL CON EFECTO CODING SCRAMBLE EN LOOP CONTINUO -->
+    <!-- HERO PRINCIPAL CON LOOP CONTINUO -->
     <section class="pavilion-hero">
       <h1 class="coding-title" id="codingHeroTitle">Welcome to Ebberkett</h1>
       
@@ -813,7 +859,7 @@
             
             <!-- SLIDE 01 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 1 / Main Gallery', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 1', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen por Álvaro Urbano" />
               </div>
               
@@ -825,16 +871,22 @@
                 </div>
                 
                 <div class="exhibition-info-right">
-                  <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
-                  <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
-                  <span class="slide-hint" style="margin-top: 5px;">haz slide →</span>
+                  <div class="exhibition-dates-row">
+                    <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+                    <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
+                  </div>
                 </div>
+              </div>
+
+              <!-- HAZ SLIDE SEPARADO Y A LA DERECHA -->
+              <div class="slide-hint-container">
+                <span class="slide-hint">haz slide →</span>
               </div>
             </div>
 
             <!-- SLIDE 02 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 1 / Main Gallery', '')">
+              <div class="exhibition-banner-wrapper" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 1', '')">
                 <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
               </div>
               
@@ -846,10 +898,16 @@
                 </div>
                 
                 <div class="exhibition-info-right">
-                  <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
-                  <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
-                  <span class="slide-hint" style="margin-top: 5px;">fin de salas ↺</span>
+                  <div class="exhibition-dates-row">
+                    <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
+                    <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
+                  </div>
                 </div>
+              </div>
+
+              <!-- HAZ SLIDE SEPARADO Y A LA DERECHA -->
+              <div class="slide-hint-container">
+                <span class="slide-hint">fin de salas ↺</span>
               </div>
             </div>
 
@@ -900,7 +958,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DVISION -->
+    <!-- SECCIÓN DVISION (CON ENLACE A TODOS LOS PROYECTOS) -->
     <section id="division" class="division-hero-slide">
       <div class="salas-content-wrapper">
         <span class="section-label">Eloria Brista Studio × Ebberkett</span>
@@ -909,14 +967,19 @@
           <span>/ </span><span id="typedWord"></span><span class="typewriter-cursor"></span>
         </div>
         
-        <p class="division-expanded-text" style="margin-bottom: 40px;">
+        <p class="division-expanded-text">
           Dvision es la colaboración de Eloria Brista Studio con Ebberkett dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos para transformar la visión de nuestros clientes en un universo visual coleccionable.
         </p>
 
-        <div class="salas-grid-shop">
+        <!-- ENLACE PARA VER TODOS LOS PROYECTOS -->
+        <a href="dvision-archive.html" class="division-all-projects-link">
+          ver proyectos completos ↗
+        </a>
+
+        <div class="salas-grid-shop" style="margin-top: 40px;">
           
           <!-- OBRA 01 -->
-          <div class="room-card-shop" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2 / Resident Works', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <div class="room-card-shop" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
             </div>
@@ -929,7 +992,7 @@
           </div>
 
           <!-- OBRA 02 -->
-          <div class="room-card-shop" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form & Graphic Study', '2024', 'Sala 2 / Resident Works', '')">
+          <div class="room-card-shop" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form & Graphic Study', '2024', 'Sala 2', '')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
             </div>
@@ -942,7 +1005,7 @@
           </div>
 
           <!-- OBRA 03 -->
-          <div class="room-card-shop" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art & Typography', '2024', 'Sala 3 / Creative Lab', '')">
+          <div class="room-card-shop" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art & Typography', '2024', 'Sala 3', '')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
             </div>
@@ -1008,7 +1071,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES -->
+    <!-- CARRUSEL THE HUMAN TAPES (CON HAZ SLIDE SEPARADO Y A LA DERECHA) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1029,8 +1092,12 @@
               </div>
               <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
               <div class="tape-card-meta">
-                <span>Diálogo con Eloria Studio · 45 min</span>
-                <span class="slide-hint">haz slide →</span>
+                <div class="tape-meta-info-row">
+                  <span>Diálogo con Eloria Studio · 45 min</span>
+                </div>
+                <div class="slide-hint-container" style="margin-top: 0;">
+                  <span class="slide-hint">haz slide →</span>
+                </div>
               </div>
             </div>
 
@@ -1041,8 +1108,12 @@
               </div>
               <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
               <div class="tape-card-meta">
-                <span>Curaduría Dvision · 52 min</span>
-                <span class="slide-hint">haz slide →</span>
+                <div class="tape-meta-info-row">
+                  <span>Curaduría Dvision · 52 min</span>
+                </div>
+                <div class="slide-hint-container" style="margin-top: 0;">
+                  <span class="slide-hint">haz slide →</span>
+                </div>
               </div>
             </div>
 
@@ -1053,8 +1124,12 @@
               </div>
               <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
               <div class="tape-card-meta">
-                <span>Residencia Ebberkett · 38 min</span>
-                <span class="slide-hint">fin de cintas ↺</span>
+                <div class="tape-meta-info-row">
+                  <span>Residencia Ebberkett · 38 min</span>
+                </div>
+                <div class="slide-hint-container" style="margin-top: 0;">
+                  <span class="slide-hint">fin de cintas ↺</span>
+                </div>
               </div>
             </div>
 
@@ -1075,12 +1150,12 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT -->
+  <!-- MODAL POP-OUT (LIMPIO, SIN TEXTO SUPERPUESTO) -->
   <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
-      <span class="section-label" id="mGalleryLocation">EBS Permanent Collection</span>
+      <span class="section-label" id="mGalleryLocation">Sala 1</span>
       <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
       
       <div class="modal-body-grid">
@@ -1140,7 +1215,7 @@
       overlay.classList.toggle('active');
     }
 
-    /* CODING SCRAMBLE HERO EN LOOP CONTINUO Y DINÁMICO */
+    /* CODING SCRAMBLE HERO EN LOOP CONTINUO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
       const finalText = "Welcome to Ebberkett";
@@ -1173,8 +1248,6 @@
           if (currentFrame > totalFrames) {
             targetElement.innerText = finalText;
             clearInterval(interval);
-            
-            // Pausa de 3.5 segundos para lectura limpia antes de reiniciar la animación
             setTimeout(runScrambleLoop, 3500);
           }
         }, speed);
@@ -1213,10 +1286,10 @@
     }
     document.addEventListener("DOMContentLoaded", typeWriterLoop);
 
-    /* MODAL POP-OUT */
+    /* MODAL POP-OUT LIMPIO */
     function openModal(title, artist, medium, year, location, videoUrl) {
       document.getElementById('mTitle').innerText = title;
-      document.getElementById('mGalleryLocation').innerText = location + " — EBS Permanent Collection";
+      document.getElementById('mGalleryLocation').innerText = location;
       document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
       
       const videoBox = document.getElementById('mVideoContainer');
