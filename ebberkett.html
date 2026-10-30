@@ -322,7 +322,7 @@
     .exhibition-meta-bar {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       margin-top: 25px;
       gap: 30px;
       flex-wrap: wrap;
@@ -332,7 +332,7 @@
     .exhibition-info-left {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       min-width: 0;
     }
 
@@ -349,6 +349,13 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
       color: #666;
+      margin-bottom: 12px;
+    }
+
+    .exhibition-room-dates {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .exhibition-room-tag {
@@ -357,23 +364,6 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #888;
-      margin-top: 10px;
-      display: block;
-    }
-
-    .exhibition-info-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .exhibition-dates-row {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
     }
 
     .exhibition-dates {
@@ -381,6 +371,14 @@
       font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
+    }
+
+    .exhibition-info-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+      width: 100%;
     }
 
     .expo-visit-link {
@@ -396,12 +394,15 @@
 
     .expo-visit-link:hover { opacity: 0.6; }
 
-    /* CONTENEDOR SEPARADO PARA HAZ SLIDE (ESCRITORIO: DERECHA, 2 RENGLONES ABAJO) */
-    .slide-hint-container {
+    /* CONTENEDOR SEPARADO PARA HAZ SLIDE Y VISITA LA EXPO */
+    .slide-and-visit-container {
       width: 100%;
       display: flex;
       justify-content: flex-end;
-      margin-top: 22px;
+      align-items: flex-end;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
     }
 
     .slide-hint {
@@ -523,7 +524,7 @@
       width: fit-content;
     }
 
-    /* SECCIÓN DVISION HERO */
+    /* SECCIÓN DVISION HERO CON TERMINAL DINÁMICA */
     .division-hero-slide {
       width: 100%;
       padding: 90px 4vw 20px 4vw;
@@ -533,21 +534,23 @@
       text-align: left;
     }
 
-    .typewriter-wrapper {
+    .terminal-title-wrapper {
       font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      font-size: clamp(2.2rem, 4.5vw, 5rem);
       color: #0e0e0e;
       margin: 15px 0 25px 0;
       display: flex;
       align-items: center;
+      white-space: pre-wrap;
+      word-break: break-all;
     }
 
-    .typewriter-cursor {
+    .terminal-cursor {
       display: inline-block;
-      width: 14px;
+      width: 12px;
       height: 4px;
       background-color: #0e0e0e;
-      margin-left: 5px;
+      margin-left: 4px;
       animation: cursorBlink 0.8s infinite;
     }
 
@@ -694,7 +697,7 @@
       padding-top: 55px;
     }
 
-    /* MODAL POP-OUT LIMPIO (SIN TEXTO SOBRANTE) */
+    /* MODAL POP-OUT LIMPIO */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -773,10 +776,9 @@
       .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
       .exhibition-info-right { align-items: flex-start; }
       
-      /* Alineación a la derecha inferior en móvil para haz slide */
-      .slide-hint-container {
-        justify-content: flex-end;
-        margin-top: 15px;
+      .slide-and-visit-container {
+        align-items: flex-end;
+        margin-top: 20px;
       }
     }
   </style>
@@ -867,20 +869,19 @@
                 <div class="exhibition-info-left">
                   <h2 class="exhibition-title">Helen</h2>
                   <span class="exhibition-artist">Artista: Álvaro Urbano</span>
-                  <span class="exhibition-room-tag">Sala 1</span>
+                  
+                  <div class="exhibition-room-dates">
+                    <span class="exhibition-room-tag">Sala 1</span>
+                    <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+                  </div>
                 </div>
                 
                 <div class="exhibition-info-right">
-                  <div class="exhibition-dates-row">
-                    <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
+                  <div class="slide-and-visit-container">
+                    <span class="slide-hint">haz slide →</span>
                     <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
                   </div>
                 </div>
-              </div>
-
-              <!-- HAZ SLIDE SEPARADO Y A LA DERECHA -->
-              <div class="slide-hint-container">
-                <span class="slide-hint">haz slide →</span>
               </div>
             </div>
 
@@ -894,20 +895,19 @@
                 <div class="exhibition-info-left">
                   <h2 class="exhibition-title">El susurro de los 1000 tulipanes</h2>
                   <span class="exhibition-artist">Artista: Haidar Hikmah</span>
-                  <span class="exhibition-room-tag">Sala 1</span>
+                  
+                  <div class="exhibition-room-dates">
+                    <span class="exhibition-room-tag">Sala 1</span>
+                    <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
+                  </div>
                 </div>
                 
                 <div class="exhibition-info-right">
-                  <div class="exhibition-dates-row">
-                    <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
+                  <div class="slide-and-visit-container">
+                    <span class="slide-hint">fin de salas ↺</span>
                     <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
                   </div>
                 </div>
-              </div>
-
-              <!-- HAZ SLIDE SEPARADO Y A LA DERECHA -->
-              <div class="slide-hint-container">
-                <span class="slide-hint">fin de salas ↺</span>
               </div>
             </div>
 
@@ -958,13 +958,13 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DVISION (CON ENLACE A TODOS LOS PROYECTOS) -->
+    <!-- SECCIÓN DVISION CON TERMINAL DINÁMICA DE 7 SUBTEMAS -->
     <section id="division" class="division-hero-slide">
       <div class="salas-content-wrapper">
         <span class="section-label">Eloria Brista Studio × Ebberkett</span>
         
-        <div class="typewriter-wrapper">
-          <span>/ </span><span id="typedWord"></span><span class="typewriter-cursor"></span>
+        <div class="terminal-title-wrapper">
+          <span id="terminalWord"></span><span class="terminal-cursor"></span>
         </div>
         
         <p class="division-expanded-text">
@@ -1071,7 +1071,7 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES (CON HAZ SLIDE SEPARADO Y A LA DERECHA) -->
+    <!-- CARRUSEL THE HUMAN TAPES -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
@@ -1095,7 +1095,7 @@
                 <div class="tape-meta-info-row">
                   <span>Diálogo con Eloria Studio · 45 min</span>
                 </div>
-                <div class="slide-hint-container" style="margin-top: 0;">
+                <div class="slide-and-visit-container" style="margin-top: 0;">
                   <span class="slide-hint">haz slide →</span>
                 </div>
               </div>
@@ -1111,7 +1111,7 @@
                 <div class="tape-meta-info-row">
                   <span>Curaduría Dvision · 52 min</span>
                 </div>
-                <div class="slide-hint-container" style="margin-top: 0;">
+                <div class="slide-and-visit-container" style="margin-top: 0;">
                   <span class="slide-hint">haz slide →</span>
                 </div>
               </div>
@@ -1127,7 +1127,7 @@
                 <div class="tape-meta-info-row">
                   <span>Residencia Ebberkett · 38 min</span>
                 </div>
-                <div class="slide-hint-container" style="margin-top: 0;">
+                <div class="slide-and-visit-container" style="margin-top: 0;">
                   <span class="slide-hint">fin de cintas ↺</span>
                 </div>
               </div>
@@ -1150,7 +1150,7 @@
     </section>
   </main>
 
-  <!-- MODAL POP-OUT (LIMPIO, SIN TEXTO SUPERPUESTO) -->
+  <!-- MODAL POP-OUT LIMPIO -->
   <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -1256,35 +1256,53 @@
       runScrambleLoop();
     });
 
-    /* MÁQUINA DE ESCRIBIR EN LOOP PARA DVISION */
-    const wordToType = "dvision";
-    const typedWordElement = document.getElementById("typedWord");
+    /* TERMINAL DINÁMICA DE 7 SUBTEMAS PARA DVISION (CON LOOP INFINITO Y CURSOR) */
+    const dvisionSubtopics = [
+      "cover art / dvision",
+      "live visuals / dvision",
+      "concepts / dvision",
+      "textures / dvision",
+      "video art / dvision",
+      "graphic experiments / dvision",
+      "visuals / dvision"
+    ];
+
+    let topicIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
+    const terminalElement = document.getElementById("terminalWord");
 
-    function typeWriterLoop() {
-      const currentText = wordToType.substring(0, charIndex);
-      typedWordElement.innerText = currentText;
-
-      let typingSpeed = 150;
-
-      if (!isDeleting && charIndex < wordToType.length) {
+    function terminalTypewriter() {
+      const currentWord = dvisionSubtopics[topicIndex];
+      
+      if (!isDeleting) {
+        // Escribir letra por letra
+        terminalElement.innerText = currentWord.substring(0, charIndex + 1);
         charIndex++;
-        typingSpeed = 150;
-      } else if (!isDeleting && charIndex === wordToType.length) {
-        isDeleting = true;
-        typingSpeed = 2000; 
-      } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        typingSpeed = 100;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        typingSpeed = 500;
-      }
 
-      setTimeout(typeWriterLoop, typingSpeed);
+        if (charIndex === currentWord.length) {
+          // Pausa antes de empezar a borrar
+          isDeleting = true;
+          setTimeout(terminalTypewriter, 2200);
+          return;
+        }
+        setTimeout(terminalTypewriter, 100);
+      } else {
+        // Borrar letra por letra
+        terminalElement.innerText = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          topicIndex = (topicIndex + 1) % dvisionSubtopics.length;
+          setTimeout(terminalTypewriter, 400);
+          return;
+        }
+        setTimeout(terminalTypewriter, 60);
+      }
     }
-    document.addEventListener("DOMContentLoaded", typeWriterLoop);
+
+    document.addEventListener("DOMContentLoaded", terminalTypewriter);
 
     /* MODAL POP-OUT LIMPIO */
     function openModal(title, artist, medium, year, location, videoUrl) {
