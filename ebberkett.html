@@ -310,20 +310,21 @@
       box-sizing: border-box;
     }
 
-    /* EFECTO PROFUNDIDAD TIPO WALLET AL TACTO / HOVER */
-    .depth-card {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
     .exhibition-banner-wrapper {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #e0dfd9;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      /* Sombra base muy sutil para dar presencia */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
       cursor: pointer;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Al pasar el cursor: sombra envolvente y elegante (efecto individualidad) y ligero zoom */
+    .exhibition-banner-wrapper:hover {
+      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
+      transform: translateY(-3px);
     }
 
     .exhibition-banner-wrapper img {
@@ -453,13 +454,14 @@
       margin-top: 40px;
     }
 
+    /* TARJETAS CON EFECTO DE SOMBRA ELEGANTE Y ZOOM TRADICIONAL */
     .room-card-shop {
       background: #ffffff;
       border: 1px solid rgba(14, 14, 14, 0.08);
       padding: 0;
       text-decoration: none;
       color: #0e0e0e;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
       display: flex;
       flex-direction: column;
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
@@ -467,8 +469,8 @@
     }
 
     .room-card-shop:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
       border-color: rgba(14, 14, 14, 0.2);
     }
 
@@ -491,7 +493,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .room-card-shop:hover .product-img-container-portrait img,
@@ -684,6 +686,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    .tape-gif-container:hover {
+      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
     }
 
     .tape-gif-container img {
@@ -910,7 +919,7 @@
             
             <!-- SLIDE 01 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper depth-card" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 1', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 1', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen por Álvaro Urbano" />
               </div>
               
@@ -936,7 +945,7 @@
 
             <!-- SLIDE 02 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper depth-card" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 1', '')">
+              <div class="exhibition-banner-wrapper" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 1', '')">
                 <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
               </div>
               
@@ -971,7 +980,7 @@
         <span class="section-label reveal-item">Explora nuestras galerías</span>
 
         <div class="salas-grid-shop">
-          <a href="#salas" class="room-card-shop depth-card reveal-item">
+          <a href="#salas" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" alt="Sala 1" />
             </div>
@@ -982,7 +991,7 @@
             </div>
           </a>
 
-          <a href="#salas" class="room-card-shop depth-card reveal-item">
+          <a href="#salas" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" alt="Sala 2" />
             </div>
@@ -993,7 +1002,7 @@
             </div>
           </a>
 
-          <a href="#salas" class="room-card-shop depth-card reveal-item">
+          <a href="#salas" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1000&auto=format&fit=crop" alt="Sala 3" />
             </div>
@@ -1028,7 +1037,7 @@
         <div class="salas-grid-shop" style="margin-top: 40px;">
           
           <!-- OBRA 01 -->
-          <div class="room-card-shop depth-card reveal-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <div class="room-card-shop reveal-item" onclick="openModal('AFRO — Single Cover', 'Triveat (MX)', 'Digital Oil on Canvas', '2025', 'Sala 2', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
             </div>
@@ -1041,7 +1050,7 @@
           </div>
 
           <!-- OBRA 02 -->
-          <div class="room-card-shop depth-card reveal-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form & Graphic Study', '2024', 'Sala 2', '')">
+          <div class="room-card-shop reveal-item" onclick="openModal('DO IT LIKE ME', 'Triveat (MX)', '3D Form & Graphic Study', '2024', 'Sala 2', '')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
             </div>
@@ -1054,7 +1063,7 @@
           </div>
 
           <!-- OBRA 03 -->
-          <div class="room-card-shop depth-card reveal-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art & Typography', '2024', 'Sala 3', '')">
+          <div class="room-card-shop reveal-item" onclick="openModal('IN THE NAME OF LOVE', 'Triveat (MX)', 'Visual Art & Typography', '2024', 'Sala 3', '')">
             <div class="product-img-container-square">
               <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
             </div>
@@ -1084,7 +1093,7 @@
         </div>
 
         <div class="salas-grid-shop">
-          <a href="EBshop.html" class="room-card-shop depth-card reveal-item">
+          <a href="EBshop.html" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Print 1" />
             </div>
@@ -1095,7 +1104,7 @@
             </div>
           </a>
 
-          <a href="EBshop.html" class="room-card-shop depth-card reveal-item">
+          <a href="EBshop.html" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Print 2" />
             </div>
@@ -1106,7 +1115,7 @@
             </div>
           </a>
 
-          <a href="EBshop.html" class="room-card-shop depth-card reveal-item">
+          <a href="EBshop.html" class="room-card-shop reveal-item">
             <div class="product-img-container-portrait">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Print 3" />
             </div>
@@ -1136,7 +1145,7 @@
             
             <!-- TAPE 01 -->
             <div class="tape-card-retro">
-              <div class="tape-gif-container depth-card">
+              <div class="tape-gif-container">
                 <img src="assets/TRT_beta.gif" alt="Tape #01 — Intuición Digital" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
@@ -1152,7 +1161,7 @@
 
             <!-- TAPE 02 -->
             <div class="tape-card-retro">
-              <div class="tape-gif-container depth-card">
+              <div class="tape-gif-container">
                 <img src="assets/TRT_beta.gif" alt="Tape #02 — Universos Gráficos" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
@@ -1168,7 +1177,7 @@
 
             <!-- TAPE 03 -->
             <div class="tape-card-retro">
-              <div class="tape-gif-container depth-card">
+              <div class="tape-gif-container">
                 <img src="assets/TRT_beta.gif" alt="Tape #03 — Arte de Galería Virtual" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
               </div>
               <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
@@ -1286,28 +1295,6 @@
       });
     });
 
-    /* EFECTO PROFUNDIDAD TIPO WALLET AL MOVER EL MOUSE O TACTO */
-    document.addEventListener("DOMContentLoaded", function() {
-      const cards = document.querySelectorAll('.depth-card');
-
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          
-          const rotateX = (-y / 25).toFixed(2);
-          const rotateY = (x / 25).toFixed(2);
-
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-        });
-      });
-    });
-
     /* CODING SCRAMBLE HERO EN LOOP CONTINUO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
@@ -1345,81 +1332,3 @@
           }
         }, speed);
       }
-
-      runScrambleLoop();
-    });
-
-    /* TERMINAL DINÁMICA DE 7 SUBTEMAS */
-    const dvisionSubtopics = [
-      "cover art",
-      "live visuals",
-      "concepts",
-      "textures",
-      "video art",
-      "graphic experiments",
-      "visuals"
-    ];
-
-    let topicIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const terminalElement = document.getElementById("terminalWord");
-
-    function terminalTypewriter() {
-      const currentWord = dvisionSubtopics[topicIndex];
-      
-      if (!isDeleting) {
-        terminalElement.innerText = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-
-        if (charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(terminalTypewriter, 2200);
-          return;
-        }
-        setTimeout(terminalTypewriter, 100);
-      } else {
-        terminalElement.innerText = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-
-        if (charIndex === 0) {
-          isDeleting = false;
-          topicIndex = (topicIndex + 1) % dvisionSubtopics.length;
-          setTimeout(terminalTypewriter, 400);
-          return;
-        }
-        setTimeout(terminalTypewriter, 60);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", terminalTypewriter);
-
-    /* MODAL POP-OUT CON BOTÓN STICKY */
-    function openModal(title, artist, medium, year, location, videoUrl) {
-      document.getElementById('mTitle').innerText = title;
-      document.getElementById('mGalleryLocation').innerText = location;
-      document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
-      
-      const videoBox = document.getElementById('mVideoContainer');
-      if (videoUrl) {
-        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-      } else {
-        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
-      }
-
-      document.getElementById('caseModal').classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('caseModal').classList.remove('active');
-      document.getElementById('mVideoContainer').innerHTML = '';
-    }
-
-    function closeModalOnBackdrop(event) {
-      if (event.target === document.getElementById('caseModal')) {
-        closeModal();
-      }
-    }
-  </script>
-</body>
-</html>
