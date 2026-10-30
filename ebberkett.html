@@ -394,7 +394,6 @@
 
     .expo-visit-link:hover { opacity: 0.6; }
 
-    /* CONTENEDOR SEPARADO PARA HAZ SLIDE Y VISITA LA EXPO */
     .slide-and-visit-container {
       width: 100%;
       display: flex;
@@ -524,7 +523,7 @@
       width: fit-content;
     }
 
-    /* SECCIÓN DVISION HERO CON TERMINAL DINÁMICA */
+    /* SECCIÓN DVISION HERO CON TERMINAL DINÁMICA ADAPTATIVA */
     .division-hero-slide {
       width: 100%;
       padding: 90px 4vw 20px 4vw;
@@ -540,9 +539,19 @@
       color: #0e0e0e;
       margin: 15px 0 25px 0;
       display: flex;
+      flex-direction: row;
       align-items: center;
-      white-space: pre-wrap;
-      word-break: break-all;
+      flex-wrap: wrap;
+      line-height: 1.15;
+    }
+
+    .terminal-animated-part {
+      display: inline-block;
+    }
+
+    .terminal-static-part {
+      display: inline-block;
+      white-space: pre;
     }
 
     .terminal-cursor {
@@ -551,6 +560,7 @@
       height: 4px;
       background-color: #0e0e0e;
       margin-left: 4px;
+      vertical-align: middle;
       animation: cursorBlink 0.8s infinite;
     }
 
@@ -780,6 +790,15 @@
         align-items: flex-end;
         margin-top: 20px;
       }
+
+      /* EN MÓVIL FORZAMOS EL SALTO DE LÍNEA PARA EL TÍTULO DE DVISION */
+      .terminal-title-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .terminal-static-part {
+        margin-top: 4px;
+      }
     }
   </style>
 </head>
@@ -958,13 +977,13 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DVISION CON TERMINAL DINÁMICA DE 7 SUBTEMAS -->
+    <!-- SECCIÓN DVISION CON TERMINAL DINÁMICA ADAPTATIVA -->
     <section id="division" class="division-hero-slide">
       <div class="salas-content-wrapper">
         <span class="section-label">Eloria Brista Studio × Ebberkett</span>
         
         <div class="terminal-title-wrapper">
-          <span id="terminalWord"></span><span class="terminal-cursor"></span>
+          <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span><span class="terminal-static-part"> / dvision</span>
         </div>
         
         <p class="division-expanded-text">
@@ -1256,15 +1275,15 @@
       runScrambleLoop();
     });
 
-    /* TERMINAL DINÁMICA DE 7 SUBTEMAS PARA DVISION (CON LOOP INFINITO Y CURSOR) */
+    /* TERMINAL DINÁMICA DE 7 SUBTEMAS (CON / DVISION ESTÁTICO ABAJO EN MÓVIL Y AL LADO EN WEB) */
     const dvisionSubtopics = [
-      "cover art / dvision",
-      "live visuals / dvision",
-      "concepts / dvision",
-      "textures / dvision",
-      "video art / dvision",
-      "graphic experiments / dvision",
-      "visuals / dvision"
+      "cover art",
+      "live visuals",
+      "concepts",
+      "textures",
+      "video art",
+      "graphic experiments",
+      "visuals"
     ];
 
     let topicIndex = 0;
@@ -1276,19 +1295,16 @@
       const currentWord = dvisionSubtopics[topicIndex];
       
       if (!isDeleting) {
-        // Escribir letra por letra
         terminalElement.innerText = currentWord.substring(0, charIndex + 1);
         charIndex++;
 
         if (charIndex === currentWord.length) {
-          // Pausa antes de empezar a borrar
           isDeleting = true;
           setTimeout(terminalTypewriter, 2200);
           return;
         }
         setTimeout(terminalTypewriter, 100);
       } else {
-        // Borrar letra por letra
         terminalElement.innerText = currentWord.substring(0, charIndex - 1);
         charIndex--;
 
