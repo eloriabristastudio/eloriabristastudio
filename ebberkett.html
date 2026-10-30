@@ -315,16 +315,13 @@
       aspect-ratio: 16 / 9;
       background: #e0dfd9;
       overflow: hidden;
-      /* Sombra base muy sutil para dar presencia */
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: box-shadow 0.4s ease;
       cursor: pointer;
-      transition: box-shadow 0.4s ease, transform 0.4s ease;
     }
 
-    /* Al pasar el cursor: sombra envolvente y elegante (efecto individualidad) y ligero zoom */
     .exhibition-banner-wrapper:hover {
-      box-shadow: 0 20px 45px rgba(0,0,0,0.09);
-      transform: translateY(-3px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.1);
     }
 
     .exhibition-banner-wrapper img {
@@ -433,7 +430,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* SALAS Y GRILLAS UNIFICADAS */
+    /* SALAS Y GRILLAS UNIFICADAS CON SOMBRA FLOTANTE Y ZOOM CLÁSICO */
     .immersive-salas-section {
       width: 100%;
       padding: 110px 4vw;
@@ -454,24 +451,25 @@
       margin-top: 40px;
     }
 
-    /* TARJETAS CON EFECTO DE SOMBRA ELEGANTE Y ZOOM TRADICIONAL */
     .room-card-shop {
       background: #ffffff;
-      border: 1px solid rgba(14, 14, 14, 0.08);
+      border: 1px solid rgba(14, 14, 14, 0.06);
       padding: 0;
       text-decoration: none;
       color: #0e0e0e;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+      /* Sutil sombra flotante base y transición limpia */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       cursor: pointer;
     }
 
     .room-card-shop:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
-      border-color: rgba(14, 14, 14, 0.2);
+      transform: translateY(-4px);
+      /* Sombra más amplia y suave al hacer hover, simulando elevación de tarjeta tipo Apple Wallet */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border-color: rgba(14, 14, 14, 0.12);
     }
 
     .product-img-container-portrait {
@@ -493,6 +491,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      /* Zoom suave original en la imagen */
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -686,13 +685,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      transition: box-shadow 0.4s ease, transform 0.4s ease;
-    }
-
-    .tape-gif-container:hover {
-      box-shadow: 0 20px 45px rgba(0,0,0,0.08);
-      transform: translateY(-3px);
     }
 
     .tape-gif-container img {
@@ -1332,3 +1324,81 @@
           }
         }, speed);
       }
+
+      runScrambleLoop();
+    });
+
+    /* TERMINAL DINÁMICA DE 7 SUBTEMAS */
+    const dvisionSubtopics = [
+      "cover art",
+      "live visuals",
+      "concepts",
+      "textures",
+      "video art",
+      "graphic experiments",
+      "visuals"
+    ];
+
+    let topicIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const terminalElement = document.getElementById("terminalWord");
+
+    function terminalTypewriter() {
+      const currentWord = dvisionSubtopics[topicIndex];
+      
+      if (!isDeleting) {
+        terminalElement.innerText = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+
+        if (charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(terminalTypewriter, 2200);
+          return;
+        }
+        setTimeout(terminalTypewriter, 100);
+      } else {
+        terminalElement.innerText = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          topicIndex = (topicIndex + 1) % dvisionSubtopics.length;
+          setTimeout(terminalTypewriter, 400);
+          return;
+        }
+        setTimeout(terminalTypewriter, 60);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", terminalTypewriter);
+
+    /* MODAL POP-OUT CON BOTÓN STICKY */
+    function openModal(title, artist, medium, year, location, videoUrl) {
+      document.getElementById('mTitle').innerText = title;
+      document.getElementById('mGalleryLocation').innerText = location;
+      document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+      
+      const videoBox = document.getElementById('mVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('caseModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('caseModal').classList.remove('active');
+      document.getElementById('mVideoContainer').innerHTML = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('caseModal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
