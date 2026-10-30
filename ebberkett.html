@@ -243,11 +243,20 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #777;
-      margin-bottom: 25px;
+      margin-bottom: 12px;
       display: block;
     }
 
-    /* EXHIBICIÓN EN MUESTRA (SIN FLECHAS, FLUJO LIBRE Y LIMPIO) */
+    .section-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 500;
+      margin: 0 0 35px 0;
+      color: #0e0e0e;
+      letter-spacing: -0.02em;
+    }
+
+    /* EXHIBICIÓN EN MUESTRA */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -270,7 +279,6 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       scroll-behavior: smooth;
-      margin-top: 15px;
     }
 
     .exhibition-slider-outer::-webkit-scrollbar {
@@ -330,7 +338,7 @@
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
       font-weight: 300;
       letter-spacing: -0.02em;
       margin: 0;
@@ -339,27 +347,37 @@
 
     .exhibition-artist {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #666;
+    }
+
+    .exhibition-room-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-top: 10px;
+      display: block;
     }
 
     .exhibition-info-right {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 8px;
+      gap: 10px;
     }
 
     .exhibition-dates {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #555;
       letter-spacing: 0.05em;
     }
 
     .expo-visit-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       color: #0e0e0e;
       text-decoration: none;
@@ -369,6 +387,14 @@
     }
 
     .expo-visit-link:hover { opacity: 0.6; }
+
+    .slide-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0e0e0e;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
 
     /* SALAS Y GRILLAS UNIFICADAS */
     .immersive-salas-section {
@@ -531,7 +557,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL THE HUMAN TAPES (SIN FLECHAS, CON INDICADOR DE SLIDE) */
+    /* CARRUSEL THE HUMAN TAPES */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -583,7 +609,6 @@
       box-sizing: border-box;
     }
 
-    /* CONTENEDOR DE GIF ADAPTADO PARA NO CORTARSE EN MÓVIL */
     .tape-gif-container {
       width: 100%;
       max-width: 500px;
@@ -619,12 +644,6 @@
       gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
-    }
-
-    .slide-hint {
-      color: #0e0e0e;
-      font-weight: 500;
-      letter-spacing: 0.05em;
     }
 
     .tapes-platforms-container {
@@ -757,7 +776,7 @@
   </div>
 
   <main>
-    <!-- HERO PRINCIPAL -->
+    <!-- HERO PRINCIPAL CON EFECTO CODING SCRAMBLE EN LOOP CONTINUO -->
     <section class="pavilion-hero">
       <h1 class="coding-title" id="codingHeroTitle">Welcome to Ebberkett</h1>
       
@@ -783,44 +802,53 @@
       </div>
     </section>
 
-    <!-- EXHIBICIÓN EN MUESTRA (SIN FLECHAS, DISEÑO LIMPIO) -->
+    <!-- EXHIBICIÓN EN MUESTRA -->
     <section id="exhibicion" class="current-exhibition-section">
       <div class="exhibition-inner-container">
-        <span class="section-label" style="margin-bottom:12px;">Exhibición en Muestra</span>
+        <span class="section-label">Exhibición en Muestra</span>
+        <h2 class="section-main-title">Novedades y Galerías Activas</h2>
 
         <div class="exhibition-slider-outer">
           <div class="exhibition-track">
             
             <!-- SLIDE 01 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('ÁLVARO URBANO: HELEN', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01 / Main Gallery', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Álvaro Urbano" />
+              <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 1 / Main Gallery', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen por Álvaro Urbano" />
               </div>
+              
               <div class="exhibition-meta-bar">
                 <div class="exhibition-info-left">
-                  <h2 class="exhibition-title">ÁLVARO URBANO: HELEN</h2>
+                  <h2 class="exhibition-title">Helen</h2>
                   <span class="exhibition-artist">Artista: Álvaro Urbano</span>
+                  <span class="exhibition-room-tag">Sala 1</span>
                 </div>
+                
                 <div class="exhibition-info-right">
                   <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
                   <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
+                  <span class="slide-hint" style="margin-top: 5px;">haz slide →</span>
                 </div>
               </div>
             </div>
 
             <!-- SLIDE 02 -->
             <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('EL SUSURRO DE LOS 1000 TULIPANES', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01 / Main Gallery', '')">
+              <div class="exhibition-banner-wrapper" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 1 / Main Gallery', '')">
                 <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes" />
               </div>
+              
               <div class="exhibition-meta-bar">
                 <div class="exhibition-info-left">
-                  <h2 class="exhibition-title">EL SUSURRO DE LOS 1000 TULIPANES</h2>
+                  <h2 class="exhibition-title">El susurro de los 1000 tulipanes</h2>
                   <span class="exhibition-artist">Artista: Haidar Hikmah</span>
+                  <span class="exhibition-room-tag">Sala 1</span>
                 </div>
+                
                 <div class="exhibition-info-right">
                   <span class="exhibition-dates">08.AGO.2026 — 31.OCT.2026</span>
                   <a href="#salas" class="expo-visit-link">visita la expo ↗</a>
+                  <span class="slide-hint" style="margin-top: 5px;">fin de salas ↺</span>
                 </div>
               </div>
             </div>
@@ -872,7 +900,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DVISION (GRILLA 3 COLUMNAS Y FORMATO CUADRADO 1:1) -->
+    <!-- SECCIÓN DVISION -->
     <section id="division" class="division-hero-slide">
       <div class="salas-content-wrapper">
         <span class="section-label">Eloria Brista Studio × Ebberkett</span>
@@ -980,11 +1008,11 @@
       </div>
     </section>
 
-    <!-- CARRUSEL THE HUMAN TAPES (SIN FLECHAS Y CON INDICADOR DE SLIDE) -->
+    <!-- CARRUSEL THE HUMAN TAPES -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label">Ebberkett Dialogues</span>
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 500; margin: 10px 0 20px 0;">The Human Tapes</h2>
+        <h2 class="section-main-title">The Human Tapes</h2>
         <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #555; max-width: 800px; line-height: 1.6;">
           Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana.
         </p>
@@ -1112,40 +1140,47 @@
       overlay.classList.toggle('active');
     }
 
-    /* CODING SCRAMBLE HERO */
+    /* CODING SCRAMBLE HERO EN LOOP CONTINUO Y DINÁMICO */
     document.addEventListener("DOMContentLoaded", function() {
       const targetElement = document.getElementById("codingHeroTitle");
       const finalText = "Welcome to Ebberkett";
       const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_#$&*@%";
       
-      let currentFrame = 0;
-      const totalFrames = 45; 
-      const speed = 45; 
+      function runScrambleLoop() {
+        let currentFrame = 0;
+        const totalFrames = 40; 
+        const speed = 40; 
 
-      const interval = setInterval(() => {
-        let scrambledText = "";
-        for (let i = 0; i < finalText.length; i++) {
-          if (finalText[i] === " ") {
-            scrambledText += " ";
-          } else {
-            const progressRatio = currentFrame / totalFrames;
-            const letterThreshold = (i / finalText.length);
-
-            if (progressRatio > letterThreshold) {
-              scrambledText += finalText[i];
+        const interval = setInterval(() => {
+          let scrambledText = "";
+          for (let i = 0; i < finalText.length; i++) {
+            if (finalText[i] === " ") {
+              scrambledText += " ";
             } else {
-              scrambledText += possibleChars[Math.floor(Math.random() * possibleChars.length)];
+              const progressRatio = currentFrame / totalFrames;
+              const letterThreshold = (i / finalText.length);
+
+              if (progressRatio > letterThreshold) {
+                scrambledText += finalText[i];
+              } else {
+                scrambledText += possibleChars[Math.floor(Math.random() * possibleChars.length)];
+              }
             }
           }
-        }
-        targetElement.innerText = scrambledText;
-        currentFrame++;
+          targetElement.innerText = scrambledText;
+          currentFrame++;
 
-        if (currentFrame > totalFrames) {
-          targetElement.innerText = finalText;
-          clearInterval(interval);
-        }
-      }, speed);
+          if (currentFrame > totalFrames) {
+            targetElement.innerText = finalText;
+            clearInterval(interval);
+            
+            // Pausa de 3.5 segundos para lectura limpia antes de reiniciar la animación
+            setTimeout(runScrambleLoop, 3500);
+          }
+        }, speed);
+      }
+
+      runScrambleLoop();
     });
 
     /* MÁQUINA DE ESCRIBIR EN LOOP PARA DVISION */
