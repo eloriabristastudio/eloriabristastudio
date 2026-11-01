@@ -81,7 +81,7 @@
       border-color: #f5f4f0;
     }
 
-    /* SECCIÓN EDITORIAL A PANTALLA COMPLETA (ESTILO REFERENCIA 1) */
+    /* SECCIÓN EDITORIAL A PANTALLA COMPLETA CON BUENA ALTURA */
     .editorial-section {
       position: relative;
       width: 100%;
@@ -92,7 +92,7 @@
       overflow: hidden;
     }
 
-    /* FONDO DE OBRA CON EFECTO PARALLAX */
+    /* FONDO DE OBRA CON PARALLAX SUAVE */
     .editorial-bg-image {
       position: absolute;
       top: 0;
@@ -100,102 +100,98 @@
       width: 100%;
       height: 120%;
       object-fit: cover;
-      filter: brightness(0.65);
+      filter: brightness(0.6);
       z-index: 1;
       will-change: transform;
     }
 
-    /* RECUADRO BLANCO FLOTANTE CENTRAL CON LA INFORMACIÓN DIRECTA */
+    /* RECUADRO FLOTANTE CON LA ESTRUCTURA DEL MODAL (FICHA TÉCNICA + IMAGEN) */
     .editorial-card-box {
       position: relative;
       z-index: 10;
       background: #f5f4f0;
       color: #0e0e0e;
-      width: min(85vw, 900px);
-      padding: clamp(30px, 5vw, 60px);
+      width: min(90vw, 1100px);
+      padding: clamp(40px, 5vw, 65px);
       display: grid;
-      grid-template-columns: 1fr 1.2fr 1fr;
-      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
       align-items: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.55);
       box-sizing: border-box;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .editorial-card-box {
         grid-template-columns: 1fr;
-        padding: 30px;
-        gap: 20px;
-        text-align: center;
+        padding: 35px 25px;
+        gap: 30px;
+        max-height: 85vh;
+        overflow-y: auto;
       }
     }
 
-    .card-col-left {
+    /* COLUMNA IZQUIERDA: FICHA TÉCNICA Y DESCRIPCIÓN (ESTILO POP-OUT) */
+    .card-info-side {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 15px;
     }
 
-    .card-category {
+    .gallery-location-tag {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #555;
+      letter-spacing: 0.1em;
+      color: #666;
     }
 
-    .card-index {
-      font-family: 'GeistPixelLocal', monospace;
-      font-size: 1.8rem;
-      color: #0e0e0e;
-    }
-
-    .card-col-center {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      background: #e0dfd9;
-      overflow: hidden;
-    }
-
-    .card-col-center img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .card-col-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-      text-align: right;
-    }
-
-    @media (max-width: 768px) {
-      .card-col-right {
-        align-items: center;
-        text-align: center;
-      }
-    }
-
-    .card-year {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #555;
-    }
-
-    .card-title {
+    .work-main-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-      font-weight: 500;
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      font-weight: 300;
       color: #0e0e0e;
+      line-height: 1.15;
       margin: 0;
     }
 
-    .card-artist {
+    .work-technical-details {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #666;
+      font-size: 0.78rem;
+      color: #555;
+      line-height: 1.6;
+      border-left: 2px solid rgba(14, 14, 14, 0.15);
+      padding-left: 12px;
+      margin: 5px 0;
+    }
+
+    .work-description-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: #333;
+      line-height: 1.65;
+    }
+
+    /* COLUMNA DERECHA: IMAGEN DE LA OBRA CON BUENA ALTURA */
+    .card-image-side {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #e0dfd9;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .card-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .editorial-card-box:hover .card-image-side img {
+      transform: scale(1.03);
     }
 
     /* FOOTER DE ARCHIVO */
@@ -227,18 +223,25 @@
     <!-- SECCIÓN 01 -->
     <section class="editorial-section">
       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      
       <div class="editorial-card-box">
-        <div class="card-col-left">
-          <span class="card-category">Editorial Motion</span>
-          <span class="card-index">01</span>
+        <div class="card-info-side">
+          <span class="gallery-location-tag">Sala 2 / Resident Works</span>
+          <h2 class="work-main-title">AFRO — Single Cover</h2>
+          
+          <div class="work-technical-details">
+            Artist: Triveat (MX)<br/>
+            Medium: Digital Oil on Canvas<br/>
+            Timeline: 2025
+          </div>
+          
+          <p class="work-description-text">
+            Exploración inmersiva creada en el laboratorio de Ebberkett para la dirección de arte oficial. Este proyecto indaga en el uso de texturas orgánicas y distorsión tipográfica aplicada al sonido contemporáneo.
+          </p>
         </div>
-        <div class="card-col-center">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Single Cover" />
-        </div>
-        <div class="card-col-right">
-          <span class="card-year">2025</span>
-          <h3 class="card-title">AFRO — Single Cover</h3>
-          <span class="card-artist">Triveat (MX) · Digital Oil</span>
+
+        <div class="card-image-side">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Cover" />
         </div>
       </div>
     </section>
@@ -246,18 +249,25 @@
     <!-- SECCIÓN 02 -->
     <section class="editorial-section">
       <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      
       <div class="editorial-card-box">
-        <div class="card-col-left">
-          <span class="card-category">3D Form & Study</span>
-          <span class="card-index">02</span>
+        <div class="card-info-side">
+          <span class="gallery-location-tag">Sala 2 / Resident Works</span>
+          <h2 class="work-main-title">DO IT LIKE ME</h2>
+          
+          <div class="work-technical-details">
+            Artist: Triveat (MX)<br/>
+            Medium: 3D Form & Graphic Study<br/>
+            Timeline: 2024
+          </div>
+          
+          <p class="work-description-text">
+            Estudio formal enfocado en volúmenes tridimensionales líquidos y su interacción con la luz volumétrica. Una pieza clave dentro de los archivos experimentales de Dvision.
+          </p>
         </div>
-        <div class="card-col-center">
+
+        <div class="card-image-side">
           <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
-        </div>
-        <div class="card-col-right">
-          <span class="card-year">2024</span>
-          <h3 class="card-title">DO IT LIKE ME</h3>
-          <span class="card-artist">Triveat (MX) · Graphic Study</span>
         </div>
       </div>
     </section>
@@ -265,18 +275,25 @@
     <!-- SECCIÓN 03 -->
     <section class="editorial-section">
       <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      
       <div class="editorial-card-box">
-        <div class="card-col-left">
-          <span class="card-category">Visual Art & Type</span>
-          <span class="card-index">03</span>
+        <div class="card-info-side">
+          <span class="gallery-location-tag">Sala 3 / Creative Lab</span>
+          <h2 class="work-main-title">IN THE NAME OF LOVE</h2>
+          
+          <div class="work-technical-details">
+            Artist: Triveat (MX)<br/>
+            Medium: Visual Art & Typography<br/>
+            Timeline: 2024
+          </div>
+          
+          <p class="work-description-text">
+            Investigación sobre la memoria visual y analógica. Integra fotografía impresa a mano y manipulación digital directa para construir un manifiesto visual único.
+          </p>
         </div>
-        <div class="card-col-center">
+
+        <div class="card-image-side">
           <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
-        </div>
-        <div class="card-col-right">
-          <span class="card-year">2024</span>
-          <h3 class="card-title">IN THE NAME OF LOVE</h3>
-          <span class="card-artist">Triveat (MX) · Typography</span>
         </div>
       </div>
     </section>
@@ -284,18 +301,25 @@
     <!-- SECCIÓN 04 -->
     <section class="editorial-section">
       <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      
       <div class="editorial-card-box">
-        <div class="card-col-left">
-          <span class="card-category">Generative Shader</span>
-          <span class="card-index">04</span>
+        <div class="card-info-side">
+          <span class="gallery-location-tag">Sala 3 / Creative Lab</span>
+          <h2 class="work-main-title">NEON SYNAPSE #09</h2>
+          
+          <div class="work-technical-details">
+            Artist: Eloria Resident<br/>
+            Medium: Generative Shader & Motion<br/>
+            Timeline: 2026
+          </div>
+          
+          <p class="work-description-text">
+            Ecosistema visual generado mediante código en tiempo real. Explora patrones orgánicos digitales que reaccionan a estímulos lumínicos simulados en el espacio virtual.
+          </p>
         </div>
-        <div class="card-col-center">
+
+        <div class="card-image-side">
           <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop" alt="Neon Synapse" />
-        </div>
-        <div class="card-col-right">
-          <span class="card-year">2026</span>
-          <h3 class="card-title">NEON SYNAPSE #09</h3>
-          <span class="card-artist">Eloria Resident · Motion</span>
         </div>
       </div>
     </section>
@@ -307,10 +331,9 @@
     <span>© 2026 EBBERKETT Pavilion · Dvision Archive</span>
   </footer>
 
-  <!-- SCRIPT SUTIL DE PARALLAX EN LOS FONDOS -->
+  <!-- SCRIPT DE PARALLAX SUAVE -->
   <script>
     window.addEventListener("scroll", () => {
-      const scrolled = window.pageYOffset;
       const sections = document.querySelectorAll(".editorial-section");
 
       sections.forEach(sec => {
