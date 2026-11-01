@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#161616" />
+  <meta name="theme-color" content="#EBEBEB" />
   <title>Sala 01: Main Gallery — Ebberkett</title>
   <meta name="description" content="Exhibición inmersiva de Sala 01 en el pabellón virtual de Ebberkett." />
   
@@ -21,9 +21,9 @@
       padding: 0;
       width: 100%;
       height: 100vh;
-      /* Fondo de museo serio / pared oscura o gris grafito elegante */
-      background-color: #161616;
-      color: #f5f4f0;
+      /* Fondo de museo concreto / lino claro */
+      background-color: #EBEBEB;
+      color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       overflow: hidden;
     }
@@ -40,9 +40,9 @@
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(22, 22, 22, 0.85);
+      background-color: rgba(235, 235, 235, 0.85);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
 
     .back-pavilion-link {
@@ -50,7 +50,7 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #f5f4f0;
+      color: #0e0e0e;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -63,56 +63,96 @@
     .gallery-indicator {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      color: #888;
+      color: #666;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
 
-    /* CONTENEDOR DEL SLIDER TIPO MUSEO (PANTALLA COMPLETA) */
+    /* CONTENEDOR CON SCROLL NATIVO PARA TRACKPAD Y TOUCH */
     .museum-slider-container {
       position: relative;
       width: 100%;
       height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       box-sizing: border-box;
-      padding: 80px 4vw 60px 4vw;
     }
 
     .museum-track {
       display: flex;
       width: 100%;
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
     }
 
-    /* CADA OBRA OCUPA UNA "SALA" INDIVIDUAL EN EL SLIDER */
+    .museum-track::-webkit-scrollbar {
+      display: none; /* Ocultar scrollbar en Chrome/Safari */
+    }
+
+    /* CADA SALA ES UN SLIDE DE PANTALLA COMPLETA CON LUZ PROPIA */
     .museum-slide-item {
-      min-width: 100%;
-      height: 100%;
+      min-width: 100vw;
+      height: 100vh;
+      scroll-snap-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      padding: 20px;
+      padding: 80px 6vw 40px 6vw;
       gap: 60px;
+      position: relative;
     }
 
-    /* ESTILO DEL CUADRO / MARCO EN LA PARED */
+    /* ILUMINACIÓN DE GALERÍA (SPOTLIGHT DE TECHO) */
+    .gallery-spotlight-effect {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 85%;
+      /* Simulación de la luz dirigida de museo cayendo desde arriba */
+      background: radial-gradient(ellipse at 50% 15%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 45%, rgba(235, 235, 235, 0) 75%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.85;
+      transition: opacity 0.5s ease;
+    }
+
+    .museum-slide-item:hover .gallery-spotlight-effect {
+      opacity: 1;
+    }
+
+    /* CONTENEDOR DEL CUADRO Y MARCO */
+    .artwork-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .artwork-display-frame {
       position: relative;
       max-width: 55vw;
       max-height: 65vh;
-      background: #111;
-      padding: 20px; /* Simula un marco o profundidad de galería */
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 10px 25px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #ffffff;
+      padding: 16px; /* Passe-partout / marco de museo */
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(14, 14, 14, 0.08);
       box-sizing: border-box;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: box-shadow 0.4s ease;
+    }
+
+    /* EFECTO HOVER ENFOCADO EN LA ILUMINACIÓN Y PROFUNDIDAD */
+    .artwork-display-frame:hover {
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
     }
 
     .artwork-display-frame img {
@@ -120,19 +160,16 @@
       max-height: 58vh;
       object-fit: contain;
       display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .artwork-display-frame:hover img {
-      transform: scale(1.02);
     }
 
     /* CÉDULA DE MUSEO AL COSTADO (ESTILO MOMA / JUMEX) */
     .museum-wall-label {
+      position: relative;
+      z-index: 2;
       max-width: 280px;
       font-family: 'Inter', sans-serif;
       text-align: left;
-      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 1px solid rgba(14, 14, 14, 0.2);
       padding-left: 20px;
       display: flex;
       flex-direction: column;
@@ -143,55 +180,56 @@
       font-family: 'Inter', sans-serif;
       font-size: 1.05rem;
       font-weight: 500;
-      color: #f5f4f0;
+      color: #0e0e0e;
       margin: 0;
     }
 
     .label-title-italic {
       font-style: italic;
-      color: #ccc;
+      color: #444;
+      font-size: 0.95rem;
     }
 
     .label-medium, .label-desc {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      color: #999;
+      color: #666;
       line-height: 1.5;
     }
 
     .label-number {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      color: #666;
+      color: #888;
       margin-top: 10px;
     }
 
-    /* CONTROLES DE NAVEGACIÓN (FLECHAS) */
+    /* BOTONES FLOTANTES DE NAVEGACIÓN (OPCIONALES) */
     .slider-nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #f5f4f0;
-      width: 50px;
-      height: 50px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(14, 14, 14, 0.15);
+      color: #0e0e0e;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       z-index: 50;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      backdrop-filter: blur(5px);
+      transition: background 0.2s ease, opacity 0.2s ease;
     }
 
     .slider-nav-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #f5f4f0;
+      background: rgba(255, 255, 255, 0.95);
     }
 
-    .nav-prev { left: 4vw; }
-    .nav-next { right: 4vw; }
+    .nav-prev { left: 3vw; }
+    .nav-next { right: 3vw; }
 
     /* MODAL DE ZOOM E INMERSIÓN */
     .modal-overlay {
@@ -200,7 +238,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.92);
+      background: rgba(14, 14, 14, 0.88);
       backdrop-filter: blur(12px);
       z-index: 200;
       display: none;
@@ -214,8 +252,8 @@
     .modal-overlay.active { display: flex; }
 
     .modal-content-card {
-      background: #1b1b1b;
-      color: #f5f4f0;
+      background: #EBEBEB;
+      color: #0e0e0e;
       max-width: 950px;
       width: 100%;
       max-height: 85vh;
@@ -223,7 +261,7 @@
       padding: 50px;
       box-sizing: border-box;
       position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: default;
     }
 
@@ -231,8 +269,8 @@
       position: sticky;
       top: 0;
       float: right;
-      background: #1b1b1b;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #EBEBEB;
+      border: 1px solid rgba(14, 14, 14, 0.2);
       width: 40px;
       height: 40px;
       display: flex;
@@ -241,14 +279,14 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 1.1rem;
       cursor: pointer;
-      color: #f5f4f0;
+      color: #0e0e0e;
       z-index: 50;
       transition: background 0.2s ease;
     }
 
     .modal-close-btn:hover {
-      background: #f5f4f0;
-      color: #161616;
+      background: #0e0e0e;
+      color: #EBEBEB;
     }
 
     .modal-body-grid {
@@ -277,8 +315,8 @@
       .museum-slide-item {
         flex-direction: column;
         justify-content: center;
-        gap: 30px;
-        padding-top: 40px;
+        gap: 25px;
+        padding-top: 60px;
       }
       .artwork-display-frame {
         max-width: 85vw;
@@ -291,7 +329,7 @@
       .museum-wall-label {
         max-width: 85vw;
         border-left: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-top: 1px solid rgba(14, 14, 14, 0.2);
         padding-left: 0;
         padding-top: 15px;
         text-align: center;
@@ -313,17 +351,20 @@
     <span class="gallery-indicator">Sala 01 / Main Gallery</span>
   </header>
 
-  <!-- CONTENEDOR DE SLIDER DE OBRA INDIVIDUAL -->
+  <!-- CONTENEDOR PRINCIPAL CON NAVEGACIÓN LIBRE POR TRACKPAD / SWIPE / SCROLL -->
   <div class="museum-slider-container">
-    <button class="slider-nav-btn nav-prev" onclick="prevSlide()" aria-label="Anterior">←</button>
-    <button class="slider-nav-btn nav-next" onclick="nextSlide()" aria-label="Siguiente">→</button>
+    <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Anterior">←</button>
+    <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Siguiente">→</button>
 
     <div class="museum-track" id="museumTrack">
       
       <!-- SLIDE 01 -->
       <div class="museum-slide-item">
-        <div class="artwork-display-frame" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Óleo y técnica mixta sobre lino', '2026', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-          <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" />
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Óleo y técnica mixta sobre lino', '2026', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" />
+          </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Álvaro Urbano</h3>
@@ -336,8 +377,11 @@
 
       <!-- SLIDE 02 -->
       <div class="museum-slide-item">
-        <div class="artwork-display-frame" onclick="openArtworkModal('El Susurro del Muro Blanco', 'Haidar Hikmah', 'Pigmentos puros y resina sobre canvas', '2026', '')">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="El Susurro del Muro Blanco" />
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('El Susurro del Muro Blanco', 'Haidar Hikmah', 'Pigmentos puros y resina sobre canvas', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="El Susurro del Muro Blanco" />
+          </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Haidar Hikmah</h3>
@@ -350,8 +394,11 @@
 
       <!-- SLIDE 03 -->
       <div class="museum-slide-item">
-        <div class="artwork-display-frame" onclick="openArtworkModal('Geometría de la Memoria', 'Eloria Studio Resident', 'Impresión pigmentada de alta densidad', '2025', '')">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometría de la Memoria" />
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Geometría de la Memoria', 'Eloria Studio Resident', 'Impresión pigmentada de alta densidad', '2025', '')">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometría de la Memoria" />
+          </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Eloria Studio Resident</h3>
@@ -364,8 +411,11 @@
 
       <!-- SLIDE 04 -->
       <div class="museum-slide-item">
-        <div class="artwork-display-frame" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Texturas digitales sobre soporte físico', '2026', '')">
-          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop" alt="Gargantua Fragment" />
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Texturas digitales sobre soporte físico', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop" alt="Gargantua Fragment" />
+          </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Triveat</h3>
@@ -384,23 +434,23 @@
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #888; text-transform: uppercase;">Sala 01 / Vista Detallada</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #666; text-transform: uppercase;">Sala 01 / Vista Detallada</span>
       <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Título de la Obra</h2>
       
       <div class="modal-body-grid">
         <div>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #aaa; line-height: 1.6;" id="modalDetails">
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="modalDetails">
             Artist: Nombre del Artista<br/>
             Medium: Técnica<br/>
             Timeline: 2026
           </p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #ccc; line-height: 1.6; margin-top: 20px;">
+          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;">
             Inspección detallada de la pieza. Esta vista permite apreciar la textura general y acceder al registro de estudio de los creadores de Ebberkett.
           </p>
         </div>
 
         <div>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #888; text-transform: uppercase;">Registro de Estudio / Proceso</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #666; text-transform: uppercase;">Registro de Estudio / Proceso</span>
           <div class="modal-bts-video-box" id="modalVideoContainer">
             [ Video Proceso / Studio Log - Pending ]
           </div>
@@ -409,34 +459,34 @@
     </div>
   </div>
 
-  <!-- SCRIPT DEL SLIDER Y MODAL -->
+  <!-- SCRIPT NATIVO DE NAVEGACIÓN Y ACCIONES -->
   <script>
-    let currentSlide = 0;
-    const totalSlides = 40; // Total de obras en el track (ajustable)
     const track = document.getElementById('museumTrack');
-    const actualSlidesCount = 4; // Tenemos 4 definidas por ahora
 
-    function updateSlidePosition() {
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    /* CONVERSIÓN DE WHEEL VERTICAL EN SCROLL HORIZONTAL (PARA MOUSE Y TRACKPAD) */
+    track.addEventListener('wheel', (evt) => {
+      if (evt.deltaY !== 0) {
+        evt.preventDefault();
+        track.scrollLeft += evt.deltaY;
+      }
+    }, { passive: false });
+
+    /* NAVEGACIÓN CON FLECHAS FLOTANTES */
+    function scrollNext() {
+      track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
     }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % actualSlidesCount;
-      updateSlidePosition();
+    function scrollPrev() {
+      track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + actualSlidesCount) % actualSlidesCount;
-      updateSlidePosition();
-    }
-
-    /* Soporte para teclado (flechas izq / der) */
+    /* TECLADO NATIVO (FLECHAS IZQUIERDA / DERECHA) */
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') scrollNext();
+      if (e.key === 'ArrowLeft') scrollPrev();
     });
 
-    /* Funciones del Modal */
+    /* FUNCIONES DEL MODAL */
     function openArtworkModal(title, artist, medium, year, videoUrl) {
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
