@@ -1,1 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f4f3ef" />
+  <title>Sala 01: Main Gallery — Ebberkett</title>
+  <meta name="description" content="Sala 01 Main Gallery - Exposición contemporánea en el pabellón virtual de Ebberkett." />
+  
+  <!-- Favicon vectorial -->
+  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      /* Fondo característico de pared blanca de museo / White Cube */
+      background-color: #f4f3ef;
+      color: #0e0e0e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* HEADER MINIMALISTA DE LA SALA */
+    .gallery-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 22px 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 100;
+      background-color: rgba(244, 243, 239, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+    }
+
+    .back-pavilion-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0e0e0e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-pavilion-link:hover { opacity: 0.6; }
+
+    .gallery-indicator {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* CONTENEDOR PRINCIPAL / MURO DE GALERÍA */
+    .museum-wall-container {
+      max-width: 1300px;
+      margin: 140px auto 100px auto;
+      padding: 0 5vw;
+      box-sizing: border-box;
+    }
+
+    .room-intro-block {
+      margin-bottom: 70px;
+      text-align: left;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.1);
+      padding-bottom: 30px;
+    }
+
+    .room-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .room-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      margin: 0 0 15px 0;
+      color: #0e0e0e;
+      letter-spacing: -0.02em;
+    }
+
+    .room-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #555;
+      max-width: 700px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* GRID / DISPOSICIÓN TIPO MURO DE ARTE */
+    .artworks-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 80px 50px;
+    }
+
+    .artwork-item-card {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      group: true;
+    }
+
+    /* Cuadro con sombra simulando relieve en la pared */
+    .artwork-frame {
+      width: 100%;
+      background: #ffffff;
+      padding: 15px; /* Simula un margen o passe-partout blanco de museo */
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.02);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+    }
+
+    .artwork-item-card:hover .artwork-frame {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .artwork-img-box {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #e0dfd9;
+    }
+
+    .artwork-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .artwork-item-card:hover .artwork-img-box img {
+      transform: scale(1.03);
+    }
+
+    /* Cédula tipográfica de museo al pie de cada cuadro */
+    .artwork-caption {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .caption-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .artwork-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #0e0e0e;
+      margin: 0;
+    }
+
+    .artwork-artist {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #666;
+    }
+
+    .artwork-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    /* MODAL DE ZOOM E INMERSIÓN */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(14, 14, 14, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content-card {
+      background: #f4f3ef;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 50px;
+      box-sizing: border-box;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: default;
+    }
+
+    .modal-close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: #f4f3ef;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: #0e0e0e;
+      z-index: 50;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #0e0e0e;
+      color: #f4f3ef;
+    }
+
+    .modal-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 20px;
+      clear: both;
+    }
+
+    .modal-bts-video-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
+      .artworks-wall-grid { grid-template-columns: 1fr; gap: 50px; }
+      .modal-body-grid { grid-template-columns: 1fr; }
+      .modal-content-card { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER DE LA SALA -->
+  <header class="gallery-header">
+    <a href="ebberkett.html" class="back-pavilion-link">
+      <span>← Volver al Pabellón</span>
+    </a>
+    <span class="gallery-indicator">Sala 01 / Main Gallery</span>
+  </header>
+
+  <!-- MURO DE LA GALERÍA -->
+  <main class="museum-wall-container">
+    <div class="room-intro-block">
+      <span class="room-tag">Exhibición Permanente &amp; Invitados</span>
+      <h1 class="room-main-title">Main Gallery</h1>
+      <p class="room-description">
+        Un espacio curado para albergar obras de la escena contemporánea internacional, explorando la relación entre los soportes clásicos de la pintura y la nueva plástica digital.
+      </p>
+    </div>
+
+    <!-- GRID DE OBRAS EN LA PARED -->
+    <div class="artworks-wall-grid">
+      
+      <!-- OBRA 01 -->
+      <div class="artwork-item-card" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Óleo y técnica mixta sobre lino', '2026', 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+        <div class="artwork-frame">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" />
+          </div>
+        </div>
+        <div class="artwork-caption">
+          <div class="caption-left">
+            <h3 class="artwork-title">Natureza Morta con Tulipanes</h3>
+            <span class="artwork-artist">Álvaro Urbano</span>
+          </div>
+          <span class="artwork-year">2026</span>
+        </div>
+      </div>
+
+      <!-- OBRA 02 -->
+      <div class="artwork-item-card" onclick="openArtworkModal('El Susurro del Muro Blanco', 'Haidar Hikmah', 'Pigmentos puros y resina sobre canvas', '2026', 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop', '')">
+        <div class="artwork-frame">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop" alt="El Susurro del Muro Blanco" />
+          </div>
+        </div>
+        <div class="artwork-caption">
+          <div class="caption-left">
+            <h3 class="artwork-title">El Susurro del Muro Blanco</h3>
+            <span class="artwork-artist">Haidar Hikmah</span>
+          </div>
+          <span class="artwork-year">2026</span>
+        </div>
+      </div>
+
+      <!-- OBRA 03 -->
+      <div class="artwork-item-card" onclick="openArtworkModal('Geometría de la Memoria', 'Eloria Studio Resident', 'Impresión pigmentada de alta densidad', '2025', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop', '')">
+        <div class="artwork-frame">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Geometría de la Memoria" />
+          </div>
+        </div>
+        <div class="artwork-caption">
+          <div class="caption-left">
+            <h3 class="artwork-title">Geometría de la Memoria</h3>
+            <span class="artwork-artist">Eloria Studio Resident</span>
+          </div>
+          <span class="artwork-year">2025</span>
+        </div>
+      </div>
+
+      <!-- OBRA 04 -->
+      <div class="artwork-item-card" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Texturas digitales sobre soporte físico', '2026', 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop', '')">
+        <div class="artwork-frame">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Gargantua Fragment" />
+          </div>
+        </div>
+        <div class="artwork-caption">
+          <div class="caption-left">
+            <h3 class="artwork-title">Gargantua Fragment</h3>
+            <span class="artwork-artist">Triveat</span>
+          </div>
+          <span class="artwork-year">2026</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODAL DE DETALLE Y ZOOM DE OBRA -->
+  <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      
+      <span class="room-tag">Sala 01 / Cédula de Obra</span>
+      <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Título de la Obra</h2>
+      
+      <div class="modal-body-grid">
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="modalDetails">
+            Artist: Nombre del Artista<br/>
+            Medium: Técnica<br/>
+            Timeline: 2026
+          </p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;">
+            Pieza seleccionada para la exhibición permanente en Main Gallery. Esta obra examina los límites perceptivos del color y la textura dentro del archivo virtual de Ebberkett.
+          </p>
+        </div>
+
+        <div>
+          <span class="room-tag">Registro de Estudio / Proceso</span>
+          <div class="modal-bts-video-box" id="modalVideoContainer">
+            [ Video Proceso / Studio Log - Pending ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT PARA EL MODAL DE DETALLE -->
+  <script>
+    function openArtworkModal(title, artist, medium, year, imgUrl, videoUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+      
+      const videoBox = document.getElementById('modalVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('artworkModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('artworkModal').classList.remove('active');
+      document.getElementById('modalVideoContainer').innerHTML = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('artworkModal')) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
