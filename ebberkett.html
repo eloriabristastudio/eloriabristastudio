@@ -431,7 +431,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* SALAS Y GRILLAS UNIFICADAS CON SOMBRA FLOTANTE Y ZOOM */
+    /* ARQUITECTURA / SALAS */
     .immersive-salas-section {
       width: 100%;
       padding: 110px 4vw;
@@ -478,23 +478,14 @@
       background: #e0dfd9;
     }
 
-    .product-img-container-square {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background: #e0dfd9;
-    }
-
-    .product-img-container-portrait img,
-    .product-img-container-square img {
+    .product-img-container-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .room-card-shop:hover .product-img-container-portrait img,
-    .room-card-shop:hover .product-img-container-square img { 
+    .room-card-shop:hover .product-img-container-portrait img { 
       transform: scale(1.04); 
     }
 
@@ -528,22 +519,8 @@
       line-height: 1.5;
     }
 
-    .card-process-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #0e0e0e;
-      text-decoration: none;
-      border-bottom: 1px solid #0e0e0e;
-      padding-bottom: 2px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 8px;
-      width: fit-content;
-    }
-
     /* ==========================================================
-       HERO / DVISION CON ANIMACIÓN EN BUCLE CONTINUO Y AUTÓNOMO
+       HERO / DVISION CON ANIMACIÓN EN BUCLE Y ESPACIO SEGURO
        ========================================================== */
     .dvision-immersive-hero {
       position: relative;
@@ -599,7 +576,7 @@
       position: relative;
       z-index: 10;
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       padding: 0 5vw;
       box-sizing: border-box;
       display: flex;
@@ -632,8 +609,11 @@
       transform: translateY(20px);
     }
 
+    /* Ancho mínimo reservado para que el texto dinámico no mueva el botón */
     .terminal-animated-part {
       display: inline-block;
+      min-width: 240px;
+      text-align: right;
     }
 
     .terminal-static-part {
@@ -668,6 +648,17 @@
       transform: translateY(20px);
     }
 
+    /* Contenedor seguro para evitar saltos y asegurar clic sin interferencias */
+    .dvision-btn-wrapper {
+      margin-top: 25px;
+      min-height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
     .dvision-explore-btn {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
@@ -675,17 +666,17 @@
       color: #f5f4f0;
       text-decoration: none;
       border-bottom: 1px solid rgba(245, 244, 240, 0.5);
-      padding-bottom: 3px;
-      margin-top: 25px;
+      padding: 6px 10px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: border-color 0.2s ease;
-      opacity: 0;
-      transform: translateY(20px);
+      transition: border-color 0.2s ease, opacity 0.2s ease;
     }
 
-    .dvision-explore-btn:hover { border-color: #f5f4f0; }
+    .dvision-explore-btn:hover { 
+      border-color: #f5f4f0; 
+      opacity: 0.8;
+    }
 
     /* SECCIÓN SHOP */
     #shop {
@@ -1078,7 +1069,7 @@
       </div>
     </section>
 
-    <!-- HERO INMERSIVO DVISION (ANIMACIÓN DE FONDO EN BUCLE AUTÓNOMO) -->
+    <!-- HERO INMERSIVO DVISION (CON CONTENEDOR SEGURO PARA EL BOTÓN) -->
     <section class="dvision-immersive-hero" id="dvisionHero">
       
       <!-- GALERÍA FLOTANTE 3D (Z-DEPTH CONTINUO) -->
@@ -1103,7 +1094,7 @@
         </div>
       </div>
 
-      <!-- CONTENIDO CENTRAL FIJO CON FADE-IN Y MÁQUINA DE ESCRIBIR -->
+      <!-- CONTENIDO CENTRAL FIJO CON ESPACIO SEGURO PARA CLIC -->
       <div class="dvision-center-overlay">
         <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio × Ebberkett</span>
         
@@ -1115,9 +1106,12 @@
           Dvision es la colaboración dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos para transformar la visión en un universo coleccionable.
         </p>
 
-        <a href="dvision-archive.html" class="dvision-explore-btn" id="dvBtn">
-          ver proyectos completos ↗
-        </a>
+        <!-- Contenedor seguro independiente -->
+        <div class="dvision-btn-wrapper" id="dvBtnWrap">
+          <a href="dvision-archive.html" class="dvision-explore-btn">
+            ver proyectos completos ↗
+          </a>
+        </div>
       </div>
 
     </section>
@@ -1391,11 +1385,11 @@
           });
       });
 
-      // Fade-in inicial elegante de los textos centrales de Dvision
+      // Fade-in inicial elegante de los textos centrales de Dvision (incluyendo contenedor seguro del botón)
       gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power3.out" });
       gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
       gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1.2, delay: 0.7, ease: "power3.out" });
-      gsap.to("#dvBtn", { opacity: 1, y: 0, duration: 1.2, delay: 0.9, ease: "power3.out" });
+      gsap.to("#dvBtnWrap", { opacity: 1, y: 0, duration: 1.2, delay: 0.9, ease: "power3.out" });
     });
 
     /* CODING SCRAMBLE HERO EN LOOP CONTINUO */
