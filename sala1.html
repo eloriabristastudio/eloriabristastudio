@@ -27,7 +27,7 @@
       overflow: hidden;
     }
 
-    /* HEADER SÚPER COMPACTO Y ELEGANTE */
+    /* HEADER COMPACTO */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -67,7 +67,7 @@
       letter-spacing: 0.1em;
     }
 
-    /* CONTENEDOR OPTIMIZADO CON ALTURA REAL DE DISPOSITIVO */
+    /* CONTENEDOR DE ALTURA REAL */
     .museum-slider-container {
       position: relative;
       width: 100%;
@@ -91,7 +91,7 @@
       display: none;
     }
 
-    /* SLIDE CENTRADO CON SEPARACIÓN FIJA RESPECTO AL HEADER */
+    /* SLIDE EN DISTRIBUCIÓN EQUILIBRADA */
     .museum-slide-item {
       min-width: 100vw;
       height: 100vh;
@@ -101,12 +101,12 @@
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      padding: 90px 6vw 50px 6vw; /* Espacio superior generoso para no chocar con el header */
+      padding: 70px 6vw 30px 6vw;
       gap: 50px;
       position: relative;
     }
 
-    /* ILUMINACIÓN DE GALERÍA REUBICADA SOBRE LA OBRA */
+    /* SPOTLIGHT CENTRADO */
     .gallery-spotlight-effect {
       position: absolute;
       top: 5%;
@@ -114,7 +114,7 @@
       transform: translateX(-50%);
       width: 75%;
       height: 70%;
-      background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 50%, rgba(235, 235, 235, 0) 75%);
+      background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 50%, rgba(235, 235, 235, 0) 75%);
       pointer-events: none;
       z-index: 1;
       opacity: 0.85;
@@ -155,7 +155,7 @@
       display: block;
     }
 
-    /* CÉDULA DE MUSEO ESTILIZADA Y CENTRADA */
+    /* CÉDULA DE MUSEO SIN NÚMERO */
     .museum-wall-label {
       position: relative;
       z-index: 2;
@@ -191,31 +191,25 @@
       line-height: 1.4;
     }
 
-    .label-number {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #888;
-      margin-top: 6px;
-    }
-
-    /* BOTONES FLOTANTES DE NAVEGACIÓN */
+    /* FLECHAS FLOTANTES MÁS CHICAS Y COMPACTAS */
     .slider-nav-btn {
       position: absolute;
-      top: 50%;
+      top: 45%; /* Ligeramente más arriba para encajar con el centro del cuadro */
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(14, 14, 14, 0.15);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(14, 14, 14, 0.12);
       color: #0e0e0e;
-      width: 42px;
-      height: 42px;
+      width: 34px; /* Tamaño reducido para no estorbar */
+      height: 34px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       z-index: 50;
-      backdrop-filter: blur(5px);
-      transition: background 0.2s ease;
+      font-size: 0.8rem;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s ease, opacity 0.2s ease;
     }
 
     .slider-nav-btn:hover { background: rgba(255, 255, 255, 0.95); }
@@ -223,7 +217,7 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
-    /* MODAL DE ZOOM E INMERSIÓN */
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -302,34 +296,40 @@
       font-size: 0.75rem;
     }
 
-    /* MEDIA QUERIES PARA MÓVILES PERFECTAMENTE CENTRADOS */
+    /* MEDIA QUERIES PARA CELULAR (OBRA TOTALMENTE CENTRADA ENTRE FLECHAS) */
     @media (max-width: 900px) {
       .museum-slide-item {
         flex-direction: column;
         justify-content: center;
-        gap: 16px;
-        padding: 80px 4vw 50px 4vw; /* Padding superior para bajar el cuadro y alejarlo del header */
+        gap: 14px;
+        padding: 60px 4vw 25px 4vw; /* Espaciado ajustado */
       }
       .artwork-display-frame {
-        max-width: 82vw;
-        max-height: 38vh; /* Altura ideal en pantalla táctil */
-        padding: 8px;
+        max-width: 78vw;
+        max-height: 34vh; /* Cuadro en tamaño perfecto */
+        padding: 7px;
       }
       .artwork-display-frame img {
-        max-height: 34vh;
+        max-height: 30vh;
       }
       .museum-wall-label {
-        max-width: 85vw;
+        max-width: 82vw;
         border-left: none;
-        border-top: 1px solid rgba(14, 14, 14, 0.15);
+        border-top: 1px solid rgba(14, 14, 14, 0.12);
         padding-left: 0;
-        padding-top: 12px;
+        padding-top: 10px;
         text-align: center;
         align-items: center;
       }
-      .modal-body-grid { grid-template-columns: 1fr; }
+      .slider-nav-btn {
+        top: 32%; /* En móvil se alinean exactamente al centro del marco de la obra */
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+      }
       .nav-prev { left: 2vw; }
       .nav-next { right: 2vw; }
+      .modal-body-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -343,7 +343,7 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- CONTENEDOR PRINCIPAL CON NAVEGACIÓN NATIVA LIBRE -->
+  <!-- CONTENEDOR PRINCIPAL -->
   <div class="museum-slider-container">
     <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Anterior">←</button>
     <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Siguiente">→</button>
@@ -363,7 +363,6 @@
           <p class="label-title-italic">"Natureza Morta con Tulipanes", 2026</p>
           <span class="label-medium">Óleo y técnica mixta sobre lino</span>
           <p class="label-desc">Exhibición invitada en Main Gallery. Explora la tensión entre el bodegón clásico y la luz digital.</p>
-          <span class="label-number">01 / 04</span>
         </div>
       </div>
 
@@ -380,7 +379,6 @@
           <p class="label-title-italic">"El Susurro del Muro Blanco", 2026</p>
           <span class="label-medium">Pigmentos puros y resina sobre canvas</span>
           <p class="label-desc">Obra conceptual centrada en la pureza del espacio y la distorsión del color.</p>
-          <span class="label-number">02 / 04</span>
         </div>
       </div>
 
@@ -397,7 +395,6 @@
           <p class="label-title-italic">"Geometría de la Memoria", 2025</p>
           <span class="label-medium">Impresión pigmentada de alta densidad</span>
           <p class="label-desc">Archivo permanente del laboratorio visual enfocado en patrones algorítmicos.</p>
-          <span class="label-number">03 / 04</span>
         </div>
       </div>
 
@@ -414,7 +411,6 @@
           <p class="label-title-italic">"Gargantua Fragment", 2026</p>
           <span class="label-medium">Texturas digitales sobre soporte físico</span>
           <p class="label-desc">Estudio de volúmenes oscuros y profundidad inmersiva.</p>
-          <span class="label-number">04 / 04</span>
         </div>
       </div>
 
