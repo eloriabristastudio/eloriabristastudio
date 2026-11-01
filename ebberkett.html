@@ -520,7 +520,7 @@
     }
 
     /* ==========================================================
-       HERO / DVISION CON ANIMACIÓN EN BUCLE Y ESPACIO SEGURO
+       HERO / DVISION CON TEXTO ANIMADO ESTABLE E INDEPENDIENTE
        ========================================================== */
     .dvision-immersive-hero {
       position: relative;
@@ -576,7 +576,7 @@
       position: relative;
       z-index: 10;
       text-align: center;
-      max-width: 900px;
+      max-width: 950px;
       padding: 0 5vw;
       box-sizing: border-box;
       display: flex;
@@ -603,22 +603,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column; /* Apilado limpio para máxima estabilidad */
       line-height: 1.15;
       opacity: 0;
       transform: translateY(20px);
+      text-align: center;
     }
 
-    /* Ancho mínimo reservado para que el texto dinámico no mueva el botón */
+    /* CONTENEDOR INDEPENDIENTE Y ESTÁTICO PARA EL TEXTO MÁQUINA DE ESCRIBIR */
+    .terminal-row-top {
+      display: inline-block;
+      min-height: 1.1em;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
+    }
+
     .terminal-animated-part {
       display: inline-block;
-      min-width: 240px;
-      text-align: right;
-    }
-
-    .terminal-static-part {
-      display: inline-block;
-      white-space: pre;
     }
 
     .terminal-cursor {
@@ -636,6 +638,13 @@
       50% { opacity: 0; }
     }
 
+    .terminal-row-bottom {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      white-space: pre;
+    }
+
     .dvision-subtitle-desc {
       font-family: 'Inter', sans-serif;
       font-size: clamp(1rem, 1.3vw, 1.2rem);
@@ -648,7 +657,7 @@
       transform: translateY(20px);
     }
 
-    /* Contenedor seguro para evitar saltos y asegurar clic sin interferencias */
+    /* CONTENEDOR SEGURO INDEPENDIENTE PARA EL BOTÓN */
     .dvision-btn-wrapper {
       margin-top: 25px;
       min-height: 40px;
@@ -685,7 +694,7 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    /* CARRUSEL EBBERKETT RADIO */
+    /* CARRUSEL THE HUMAN TAPES (EBBERKETT RADIO) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -1069,7 +1078,7 @@
       </div>
     </section>
 
-    <!-- HERO INMERSIVO DVISION (CON CONTENEDOR SEGURO PARA EL BOTÓN) -->
+    <!-- HERO INMERSIVO DVISION (CON TÍTULO APILADO ESTABLE Y ESTRUCTURA INDEPENDIENTE) -->
     <section class="dvision-immersive-hero" id="dvisionHero">
       
       <!-- GALERÍA FLOTANTE 3D (Z-DEPTH CONTINUO) -->
@@ -1094,12 +1103,15 @@
         </div>
       </div>
 
-      <!-- CONTENIDO CENTRAL FIJO CON ESPACIO SEGURO PARA CLIC -->
+      <!-- CONTENIDO CENTRAL FIJO CON TÍTULO ESTABLE Y CLIC SEGURO -->
       <div class="dvision-center-overlay">
         <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio × Ebberkett</span>
         
         <h2 class="dvision-main-title-wrap" id="dvTitle">
-          <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span><span class="terminal-static-part"> / dvision</span>
+          <span class="terminal-row-top">
+            <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span>
+          </span>
+          <span class="terminal-row-bottom"> / dvision</span>
         </h2>
         
         <p class="dvision-subtitle-desc" id="dvDesc">
@@ -1166,11 +1178,11 @@
       </div>
     </section>
 
-    <!-- CARRUSEL EBBERKETT RADIO -->
+    <!-- CARRUSEL THE HUMAN TAPES (EBBERKETT RADIO) -->
     <section id="tapes" class="tapes-section">
       <div class="tapes-header-block">
         <span class="section-label reveal-item">Ebberkett Dialogues</span>
-        <h2 class="section-main-title reveal-item">Ebberkett Radio</h2>
+        <h2 class="section-main-title reveal-item">The Human Tapes</h2>
         <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #555; max-width: 800px; line-height: 1.6;">
           Un espacio dedicado a conectar con creadores emergentes, documentar procesos de trabajo y reflexionar sobre la intersección entre la tecnología y la sensibilidad humana.
         </p>
@@ -1183,9 +1195,9 @@
             <!-- TAPE 01 -->
             <div class="tape-card-retro">
               <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Radio #01 — Intuición Digital" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
+                <img src="assets/TRT_beta.gif" alt="Tape #01 — Intuición Digital" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
               </div>
-              <h3 class="tape-card-title">Radio #01 — Intuición Digital</h3>
+              <h3 class="tape-card-title">Tape #01 — Intuición Digital</h3>
               <div class="tape-card-meta">
                 <div class="tape-meta-info-row">
                   <span>Diálogo con Eloria Studio · 45 min</span>
@@ -1199,9 +1211,9 @@
             <!-- TAPE 02 -->
             <div class="tape-card-retro">
               <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Radio #02 — Universos Gráficos" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
+                <img src="assets/TRT_beta.gif" alt="Tape #02 — Universos Gráficos" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
               </div>
-              <h3 class="tape-card-title">Radio #02 — Universos Gráficos</h3>
+              <h3 class="tape-card-title">Tape #02 — Universos Gráficos</h3>
               <div class="tape-card-meta">
                 <div class="tape-meta-info-row">
                   <span>Curaduría Dvision · 52 min</span>
@@ -1215,9 +1227,9 @@
             <!-- TAPE 03 -->
             <div class="tape-card-retro">
               <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Radio #03 — Arte de Galería Virtual" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
+                <img src="assets/TRT_beta.gif" alt="Tape #03 — Arte de Galería Virtual" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
               </div>
-              <h3 class="tape-card-title">Radio #03 — Arte de Galería Virtual</h3>
+              <h3 class="tape-card-title">Tape #03 — Arte de Galería Virtual</h3>
               <div class="tape-card-meta">
                 <div class="tape-meta-info-row">
                   <span>Residencia Ebberkett · 38 min</span>
@@ -1234,7 +1246,7 @@
 
       <div class="tapes-platforms-container">
         <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
-          Escucha los episodios completos de <strong>Ebberkett Radio</strong> en plataformas oficiales:
+          Escucha los episodios completos de <strong>The Human Tapes</strong> en plataformas oficiales:
         </p>
         <div class="reveal-item" style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
           <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
@@ -1385,7 +1397,7 @@
           });
       });
 
-      // Fade-in inicial elegante de los textos centrales de Dvision (incluyendo contenedor seguro del botón)
+      // Fade-in inicial elegante de los textos centrales de Dvision
       gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power3.out" });
       gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
       gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1.2, delay: 0.7, ease: "power3.out" });
