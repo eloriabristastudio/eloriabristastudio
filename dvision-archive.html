@@ -108,7 +108,7 @@
       color: rgba(245, 244, 240, 0.5);
     }
 
-    /* BARRA DE FILTROS (PILL BUTTONS TIPO REFERENCIA) */
+    /* BARRA DE FILTROS (PILL BUTTONS) */
     .filter-bar {
       display: flex;
       gap: 10px;
@@ -119,12 +119,13 @@
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #f5f4f0;
-      padding: 10px 22px;
+      padding: 8px 18px;
       border-radius: 40px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       cursor: pointer;
       transition: all 0.25s ease;
+      text-transform: lowercase;
     }
 
     .filter-btn.active, .filter-btn:hover {
@@ -140,7 +141,7 @@
       gap: 30px;
     }
 
-    /* TARJETA EDITORIAL CON DESPLAZAMIENTO SUAVE AL HOVER */
+    /* TARJETA EDITORIAL */
     .work-card {
       background: #141414;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -176,7 +177,6 @@
       transform: scale(1.04);
     }
 
-    /* INFO REVELADA AL HOVER / FIJA EN MÓVIL */
     .work-card-info {
       padding: 22px;
       display: flex;
@@ -218,7 +218,7 @@
       padding-bottom: 2px;
     }
 
-    /* MODAL CASE STUDY CON VIDEO DEL PROCESO Y FICHA */
+    /* MODAL CASE STUDY MÁS GRANDE EN ESCRITORIO */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -239,11 +239,11 @@
     .modal-content-card {
       background: #f5f4f0;
       color: #0e0e0e;
-      max-width: 950px;
+      max-width: 1100px; /* Ampliado para mejor visualización en escritorio */
       width: 100%;
-      max-height: 85vh;
+      max-height: 90vh;
       overflow-y: auto;
-      padding: 50px;
+      padding: 60px;
       position: relative;
       border: 1px solid rgba(255,255,255,0.2);
     }
@@ -272,10 +272,11 @@
 
     .modal-body-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 40px;
-      margin-top: 20px;
+      grid-template-columns: 1fr 1.25fr; /* Mayor espacio para el reproductor de video */
+      gap: 50px;
+      margin-top: 25px;
       clear: both;
+      align-items: center;
     }
 
     .modal-bts-video-box {
@@ -289,6 +290,7 @@
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
 
     /* RESPONSIVE MÓVIL Y TABLET */
@@ -317,18 +319,22 @@
 
   <main class="archive-container">
     
-    <!-- BARRA SUPERIOR DE TÍTULO Y FILTROS -->
+    <!-- BARRA SUPERIOR CON TÍTULO ACTUALIZADO Y 7 FILTROS -->
     <div class="archive-top-bar">
       <div class="archive-title-group">
         <span class="archive-tag">Eloria Brista Studio × Ebberkett</span>
-        <h1>Dvision Works</h1>
+        <h1>/ Dvision Archive</h1>
       </div>
 
       <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterCategory('All', this)">All</button>
-        <button class="filter-btn" onclick="filterCategory('Covers', this)">Covers</button>
-        <button class="filter-btn" onclick="filterCategory('Visuals', this)">Visuals & 3D</button>
-        <button class="filter-btn" onclick="filterCategory('Concepts', this)">Concepts</button>
+        <button class="filter-btn active" onclick="filterCategory('All', this)">all</button>
+        <button class="filter-btn" onclick="filterCategory('cover art', this)">cover art</button>
+        <button class="filter-btn" onclick="filterCategory('live visuals', this)">live visuals</button>
+        <button class="filter-btn" onclick="filterCategory('concepts', this)">concepts</button>
+        <button class="filter-btn" onclick="filterCategory('textures', this)">textures</button>
+        <button class="filter-btn" onclick="filterCategory('video art', this)">video art</button>
+        <button class="filter-btn" onclick="filterCategory('graphic experiments', this)">graphic experiments</button>
+        <button class="filter-btn" onclick="filterCategory('visuals', this)">visuals</button>
       </div>
     </div>
 
@@ -337,18 +343,18 @@
 
   </main>
 
-  <!-- MODAL CASE STUDY CON VIDEO DEL PROCESO -->
+  <!-- MODAL CASE STUDY AMPLIADO -->
   <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
       <span class="archive-tag" id="mLocation" style="color: #666;">Sala 2 / Dvision</span>
-      <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
+      <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
       
       <div class="modal-body-grid">
         <div>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails"></p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.65; margin-top: 20px;" id="mDescription">
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #555; line-height: 1.6;" id="mDetails"></p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.7; margin-top: 20px;" id="mDescription">
             Exploración inmersiva creada en el laboratorio de Ebberkett para la dirección de arte oficial. Este proyecto indaga en el uso de texturas orgánicas, iluminación volumétrica y estética vanguardista.
           </p>
         </div>
@@ -363,18 +369,18 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER ACTUALIZADO -->
   <footer style="padding: 60px 4vw; border-top: 1px solid rgba(255,255,255,0.08); text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245,244,240,0.5);">
-    © 2026 EBBERKETT Pavilion · Dvision Permanent Archive
+    © 2026 / Dvision Archive · Eloria Brista Studio × Ebberkett
   </footer>
 
   <script>
-    /* BASE DE DATOS DE PROYECTOS */
+    /* BASE DE DATOS DE PROYECTOS CON LAS NUEVAS CATEGORÍAS */
     const projects = [
       {
         id: "1",
         title: "AFRO — Single Cover",
-        category: "Covers",
+        category: "cover art",
         artist: "Triveat (MX)",
         medium: "Digital Oil on Canvas",
         year: "2025",
@@ -385,7 +391,7 @@
       {
         id: "2",
         title: "DO IT LIKE ME",
-        category: "Visuals",
+        category: "visuals",
         artist: "Triveat (MX)",
         medium: "3D Form & Graphic Study",
         year: "2024",
@@ -396,7 +402,7 @@
       {
         id: "3",
         title: "IN THE NAME OF LOVE",
-        category: "Concepts",
+        category: "concepts",
         artist: "Triveat (MX)",
         medium: "Visual Art & Typography",
         year: "2024",
@@ -407,7 +413,7 @@
       {
         id: "4",
         title: "NEON SYNAPSE #09",
-        category: "Visuals",
+        category: "live visuals",
         artist: "Eloria Resident",
         medium: "Generative Shader & Motion",
         year: "2026",
@@ -418,7 +424,7 @@
       {
         id: "5",
         title: "HELEN ARCHIVE STUDY",
-        category: "Concepts",
+        category: "textures",
         artist: "Álvaro Urbano",
         medium: "Architectural 3D Render",
         year: "2026",
@@ -429,7 +435,7 @@
       {
         id: "6",
         title: "TULIP WHISPERS",
-        category: "Covers",
+        category: "video art",
         artist: "Haidar Hikmah",
         medium: "Mixed Media & Canvas",
         year: "2026",
