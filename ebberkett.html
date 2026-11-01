@@ -35,7 +35,7 @@
       background-color: #f5f4f0;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      scroll-behavior: auto; /* Lenis maneja el scroll */
+      scroll-behavior: auto;
       overflow-x: hidden;
     }
 
@@ -543,27 +543,20 @@
     }
 
     /* ==========================================================
-       NUEVO HERO INMERSIVO / DVISION (CON EFECTO 3D Z-DEPTH)
+       HERO / DVISION CON ANIMACIÓN EN BUCLE CONTINUO Y AUTÓNOMO
        ========================================================== */
     .dvision-immersive-hero {
       position: relative;
       width: 100%;
-      height: 350vh;
+      height: 100vh; /* Altura limpia sin forzar scroll excesivo */
       background-color: #0e0e0e;
       color: #f5f4f0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .dvision-sticky-container {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       perspective: 1000px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .dvision-gallery-3d {
@@ -578,13 +571,14 @@
 
     .floating-artwork-item {
       position: absolute;
-      width: 260px;
+      width: 240px;
       aspect-ratio: 4 / 5;
       background: #1a1a1a;
       border: 1px solid rgba(255, 255, 255, 0.15);
       overflow: hidden;
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
       will-change: transform, opacity;
+      opacity: 0; /* Inician invisibles y GSAP las anima */
     }
 
     .floating-artwork-item img {
@@ -594,12 +588,13 @@
       display: block;
     }
 
-    .item-1 { top: 15%; left: 10%; }
-    .item-2 { top: 10%; right: 12%; }
-    .item-3 { top: 60%; left: 8%; }
-    .item-4 { top: 65%; right: 10%; }
-    .item-5 { top: 40%; left: 25%; }
-    .item-6 { top: 35%; right: 22%; }
+    /* POSICIONAMIENTO ESPACIAL DE LAS TARJETAS FLOTANTES */
+    .item-1 { top: 12%; left: 8%; }
+    .item-2 { top: 8%; right: 10%; }
+    .item-3 { top: 62%; left: 6%; }
+    .item-4 { top: 65%; right: 8%; }
+    .item-5 { top: 38%; left: 22%; }
+    .item-6 { top: 35%; right: 20%; }
 
     .dvision-center-overlay {
       position: relative;
@@ -900,12 +895,12 @@
       }
 
       .floating-artwork-item {
-        width: 150px;
+        width: 140px;
       }
-      .item-1 { top: 12%; left: 5%; }
-      .item-2 { top: 10%; right: 5%; }
-      .item-3 { top: 68%; left: 8%; }
-      .item-4 { top: 72%; right: 8%; }
+      .item-1 { top: 12%; left: 4%; }
+      .item-2 { top: 10%; right: 4%; }
+      .item-3 { top: 72%; left: 6%; }
+      .item-4 { top: 74%; right: 6%; }
       .item-5 { top: 42%; left: 2%; }
       .item-6 { top: 40%; right: 2%; }
     }
@@ -1084,50 +1079,48 @@
       </div>
     </section>
 
-    <!-- NUEVO HERO INMERSIVO DVISION (CON EFECTO 3D Z-DEPTH & GSAP) -->
+    <!-- HERO INMERSIVO DVISION (ANIMACIÓN DE FONDO EN BUCLE AUTÓNOMO) -->
     <section class="dvision-immersive-hero" id="dvisionHero">
-      <div class="dvision-sticky-container">
-        
-        <!-- GALERÍA FLOTANTE 3D EN EL EJE Z -->
-        <div class="dvision-gallery-3d" id="gallery3d">
-          <div class="floating-artwork-item item-1">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 1" />
-          </div>
-          <div class="floating-artwork-item item-2">
-            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 2" />
-          </div>
-          <div class="floating-artwork-item item-3">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 3" />
-          </div>
-          <div class="floating-artwork-item item-4">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 4" />
-          </div>
-          <div class="floating-artwork-item item-5">
-            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 5" />
-          </div>
-          <div class="floating-artwork-item item-6">
-            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 6" />
-          </div>
+      
+      <!-- GALERÍA FLOTANTE 3D (Z-DEPTH CONTINUO) -->
+      <div class="dvision-gallery-3d" id="gallery3d">
+        <div class="floating-artwork-item item-1">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 1" />
         </div>
-
-        <!-- CONTENIDO CENTRAL FIJO CON FADE-IN Y MÁQUINA DE ESCRIBIR -->
-        <div class="dvision-center-overlay">
-          <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio × Ebberkett</span>
-          
-          <h2 class="dvision-main-title-wrap" id="dvTitle">
-            <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span><span class="terminal-static-part"> / dvision</span>
-          </h2>
-          
-          <p class="dvision-subtitle-desc" id="dvDesc">
-            Dvision es la colaboración dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos para transformar la visión en un universo coleccionable.
-          </p>
-
-          <a href="dvision-archive.html" class="dvision-explore-btn" id="dvBtn">
-            ver proyectos completos ↗
-          </a>
+        <div class="floating-artwork-item item-2">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 2" />
         </div>
-
+        <div class="floating-artwork-item item-3">
+          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 3" />
+        </div>
+        <div class="floating-artwork-item item-4">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 4" />
+        </div>
+        <div class="floating-artwork-item item-5">
+          <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 5" />
+        </div>
+        <div class="floating-artwork-item item-6">
+          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 6" />
+        </div>
       </div>
+
+      <!-- CONTENIDO CENTRAL FIJO CON FADE-IN Y MÁQUINA DE ESCRIBIR -->
+      <div class="dvision-center-overlay">
+        <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio × Ebberkett</span>
+        
+        <h2 class="dvision-main-title-wrap" id="dvTitle">
+          <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span><span class="terminal-static-part"> / dvision</span>
+        </h2>
+        
+        <p class="dvision-subtitle-desc" id="dvDesc">
+          Dvision es la colaboración dedicada a la integración de arte visual único para proyectos de branding. Conectamos la investigación de nuestros artistas internos para transformar la visión en un universo coleccionable.
+        </p>
+
+        <a href="dvision-archive.html" class="dvision-explore-btn" id="dvBtn">
+          ver proyectos completos ↗
+        </a>
+      </div>
+
     </section>
 
     <!-- SECCIÓN DE OBRAS DE DVISION (GRILLA) -->
@@ -1365,9 +1358,8 @@
     </div>
   </footer>
 
-  <!-- CDNs de GSAP, ScrollTrigger y Lenis -->
+  <!-- CDNs de GSAP y Lenis -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
   <!-- SCRIPTS -->
@@ -1396,12 +1388,6 @@
     }
     requestAnimationFrame(raf);
 
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
-
     /* EFECTO SCROLL REVEAL (FADE-IN SUAVE AL BAJAR) */
     document.addEventListener("DOMContentLoaded", function() {
       const observerOptions = {
@@ -1424,37 +1410,45 @@
       });
     });
 
-    /* ANIMACIÓN GSAP + SCROLLTRIGGER (EFECTO 3D Z-DEPTH EN DVISION) */
-    gsap.registerPlugin(ScrollTrigger);
-
+    /* ANIMACIÓN EN BUCLE AUTÓNOMO Y SUAVE PARA LAS IMÁGENES FLOTANTES EN DVISION */
     window.addEventListener("DOMContentLoaded", () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#dvisionHero",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-          pin: true,
-        }
-      });
-
       const items = document.querySelectorAll(".floating-artwork-item");
+      
       items.forEach((item, index) => {
-        const depth = (index + 1) * 140;
-        tl.to(item, {
-          z: depth,
-          scale: 1 + (index * 0.12),
-          opacity: index % 2 === 0 ? 0.95 : 0.45,
-          y: (index % 2 === 0 ? -100 : 100),
-          ease: "none"
-        }, 0);
+        // Asignamos retardos y tiempos sutiles a cada imagen para que no coincidan de golpe
+        const delay = index * 1.6;
+        
+        gsap.timeline({ repeat: -1, delay: delay })
+          .fromTo(item, 
+            { 
+              z: -300, 
+              opacity: 0, 
+              scale: 0.8,
+              rotationZ: (index % 2 === 0 ? -3 : 3) 
+            }, 
+            { 
+              z: 250, 
+              opacity: 0.85, 
+              scale: 1.15,
+              rotationZ: (index % 2 === 0 ? 3 : -3),
+              duration: 12, 
+              ease: "sine.inOut" 
+            }
+          )
+          .to(item, {
+            z: 400,
+            opacity: 0,
+            scale: 1.3,
+            duration: 4,
+            ease: "sine.in"
+          });
       });
 
-      // Fade-in inicial para los elementos centrales de Dvision
-      gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" });
-      gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: "power3.out" });
-      gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1, delay: 0.7, ease: "power3.out" });
-      gsap.to("#dvBtn", { opacity: 1, y: 0, duration: 1, delay: 0.9, ease: "power3.out" });
+      // Fade-in inicial elegante de los textos centrales de Dvision
+      gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power3.out" });
+      gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
+      gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1.2, delay: 0.7, ease: "power3.out" });
+      gsap.to("#dvBtn", { opacity: 1, y: 0, duration: 1.2, delay: 0.9, ease: "power3.out" });
     });
 
     /* CODING SCRAMBLE HERO EN LOOP CONTINUO */
