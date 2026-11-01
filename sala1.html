@@ -33,13 +33,13 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 12px 4vw;
+      padding: 14px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(235, 235, 235, 0.9);
+      background-color: rgba(235, 235, 235, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
@@ -67,12 +67,12 @@
       letter-spacing: 0.1em;
     }
 
-    /* CONTENEDOR OPTIMIZADO PARA EVITAR QUE SAFARI LO TAPE */
+    /* CONTENEDOR OPTIMIZADO CON ALTURA REAL DE DISPOSITIVO */
     .museum-slider-container {
       position: relative;
       width: 100%;
       height: 100vh;
-      height: 100dvh; /* Altura dinámica real para móviles */
+      height: 100dvh;
       box-sizing: border-box;
     }
 
@@ -91,7 +91,7 @@
       display: none;
     }
 
-    /* SLIDE CENTRADO CON ESPACIO SEGURO ARRIBA Y ABAJO */
+    /* SLIDE CENTRADO CON SEPARACIÓN FIJA RESPECTO AL HEADER */
     .museum-slide-item {
       min-width: 100vw;
       height: 100vh;
@@ -101,20 +101,20 @@
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      padding: 60px 5vw 40px 5vw; /* Padding superior menor para ganar espacio */
+      padding: 90px 6vw 50px 6vw; /* Espacio superior generoso para no chocar con el header */
       gap: 50px;
       position: relative;
     }
 
-    /* ILUMINACIÓN DE GALERÍA (SPOTLIGHT) */
+    /* ILUMINACIÓN DE GALERÍA REUBICADA SOBRE LA OBRA */
     .gallery-spotlight-effect {
       position: absolute;
-      top: 0;
+      top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      width: 80%;
-      height: 85%;
-      background: radial-gradient(ellipse at 50% 15%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 45%, rgba(235, 235, 235, 0) 75%);
+      width: 75%;
+      height: 70%;
+      background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 50%, rgba(235, 235, 235, 0) 75%);
       pointer-events: none;
       z-index: 1;
       opacity: 0.85;
@@ -130,8 +130,8 @@
 
     .artwork-display-frame {
       position: relative;
-      max-width: 52vw;
-      max-height: 58vh;
+      max-width: 50vw;
+      max-height: 55vh;
       background: #ffffff;
       padding: 14px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.06);
@@ -150,12 +150,12 @@
 
     .artwork-display-frame img {
       max-width: 100%;
-      max-height: 50vh;
+      max-height: 48vh;
       object-fit: contain;
       display: block;
     }
 
-    /* CÉDULA DE MUSEO ESTILIZADA */
+    /* CÉDULA DE MUSEO ESTILIZADA Y CENTRADA */
     .museum-wall-label {
       position: relative;
       z-index: 2;
@@ -203,7 +203,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.65);
       border: 1px solid rgba(14, 14, 14, 0.15);
       color: #0e0e0e;
       width: 42px;
@@ -302,28 +302,28 @@
       font-size: 0.75rem;
     }
 
-    /* RESPONSIVE PARA MÓVILES (OPTIMIZADO PARA NO SER TAPTADO POR LA BARRA DE SAFARI) */
+    /* MEDIA QUERIES PARA MÓVILES PERFECTAMENTE CENTRADOS */
     @media (max-width: 900px) {
       .museum-slide-item {
         flex-direction: column;
         justify-content: center;
-        gap: 15px;
-        padding: 55px 4vw 70px 4vw; /* Espacio extra abajo para que la barra flotante de Safari no tape la cédula */
+        gap: 16px;
+        padding: 80px 4vw 50px 4vw; /* Padding superior para bajar el cuadro y alejarlo del header */
       }
       .artwork-display-frame {
-        max-width: 88vw;
-        max-height: 40vh;
+        max-width: 82vw;
+        max-height: 38vh; /* Altura ideal en pantalla táctil */
         padding: 8px;
       }
       .artwork-display-frame img {
         max-height: 34vh;
       }
       .museum-wall-label {
-        max-width: 88vw;
+        max-width: 85vw;
         border-left: none;
-        border-top: 1px solid rgba(14, 14, 14, 0.2);
+        border-top: 1px solid rgba(14, 14, 14, 0.15);
         padding-left: 0;
-        padding-top: 10px;
+        padding-top: 12px;
         text-align: center;
         align-items: center;
       }
@@ -343,7 +343,7 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- CONTENEDOR PRINCIPAL CON NAVEGACIÓN LIBRE POR TRACKPAD / SWIPE / SCROLL -->
+  <!-- CONTENEDOR PRINCIPAL CON NAVEGACIÓN NATIVA LIBRE -->
   <div class="museum-slider-container">
     <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Anterior">←</button>
     <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Siguiente">→</button>
