@@ -28,14 +28,14 @@
 
     body, html {
       width: 100%;
-      height: 100%;
       background-color: #0e0e0e;
       color: #f5f4f0;
       font-family: 'Inter', sans-serif;
-      overflow: hidden; /* Scroll controlado exclusivamente por el motor JS */
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* HEADER FIX */
+    /* HEADER MINIMALISTA FIJO */
     .archive-header {
       position: fixed;
       top: 0;
@@ -81,298 +81,132 @@
       border-color: #f5f4f0;
     }
 
-    /* CONTENEDOR DE SCROLL VIRTUAL */
-    .scroll-viewport {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* SECCIÓN EDITORIAL A PANTALLA COMPLETA (ESTILO REFERENCIA 1) */
+    .editorial-section {
+      position: relative;
       width: 100%;
-      height: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
-    .scroll-track {
+    /* FONDO DE OBRA CON EFECTO PARALLAX */
+    .editorial-bg-image {
       position: absolute;
-      width: 100%;
-      left: 0;
       top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      filter: brightness(0.65);
+      z-index: 1;
       will-change: transform;
     }
 
-    /* ENCABEZADO DVISION */
-    .archive-hero-title {
-      padding: 140px 4vw 40px 4vw;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .section-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(245, 244, 240, 0.5);
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .main-title {
-      font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      color: #f5f4f0;
-      line-height: 1.1;
-    }
-
-    /* FILTROS / CATEGORÍAS TIPO CHIPS */
-    .filter-bar {
-      display: flex;
-      gap: 12px;
-      padding: 0 4vw 50px 4vw;
-      max-width: 1400px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .filter-chip {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #f5f4f0;
-      padding: 8px 18px;
-      border-radius: 40px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .filter-chip.active, .filter-chip:hover {
+    /* RECUADRO BLANCO FLOTANTE CENTRAL CON LA INFORMACIÓN DIRECTA */
+    .editorial-card-box {
+      position: relative;
+      z-index: 10;
       background: #f5f4f0;
       color: #0e0e0e;
-      border-color: #f5f4f0;
-    }
-
-    /* GRILLA DE TARJETAS FLOTANTES CON RECYCLING */
-    .projects-grid {
+      width: min(85vw, 900px);
+      padding: clamp(30px, 5vw, 60px);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 35px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 4vw 200px 4vw;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 30px;
+      align-items: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      box-sizing: border-box;
     }
 
-    .card-item {
-      background: #141414;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    @media (max-width: 768px) {
+      .editorial-card-box {
+        grid-template-columns: 1fr;
+        padding: 30px;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    .card-col-left {
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: transform;
-      position: relative;
+      gap: 6px;
     }
 
-    .card-item:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-6px);
-    }
-
-    .card-image-wrapper {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      position: relative;
-      background: #1a1a1a;
-    }
-
-    .card-image-wrapper img {
-      width: 100%;
-      height: 120%; /* Extra para efecto parallax interno */
-      object-fit: cover;
-      position: absolute;
-      top: -10%;
-      left: 0;
-      will-change: transform;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .card-item:hover .card-image-wrapper img {
-      transform: scale(1.05);
-    }
-
-    .card-meta-box {
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      background: #141414;
-      z-index: 2;
-    }
-
-    .card-room-tag {
+    .card-category {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      color: rgba(245, 244, 240, 0.5);
+      letter-spacing: 0.08em;
+      color: #555;
+    }
+
+    .card-index {
+      font-family: 'GeistPixelLocal', monospace;
+      font-size: 1.8rem;
+      color: #0e0e0e;
+    }
+
+    .card-col-center {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #e0dfd9;
+      overflow: hidden;
+    }
+
+    .card-col-center img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-col-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .card-col-right {
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .card-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #555;
     }
 
     .card-title {
       font-family: 'Inter', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #f5f4f0;
-      margin: 2px 0;
-    }
-
-    .card-desc {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: rgba(245, 244, 240, 0.6);
-      line-height: 1.5;
-    }
-
-    .card-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #f5f4f0;
-      border-bottom: 1px solid #f5f4f0;
-      width: fit-content;
-      margin-top: 10px;
-      padding-bottom: 2px;
-    }
-
-    /* CONTENEDOR FIX MINIMAPA */
-    .minimap-container {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 220px;
-      background: rgba(20, 20, 20, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      padding: 12px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      z-index: 90;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      border-radius: 4px;
-    }
-
-    .minimap-thumb {
-      width: 45px;
-      height: 45px;
-      border-radius: 2px;
-      overflow: hidden;
-      background: #222;
-      flex-shrink: 0;
-    }
-
-    .minimap-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .minimap-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      overflow: hidden;
-    }
-
-    .minimap-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
       font-weight: 500;
-      color: #f5f4f0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .minimap-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: rgba(245, 244, 240, 0.5);
-    }
-
-    /* MODAL POP-OUT STICKY DE EBBERKETT */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(14, 14, 14, 0.92);
-      backdrop-filter: blur(14px);
-      z-index: 200;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.active { display: flex; }
-
-    .modal-content-card {
-      background: #f5f4f0;
       color: #0e0e0e;
-      max-width: 920px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 50px;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.2);
+      margin: 0;
     }
 
-    .modal-close-btn {
-      position: sticky;
-      top: 0;
-      float: right;
-      background: #f5f4f0;
-      border: 1px solid rgba(14, 14, 14, 0.2);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .card-artist {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-      cursor: pointer;
-      color: #0e0e0e;
-      z-index: 50;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      font-size: 0.72rem;
+      color: #666;
     }
 
-    .modal-body-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 35px;
-      margin-top: 20px;
-      clear: both;
-    }
-
-    .modal-bts-video-box {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #000;
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
+    /* FOOTER DE ARCHIVO */
+    .archive-footer {
+      padding: 60px 4vw;
+      text-align: center;
+      background-color: #0e0e0e;
+      border-top: 1px solid rgba(255,255,255,0.08);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-    }
-
-    @media (max-width: 950px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .modal-body-grid { grid-template-columns: 1fr; }
-      .minimap-container { bottom: 20px; right: 20px; width: 180px; }
-      .modal-content-card { padding: 25px; }
+      color: rgba(245,244,240,0.5);
     }
   </style>
 </head>
@@ -387,378 +221,108 @@
     <a href="ebberkett.html#dvisionHero" class="back-btn">← Volver al Pabellón</a>
   </header>
 
-  <!-- CONTENEDOR VIRTUAL DE SCROLL INFINITO -->
-  <div class="scroll-viewport" id="viewport">
-    <div class="scroll-track" id="track">
-      
-      <!-- HERO -->
-      <div class="archive-hero-title">
-        <span class="section-tag">Eloria Brista Studio × Ebberkett</span>
-        <h1 class="main-title">Dvision Archive</h1>
-      </div>
+  <!-- CONTENEDOR PRINCIPAL DE SECCIONES EDITORIALES -->
+  <main style="margin-top: 73px;">
 
-      <!-- CHIPS DE CATEGORÍA -->
-      <div class="filter-bar">
-        <button class="filter-chip active" onclick="filterCategory('All')">All Works</button>
-        <button class="filter-chip" onclick="filterCategory('Covers')">Cover Art</button>
-        <button class="filter-chip" onclick="filterCategory('Visuals')">Visuals & 3D</button>
-        <button class="filter-chip" onclick="filterCategory('Concepts')">Concepts</button>
-      </div>
-
-      <!-- GRILLA DINÁMICA DE ELEMENTOS -->
-      <div class="projects-grid" id="grid"></div>
-
-    </div>
-  </div>
-
-  <!-- MINIMAPA SINCRO -->
-  <div class="minimap-container" id="minimap">
-    <div class="minimap-thumb">
-      <img id="miniImg" src="" alt="Thumbnail" />
-    </div>
-    <div class="minimap-info">
-      <span class="minimap-title" id="miniTitle">Carregando...</span>
-      <span class="minimap-sub" id="miniSub">Dvision #01</span>
-    </div>
-  </div>
-
-  <!-- MODAL POP-OUT STICKY -->
-  <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
-    <div class="modal-content-card">
-      <button class="modal-close-btn" onclick="closeModal()">✕</button>
-      <span class="section-tag" id="mGalleryLocation" style="color: #666;">Sala 2 / Dvision</span>
-      <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
-      
-      <div class="modal-body-grid">
-        <div>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails"></p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.6; margin-top: 20px;" id="mDescription">
-            Arte visual único comisionado para branding e identidades digitales. Exploración de formas 3D, composición tipográfica y estética vanguardista.
-          </p>
+    <!-- SECCIÓN 01 -->
+    <section class="editorial-section">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      <div class="editorial-card-box">
+        <div class="card-col-left">
+          <span class="card-category">Editorial Motion</span>
+          <span class="card-index">01</span>
         </div>
-        <div>
-          <span class="section-tag" style="color: #666;">Proceso Creativo</span>
-          <div class="modal-bts-video-box" id="mVideoContainer">
-            [ Video Proceso / Studio Log ]
-          </div>
+        <div class="card-col-center">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="AFRO Single Cover" />
+        </div>
+        <div class="card-col-right">
+          <span class="card-year">2025</span>
+          <h3 class="card-title">AFRO — Single Cover</h3>
+          <span class="card-artist">Triveat (MX) · Digital Oil</span>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
+    <!-- SECCIÓN 02 -->
+    <section class="editorial-section">
+      <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      <div class="editorial-card-box">
+        <div class="card-col-left">
+          <span class="card-category">3D Form & Study</span>
+          <span class="card-index">02</span>
+        </div>
+        <div class="card-col-center">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Do It Like Me" />
+        </div>
+        <div class="card-col-right">
+          <span class="card-year">2024</span>
+          <h3 class="card-title">DO IT LIKE ME</h3>
+          <span class="card-artist">Triveat (MX) · Graphic Study</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 03 -->
+    <section class="editorial-section">
+      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      <div class="editorial-card-box">
+        <div class="card-col-left">
+          <span class="card-category">Visual Art & Type</span>
+          <span class="card-index">03</span>
+        </div>
+        <div class="card-col-center">
+          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop" alt="In the Name of Love" />
+        </div>
+        <div class="card-col-right">
+          <span class="card-year">2024</span>
+          <h3 class="card-title">IN THE NAME OF LOVE</h3>
+          <span class="card-artist">Triveat (MX) · Typography</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 04 -->
+    <section class="editorial-section">
+      <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Background" class="editorial-bg-image" />
+      <div class="editorial-card-box">
+        <div class="card-col-left">
+          <span class="card-category">Generative Shader</span>
+          <span class="card-index">04</span>
+        </div>
+        <div class="card-col-center">
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop" alt="Neon Synapse" />
+        </div>
+        <div class="card-col-right">
+          <span class="card-year">2026</span>
+          <h3 class="card-title">NEON SYNAPSE #09</h3>
+          <span class="card-artist">Eloria Resident · Motion</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="archive-footer">
+    <span>© 2026 EBBERKETT Pavilion · Dvision Archive</span>
+  </footer>
+
+  <!-- SCRIPT SUTIL DE PARALLAX EN LOS FONDOS -->
   <script>
-    /* ==========================================================
-       DATOS PRINCIPALES DE PROYECTOS (ESTRUCTURA EXPANDIBLE)
-       ========================================================== */
-    const rawProjects = [
-      {
-        id: "1",
-        title: "AFRO — Single Cover",
-        category: "Covers",
-        artist: "Triveat (MX)",
-        medium: "Digital Oil on Canvas",
-        year: "2025",
-        room: "Sala 2 / Resident Works",
-        imgUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
-      },
-      {
-        id: "2",
-        title: "DO IT LIKE ME",
-        category: "Visuals",
-        artist: "Triveat (MX)",
-        medium: "3D Form & Graphic Study",
-        year: "2024",
-        room: "Sala 2 / Resident Works",
-        imgUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: ""
-      },
-      {
-        id: "3",
-        title: "IN THE NAME OF LOVE",
-        category: "Concepts",
-        artist: "Triveat (MX)",
-        medium: "Visual Art & Typography",
-        year: "2024",
-        room: "Sala 3 / Creative Lab",
-        imgUrl: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: ""
-      },
-      {
-        id: "4",
-        title: "NEON SYNAPSE #09",
-        category: "Visuals",
-        artist: "Eloria Resident",
-        medium: "Generative Shader & Motion",
-        year: "2026",
-        room: "Sala 3 / Creative Lab",
-        imgUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: ""
-      },
-      {
-        id: "5",
-        title: "HELEN ARCHIVE STUDY",
-        category: "Concepts",
-        artist: "Álvaro Urbano",
-        medium: "Architectural 3D Render",
-        year: "2026",
-        room: "Sala 1 / Main Gallery",
-        imgUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: ""
-      },
-      {
-        id: "6",
-        title: "TULIP WHISPERS",
-        category: "Covers",
-        artist: "Haidar Hikmah",
-        medium: "Mixed Media & Canvas",
-        year: "2026",
-        room: "Sala 1 / Main Gallery",
-        imgUrl: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop",
-        videoUrl: ""
-      }
-    ];
+    window.addEventListener("scroll", () => {
+      const scrolled = window.pageYOffset;
+      const sections = document.querySelectorAll(".editorial-section");
 
-    // Duplicamos el dataset 3 veces para garantizar loop infinito continuo
-    let projectsData = [...rawProjects, ...rawProjects, ...rawProjects];
-
-    /* ==========================================================
-       VARIABLES REQUERIDAS DE CONFIGURACIÓN Y ESTADO
-       ========================================================== */
-    const scrollSpeed = 0.85;
-    const lerpFactor = 0.08;
-    const snapDuration = 400; // ms
-
-    let currentY = 0;
-    let targetY = 0;
-    let maxY = 0;
-    let isTouching = false;
-    let touchStartY = 0;
-    let snapTimeout = null;
-    let isSnapping = false;
-
-    const track = document.getElementById("track");
-    const grid = document.getElementById("grid");
-    const miniImg = document.getElementById("miniImg");
-    const miniTitle = document.getElementById("miniTitle");
-    const miniSub = document.getElementById("miniSub");
-
-    /* ==========================================================
-       1. RENDERIZADO INICIAL Y BUFFER DE RECYCLING
-       ========================================================== */
-    function buildGrid(data) {
-      grid.innerHTML = "";
-      data.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.className = "card-item";
-        card.setAttribute("data-index", index);
-        card.onclick = () => openModal(item.title, item.artist, item.medium, item.year, item.room, item.videoUrl);
-
-        card.innerHTML = `
-          <div class="card-image-wrapper">
-            <img src="${item.imgUrl}" alt="${item.title}" class="parallax-img" />
-          </div>
-          <div class="card-meta-box">
-            <span class="card-room-tag">${item.room}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-desc">Artist: ${item.artist}<br/>Medium: ${item.medium} (${item.year})</p>
-            <span class="card-link">ver detalles ↗</span>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-      recalculateBounds();
-    }
-
-    function recalculateBounds() {
-      const trackHeight = track.offsetHeight;
-      const windowHeight = window.innerHeight;
-      maxY = Math.max(0, trackHeight - windowHeight);
-    }
-
-    /* ==========================================================
-       2. MOTOR DE SCROLL CON LERP Y REQUESTANIMATIONFRAME
-       ========================================================== */
-    function renderLoop() {
-      // Interpolación lineal entre currentY y targetY
-      currentY += (targetY - currentY) * lerpFactor;
-
-      // Aplicar movimiento fluido al contenedor mediante GPU
-      track.style.transform = `translate3d(0, ${-currentY}px, 0)`;
-
-      // Actualizar Parallax de imágenes internas
-      updateParallax();
-
-      // Sincronizar Minimapa con el proyecto activo
-      syncMinimap();
-
-      // Detección de loop infinito ininterrumpido
-      if (currentY >= maxY - 50) {
-        targetY = 100;
-        currentY = 100;
-      } else if (currentY <= 0 && targetY < 0) {
-        targetY = maxY - 200;
-        currentY = maxY - 200;
-      }
-
-      requestAnimationFrame(renderLoop);
-    }
-
-    /* ==========================================================
-       3. PARALLAX EN IMÁGENES DENTRO DEL VIEWPORT
-       ========================================================== */
-    function updateParallax() {
-      const cards = document.querySelectorAll(".card-item");
-      const vh = window.innerHeight;
-
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        // Verificar si la tarjeta está dentro o cerca del Viewport (Buffer)
-        if (rect.top < vh + 100 && rect.bottom > -100) {
-          const img = card.querySelector(".parallax-img");
-          const cardCenter = rect.top + rect.height / 2;
-          const parallaxFactor = (cardCenter - vh / 2) * 0.08;
-          img.style.transform = `translate3d(0, ${parallaxFactor}px, 0)`;
+      sections.forEach(sec => {
+        const bg = sec.querySelector(".editorial-bg-image");
+        const rect = sec.getBoundingClientRect();
+        
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const yPos = (rect.top * 0.15);
+          bg.style.transform = `translate3d(0, ${yPos}px, 0)`;
         }
       });
-    }
-
-    /* ==========================================================
-       4. SINCRONIZACIÓN DE MINIMAPA Y SNAP PHYSICS
-       ========================================================== */
-    function syncMinimap() {
-      const cards = document.querySelectorAll(".card-item");
-      const vh = window.innerHeight;
-      let closestCard = null;
-      let minDistance = Infinity;
-
-      cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const distance = Math.abs((rect.top + rect.height / 2) - (vh / 2));
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestCard = { card, index };
-        }
-      });
-
-      if (closestCard) {
-        const item = projectsData[closestCard.index];
-        if (item && miniTitle.innerText !== item.title) {
-          miniImg.src = item.imgUrl;
-          miniTitle.innerText = item.title;
-          miniSub.innerText = `${item.category} · ${item.year}`;
-        }
-      }
-    }
-
-    function triggerSnap() {
-      if (isSnapping) return;
-      const cards = document.querySelectorAll(".card-item");
-      const vh = window.innerHeight;
-      let closestCard = null;
-      let minDistance = Infinity;
-
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const distance = Math.abs((rect.top + rect.height / 2) - (vh / 2));
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestCard = card;
-        }
-      });
-
-      if (closestCard) {
-        const rect = closestCard.getBoundingClientRect();
-        const offset = (rect.top + rect.height / 2) - (vh / 2);
-        targetY += offset;
-      }
-    }
-
-    function scheduleSnap() {
-      clearTimeout(snapTimeout);
-      snapTimeout = setTimeout(() => {
-        triggerSnap();
-      }, 150);
-    }
-
-    /* ==========================================================
-       5. GESTIÓN DE INPUTS (WHEEL & TOUCHMOVE SUAVES)
-       ========================================================== */
-    window.addEventListener("wheel", (e) => {
-      targetY += e.deltaY * scrollSpeed;
-      scheduleSnap();
-    }, { passive: true });
-
-    window.addEventListener("touchstart", (e) => {
-      isTouching = true;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener("touchmove", (e) => {
-      if (!isTouching) return;
-      const deltaY = touchStartY - e.touches[0].clientY;
-      touchStartY = e.touches[0].clientY;
-      targetY += deltaY * 1.5;
-      scheduleSnap();
-    }, { passive: true });
-
-    window.addEventListener("touchend", () => {
-      isTouching = false;
     });
-
-    window.addEventListener("resize", recalculateBounds);
-
-    /* ==========================================================
-       6. FILTRADO DE CATEGORÍAS TIPO CHIPS
-       ========================================================== */
-    function filterCategory(cat) {
-      document.querySelectorAll(".filter-chip").forEach(btn => btn.classList.remove("active"));
-      event.target.classList.add("active");
-
-      if (cat === "All") {
-        projectsData = [...rawProjects, ...rawProjects, ...rawProjects];
-      } else {
-        const filtered = rawProjects.filter(p => p.category === cat);
-        projectsData = [...filtered, ...filtered, ...filtered];
-      }
-      buildGrid(projectsData);
-    }
-
-    /* ==========================================================
-       7. MODAL POP-OUT DE EBBERKETT
-       ========================================================== */
-    function openModal(title, artist, medium, year, location, videoUrl) {
-      document.getElementById('mTitle').innerText = title;
-      document.getElementById('mGalleryLocation').innerText = location;
-      document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
-      
-      const videoBox = document.getElementById('mVideoContainer');
-      if (videoUrl) {
-        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-      } else {
-        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
-      }
-
-      document.getElementById('caseModal').classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('caseModal').classList.remove('active');
-      document.getElementById('mVideoContainer').innerHTML = '';
-    }
-
-    function closeModalOnBackdrop(event) {
-      if (event.target === document.getElementById('caseModal')) {
-        closeModal();
-      }
-    }
-
-    /* INICIALIZACIÓN */
-    window.onload = () => {
-      buildGrid(projectsData);
-      requestAnimationFrame(renderLoop);
-    };
   </script>
 </body>
 </html>
