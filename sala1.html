@@ -68,7 +68,7 @@
     }
 
     /* ==========================================================
-       OVERLAY DE INTRODUCCIÓN (CARTELA DE SALA LITERAL)
+       OVERLAY DE INTRODUCCIÓN (OPTIMIZADO PARA EVITAR HUÉRFANAS)
        ========================================================== */
     .room-intro-overlay {
       position: fixed;
@@ -83,7 +83,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px;
+      padding: 24px;
       box-sizing: border-box;
       cursor: pointer;
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
@@ -96,12 +96,13 @@
     }
 
     .intro-card-content {
-      max-width: 580px;
+      max-width: 630px; /* Ancho ajustado para acomodar perfectamente la última frase */
+      width: 100%;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       cursor: default;
     }
 
@@ -118,7 +119,7 @@
 
     .intro-main-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.4rem, 5vw, 4rem);
       font-weight: 500;
       letter-spacing: -0.03em;
       margin: 0;
@@ -132,11 +133,13 @@
 
     .intro-description {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
       font-weight: 300;
-      line-height: 1.65;
-      color: #444;
-      margin: 8px 0 0 0;
+      line-height: 1.6;
+      color: #333;
+      margin: 6px 0 0 0;
+      text-wrap: balance; /* Distribución equilibrada de líneas en navegadores modernos */
+      text-wrap: pretty;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -144,10 +147,11 @@
 
     .intro-social-note {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #666;
       line-height: 1.5;
       margin: 0;
+      text-wrap: balance;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
@@ -159,15 +163,15 @@
     }
 
     .explore-gallery-btn {
-      margin-top: 15px;
+      margin-top: 12px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: #0e0e0e;
       background: #ffffff;
       border: 1px solid rgba(14, 14, 14, 0.15);
-      padding: 14px 28px;
+      padding: 13px 26px;
       border-radius: 40px;
       cursor: pointer;
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
@@ -468,7 +472,7 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- OVERLAY DE INTRODUCCIÓN LITERAL -->
+  <!-- OVERLAY DE INTRODUCCIÓN -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
