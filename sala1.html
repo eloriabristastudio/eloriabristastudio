@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
-  <title>Sala 01 — Ebberkett</title>
-  <meta name="description" content="Exhibición inmersiva de Sala 01 en el pabellón virtual de Ebberkett." />
+  <title>Room 01 — Ebberkett</title>
+  <meta name="description" content="Immersive exhibition of Room 01 in the Ebberkett virtual pavilion." />
   
-  <!-- Favicon vectorial -->
+  <!-- Vector Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-  <!-- Fuentes -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -27,7 +27,7 @@
       overflow: hidden;
     }
 
-    /* HEADER COMPACTO CON REGRESO A ANCLA #SALAS */
+    /* COMPACT HEADER WITH ANCHOR BACK LINK */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -68,7 +68,7 @@
     }
 
     /* ==========================================================
-       OVERLAY DE INTRODUCCIÓN (OPTIMIZADO PARA EVITAR HUÉRFANAS)
+       ROOM INTRO OVERLAY (CLICKABLE ANYWHERE & NO ORPHANS)
        ========================================================== */
     .room-intro-overlay {
       position: fixed;
@@ -96,7 +96,7 @@
     }
 
     .intro-card-content {
-      max-width: 630px; /* Ancho ajustado para acomodar perfectamente la última frase */
+      max-width: 630px;
       width: 100%;
       text-align: center;
       display: flex;
@@ -138,7 +138,7 @@
       line-height: 1.6;
       color: #333;
       margin: 6px 0 0 0;
-      text-wrap: balance; /* Distribución equilibrada de líneas en navegadores modernos */
+      text-wrap: balance;
       text-wrap: pretty;
       opacity: 0;
       transform: translateY(15px);
@@ -195,7 +195,7 @@
       }
     }
 
-    /* CONTENEDOR PRINCIPAL DE LA GALERÍA */
+    /* MAIN GALLERY SLIDER CONTAINER */
     .museum-slider-container {
       position: relative;
       width: 100%;
@@ -347,7 +347,7 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
-    /* MODAL POP-OUT */
+    /* POP-OUT MODAL */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -464,38 +464,38 @@
 </head>
 <body>
 
-  <!-- HEADER CON ENLACE DIRECTO A #SALAS -->
+  <!-- HEADER WITH DIRECT ANCHOR LINK TO #salas -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
       <span>← Back</span>
     </a>
-    <span class="gallery-indicator">Sala 01</span>
+    <span class="gallery-indicator">Room 01</span>
   </header>
 
-  <!-- OVERLAY DE INTRODUCCIÓN -->
+  <!-- INTRO OVERLAY (FULLY IN ENGLISH) -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
-      <h1 class="intro-main-title">SALA 01</h1>
+      <h1 class="intro-main-title">ROOM 01</h1>
       
       <p class="intro-description">
-        Un espacio dedicado a las exposiciones de nuestros artistas invitados para conocer nuevos procesos creativos y descubrir una nueva vision del mundo.
+        A space dedicated to exhibitions by our guest artists to explore new creative processes and discover a new vision of the world.
       </p>
 
       <p class="intro-social-note">
-        para concer mas detalles sobre los creadores o nuestras convocatorias, visítanos en instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
+        to know more details about the creators or our open calls, visit us on instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
       </p>
 
       <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
-        Explorar la Galería ↓
+        Explore Gallery ↓
       </button>
     </div>
   </div>
 
-  <!-- CONTENEDOR PRINCIPAL DE LA GALERÍA -->
+  <!-- MAIN GALLERY SLIDER CONTAINER -->
   <div class="museum-slider-container blurred" id="galleryContainer">
-    <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Anterior">←</button>
-    <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Siguiente">→</button>
+    <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Previous">←</button>
+    <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Next">→</button>
 
     <div class="museum-track" id="museumTrack">
       
@@ -503,15 +503,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Óleo y técnica mixta sobre lino', '2026', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Oil and mixed media on linen', '2026', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
             <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" />
           </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Álvaro Urbano</h3>
           <p class="label-title-italic">"Natureza Morta con Tulipanes", 2026</p>
-          <span class="label-medium">Óleo y técnica mixta sobre lino</span>
-          <p class="label-desc">Exhibición invitada en Main Gallery. Explora la tensión entre el bodegón clásico y la luz digital.</p>
+          <span class="label-medium">Oil and mixed media on linen</span>
+          <p class="label-desc">Guest exhibition in Main Gallery. Explores the tension between classical still life and digital light.</p>
         </div>
       </div>
 
@@ -519,15 +519,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('El Susurro del Muro Blanco', 'Haidar Hikmah', 'Pigmentos puros y resina sobre canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="El Susurro del Muro Blanco" />
+          <div class="artwork-display-frame" onclick="openArtworkModal('The Whisper of 1000 Tulips', 'Haidar Hikmah', 'Pure pigments and resin on canvas', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" />
           </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Haidar Hikmah</h3>
-          <p class="label-title-italic">"El Susurro del Muro Blanco", 2026</p>
-          <span class="label-medium">Pigmentos puros y resina sobre canvas</span>
-          <p class="label-desc">Obra conceptual centrada en la pureza del espacio y la distorsión del color.</p>
+          <p class="label-title-italic">"The Whisper of 1000 Tulips", 2026</p>
+          <span class="label-medium">Pure pigments and resin on canvas</span>
+          <p class="label-desc">Conceptual artwork focused on spatial purity and color distortion.</p>
         </div>
       </div>
 
@@ -535,15 +535,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Geometría de la Memoria', 'Eloria Studio Resident', 'Impresión pigmentada de alta densidad', '2025', '')">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometría de la Memoria" />
+          <div class="artwork-display-frame" onclick="openArtworkModal('Geometry of Memory', 'Eloria Studio Resident', 'High-density pigment print', '2025', '')">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometry of Memory" />
           </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Eloria Studio Resident</h3>
-          <p class="label-title-italic">"Geometría de la Memoria", 2025</p>
-          <span class="label-medium">Impresión pigmentada de alta densidad</span>
-          <p class="label-desc">Archivo permanente del laboratorio visual enfocado en patrones algorítmicos.</p>
+          <p class="label-title-italic">"Geometry of Memory", 2025</p>
+          <span class="label-medium">High-density pigment print</span>
+          <p class="label-desc">Permanent archive from the visual laboratory focused on algorithmic patterns.</p>
         </div>
       </div>
 
@@ -551,52 +551,52 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Texturas digitales sobre soporte físico', '2026', '')">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Digital textures on physical support', '2026', '')">
             <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop" alt="Gargantua Fragment" />
           </div>
         </div>
         <div class="museum-wall-label">
           <h3 class="label-artist">Triveat</h3>
           <p class="label-title-italic">"Gargantua Fragment", 2026</p>
-          <span class="label-medium">Texturas digitales sobre soporte físico</span>
-          <p class="label-desc">Estudio de volúmenes oscuros y profundidad inmersiva.</p>
+          <span class="label-medium">Digital textures on physical support</span>
+          <p class="label-desc">Study of dark volumes and immersive depth.</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- MODAL DE ZOOM E INMERSIÓN -->
+  <!-- ZOOM / IMMERSION MODAL -->
   <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Sala 01 / Vista Detallada</span>
-      <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 8px 0;">Título de la Obra</h2>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Room 01 / Detailed View</span>
+      <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 8px 0;">Artwork Title</h2>
       
       <div class="modal-body-grid">
         <div>
           <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5;" id="modalDetails">
-            Artist: Nombre del Artista<br/>
-            Medium: Técnica<br/>
+            Artist: Artist Name<br/>
+            Medium: Technique<br/>
             Timeline: 2026
           </p>
           <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.5; margin-top: 15px;">
-            Inspección detallada de la pieza. Esta vista permite apreciar la textura general y acceder al registro de estudio de los creadores de Ebberkett.
+            Detailed inspection of the piece. This view allows you to appreciate the overall texture and access the study log of Ebberkett's creators.
           </p>
         </div>
 
         <div>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Registro de Estudio / Proceso</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Log / Process Record</span>
           <div class="modal-bts-video-box" id="modalVideoContainer">
-            [ Video Proceso / Studio Log - Pending ]
+            [ Video Process / Studio Log - Pending ]
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SCRIPT NATIVO DE NAVEGACIÓN -->
+  <!-- NATIVE NAVIGATION SCRIPT -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -636,7 +636,7 @@
       if (videoUrl) {
         videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
       } else {
-        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending ]`;
+        videoBox.innerHTML = `[ Video Process / Studio Log - Pending Upload ]`;
       }
 
       document.getElementById('artworkModal').classList.add('active');
