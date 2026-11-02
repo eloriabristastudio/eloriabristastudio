@@ -68,7 +68,7 @@
     }
 
     /* ==========================================================
-       OVERLAY DE INTRODUCCIÓN (NUEVA JERARQUÍA TIPOGRÁFICA)
+       OVERLAY DE INTRODUCCIÓN (CARTELA DE SALA LITERAL)
        ========================================================== */
     .room-intro-overlay {
       position: fixed;
@@ -108,8 +108,8 @@
     .intro-subtitle-welcome {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      letter-spacing: 0.15em;
       color: #666;
       opacity: 0;
       transform: translateY(15px);
@@ -124,6 +124,7 @@
       margin: 0;
       color: #0e0e0e;
       line-height: 1;
+      text-transform: uppercase;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
@@ -135,7 +136,7 @@
       font-weight: 300;
       line-height: 1.65;
       color: #444;
-      margin: 10px 0 0 0;
+      margin: 8px 0 0 0;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -467,18 +468,18 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- OVERLAY DE INTRODUCCIÓN CON LA NUEVA ESTRUCTURA SOLICITADA -->
+  <!-- OVERLAY DE INTRODUCCIÓN LITERAL -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
-      <span class="intro-subtitle-welcome">Welcome to</span>
-      <h1 class="intro-main-title">Sala 01</h1>
+      <span class="intro-subtitle-welcome">welcome to</span>
+      <h1 class="intro-main-title">SALA 01</h1>
       
       <p class="intro-description">
-        Nuestra Main Gallery comienza aquí. Sala 01 es un espacio dedicado a las exposiciones de nuestros artistas invitados de turno. Un muro abierto para conectar con nuevas miradas, procesos creativos y descubrir obras de la escena contemporánea.
+        Un espacio dedicado a las exposiciones de nuestros artistas invitados para conocer nuevos procesos creativos y descubrir una nueva vision del mundo.
       </p>
 
       <p class="intro-social-note">
-        Para conocer más sobre los creadores o seguir nuestras convocatorias, visítanos en instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
+        para concer mas detalles sobre los creadores o nuestras convocatorias, visítanos en instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
       </p>
 
       <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
