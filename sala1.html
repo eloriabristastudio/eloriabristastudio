@@ -27,6 +27,7 @@
       overflow: hidden;
     }
 
+    /* HEADER COMPACTO CON REGRESO A ANCLA #SALAS */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -66,12 +67,139 @@
       letter-spacing: 0.1em;
     }
 
+    /* ==========================================================
+       OVERLAY DE INTRODUCCIÓN CON DESENFOQUE (CARTELA DE SALA)
+       ========================================================== */
+    .room-intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(235, 235, 235, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 150;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      box-sizing: border-box;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+    }
+
+    .room-intro-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-card-content {
+      max-width: 580px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .intro-room-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #777;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .intro-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: #0e0e0e;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .intro-description {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.65;
+      color: #444;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .intro-social-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #666;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    .intro-social-note a {
+      color: #0e0e0e;
+      text-decoration: underline;
+    }
+
+    .explore-gallery-btn {
+      margin-top: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0e0e0e;
+      background: #ffffff;
+      border: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 14px 28px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+    }
+
+    .explore-gallery-btn:hover {
+      transform: translateY(-2px);
+      background: #0e0e0e;
+      color: #ffffff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    @keyframes introFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* CONTENEDOR PRINCIPAL DE LA GALERÍA */
     .museum-slider-container {
       position: relative;
       width: 100%;
       height: 100vh;
       height: 100dvh;
       box-sizing: border-box;
+      transition: filter 0.8s ease;
+    }
+
+    /* Desenfoque aplicado al fondo mientras la intro está activa */
+    .museum-slider-container.blurred {
+      filter: blur(12px);
+      pointer-events: none;
     }
 
     .museum-track {
@@ -211,6 +339,7 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
+    /* MODAL POP-OUT */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -327,6 +456,7 @@
 </head>
 <body>
 
+  <!-- HEADER CON ENLACE DIRECTO A #SALAS -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
       <span>← Back</span>
@@ -334,12 +464,31 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <div class="museum-slider-container">
+  <!-- OVERLAY DE INTRODUCCIÓN (CARTELA DE SALA) -->
+  <div class="room-intro-overlay" id="roomIntroOverlay">
+    <div class="intro-card-content">
+      <span class="intro-room-tag">Ebberkett Pavilion — Sala 01</span>
+      <h1 class="intro-main-title">Main Gallery</h1>
+      <p class="intro-description">
+        Espacio dedicado a las exposiciones de nuestros artistas invitados de turno. Un muro abierto para conectar con nuevas miradas, explorar procesos creativos y descubrir obras de la escena contemporánea.
+      </p>
+      <p class="intro-social-note">
+        Para conocer más sobre los creadores o seguir nuestras convocatorias, visítanos en <a href="https://instagram.com" target="_blank" rel="noopener">@ebberkett</a>.
+      </p>
+      <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
+        Explorar la Galería ↓
+      </button>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL DE LA GALERÍA (INICIA DESENFOCADO) -->
+  <div class="museum-slider-container blurred" id="galleryContainer">
     <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Anterior">←</button>
     <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Siguiente">→</button>
 
     <div class="museum-track" id="museumTrack">
       
+      <!-- SLIDE 01 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
@@ -355,6 +504,7 @@
         </div>
       </div>
 
+      <!-- SLIDE 02 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
@@ -370,6 +520,7 @@
         </div>
       </div>
 
+      <!-- SLIDE 03 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
@@ -385,6 +536,7 @@
         </div>
       </div>
 
+      <!-- SLIDE 04 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
@@ -403,6 +555,7 @@
     </div>
   </div>
 
+  <!-- MODAL DE ZOOM E INMERSIÓN -->
   <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -432,7 +585,14 @@
     </div>
   </div>
 
+  <!-- SCRIPT NATIVO DE NAVEGACIÓN Y EFECTOS -->
   <script>
+    /* FUNCIÓN PARA QUITAR LA INTRO Y EL DESENFOQUE */
+    function dismissRoomIntro() {
+      document.getElementById('roomIntroOverlay').classList.add('dismissed');
+      document.getElementById('galleryContainer').classList.remove('blurred');
+    }
+
     const track = document.getElementById('museumTrack');
 
     track.addEventListener('wheel', (evt) => {
@@ -453,6 +613,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') scrollNext();
       if (e.key === 'ArrowLeft') scrollPrev();
+      if (e.key === 'Escape') dismissRoomIntro();
     });
 
     function openArtworkModal(title, artist, medium, year, videoUrl) {
