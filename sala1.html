@@ -68,7 +68,7 @@
     }
 
     /* ==========================================================
-       OVERLAY DE INTRODUCCIÓN (CLICABLE EN CUALQUIER PARTE)
+       OVERLAY DE INTRODUCCIÓN (NUEVA JERARQUÍA TIPOGRÁFICA)
        ========================================================== */
     .room-intro-overlay {
       position: fixed;
@@ -85,7 +85,7 @@
       align-items: center;
       padding: 30px;
       box-sizing: border-box;
-      cursor: pointer; /* Indica al usuario que puede hacer clic en cualquier lugar */
+      cursor: pointer;
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
     }
 
@@ -101,16 +101,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
-      cursor: default; /* Mantiene puntero normal sobre el texto */
+      gap: 18px;
+      cursor: default;
     }
 
-    .intro-room-tag {
+    .intro-subtitle-welcome {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #777;
+      letter-spacing: 0.18em;
+      color: #666;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
@@ -118,11 +118,12 @@
 
     .intro-main-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 3.8vw, 3.2rem);
-      font-weight: 400;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
       margin: 0;
       color: #0e0e0e;
+      line-height: 1;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
@@ -130,11 +131,11 @@
 
     .intro-description {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
       font-weight: 300;
       line-height: 1.65;
       color: #444;
-      margin: 0;
+      margin: 10px 0 0 0;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -145,6 +146,7 @@
       font-size: 0.75rem;
       color: #666;
       line-height: 1.5;
+      margin: 0;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
@@ -465,17 +467,20 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- OVERLAY DE INTRODUCCIÓN (CLICABLE EN CUALQUIER LUGAR) -->
+  <!-- OVERLAY DE INTRODUCCIÓN CON LA NUEVA ESTRUCTURA SOLICITADA -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
-      <span class="intro-room-tag">Ebberkett</span>
-      <h1 class="intro-main-title">Welcome to Sala 01</h1>
+      <span class="intro-subtitle-welcome">Welcome to</span>
+      <h1 class="intro-main-title">Sala 01</h1>
+      
       <p class="intro-description">
         Nuestra Main Gallery comienza aquí. Sala 01 es un espacio dedicado a las exposiciones de nuestros artistas invitados de turno. Un muro abierto para conectar con nuevas miradas, procesos creativos y descubrir obras de la escena contemporánea.
       </p>
+
       <p class="intro-social-note">
         Para conocer más sobre los creadores o seguir nuestras convocatorias, visítanos en instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
       </p>
+
       <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
         Explorar la Galería ↓
       </button>
@@ -586,7 +591,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT NATIVO CORREGIDO -->
+  <!-- SCRIPT NATIVO DE NAVEGACIÓN -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -626,7 +631,7 @@
       if (videoUrl) {
         videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
       } else {
-        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending Upload ]`;
+        videoBox.innerHTML = `[ Video Proceso / Studio Log - Pending ]`;
       }
 
       document.getElementById('artworkModal').classList.add('active');
