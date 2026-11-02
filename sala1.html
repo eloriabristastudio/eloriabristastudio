@@ -1009,7 +1009,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN DE SALAS (CON ID="SALAS" PARA SCROLL AUTOMÁTICO) -->
+    <!-- SECCIÓN DE SALAS (CON ID="SALAS") -->
     <section id="salas" class="immersive-salas-section">
       <div class="salas-content-wrapper">
         <span class="section-label reveal-item">Explora nuestras galerías</span>
@@ -1467,15 +1467,20 @@
       }
     }
 
-    /* MANEJO DE REGRESO AUTOMÁTICO A #SALAS */
-    document.addEventListener("DOMContentLoaded", function() {
+    /* MANEJO DE REGRESO AUTOMÁTICO A #SALAS CON SCROLL SUAVE */
+    window.addEventListener("load", function() {
       if (window.location.hash === "#salas") {
+        window.scrollTo(0, 0);
         setTimeout(() => {
           const target = document.getElementById("salas");
-          if (target && typeof lenis !== "undefined") {
-            lenis.scrollTo(target, { immediate: false, duration: 1.2 });
+          if (target) {
+            if (typeof lenis !== "undefined") {
+              lenis.scrollTo(target, { immediate: false, duration: 1.0 });
+            } else {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
           }
-        }, 150);
+        }, 200);
       }
     });
   </script>
