@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
-  <title>Room 01 — Ebberkett</title>
-  <meta name="description" content="Immersive exhibition of Room 01 in the Ebberkett virtual pavilion." />
+  <title>Sala 01 — Ebberkett</title>
+  <meta name="description" content="Immersive exhibition of Sala 01 in the Ebberkett virtual pavilion." />
   
   <!-- Vector Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
@@ -27,7 +27,7 @@
       overflow: hidden;
     }
 
-    /* COMPACT HEADER WITH ANCHOR BACK LINK */
+    /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -68,7 +68,7 @@
     }
 
     /* ==========================================================
-       ROOM INTRO OVERLAY (CLICKABLE ANYWHERE & NO ORPHANS)
+       ROOM INTRO OVERLAY (PRESERVING "SALA 01" NAMING)
        ========================================================== */
     .room-intro-overlay {
       position: fixed;
@@ -464,19 +464,19 @@
 </head>
 <body>
 
-  <!-- HEADER WITH DIRECT ANCHOR LINK TO #salas -->
+  <!-- HEADER WITH "SALA 01" -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
       <span>← Back</span>
     </a>
-    <span class="gallery-indicator">Room 01</span>
+    <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- INTRO OVERLAY (FULLY IN ENGLISH) -->
+  <!-- INTRO OVERLAY (KEEPING "SALA 01" TITLE) -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
-      <h1 class="intro-main-title">ROOM 01</h1>
+      <h1 class="intro-main-title">SALA 01</h1>
       
       <p class="intro-description">
         A space dedicated to exhibitions by our guest artists to explore new creative processes and discover a new vision of the world.
@@ -571,7 +571,7 @@
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
       
-      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Room 01 / Detailed View</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Sala 01 / Detailed View</span>
       <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 8px 0;">Artwork Title</h2>
       
       <div class="modal-body-grid">
