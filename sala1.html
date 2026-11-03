@@ -191,6 +191,25 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     }
 
+    /* INDICADOR DE SCROLL PALPITANTE DEBAJO DEL BOTÓN EN EL OVERLAY */
+    .overlay-scroll-hint {
+      display: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #555;
+      margin-top: 15px;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: hintPulsateAndFade 2s infinite ease-in-out, introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    @keyframes hintPulsateAndFade {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
     @keyframes introFadeUp {
       to {
         opacity: 1;
@@ -362,11 +381,6 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
-    /* TEXTO DE AYUDA EXCLUSIVO DE LA PRIMERA OBRA EN MÓVIL */
-    .mobile-first-slide-hint {
-      display: none;
-    }
-
     /* MODAL POP-UP */
     .modal-overlay {
       position: fixed;
@@ -444,26 +458,9 @@
         display: none; /* Ocultamos flechas en móvil */
       }
 
-      /* INDICADOR SÓLO EN LA PRIMERA OBRA CON PALPITACIÓN */
-      .mobile-first-slide-hint {
+      /* HACEMOS VISIBLE EL HINT DE SCROLL SOLO EN MÓVIL DENTRO DEL OVERLAY */
+      .overlay-scroll-hint {
         display: block;
-        position: absolute;
-        top: 15px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: #777;
-        pointer-events: none;
-        animation: hintPulsate 2s infinite ease-in-out;
-      }
-
-      @keyframes hintPulsate {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
       }
 
       .museum-slider-container {
@@ -529,7 +526,7 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- INTRO OVERLAY -->
+  <!-- INTRO OVERLAY CON EL ↓ SCROLL DEBAJO DEL BOTÓN -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
@@ -546,6 +543,9 @@
       <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
         Explore Gallery ↓
       </button>
+
+      <!-- Aquí está colocado abajito del botón, palpitando, y solo aparece en celular -->
+      <div class="overlay-scroll-hint">↓ SCROLL</div>
     </div>
   </div>
 
@@ -556,9 +556,8 @@
 
     <div class="museum-track" id="museumTrack">
       
-      <!-- SLIDE 01 (ÚNICO LUGAR DONDE APARECE EL INDICADOR DE SCROLL) -->
-      <div class="museum-slide-item" style="position: relative;">
-        <div class="mobile-first-slide-hint">↓ SCROLL</div>
+      <!-- SLIDE 01 -->
+      <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('El susurro de los 1000 tulipanes #01', 'Haidar Hikmah', 'Mixed media & digital canvas', '2026', '')">
@@ -573,7 +572,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 02 (LIMPIO, SIN INDICADOR) -->
+      <!-- SLIDE 02 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
@@ -589,7 +588,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 03 (LIMPIO, SIN INDICADOR) -->
+      <!-- SLIDE 03 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
