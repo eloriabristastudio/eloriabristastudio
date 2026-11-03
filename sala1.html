@@ -2,36 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0e0e0e" />
-  <title>Sala 01 — Ebberkett Virtual Pavilion</title>
-  <meta name="description" content="Sala 01 exhibition gallery by Ebberkett and Eloria Brista Studio." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="theme-color" content="#EBEBEB" />
+  <title>Sala 01 — Ebberkett</title>
+  <meta name="description" content="Immersive exhibition of Sala 01 in the Ebberkett virtual pavilion." />
   
-  <!-- Favicon vectorial -->
+  <!-- Vector Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
-  
-  <!-- Fuentes -->
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   
   <style>
-    @font-face {
-      font-family: 'GeistPixelLocal';
-      src: url('assets/Geist-Pixel.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-
     body, html {
       margin: 0;
       padding: 0;
       width: 100%;
-      background-color: #f5f4f0;
+      height: 100%;
+      background-color: #EBEBEB;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      /* PROTECCIÓN ANTI-SELECCIÓN GLOBAL */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -39,277 +34,604 @@
       -webkit-touch-callout: none;
     }
 
-    /* HEADER */
-    .ebberkett-header {
+    /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
+    .gallery-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 22px 4vw;
+      padding: 14px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(245, 244, 240, 0.95);
+      background-color: rgba(235, 235, 235, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
 
-    .ebberkett-brand {
+    .back-pavilion-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0e0e0e;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #0e0e0e;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-pavilion-link:hover { opacity: 0.6; }
+
+    .gallery-indicator {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
+      font-size: 0.72rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .ebberkett-brand img {
-      height: 24px;
-      width: auto;
+    /* ROOM INTRO OVERLAY */
+    .room-intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(235, 235, 235, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 150;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
     }
 
-    .back-link {
+    .room-intro-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-card-content {
+      max-width: 630px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      cursor: default;
+    }
+
+    .intro-subtitle-welcome {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: lowercase;
+      letter-spacing: 0.15em;
+      color: #666;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    .intro-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: #0e0e0e;
+      line-height: 1;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .intro-description {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: #333;
+      margin: 6px 0 0 0;
+      text-wrap: balance;
+      text-wrap: pretty;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .intro-social-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .intro-social-note a {
+      color: #0e0e0e;
+      text-decoration: underline;
+    }
+
+    .explore-gallery-btn {
+      margin-top: 12px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: #666;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    .back-link:hover { color: #0e0e0e; }
-
-    /* CONTENEDOR DE LA SALA (Diseño original clásico) */
-    .sala-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 140px 4vw 80px 4vw;
-      box-sizing: border-box;
-    }
-
-    .sala-header-info {
-      margin-bottom: 60px;
-    }
-
-    .sala-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #777;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .sala-title {
-      font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
-      font-weight: normal;
-      margin: 0;
       color: #0e0e0e;
-      text-transform: uppercase;
-      line-height: 1.1;
+      background: #ffffff;
+      border: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 13px 26px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
     }
 
-    /* CONTENEDOR DE OBRAS (Grid original) */
-    .artworks-container {
+    .explore-gallery-btn:hover {
+      transform: translateY(-2px);
+      background: #0e0e0e;
+      color: #ffffff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    @keyframes introFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MAIN GALLERY CONTAINER (ADAPTED FOR SCROLL) */
+    .museum-slider-container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      box-sizing: border-box;
+      transition: filter 0.6s ease;
+      padding-top: 60px;
+    }
+
+    .museum-slider-container.blurred {
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .museum-track {
       display: flex;
       flex-direction: column;
-      gap: 120px;
-    }
-
-    .artwork-row {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .artwork-row.reverse {
-      grid-template-columns: 1fr 1.2fr;
-    }
-    .artwork-row.reverse .artwork-image-box {
-      order: 2;
-    }
-    .artwork-row.reverse .artwork-desc-box {
-      order: 1;
-    }
-
-    .artwork-image-box {
       width: 100%;
-      aspect-ratio: 4/3;
-      background: #e0dfd9;
-      overflow: hidden;
+      height: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .museum-track::-webkit-scrollbar { display: none; }
+
+    .museum-slide-item {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 70px 6vw 50px 6vw;
+      gap: 50px;
       position: relative;
+    }
+
+    .gallery-spotlight-effect {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 70%;
+      background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 50%, rgba(235, 235, 235, 0) 75%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.85;
+    }
+
+    .artwork-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA */
+    .artwork-display-frame {
+      position: relative;
+      max-width: 50vw;
+      max-height: 55vh;
+      background: #ffffff;
+      padding: 14px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(14, 14, 14, 0.08);
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: box-shadow 0.4s ease;
+    }
+
+    /* Capa de cristal invisible sobre la imagen */
+    .artwork-display-frame::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
+    }
+
+    .artwork-display-frame:hover {
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .artwork-display-frame img {
+      max-width: 100%;
+      max-height: 48vh;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
+    .museum-wall-label {
+      position: relative;
+      z-index: 2;
+      max-width: 260px;
+      font-family: 'Inter', sans-serif;
+      text-align: left;
+      border-left: 1px solid rgba(14, 14, 14, 0.2);
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .label-artist {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #0e0e0e;
+      margin: 0;
+    }
+
+    .label-title-italic {
+      font-style: italic;
+      color: #444;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .label-medium, .label-desc {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    /* POP-OUT MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(14, 14, 14, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
       cursor: pointer;
     }
 
-    .artwork-image-box img {
+    .modal-overlay.active { display: flex; }
+
+    .modal-content-card {
+      background: #EBEBEB;
+      color: #0e0e0e;
+      max-width: 950px;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: default;
     }
 
-    .artwork-image-box:hover img {
-      transform: scale(1.03);
-    }
-
-    .artwork-desc-box {
+    .modal-close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: #EBEBEB;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      width: 36px;
+      height: 36px;
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #0e0e0e;
+      z-index: 50;
+      transition: background 0.2s ease;
     }
 
-    .artwork-number {
+    .modal-close-btn:hover {
+      background: #0e0e0e;
+      color: #EBEBEB;
+    }
+
+    .modal-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 15px;
+      clear: both;
+    }
+
+    .modal-bts-video-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      color: #777;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
-    .artwork-name {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-      font-weight: 300;
-      margin: 0;
-      color: #0e0e0e;
-    }
-
-    .artwork-details {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: #555;
-      line-height: 1.6;
-    }
-
-    /* EN CELULAR: MISMA ESTRUCTURA ORIGINAL PERO EN VERTICAL (SCROLL) */
     @media (max-width: 900px) {
-      .sala-container {
-        padding: 100px 20px 60px 20px;
+      body, html {
+        overflow: auto;
       }
-
-      .sala-header-info {
-        margin-bottom: 40px;
+      .museum-slider-container {
+        height: auto;
+        min-height: auto;
       }
-
-      .artworks-container {
-        gap: 60px;
+      .museum-track {
+        overflow-y: visible;
+        height: auto;
       }
-
-      .artwork-row, .artwork-row.reverse {
-        display: flex;
+      .museum-slide-item {
         flex-direction: column;
-        gap: 20px;
+        justify-content: center;
+        min-height: 100vh;
+        gap: 14px;
+        padding: 60px 4vw 25px 4vw;
       }
-
-      .artwork-row.reverse .artwork-image-box {
-        order: 0;
+      .artwork-display-frame {
+        max-width: 78vw;
+        max-height: 34vh;
+        padding: 7px;
       }
-      .artwork-row.reverse .artwork-desc-box {
-        order: 0;
+      .artwork-display-frame img {
+        max-height: 30vh;
       }
-
-      .artwork-image-box {
-        aspect-ratio: 4/3;
+      .museum-wall-label {
+        max-width: 82vw;
+        border-left: none;
+        border-top: 1px solid rgba(14, 14, 14, 0.12);
+        padding-left: 0;
+        padding-top: 10px;
+        text-align: center;
+        align-items: center;
       }
+      .modal-body-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-<!-- HEADER -->
-<header class="ebberkett-header">
-  <a href="ebberkett.html" class="ebberkett-brand">
-    <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
-    <span>EBBERKETT</span>
-  </a>
-  <a href="ebberkett.html#salas" class="back-link">← Back to Salas</a>
-</header>
+  <!-- HEADER WITH "SALA 01" -->
+  <header class="gallery-header">
+    <a href="ebberkett.html#salas" class="back-pavilion-link">
+      <span>← Back</span>
+    </a>
+    <span class="gallery-indicator">Sala 01</span>
+  </header>
 
-<main class="sala-container">
-  <div class="sala-header-info">
-    <span class="sala-tag">Sala 01 — Exhibition Archive</span>
-    <h1 class="sala-title">El susurro de los 1000 tulipanes</h1>
+  <!-- INTRO OVERLAY -->
+  <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
+    <div class="intro-card-content" onclick="event.stopPropagation()">
+      <span class="intro-subtitle-welcome">welcome to</span>
+      <h1 class="intro-main-title">SALA 01</h1>
+      
+      <p class="intro-description">
+        Main gallery showcasing immersive exhibitions featuring guest artists from the contemporary scene, exploring new graphic languages and visual arts.
+      </p>
+
+      <p class="intro-social-note">
+        to stay updated on new exhibitions or explore our artist directory, visit us on instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
+      </p>
+
+      <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
+        Explore Gallery ↓
+      </button>
+    </div>
   </div>
 
-  <!-- CONTENEDOR DE OBRAS (Estructura clásica original) -->
-  <div class="artworks-container">
-    
-    <!-- OBRAS 1 -->
-    <div class="artwork-row">
-      <div class="artwork-image-box">
-        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop" alt="Artwork 01" draggable="false" />
-      </div>
-      <div class="artwork-desc-box">
-        <span class="artwork-number">Work 01 / 04</span>
-        <h3 class="artwork-name">Topography of a Dream</h3>
-        <div class="artwork-details">
-          Artist: Haidar Hikmah<br/>
-          Medium: Digital Oil on Canvas<br/>
-          Year: 2026
+  <!-- MAIN GALLERY CONTAINER -->
+  <div class="museum-slider-container blurred" id="galleryContainer">
+    <div class="museum-track" id="museumTrack">
+      
+      <!-- SLIDE 01 -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('El susurro de los 1000 tulipanes #01', 'Haidar Hikmah', 'Mixed media & digital canvas', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes #01" draggable="false" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">Haidar Hikmah</h3>
+          <p class="label-title-italic">"El susurro de los 1000 tulipanes #01", 2026</p>
+          <span class="label-medium">Mixed media &amp; digital canvas</span>
+          <p class="label-desc">Exhibition exclusively featured in Sala 01 exploring organic textures.</p>
         </div>
       </div>
-    </div>
 
-    <!-- OBRAS 2 -->
-    <div class="artwork-row reverse">
-      <div class="artwork-image-box">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Artwork 02" draggable="false" />
-      </div>
-      <div class="artwork-desc-box">
-        <span class="artwork-number">Work 02 / 04</span>
-        <h3 class="artwork-name">Abstract Resonance</h3>
-        <div class="artwork-details">
-          Artist: Haidar Hikmah<br/>
-          Medium: Mixed Media Installation<br/>
-          Year: 2026
+      <!-- SLIDE 02 -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('El susurro de los 1000 tulipanes #02', 'Haidar Hikmah', 'Digital canvas & light', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes #02" draggable="false" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">Haidar Hikmah</h3>
+          <p class="label-title-italic">"El susurro de los 1000 tulipanes #02", 2026</p>
+          <span class="label-medium">Digital canvas &amp; light</span>
+          <p class="label-desc">Exhibition exclusively featured in Sala 01 exploring abstract resonance.</p>
         </div>
       </div>
-    </div>
 
-    <!-- OBRAS 3 -->
-    <div class="artwork-row">
-      <div class="artwork-image-box">
-        <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="Artwork 03" draggable="false" />
-      </div>
-      <div class="artwork-desc-box">
-        <span class="artwork-number">Work 03 / 04</span>
-        <h3 class="artwork-name">Crimson Equilibrium</h3>
-        <div class="artwork-details">
-          Artist: Haidar Hikmah<br/>
-          Medium: Digital Canvas &amp; Light<br/>
-          Year: 2026
+      <!-- SLIDE 03 -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('El susurro de los 1000 tulipanes #03', 'Haidar Hikmah', 'Oil on linen', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="El susurro de los 1000 tulipanes #03" draggable="false" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">Haidar Hikmah</h3>
+          <p class="label-title-italic">"El susurro de los 1000 tulipanes #03", 2026</p>
+          <span class="label-medium">Oil on linen</span>
+          <p class="label-desc">Exhibition exclusively featured in Sala 01 featuring contemporary fine art.</p>
         </div>
       </div>
-    </div>
 
-    <!-- OBRAS 4 -->
-    <div class="artwork-row reverse">
-      <div class="artwork-image-box">
-        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop" alt="Artwork 04" draggable="false" />
-      </div>
-      <div class="artwork-desc-box">
-        <span class="artwork-number">Work 04 / 04</span>
-        <h3 class="artwork-name">Tulip Bottom Painting</h3>
-        <div class="artwork-details">
-          Artist: Haidar Hikmah<br/>
-          Medium: Oil on Linen<br/>
-          Year: 2026
-        </div>
-      </div>
     </div>
-
   </div>
-</main>
+
+  <!-- ZOOM / IMMERSION MODAL -->
+  <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Sala 01 / Detailed View</span>
+      <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 8px 0;">Artwork Title</h2>
+      
+      <div class="modal-body-grid">
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5;" id="modalDetails">
+            Artist: Artist Name<br/>
+            Medium: Technique<br/>
+            Timeline: 2026
+          </p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.5; margin-top: 15px;">
+            Detailed inspection of the exhibition piece. Access studio records and documentation regarding internal production.
+          </p>
+        </div>
+
+        <div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Log / Process Record</span>
+          <div class="modal-bts-video-box" id="modalVideoContainer">
+            [ Video Process / Studio Log - Pending ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function dismissRoomIntro() {
+      const overlay = document.getElementById('roomIntroOverlay');
+      const container = document.getElementById('galleryContainer');
+      if (overlay) overlay.classList.add('dismissed');
+      if (container) container.classList.remove('blurred');
+    }
+
+    // PROTECCIÓN COMPLETA CONTRA DESCARGA
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
+    });
+
+    // TECLA ESCAPAR PARA MODAL / INTRO Y NAVEGACIÓN
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('artworkModal');
+      const modalActive = modal && modal.classList.contains('active');
+
+      if (e.key === 'Escape') {
+        if (modalActive) {
+          closeModal();
+        } else {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        if (!modalActive) dismissRoomIntro();
+      }
+    });
+
+    function openArtworkModal(title, artist, medium, year, videoUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+      
+      const videoBox = document.getElementById('modalVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video Process / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('artworkModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('artworkModal').classList.remove('active');
+      document.getElementById('modalVideoContainer').innerHTML = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('artworkModal')) {
+        closeModal();
+      }
+    }
+  </script>
 
 </body>
 </html>
