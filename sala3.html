@@ -91,10 +91,10 @@
         rgba(0, 0, 0, 0.04) 50%
       );
       background-size: 100% 4px;
-      opacity: 0.38; /* Reducido ~50% respecto al valor anterior */
+      opacity: 0.38;
     }
 
-    /* Canvas para ruido de estática en vivo (50% menos opacidad) */
+    /* Canvas para ruido de estática en vivo */
     #staticCanvas {
       position: fixed;
       top: 0;
@@ -103,7 +103,7 @@
       height: 100vh;
       z-index: 165;
       pointer-events: none;
-      opacity: 0.05; /* Reducido a la mitad */
+      opacity: 0.05;
       transition: opacity 0.2s ease;
     }
 
@@ -326,7 +326,7 @@
       max-height: 48vh;
       object-fit: contain;
       display: block;
-      pointer-events: none; /* Bloquea eventos directos del ratón/touch en la imagen */
+      pointer-events: none;
       -webkit-user-drag: none;
       user-drag: none;
     }
@@ -620,7 +620,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT DE ESTÁTICA Y PROTECCIÓN DE IMÁGENES -->
+  <!-- SCRIPT DE ESTÁTICA, NAVEGACIÓN Y TECLADO -->
   <script>
     const canvas = document.getElementById('staticCanvas');
     const ctx = canvas.getContext('2d');
@@ -638,7 +638,7 @@
       const len = buffer.length;
 
       for (let i = 0; i < len; i++) {
-        if (Math.random() < 0.08) { // Grano más ligero
+        if (Math.random() < 0.08) {
           buffer[i] = 0xff000000;
         }
       }
@@ -672,12 +672,9 @@
       if (overlay) overlay.classList.add('dismissed');
     }
 
-    // PROTECCIÓN COMPLETA CONTRA DESCARGA / ARRASTRE DE IMÁGENES
+    // PROTECCIÓN COMPLETA CONTRA DESCARGA
     document.addEventListener('DOMContentLoaded', () => {
-      // Bloquea clic derecho global en la página
       document.addEventListener('contextmenu', e => e.preventDefault());
-      
-      // Bloquea arrastrar cualquier imagen
       document.querySelectorAll('img').forEach(img => {
         img.addEventListener('dragstart', e => e.preventDefault());
       });
@@ -702,10 +699,26 @@
       track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
+    // MANEJO DE TECLAS (ESC PARA CERRAR MODAL O INTRO, FLECHAS PARA NAVEGAR)
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') scrollNext();
-      if (e.key === 'ArrowLeft') scrollPrev();
-      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismissRoomIntro();
+      const modal = document.getElementById('artworkModal');
+      const modalActive = modal && modal.classList.contains('active');
+
+      if (e.key === 'Escape') {
+        if (modalActive) {
+          closeModal();
+        } else {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        if (!modalActive) {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'ArrowRight') {
+        scrollNext();
+      } else if (e.key === 'ArrowLeft') {
+        scrollPrev();
+      }
     });
 
     function openArtworkModal(title, artist, medium, year, videoUrl) {
