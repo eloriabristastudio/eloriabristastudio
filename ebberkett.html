@@ -273,10 +273,10 @@
       line-height: 1.2;
     }
 
-    /* ESTILO INSPIRADO EN PÓSTER TIPO VAN GOGH (COLLAGE EDITORIAL) */
+    /* REDISEÑO COMPLETO TIPO CARTEL PLANO VAN GOGH */
     .current-exhibition-section {
       width: 100%;
-      padding: 100px 0;
+      padding: 90px 0;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
@@ -310,75 +310,83 @@
       min-width: 100%;
       scroll-snap-align: center;
       box-sizing: border-box;
-      position: relative;
     }
 
-    /* Contenedor tipo póster collage inspirador */
-    .van-gogh-poster-container {
-      position: relative;
-      width: 100%;
-      min-height: 520px;
-      background: #f5f4f0;
+    /* Estructura Plana Expandida */
+    .van-gogh-poster-flat {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-      padding: 30px 0;
+      grid-template-columns: 1fr 1.3fr;
+      grid-template-rows: auto auto;
+      gap: 20px 40px;
+      width: 100%;
+      min-height: 480px;
+      align-items: stretch;
     }
 
-    .poster-left-titles {
+    .poster-left-column {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      z-index: 5;
+      justify-content: space-between;
     }
 
-    .poster-huge-title {
+    .poster-huge-title-flat {
       font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: normal;
       color: #0e0e0e;
-      line-height: 1.05;
-      margin: 0 0 15px 0;
+      line-height: 0.95;
+      margin: 0;
       text-transform: uppercase;
+      letter-spacing: -0.01em;
     }
 
-    .poster-subtitle-location {
+    .poster-subtitle-flat {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: #555;
+      font-size: 0.8rem;
+      color: #666;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      margin-top: 15px;
+      letter-spacing: 0.05em;
     }
 
-    .poster-right-collage {
+    .poster-right-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .poster-dates-flat {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-weight: 300;
+      color: #0e0e0e;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    /* Collage de Imágenes Planas e Integradas */
+    .poster-collage-grid-flat {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr;
+      gap: 15px;
+      width: 100%;
+      height: 320px;
+      margin: 10px 0;
+    }
+
+    .flat-img-box {
       position: relative;
       width: 100%;
-      height: 450px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* Imágenes distribuidas en estilo collage flotante */
-    .collage-main-frame {
-      position: absolute;
-      width: 75%;
-      height: 340px;
-      background: #fff;
-      padding: 12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      border: 1px solid rgba(14,14,14,0.08);
+      height: 100%;
+      overflow: hidden;
+      background: #e0dfd9;
       cursor: pointer;
-      z-index: 2;
-      transition: transform 0.4s ease;
     }
 
-    .collage-main-frame:hover {
-      transform: scale(1.02);
-    }
-
-    .collage-main-frame::after {
+    .flat-img-box::after {
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -386,90 +394,60 @@
       background: rgba(0,0,0,0);
     }
 
-    .collage-main-frame img {
+    .flat-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
       pointer-events: none;
       -webkit-user-drag: none;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .collage-accent-frame-1 {
-      position: absolute;
-      top: 0px;
-      right: 10px;
-      width: 35%;
-      height: 140px;
-      background: #fff;
-      padding: 6px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      border: 1px solid rgba(14,14,14,0.06);
-      z-index: 3;
-      transform: rotate(3deg);
+    .flat-img-box:hover img {
+      transform: scale(1.03);
     }
 
-    .collage-accent-frame-1 img {
-      width: 100%; height: 100%; object-fit: cover; pointer-events: none;
-    }
-
-    .collage-accent-frame-2 {
-      position: absolute;
-      bottom: 10px;
-      left: 0px;
-      width: 38%;
-      height: 150px;
-      background: #fff;
-      padding: 6px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      border: 1px solid rgba(14,14,14,0.06);
-      z-index: 3;
-      transform: rotate(-3deg);
-    }
-
-    .collage-accent-frame-2 img {
-      width: 100%; height: 100%; object-fit: cover; pointer-events: none;
-    }
-
-    /* Fechas arriba a la derecha y artista abajo a la derecha estilo póster */
-    .poster-top-dates {
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(1.1rem, 2vw, 1.8rem);
-      font-weight: 500;
-      color: #0e0e0e;
-      text-align: right;
-      letter-spacing: 0.04em;
-      z-index: 6;
-    }
-
-    .poster-bottom-artist {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      color: #444;
-      text-align: right;
-      letter-spacing: 0.05em;
-      z-index: 6;
+    .poster-footer-flat {
+      grid-column: 1 / -1;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: flex-end;
-      gap: 6px;
+      padding-top: 5px;
     }
 
-    .poster-bottom-artist a {
+    .poster-artist-flat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .poster-links-flat {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .poster-slide-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    .poster-visit-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
       color: #0e0e0e;
       text-decoration: none;
       border-bottom: 1px solid #0e0e0e;
       padding-bottom: 2px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
+      transition: opacity 0.2s ease;
     }
 
-    .poster-bottom-artist a:hover { opacity: 0.6; }
+    .poster-visit-btn:hover { opacity: 0.6; }
 
     /* SALAS (#SALAS) */
     .immersive-salas-section {
@@ -720,7 +698,7 @@
 
     .dvision-explore-btn:hover { border-color: #f5f4f0; opacity: 0.8; }
 
-    /* THE HUMAN TAPES (RADIO) - CON SU TIPOGRAFÍA ORIGINAL RETRO */
+    /* THE HUMAN TAPES (RADIO) - CON TIPOGRAFÍA ORIGINAL Y FORMATO CON GUIÓN */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -734,7 +712,6 @@
       margin: 0 auto 50px auto;
     }
 
-    /* Título principal de Tapes con tipografía Space Grotesk / Inter clásica de antes */
     .tapes-classic-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(2.2rem, 4vw, 3.8rem);
@@ -903,10 +880,10 @@
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      .van-gogh-poster-container { grid-template-columns: 1fr; min-height: auto; padding-top: 50px; }
-      .poster-right-collage { height: 320px; margin-top: 20px; }
-      .poster-top-dates { position: relative; text-align: left; margin-bottom: 10px; }
-      .poster-bottom-artist { position: relative; align-items: flex-start; text-align: left; margin-top: 20px; }
+      .van-gogh-poster-flat { grid-template-columns: 1fr; }
+      .poster-dates-flat { text-align: left; }
+      .poster-collage-grid-flat { grid-template-columns: 1fr; height: auto; }
+      .flat-img-box { height: 220px; }
       .floating-artwork-item { width: 140px; }
       .item-1 { top: 12%; left: 4%; }
       .item-2 { top: 10%; right: 4%; }
@@ -974,7 +951,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES CON DISEÑO INSPIRADO EN VAN GOGH (COLLAGE PÓSTER) -->
+  <!-- SECCIÓN NOVEDADES REDISEÑADA COMPLETAMENTE PLANO (ESTILO VAN GOGH COMPACTO Y EXPANDIDO) -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -987,37 +964,36 @@
           
           <!-- SLIDE 1: HELEN -->
           <div class="exhibition-slide">
-            <div class="van-gogh-poster-container reveal-item">
+            <div class="van-gogh-poster-flat reveal-item">
               
-              <!-- Fechas arriba a la derecha -->
-              <div class="poster-top-dates">
-                16.OCT — 07.FEB
+              <div class="poster-left-column">
+                <h2 class="poster-huge-title-flat">Helen</h2>
+                <span class="poster-subtitle-flat">Exhibition exclusively in Sala 01</span>
               </div>
 
-              <!-- Títulos y notas a la izquierda -->
-              <div class="poster-left-titles">
-                <h2 class="poster-huge-title">Helen</h2>
-                <span class="poster-subtitle-location">Exhibition exclusively in Sala 01</span>
+              <div class="poster-right-column">
+                <div class="poster-dates-flat">16.OCT — 07.FEB</div>
               </div>
 
-              <!-- Collage derecho estilo póster -->
-              <div class="poster-right-collage">
-                <div class="collage-accent-frame-1">
-                  <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=600&auto=format&fit=crop" alt="Detail 1" draggable="false" />
+              <!-- Grid de imágenes encimadas planas sin inclinación ni sombras feas -->
+              <div class="poster-collage-grid-flat">
+                <div class="flat-img-box" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen main" draggable="false" />
                 </div>
-                <div class="collage-main-frame" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen by Álvaro Urbano" draggable="false" />
+                <div class="flat-img-box">
+                  <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Helen detail 1" draggable="false" />
                 </div>
-                <div class="collage-accent-frame-2">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Detail 2" draggable="false" />
+                <div class="flat-img-box">
+                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Helen detail 2" draggable="false" />
                 </div>
               </div>
 
-              <!-- Artista y enlace de visita abajo a la derecha -->
-              <div class="poster-bottom-artist">
-                <span>Artist: Álvaro Urbano</span>
-                <span style="font-size: 0.75rem; color: #666;">→ slide for more</span>
-                <a href="sala1.html">visit exhibition</a>
+              <div class="poster-footer-flat">
+                <span class="poster-artist-flat">Artist: Álvaro Urbano</span>
+                <div class="poster-links-flat">
+                  <span class="poster-slide-hint">→ slide for more</span>
+                  <a href="sala1.html" class="poster-visit-btn">visit exhibition</a>
+                </div>
               </div>
 
             </div>
@@ -1025,37 +1001,36 @@
 
           <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES -->
           <div class="exhibition-slide">
-            <div class="van-gogh-poster-container reveal-item">
+            <div class="van-gogh-poster-flat reveal-item">
               
-              <!-- Fechas arriba a la derecha -->
-              <div class="poster-top-dates">
-                08.AUG — 31.OCT
+              <div class="poster-left-column">
+                <h2 class="poster-huge-title-flat" style="font-size: clamp(2.2rem, 4.2vw, 4.5rem);">El susurro de los 1000 tulipanes</h2>
+                <span class="poster-subtitle-flat">Exhibition in Sala 01</span>
               </div>
 
-              <!-- Títulos y notas a la izquierda (Título original en español conservado) -->
-              <div class="poster-left-titles">
-                <h2 class="poster-huge-title" style="font-size: clamp(2rem, 3.8vw, 4rem);">El susurro de los 1000 tulipanes</h2>
-                <span class="poster-subtitle-location">Exhibition in Sala 01</span>
+              <div class="poster-right-column">
+                <div class="poster-dates-flat">08.AUG — 31.OCT</div>
               </div>
 
-              <!-- Collage derecho estilo póster -->
-              <div class="poster-right-collage">
-                <div class="collage-accent-frame-1">
-                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop" alt="Tulip Detail 1" draggable="false" />
+              <!-- Grid de imágenes encimadas planas -->
+              <div class="poster-collage-grid-flat">
+                <div class="flat-img-box" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
+                  <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Tulip main" draggable="false" />
                 </div>
-                <div class="collage-main-frame" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
-                  <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" draggable="false" />
+                <div class="flat-img-box">
+                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Tulip detail 1" draggable="false" />
                 </div>
-                <div class="collage-accent-frame-2">
-                  <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop" alt="Tulip Detail 2" draggable="false" />
+                <div class="flat-img-box">
+                  <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop" alt="Tulip detail 2" draggable="false" />
                 </div>
               </div>
 
-              <!-- Artista y enlace de visita abajo a la derecha -->
-              <div class="poster-bottom-artist">
-                <span>Artist: Haidar Hikmah</span>
-                <span style="font-size: 0.75rem; color: #666;">→ slide for more</span>
-                <a href="sala1.html">visit exhibition</a>
+              <div class="poster-footer-flat">
+                <span class="poster-artist-flat">Artist: Haidar Hikmah</span>
+                <div class="poster-links-flat">
+                  <span class="poster-slide-hint">→ slide for more</span>
+                  <a href="sala1.html" class="poster-visit-btn">visit exhibition</a>
+                </div>
               </div>
 
             </div>
@@ -1131,7 +1106,7 @@
     </div>
   </section>
 
-  <!-- THE HUMAN TAPES (RADIO) - CON TIPOGRAFÍA CLÁSICA -->
+  <!-- THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN 'Tape 01 — Digital Intuition' -->
   <section id="tapes" class="tapes-section">
     <div class="tapes-header-block">
       <span class="section-label reveal-item">Ebberkett Radio</span>
@@ -1145,9 +1120,9 @@
         <div class="tapes-track">
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape #01 Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 01 — Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape #01 Digital Intuition</h3>
+            <h3 class="tape-card-title">Tape 01 — Digital Intuition</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Dialogue with Eloria Studio 45 min</span>
@@ -1159,9 +1134,9 @@
           </div>
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape #02 - Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 02 — Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape #02 Graphic Universes</h3>
+            <h3 class="tape-card-title">Tape 02 — Graphic Universes</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Dvision Curation 52 min</span>
@@ -1173,9 +1148,9 @@
           </div>
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape #03 - Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 03 — Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape #03 - Virtual Gallery Art</h3>
+            <h3 class="tape-card-title">Tape 03 — Virtual Gallery Art</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Ebberkett Residency 38 min</span>
@@ -1322,7 +1297,7 @@
   }
   requestAnimationFrame(raf);
 
-  // Soporte de trackpad horizontal para el slider de exhibiciones
+  // Trackpad horizontal scroll para el slider de novedades
   const exhibitionSlider = document.getElementById('exhibitionSlider');
   if (exhibitionSlider) {
     exhibitionSlider.addEventListener('wheel', (evt) => {
