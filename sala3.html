@@ -70,52 +70,35 @@
     }
 
     /* ==========================================================
-       EFECTO DE BUG / FRACTURA DIGITAL (TIPO SCREEN TEAR & RENDER BUG)
+       EFECTO CRT / PANTALLA VIEJA Y SCANLINES
        ========================================================== */
-    .screen-bug-overlay {
+    .crt-screen-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 140;
+      z-index: 130;
       pointer-events: none;
-      overflow: hidden;
-      opacity: 1;
-      transition: opacity 0.4s ease;
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.06) 50%
+      );
+      background-size: 100% 4px; /* Líneas de escaneo horizontales estilo TV */
+      opacity: 0.7;
     }
 
-    .screen-bug-overlay.cleared {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    /* Bloques negros sólidos que "rompen" la pantalla simulando un error de render */
-    .bug-slice {
-      position: absolute;
-      background-color: #0e0e0e;
-    }
-
-    /* Posiciones fijas de ruptura inspiradas en la referencia de bloques cortados */
-    .bug-slice:nth-child(1) { top: 0; left: 10vw; width: 45vw; height: 22vh; }
-    .bug-slice:nth-child(2) { top: 18vh; right: 0; width: 35vw; height: 15vh; }
-    .bug-slice:nth-child(3) { top: 42vh; left: 0; width: 28vw; height: 32vh; }
-    .bug-slice:nth-child(4) { bottom: 10vh; right: 15vw; width: 40vw; height: 20vh; }
-    .bug-slice:nth-child(5) { bottom: 0; left: 20vw; width: 25vw; height: 18vh; }
-
-    /* LÍNEA DE ERROR GLITCH (SCANLINE AGRESIVA) */
-    .glitch-line {
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background: #0e0e0e;
-      top: 35%;
-      animation: scanlineMove 3s infinite linear;
-    }
-
-    @keyframes scanlineMove {
-      0% { transform: translateY(-100vh); opacity: 0.8; }
-      100% { transform: translateY(100vh); opacity: 0.2; }
+    /* Canvas para ruido de estática en vivo */
+    #staticCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 135;
+      pointer-events: none;
+      opacity: 0.08;
+      transition: opacity 0.2s ease;
     }
 
     /* ROOM INTRO OVERLAY */
@@ -125,7 +108,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(235, 235, 235, 0.82);
+      background-color: rgba(235, 235, 235, 0.85);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       z-index: 150;
@@ -493,15 +476,11 @@
 </head>
 <body>
 
-  <!-- CAPA DE BUG / FRACTURA DIGITAL (TIPO REFERENCIA) -->
-  <div class="screen-bug-overlay" id="screenBugOverlay">
-    <div class="bug-slice"></div>
-    <div class="bug-slice"></div>
-    <div class="bug-slice"></div>
-    <div class="bug-slice"></div>
-    <div class="bug-slice"></div>
-    <div class="glitch-line"></div>
-  </div>
+  <!-- CAPA DE LÍNEAS CRT / TV VIEJA -->
+  <div class="crt-screen-overlay"></div>
+
+  <!-- CANVAS DE ESTÁTICA / RUIDO VINTAGE -->
+  <canvas id="staticCanvas"></canvas>
 
   <!-- HEADER -->
   <header class="gallery-header">
@@ -619,17 +598,62 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT DE ESTÁTICA Y TV VIEJA -->
   <script>
-    function dismissRoomIntro() {
-      // Oculta la capa de bug visual al entrar a la galería
-      const bugLayer = document.getElementById('screenBugOverlay');
-      if (bugLayer) bugLayer.classList.add('cleared');
+    const canvas = document.getElementById('staticCanvas');
+    const ctx = canvas.getContext('2d');
 
+    function resizeCanvas() {
+      canvas.width = Math.floor(window.innerWidth / 3); // Resolución baja optimizada para rendimiento
+      canvas.height = Math.floor(window.innerHeight / 3);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Dibuja ruido de estática en blanco y negro
+    function renderStaticNoise() {
+      const imgData = ctx.createImageData(canvas.width, canvas.height);
+      const buffer = new Uint32Array(imgData.data.buffer);
+      const len = buffer.length;
+
+      for (let i = 0; i < len; i++) {
+        if (Math.random() < 0.12) { // Intensidad sutil de grano
+          buffer[i] = 0xff000000; // Píxel negro
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    // Bucle continuo de ruido analógico
+    function loopNoise() {
+      renderStaticNoise();
+      requestAnimationFrame(loopNoise);
+    }
+    loopNoise();
+
+    // Ráfaga sutil de estática cada 6 segundos para dar efecto de TV buscando señal
+    setInterval(() => {
+      canvas.style.opacity = '0.22';
+      setTimeout(() => {
+        canvas.style.opacity = '0.08';
+      }, 150);
+    }, 6000);
+
+    function triggerStaticGlitch() {
+      canvas.style.opacity = '0.35';
+      setTimeout(() => {
+        canvas.style.opacity = '0.08';
+      }, 250);
+    }
+
+    function dismissRoomIntro() {
+      triggerStaticGlitch();
       const overlay = document.getElementById('roomIntroOverlay');
       if (overlay) overlay.classList.add('dismissed');
     }
 
+    // NAVEGACIÓN Y SLIDER
     const track = document.getElementById('museumTrack');
 
     track.addEventListener('wheel', (evt) => {
@@ -640,10 +664,12 @@
     }, { passive: false });
 
     function scrollNext() {
+      triggerStaticGlitch();
       track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
     }
 
     function scrollPrev() {
+      triggerStaticGlitch();
       track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
@@ -654,7 +680,6 @@
     });
 
     function openArtworkModal(title, artist, medium, year, videoUrl) {
-      document.getElementById('modalTitle', artist, medium, year); // Safe syntax
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
       
