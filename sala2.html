@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
   <title>Sala 02 — Ebberkett</title>
   <meta name="description" content="Immersive exhibition of Sala 02 (Resident Archives & Fine Art) in the Ebberkett virtual pavilion." />
@@ -25,6 +25,13 @@
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       overflow: hidden;
+      -webkit-text-size-adjust: 100%;
+      /* PROTECCIÓN ANTI-SELECCIÓN GLOBAL */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
     }
 
     /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
@@ -67,9 +74,7 @@
       letter-spacing: 0.1em;
     }
 
-    /* ==========================================================
-       ROOM INTRO OVERLAY (RESIDENT ARCHIVES & FINE ART)
-       ========================================================== */
+    /* ROOM INTRO OVERLAY */
     .room-intro-overlay {
       position: fixed;
       top: 0;
@@ -221,9 +226,7 @@
       -ms-overflow-style: none;
     }
 
-    .museum-track::-webkit-scrollbar {
-      display: none;
-    }
+    .museum-track::-webkit-scrollbar { display: none; }
 
     .museum-slide-item {
       min-width: 100vw;
@@ -260,6 +263,7 @@
       justify-content: center;
     }
 
+    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA */
     .artwork-display-frame {
       position: relative;
       max-width: 50vw;
@@ -276,6 +280,18 @@
       transition: box-shadow 0.4s ease;
     }
 
+    /* Capa de cristal invisible sobre la imagen */
+    .artwork-display-frame::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
+    }
+
     .artwork-display-frame:hover {
       box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
     }
@@ -285,6 +301,9 @@
       max-height: 48vh;
       object-fit: contain;
       display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .museum-wall-label {
@@ -462,7 +481,7 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;" ondragstart="return false;">
 
   <!-- HEADER WITH "SALA 02" -->
   <header class="gallery-header">
@@ -472,7 +491,7 @@
     <span class="gallery-indicator">Sala 02</span>
   </header>
 
-  <!-- INTRO OVERLAY (RESIDENT ARCHIVES & FINE ART) -->
+  <!-- INTRO OVERLAY -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
@@ -499,12 +518,12 @@
 
     <div class="museum-track" id="museumTrack">
       
-      <!-- SLIDE 01 (OBRAS RESIDENTES) -->
+      <!-- SLIDE 01 -->
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Studio Archives #01', 'Eloria Resident', 'Visual exploration & digital canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Studio Archives #01" />
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Studio Archives #01" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -520,7 +539,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Monochrome Balance', 'Eloria Resident', 'Digital print on museum canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop" alt="Monochrome Balance" />
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop" alt="Monochrome Balance" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -536,7 +555,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Permanent Archive #04', 'EBS Collective', 'Mixed media & fine graphics', '2025', '')">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop" alt="Permanent Archive #04" />
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop" alt="Permanent Archive #04" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -580,7 +599,7 @@
     </div>
   </div>
 
-  <!-- NATIVE NAVIGATION SCRIPT -->
+  <!-- SCRIPT -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -588,6 +607,14 @@
       if (overlay) overlay.classList.add('dismissed');
       if (container) container.classList.remove('blurred');
     }
+
+    // PROTECCIÓN COMPLETA CONTRA DESCARGA
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
+    });
 
     const track = document.getElementById('museumTrack');
 
@@ -606,10 +633,24 @@
       track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
+    // TECLA ESCAPAR PARA MODAL / INTRO Y NAVEGACIÓN
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') scrollNext();
-      if (e.key === 'ArrowLeft') scrollPrev();
-      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismissRoomIntro();
+      const modal = document.getElementById('artworkModal');
+      const modalActive = modal && modal.classList.contains('active');
+
+      if (e.key === 'Escape') {
+        if (modalActive) {
+          closeModal();
+        } else {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        if (!modalActive) dismissRoomIntro();
+      } else if (e.key === 'ArrowRight') {
+        scrollNext();
+      } else if (e.key === 'ArrowLeft') {
+        scrollPrev();
+      }
     });
 
     function openArtworkModal(title, artist, medium, year, videoUrl) {
