@@ -24,7 +24,7 @@
       background-color: #EBEBEB;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      overflow-x: hidden;
+      overflow: hidden;
       -webkit-text-size-adjust: 100%;
       /* PROTECCIÓN ANTI-SELECCIÓN GLOBAL */
       -webkit-user-select: none;
@@ -34,7 +34,7 @@
       -webkit-touch-callout: none;
     }
 
-    /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
+    /* HEADER CON "SALA 01" */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -144,7 +144,6 @@
       color: #333;
       margin: 6px 0 0 0;
       text-wrap: balance;
-      text-wrap: pretty;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -156,7 +155,6 @@
       color: #666;
       line-height: 1.5;
       margin: 0;
-      text-wrap: balance;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
@@ -200,14 +198,14 @@
       }
     }
 
-    /* MAIN GALLERY CONTAINER (ADAPTED FOR SCROLL) */
+    /* ESCRITORIO: CONTENEDOR CON SLIDE HORIZONTAL */
     .museum-slider-container {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
       box-sizing: border-box;
       transition: filter 0.6s ease;
-      padding-top: 60px;
     }
 
     .museum-slider-container.blurred {
@@ -217,11 +215,12 @@
 
     .museum-track {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       width: 100%;
-      height: auto;
-      overflow-x: hidden;
-      overflow-y: auto;
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -230,13 +229,16 @@
     .museum-track::-webkit-scrollbar { display: none; }
 
     .museum-slide-item {
-      width: 100vw;
-      min-height: 100vh;
+      min-width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
       display: flex;
       justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      padding: 70px 6vw 50px 6vw;
+      padding: 70px 6vw 30px 6vw;
       gap: 50px;
       position: relative;
     }
@@ -262,7 +264,7 @@
       justify-content: center;
     }
 
-    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA */
+    /* MARCO DE OBRAS */
     .artwork-display-frame {
       position: relative;
       max-width: 50vw;
@@ -279,14 +281,10 @@
       transition: box-shadow 0.4s ease;
     }
 
-    /* Capa de cristal invisible sobre la imagen */
     .artwork-display-frame::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       z-index: 10;
       background: rgba(0,0,0,0);
     }
@@ -302,7 +300,6 @@
       display: block;
       pointer-events: none;
       -webkit-user-drag: none;
-      user-drag: none;
     }
 
     .museum-wall-label {
@@ -340,13 +337,39 @@
       line-height: 1.4;
     }
 
-    /* POP-OUT MODAL */
+    /* BOTONES DE NAVEGACIÓN (ESCRITORIO) */
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(14, 14, 14, 0.12);
+      color: #0e0e0e;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 50;
+      font-size: 0.85rem;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s ease;
+    }
+
+    .slider-nav-btn:hover { background: rgba(255, 255, 255, 0.95); }
+    .nav-prev { left: 3vw; }
+    .nav-next { right: 3vw; }
+
+    .mobile-top-hint {
+      display: none;
+    }
+
+    /* MODAL POP-UP */
     .modal-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(14, 14, 14, 0.88);
       backdrop-filter: blur(12px);
       z-index: 200;
@@ -376,15 +399,11 @@
 
     .modal-close-btn {
       position: sticky;
-      top: 0;
-      float: right;
+      top: 0; float: right;
       background: #EBEBEB;
       border: 1px solid rgba(14, 14, 14, 0.2);
-      width: 36px;
-      height: 36px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 36px; height: 36px;
+      display: flex; justify-content: center; align-items: center;
       font-family: 'JetBrains Mono', monospace;
       font-size: 1rem;
       cursor: pointer;
@@ -393,10 +412,7 @@
       transition: background 0.2s ease;
     }
 
-    .modal-close-btn:hover {
-      background: #0e0e0e;
-      color: #EBEBEB;
-    }
+    .modal-close-btn:hover { background: #0e0e0e; color: #EBEBEB; }
 
     .modal-body-grid {
       display: grid;
@@ -411,63 +427,104 @@
       aspect-ratio: 16/9;
       background: #000;
       margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       color: #fff;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
     }
 
+    /* ADAPTACIÓN EXCLUSIVA PARA CELULAR (SCROLL VERTICAL CON BLOCKED CENTERING) */
     @media (max-width: 900px) {
       body, html {
-        overflow: auto;
+        overflow: hidden;
       }
+
+      .slider-nav-btn {
+        display: none; /* Ocultamos flechas en móvil */
+      }
+
+      .mobile-top-hint {
+        display: block;
+        position: fixed;
+        top: 52px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #777;
+        z-index: 90;
+        pointer-events: none;
+        background: rgba(235, 235, 235, 0.8);
+        padding: 4px 0;
+      }
+
       .museum-slider-container {
-        height: auto;
-        min-height: auto;
+        height: 100vh;
+        height: 100dvh;
       }
+
       .museum-track {
-        overflow-y: visible;
-        height: auto;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory; /* BLOQUEO VERTICAL CENTRADO */
+        -webkit-overflow-scrolling: touch;
+        height: 100vh;
+        height: 100dvh;
       }
+
       .museum-slide-item {
+        min-width: 100vw;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        scroll-snap-align: center; /* CENTRA CADA OBRA AL HACER SCROLL */
+        scroll-snap-stop: always;
         flex-direction: column;
         justify-content: center;
-        min-height: 100vh;
-        gap: 14px;
-        padding: 60px 4vw 25px 4vw;
+        gap: 16px;
+        padding: 70px 5vw 30px 5vw;
       }
+
       .artwork-display-frame {
-        max-width: 78vw;
-        max-height: 34vh;
-        padding: 7px;
-      }
-      .artwork-display-frame img {
-        max-height: 30vh;
-      }
-      .museum-wall-label {
         max-width: 82vw;
+        max-height: 42vh;
+        padding: 8px;
+      }
+
+      .artwork-display-frame img {
+        max-height: 38vh;
+      }
+
+      .museum-wall-label {
+        max-width: 85vw;
         border-left: none;
         border-top: 1px solid rgba(14, 14, 14, 0.12);
         padding-left: 0;
-        padding-top: 10px;
+        padding-top: 12px;
         text-align: center;
         align-items: center;
       }
+
       .modal-body-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-  <!-- HEADER WITH "SALA 01" -->
+  <!-- HEADER CON "SALA 01" -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
       <span>← Back</span>
     </a>
     <span class="gallery-indicator">Sala 01</span>
   </header>
+
+  <!-- MENSJE DISCRETO EN CELULAR SOBRE SCROLL -->
+  <div class="mobile-top-hint">↓ Scroll down to explore works</div>
 
   <!-- INTRO OVERLAY -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
@@ -489,8 +546,11 @@
     </div>
   </div>
 
-  <!-- MAIN GALLERY CONTAINER -->
+  <!-- CONTENEDOR PRINCIPAL -->
   <div class="museum-slider-container blurred" id="galleryContainer">
+    <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Previous">←</button>
+    <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Next">→</button>
+
     <div class="museum-track" id="museumTrack">
       
       <!-- SLIDE 01 -->
@@ -544,7 +604,7 @@
     </div>
   </div>
 
-  <!-- ZOOM / IMMERSION MODAL -->
+  <!-- POP-UP DETALLES MODAL -->
   <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
     <div class="modal-content-card">
       <button class="modal-close-btn" onclick="closeModal()">✕</button>
@@ -574,7 +634,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT CON SOPORTE HÍBRIDO -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -583,7 +643,7 @@
       if (container) container.classList.remove('blurred');
     }
 
-    // PROTECCIÓN COMPLETA CONTRA DESCARGA
+    // PROTECCIÓN ANTI-DESCARGA
     document.addEventListener('DOMContentLoaded', () => {
       document.addEventListener('contextmenu', e => e.preventDefault());
       document.querySelectorAll('img').forEach(img => {
@@ -591,7 +651,33 @@
       });
     });
 
-    // TECLA ESCAPAR PARA MODAL / INTRO Y NAVEGACIÓN
+    const track = document.getElementById('museumTrack');
+
+    // MOUSEWHEEL EN ESCRITORIO (REDUCE O AVANZA HORIZONTALMENTE SOLO SI NO ES MÓVIL)
+    track.addEventListener('wheel', (evt) => {
+      if (window.innerWidth > 900 && evt.deltaY !== 0) {
+        evt.preventDefault();
+        track.scrollLeft += evt.deltaY;
+      }
+    }, { passive: false });
+
+    function scrollNext() {
+      if (window.innerWidth > 900) {
+        track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      }
+    }
+
+    function scrollPrev() {
+      if (window.innerWidth > 900) {
+        track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    }
+
+    // TECLAS DE NAVEGACIÓN
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('artworkModal');
       const modalActive = modal && modal.classList.contains('active');
@@ -604,6 +690,10 @@
         }
       } else if (e.key === 'Enter' || e.key === ' ') {
         if (!modalActive) dismissRoomIntro();
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        scrollNext();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        scrollPrev();
       }
     });
 
