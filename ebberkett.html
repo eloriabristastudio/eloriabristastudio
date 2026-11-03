@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0e0e0e" />
-  <title>Ebberkett — Virtual Pavilion &amp; Gallery</title>
-  <meta name="description" content="Ebberkett — Virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio." />
+  <title>Ebberkett - Virtual Pavilion &amp; Gallery</title>
+  <meta name="description" content="Ebberkett - Virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio." />
   
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
-
+  
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
   
   <!-- Lenis CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.css" />
@@ -36,6 +36,12 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       scroll-behavior: auto;
       overflow-x: hidden;
+      /* Candado global anti-selección */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
     }
 
     .reveal-item {
@@ -44,7 +50,6 @@
       transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
-
     .reveal-item.active {
       opacity: 1;
       transform: translateY(0);
@@ -101,18 +106,6 @@
 
     .ebberkett-nav-links a:hover { color: #0e0e0e; }
 
-    .back-to-studio {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: #555;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .back-to-studio:hover { color: #0e0e0e; }
-
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -149,9 +142,7 @@
       padding: 40px;
     }
 
-    .mobile-nav-overlay.active {
-      right: 0;
-    }
+    .mobile-nav-overlay.active { right: 0; }
 
     .mobile-nav-overlay a {
       font-family: 'JetBrains Mono', monospace;
@@ -251,16 +242,37 @@
       letter-spacing: 0.08em;
       color: #777;
       margin-bottom: 12px;
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .section-main-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.2rem, 4vw, 3.8rem);
-      font-weight: 500;
+    /* Indicador estilo "en vivo" con punto verde */
+    .live-indicator-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* TÍTULO NUEVO CON TIPOGRAFÍA EXCLUSIVA GEISTPIXEL */
+    .section-main-title-pixel {
+      font-family: 'GeistPixelLocal', monospace;
+      font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+      font-weight: normal;
       margin: 0 0 35px 0;
       color: #0e0e0e;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
     }
 
     .current-exhibition-section {
@@ -302,13 +314,26 @@
     }
 
     .exhibition-banner-wrapper {
+      position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16/9;
       background: #e0dfd9;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       transition: box-shadow 0.4s ease;
       cursor: pointer;
+    }
+
+    /* Capa protectora anti-descarga para las imágenes */
+    .exhibition-banner-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
     }
 
     .exhibition-banner-wrapper:hover {
@@ -321,6 +346,9 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -328,66 +356,60 @@
       transform: scale(1.03);
     }
 
+    /* Estructura inspirada en póster de referencia */
     .exhibition-meta-bar {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: flex-start;
       margin-top: 25px;
       gap: 30px;
-      flex-wrap: wrap;
       text-align: left;
     }
 
     .exhibition-info-left {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      min-width: 0;
+      gap: 8px;
     }
 
     .exhibition-title {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
-      font-weight: 300;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 700; /* Bold como se solicitó */
       letter-spacing: -0.02em;
       margin: 0;
       color: #0e0e0e;
     }
 
-    .exhibition-artist {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    .exhibition-room-dates {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .exhibition-room-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #888;
-    }
-
-    .exhibition-dates {
+    .exhibition-room-notice {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
       color: #555;
-      letter-spacing: 0.05em;
+      text-transform: lowercase;
+      letter-spacing: 0.04em;
     }
 
     .exhibition-info-right {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 15px;
-      width: 100%;
+      gap: 8px;
+      text-align: right;
+    }
+
+    .exhibition-dates-top {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+      color: #0e0e0e;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .exhibition-artist-bottom {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #555;
+      letter-spacing: 0.04em;
     }
 
     .expo-visit-link {
@@ -399,6 +421,7 @@
       border-bottom: 1px solid #0e0e0e;
       padding-bottom: 2px;
       transition: opacity 0.2s ease;
+      margin-top: 10px;
     }
 
     .expo-visit-link:hover { opacity: 0.6; }
@@ -409,7 +432,7 @@
       justify-content: flex-end;
       align-items: flex-end;
       flex-direction: column;
-      gap: 12px;
+      gap: 6px;
       margin-top: 15px;
     }
 
@@ -421,6 +444,7 @@
       letter-spacing: 0.05em;
     }
 
+    /* SECCIÓN DE SALAS (#SALAS) */
     .immersive-salas-section {
       width: 100%;
       padding: 110px 4vw;
@@ -461,21 +485,36 @@
     }
 
     .product-img-container-portrait {
+      position: relative;
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 3/4;
       overflow: hidden;
       background: #e0dfd9;
+    }
+
+    .product-img-container-portrait::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
     }
 
     .product-img-container-portrait img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .room-card-shop:hover .product-img-container-portrait img { 
-      transform: scale(1.04); 
+    .room-card-shop:hover .product-img-container-portrait img {
+      transform: scale(1.04);
     }
 
     .room-info-box {
@@ -508,6 +547,7 @@
       line-height: 1.5;
     }
 
+    /* DVISION HERO */
     .dvision-immersive-hero {
       position: relative;
       width: 100%;
@@ -549,6 +589,9 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .item-1 { top: 12%; left: 8%; }
@@ -666,12 +709,12 @@
       transition: border-color 0.2s ease, opacity 0.2s ease;
     }
 
-    .dvision-explore-btn:hover { 
-      border-color: #f5f4f0; 
+    .dvision-explore-btn:hover {
+      border-color: #f5f4f0;
       opacity: 0.8;
     }
 
-    /* THE HUMAN TAPES (RADIO) ANTES DE LA SHOP */
+    /* THE HUMAN TAPES (RADIO) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -724,7 +767,7 @@
     .tape-gif-container {
       width: 100%;
       max-width: 500px;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1/1;
       margin-bottom: 30px;
       position: relative;
       display: flex;
@@ -737,6 +780,9 @@
       height: 100%;
       object-fit: contain;
       display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .tape-card-title {
@@ -766,10 +812,10 @@
     }
 
     .tapes-platforms-container {
-      max-width: 900px; 
-      margin: 75px auto 0 auto; 
-      text-align: center; 
-      border-top: 1px solid rgba(14,14,14,0.08); 
+      max-width: 900px;
+      margin: 75px auto 0 auto;
+      text-align: center;
+      border-top: 1px solid rgba(14,14,14,0.08);
       padding-top: 55px;
     }
 
@@ -861,22 +907,12 @@
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
       .mobile-menu-btn { display: block; }
-
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      
       .exhibition-meta-bar { grid-template-columns: 1fr; gap: 15px; }
-      .exhibition-info-right { align-items: flex-start; }
-      
-      .slide-and-visit-container {
-        align-items: flex-end;
-        margin-top: 20px;
-      }
-
-      .floating-artwork-item {
-        width: 140px;
-      }
+      .exhibition-info-right { align-items: flex-start; text-align: left; }
+      .floating-artwork-item { width: 140px; }
       .item-1 { top: 12%; left: 4%; }
       .item-2 { top: 10%; right: 4%; }
       .item-3 { top: 72%; left: 6%; }
@@ -886,608 +922,553 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;" ondragstart="return false;">
 
-  <!-- HEADER CON "Salas" EN ESPAÑOL Y LO DEMÁS EN INGLÉS -->
-  <header class="ebberkett-header">
-    <a href="ebberkett.html" class="ebberkett-brand">
-      <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
-      <span>EBBERKETT</span>
+<!-- HEADER -->
+<header class="ebberkett-header">
+  <a href="ebberkett.html" class="ebberkett-brand">
+    <img src="assets/Ebs_logo.svg" alt="Ebberkett" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+    <span>EBBERKETT</span>
+  </a>
+  <nav class="ebberkett-nav-links">
+    <a href="#manifesto">About</a>
+    <a href="#salas">Salas</a>
+    <a href="#dvisionHero">/ Dvision</a>
+    <a href="#tapes">Radio</a>
+    <a href="EBshop.html">Shop</a>
+  </nav>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <a href="index.html" class="back-to-studio" style="display: none;">← Eloria Brista Studio</a>
+</header>
+
+<!-- MOBILE NAVIGATION OVERLAY -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <button onclick="toggleMobileMenu()" style="position: absolute; top: 25px; right: 25px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
+  <a href="#manifesto" onclick="toggleMobileMenu()">About</a>
+  <a href="#salas" onclick="toggleMobileMenu()">Salas</a>
+  <a href="#dvisionHero" onclick="toggleMobileMenu()">/ Dvision</a>
+  <a href="#tapes" onclick="toggleMobileMenu()">Radio</a>
+  <a href="EBshop.html" onclick="toggleMobileMenu()">Shop</a>
+  <a href="index.html" style="font-size: 0.8rem; color: #666; margin-top: 20px;">← Eloria Brista Studio</a>
+</div>
+
+<main>
+  <section class="pavilion-hero">
+    <h1 class="coding-title" id="codingHeroTitle">Welcome to Ebberkett</h1>
+    <p class="hero-sub-description reveal-item">
+      A virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio
+    </p>
+    <a href="#manifesto" class="more-info-scroll">
+      <span>More info</span>
+      <span>↓</span>
     </a>
+  </section>
 
-    <nav class="ebberkett-nav-links">
-      <a href="#manifesto">About</a>
-      <a href="#salas">Salas</a>
-      <a href="#dvisionHero">/ Dvision</a>
-      <a href="#tapes">Radio</a>
-      <a href="EBshop.html">Shop</a>
-    </nav>
-
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <a href="index.html" class="back-to-studio" style="display: none;">← Eloria Brista Studio</a>
-  </header>
-
-  <!-- MOBILE NAVIGATION OVERLAY -->
-  <div class="mobile-nav-overlay" id="mobileNavOverlay">
-    <button onclick="toggleMobileMenu()" style="position: absolute; top: 25px; right: 25px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
-    <a href="#manifesto" onclick="toggleMobileMenu()">About</a>
-    <a href="#salas" onclick="toggleMobileMenu()">Salas</a>
-    <a href="#dvisionHero" onclick="toggleMobileMenu()">/ Dvision</a>
-    <a href="#tapes" onclick="toggleMobileMenu()">Radio</a>
-    <a href="EBshop.html" onclick="toggleMobileMenu()">Shop</a>
-    <a href="index.html" style="font-size: 0.8rem; color: #666; margin-top: 20px;">← Eloria Brista Studio</a>
-  </div>
-
-  <main>
-    <section class="pavilion-hero">
-      <h1 class="coding-title" id="codingHeroTitle">Welcome to Ebberkett</h1>
-      
-      <p class="hero-sub-description reveal-item">
-        A virtual pavilion for archive, documentation, and exhibition by Eloria Brista Studio
+  <section id="manifesto" class="pavilion-manifesto-slide">
+    <div class="manifesto-body-statement">
+      <p class="reveal-item">
+        Ebberkett operates as an independent studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas.
       </p>
+      <p class="reveal-item">
+        This pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
+      </p>
+    </div>
+  </section>
 
-      <a href="#manifesto" class="more-info-scroll">
-        <span>More info</span>
-        <span>↓</span>
-      </a>
-    </section>
-
-    <section id="manifesto" class="pavilion-manifesto-slide">
-      <div class="manifesto-body-statement">
-        <p class="reveal-item">
-          Ebberkett operates as an independent studio's experimental wing: an open space dedicated to exploring new graphic languages, visual arts, and hybrid ideas.
-        </p>
-        <p class="reveal-item">
-          This pavilion is a living archive and a collaborative ecosystem. An open platform to connect, incubate, and bring visibility to emerging and resident artists.
-        </p>
-      </div>
-    </section>
-
-    <section id="exhibicion" class="current-exhibition-section">
-      <div class="exhibition-inner-container">
-        <span class="section-label reveal-item">Current Exhibition</span>
-        <h2 class="section-main-title reveal-item">Featured Works &amp; Active Galleries</h2>
-
-        <div class="exhibition-slider-outer">
-          <div class="exhibition-track">
-            
-            <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen by Álvaro Urbano" />
-              </div>
-              
-              <div class="exhibition-meta-bar reveal-item">
-                <div class="exhibition-info-left">
-                  <h2 class="exhibition-title">Helen</h2>
-                  <span class="exhibition-artist">Artist: Álvaro Urbano</span>
-                  
-                  <div class="exhibition-room-dates">
-                    <span class="exhibition-room-tag">Sala 01</span>
-                    <span class="exhibition-dates">16.OCT.2026 — 07.FEB.2027</span>
-                  </div>
-                </div>
-                
-                <div class="exhibition-info-right">
-                  <div class="slide-and-visit-container">
-                    <span class="slide-hint">→ slide</span>
-                    <a href="sala1.html" class="expo-visit-link">visit exhibition ↗</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="exhibition-slide">
-              <div class="exhibition-banner-wrapper" onclick="openModal('The Whisper of 1000 Tulips', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" />
-              </div>
-              
-              <div class="exhibition-meta-bar reveal-item">
-                <div class="exhibition-info-left">
-                  <h2 class="exhibition-title">The Whisper of 1000 Tulips</h2>
-                  <span class="exhibition-artist">Artist: Haidar Hikmah</span>
-                  
-                  <div class="exhibition-room-dates">
-                    <span class="exhibition-room-tag">Sala 01</span>
-                    <span class="exhibition-dates">08.AUG.2026 — 31.OCT.2026</span>
-                  </div>
-                </div>
-                
-                <div class="exhibition-info-right">
-                  <div class="slide-and-visit-container">
-                    <span class="slide-hint">↺ slide</span>
-                    <a href="sala1.html" class="expo-visit-link">visit exhibition ↗</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN DE SALAS (#SALAS) -->
-    <section id="salas" class="immersive-salas-section">
-      <div class="salas-content-wrapper">
-        <span class="section-label reveal-item">Explora nuestras salas</span>
-
-        <div class="salas-grid-shop">
-          <a href="sala1.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" alt="Sala 1" />
-            </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Sala 01</span>
-              <h3 class="room-title-shop">Main Gallery</h3>
-              <span class="room-desc-shop">Exhibitions featuring guest artists from the contemporary scene.</span>
-            </div>
-          </a>
-
-          <a href="sala2.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" alt="Sala 2" />
-            </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Sala 02</span>
-              <h3 class="room-title-shop">Resident Works</h3>
-              <span class="room-desc-shop">Works by the internal collective and EBS permanent collections.</span>
-            </div>
-          </a>
-
-          <a href="sala3.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1000&auto=format&fit=crop" alt="Sala 3" />
-            </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Sala 03</span>
-              <h3 class="room-title-shop">Creative Lab</h3>
-              <span class="room-desc-shop">Avant-garde archives, laboratory explorations, and high-risk visuals.</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="dvision-immersive-hero" id="dvisionHero">
-      <div class="dvision-gallery-3d" id="gallery3d">
-        <div class="floating-artwork-item item-1">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 1" />
-        </div>
-        <div class="floating-artwork-item item-2">
-          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 2" />
-        </div>
-        <div class="floating-artwork-item item-3">
-          <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 3" />
-        </div>
-        <div class="floating-artwork-item item-4">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 4" />
-        </div>
-        <div class="floating-artwork-item item-5">
-          <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 5" />
-        </div>
-        <div class="floating-artwork-item item-6">
-          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 6" />
-        </div>
-      </div>
-
-      <div class="dvision-center-overlay">
-        <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio × Ebberkett</span>
-        
-        <h2 class="dvision-main-title-wrap" id="dvTitle">
-          <span class="terminal-row-top">
-            <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span>
-          </span>
-          <span class="terminal-row-bottom"> / dvision</span>
-        </h2>
-        
-        <p class="dvision-subtitle-desc" id="dvDesc">
-          Dvision is the collaboration dedicated to integrating unique visual art for branding projects. We connect research from our internal artists to transform vision into a collectible universe.
-        </p>
-
-        <div class="dvision-btn-wrapper" id="dvBtnWrap">
-          <a href="dvision-archive.html" class="dvision-explore-btn">
-            view complete projects ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE HUMAN TAPES (RADIO) ANTES DE LA SHOP -->
-    <section id="tapes" class="tapes-section">
-      <div class="tapes-header-block">
-        <span class="section-label reveal-item">Ebberkett Radio</span>
-        <h2 class="section-main-title reveal-item">The Human Tapes</h2>
-        <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #555; max-width: 800px; line-height: 1.6;">
-          A space dedicated to connecting with emerging creators, documenting working processes, and reflecting on the intersection between technology and human sensibility.
-        </p>
-      </div>
-
-      <div class="tapes-carousel-frame">
-        <div class="tapes-track-wrapper" id="tapesTrackWrapper">
-          <div class="tapes-track">
-            
-            <div class="tape-card-retro">
-              <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Tape #01 — Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" />
-              </div>
-              <h3 class="tape-card-title">Tape #01 — Digital Intuition</h3>
-              <div class="tape-card-meta">
-                <div class="tape-meta-info-row">
-                  <span>Dialogue with Eloria Studio · 45 min</span>
-                </div>
-                <div class="slide-and-visit-container" style="margin-top: 0;">
-                  <span class="slide-hint">→ slide</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="tape-card-retro">
-              <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Tape #02 — Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" />
-              </div>
-              <h3 class="tape-card-title">Tape #02 — Graphic Universes</h3>
-              <div class="tape-card-meta">
-                <div class="tape-meta-info-row">
-                  <span>Dvision Curation · 52 min</span>
-                </div>
-                <div class="slide-and-visit-container" style="margin-top: 0;">
-                  <span class="slide-hint">→ slide</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="tape-card-retro">
-              <div class="tape-gif-container">
-                <img src="assets/TRT_beta.gif" alt="Tape #03 — Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" />
-              </div>
-              <h3 class="tape-card-title">Tape #03 — Virtual Gallery Art</h3>
-              <div class="tape-card-meta">
-                <div class="tape-meta-info-row">
-                  <span>Ebberkett Residency · 38 min</span>
-                </div>
-                <div class="slide-and-visit-container" style="margin-top: 0;">
-                  <span class="slide-hint">↺ slide</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="tapes-platforms-container">
-        <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
-          Listen to full episodes of <strong>The Human Tapes</strong> on official platforms:
-        </p>
-        <div class="reveal-item" style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
-          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Spotify Podcasts</a>
-          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Apple Podcasts</a>
-          <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">↗ Amazon Music</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- EBBERKETT SHOP AL FINAL COMO CIERRE -->
-    <section id="shop">
-      <div style="max-width: 1400px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
-          <div>
-            <h2 class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin: 0;">Ebberkett Shop</h2>
-          </div>
+  <!-- SECCIÓN ACTUALIZADA DE NOVEDADES Y EXPOSICIONES -->
+  <section id="exhibicion" class="current-exhibition-section">
+    <div class="exhibition-inner-container">
+      <span class="section-label reveal-item">
+        <span class="live-indicator-dot"></span> ÚLTIMAS NOVEDADES
+      </span>
+      <h2 class="section-main-title-pixel reveal-item">Novedades: Próximas Exposiciones, Eventos y Episodios</h2>
+      
+      <div class="exhibition-slider-outer" id="exhibitionSlider">
+        <div class="exhibition-track">
           
-          <a href="EBshop.html" class="reveal-item" style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">
-            View full catalog ↗
-          </a>
-        </div>
+          <!-- SLIDE 1: HELEN -->
+          <div class="exhibition-slide">
+            <div class="exhibition-banner-wrapper" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen by Álvaro Urbano" draggable="false" />
+            </div>
+            <div class="exhibition-meta-bar reveal-item">
+              <div class="exhibition-info-left">
+                <h2 class="exhibition-title">Helen</h2>
+                <span class="exhibition-room-notice">en exhibición exclusivamente en sala 01</span>
+              </div>
+              <div class="exhibition-info-right">
+                <span class="exhibition-dates-top">16.OCT — 07.FEB</span>
+                <span class="exhibition-artist-bottom">Álvaro Urbano</span>
+                <div class="slide-and-visit-container">
+                  <span class="slide-hint">→ slide</span>
+                  <a href="sala1.html" class="expo-visit-link">visit exhibition</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="salas-grid-shop">
-          <a href="EBshop.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Print 1" />
+          <!-- SLIDE 2: THE WHISPER OF 1000 TULIPS -->
+          <div class="exhibition-slide">
+            <div class="exhibition-banner-wrapper" onclick="openModal('The Whisper of 1000 Tulips', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
+              <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" draggable="false" />
             </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Edition #01</span>
-              <h3 class="room-title-shop">What You Ingest You Become #4</h3>
-              <span class="room-desc-shop">$325.00 USD</span>
+            <div class="exhibition-meta-bar reveal-item">
+              <div class="exhibition-info-left">
+                <h2 class="exhibition-title">El susurro de los 1000 tulipanes</h2>
+                <span class="exhibition-room-notice">visita la exposición en sala 01</span>
+              </div>
+              <div class="exhibition-info-right">
+                <span class="exhibition-dates-top">08.AUG — 31.OCT</span>
+                <span class="exhibition-artist-bottom">Haidar Hikmah</span>
+                <div class="slide-and-visit-container">
+                  <span class="slide-hint">→ slide</span>
+                  <a href="sala1.html" class="expo-visit-link">visit exhibition</a>
+                </div>
+              </div>
             </div>
-          </a>
+          </div>
 
-          <a href="EBshop.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Print 2" />
-            </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Edition #02</span>
-              <h3 class="room-title-shop">Gargantua Bay #5</h3>
-              <span class="room-desc-shop">$325.00 USD</span>
-            </div>
-          </a>
-
-          <a href="EBshop.html" class="room-card-shop reveal-item">
-            <div class="product-img-container-portrait">
-              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Print 3" />
-            </div>
-            <div class="room-info-box">
-              <span class="room-num-shop">Edition #03</span>
-              <h3 class="room-title-shop">Where You End and I Begin</h3>
-              <span class="room-desc-shop">$300.00 USD</span>
-            </div>
-          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-  <div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
-    <div class="modal-content-card">
-      <button class="modal-close-btn" onclick="closeModal()">✕</button>
-      
-      <span class="section-label" id="mGalleryLocation">Sala 01</span>
-      <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
-      
-      <div class="modal-body-grid">
-        <div>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails">
-            Artist: Triveat<br/>
-            Medium: Digital Oil on Canvas<br/>
-            Timeline: 2025
-          </p>
-          <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;" id="mDescription">
-            Immersive exploration created in the Ebberkett laboratory for official art direction. This project investigates the use of organic textures and typographic distortion.
-          </p>
-        </div>
-
-        <div>
-          <span class="section-label">Creative Process &amp; Studio Log</span>
-          <div class="modal-bts-video-box" id="mVideoContainer">
-            [ Video Process / Studio Log - Pending Upload ]
+  <!-- SECCIÓN DE SALAS (#SALAS) -->
+  <section id="salas" class="immersive-salas-section">
+    <div class="salas-content-wrapper">
+      <span class="section-label reveal-item">Explora nuestras salas</span>
+      <div class="salas-grid-shop">
+        <a href="sala1.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1000&auto=format&fit=crop" alt="Sala 1" draggable="false" />
           </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Sala 01</span>
+            <h3 class="room-title-shop">Main Gallery</h3>
+            <span class="room-desc-shop">Exhibitions featuring guest artists from the contemporary scene.</span>
+          </div>
+        </a>
+        <a href="sala2.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" alt="Sala 2" draggable="false" />
+          </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Sala 02</span>
+            <h3 class="room-title-shop">Resident Works</h3>
+            <span class="room-desc-shop">Works by the internal collective and EBS permanent collections.</span>
+          </div>
+        </a>
+        <a href="sala3.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=1000&auto=format&fit=crop" alt="Sala 3" draggable="false" />
+          </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Sala 03</span>
+            <h3 class="room-title-shop">Creative Lab</h3>
+            <span class="room-desc-shop">Avant-garde archives, laboratory explorations, and high-risk visuals.</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dvision-immersive-hero" id="dvisionHero">
+    <div class="dvision-gallery-3d" id="gallery3d">
+      <div class="floating-artwork-item item-1"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 1" draggable="false" /></div>
+      <div class="floating-artwork-item item-2"><img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 2" draggable="false" /></div>
+      <div class="floating-artwork-item item-3"><img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 3" draggable="false" /></div>
+      <div class="floating-artwork-item item-4"><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 4" draggable="false" /></div>
+      <div class="floating-artwork-item item-5"><img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 5" draggable="false" /></div>
+      <div class="floating-artwork-item item-6"><img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=800&auto=format&fit=crop" alt="Dvision Artwork 6" draggable="false" /></div>
+    </div>
+    <div class="dvision-center-overlay">
+      <span class="dvision-brand-tag" id="dvTag">Eloria Brista Studio x Ebberkett</span>
+      <h2 class="dvision-main-title-wrap" id="dvTitle">
+        <span class="terminal-row-top">
+          <span class="terminal-animated-part" id="terminalWord"></span><span class="terminal-cursor"></span>
+        </span>
+        <span class="terminal-row-bottom"> /dvision</span>
+      </h2>
+      <p class="dvision-subtitle-desc" id="dvDesc">
+        Dvision is the collaboration dedicated to integrating unique visual art for branding projects. We connect research from our internal artists to transform vision into a collectible universe.
+      </p>
+      <div class="dvision-btn-wrapper" id="dvBtnWrap">
+        <a href="dvision-archive.html" class="dvision-explore-btn">view complete projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE HUMAN TAPES (RADIO) -->
+  <section id="tapes" class="tapes-section">
+    <div class="tapes-header-block">
+      <span class="section-label reveal-item">Ebberkett Radio</span>
+      <h2 class="section-main-title-pixel reveal-item" style="font-size: clamp(2rem, 3.5vw, 3rem);">The Human Tapes</h2>
+      <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 300; color: #555; max-width: 800px; line-height: 1.6;">
+        A space dedicated to connecting with emerging creators, documenting working processes, and reflecting on the intersection between technology and human sensibility.
+      </p>
+    </div>
+    <div class="tapes-carousel-frame">
+      <div class="tapes-track-wrapper" id="tapesTrackWrapper">
+        <div class="tapes-track">
+          <div class="tape-card-retro">
+            <div class="tape-gif-container">
+              <img src="assets/TRT_beta.gif" alt="Tape #01 Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+            </div>
+            <h3 class="tape-card-title">Tape #01 Digital Intuition</h3>
+            <div class="tape-card-meta">
+              <div class="tape-meta-info-row">
+                <span>Dialogue with Eloria Studio 45 min</span>
+              </div>
+              <div class="slide-and-visit-container" style="margin-top: 0;">
+                <span class="slide-hint">→ slide</span>
+              </div>
+            </div>
+          </div>
+          <div class="tape-card-retro">
+            <div class="tape-gif-container">
+              <img src="assets/TRT_beta.gif" alt="Tape #02 - Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+            </div>
+            <h3 class="tape-card-title">Tape #02 Graphic Universes</h3>
+            <div class="tape-card-meta">
+              <div class="tape-meta-info-row">
+                <span>Dvision Curation 52 min</span>
+              </div>
+              <div class="slide-and-visit-container" style="margin-top: 0;">
+                <span class="slide-hint">→ slide</span>
+              </div>
+            </div>
+          </div>
+          <div class="tape-card-retro">
+            <div class="tape-gif-container">
+              <img src="assets/TRT_beta.gif" alt="Tape #03 - Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+            </div>
+            <h3 class="tape-card-title">Tape #03 - Virtual Gallery Art</h3>
+            <div class="tape-card-meta">
+              <div class="tape-meta-info-row">
+                <span>Ebberkett Residency 38 min</span>
+              </div>
+              <div class="slide-and-visit-container" style="margin-top: 0;">
+                <span class="slide-hint">→ slide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tapes-platforms-container">
+      <p class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #444; margin-bottom: 25px;">
+        Listen to full episodes of <strong>The Human Tapes</strong> on official platforms:
+      </p>
+      <div class="reveal-item" style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;">
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">> Spotify Podcasts</a>
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">> Apple Podcasts</a>
+        <a href="#" style="color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 2px;">> Amazon Music</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EBBERKETT SHOP -->
+  <section id="shop">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <h2 class="reveal-item" style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin: 0;">Ebberkett Shop</h2>
+        </div>
+        <a href="EBshop.html" class="reveal-item" style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; color: #0e0e0e; text-decoration: none; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">
+          View full catalog
+        </a>
+      </div>
+      <div class="salas-grid-shop">
+        <a href="EBshop.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Print 1" draggable="false" />
+          </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Edition #01</span>
+            <h3 class="room-title-shop">What You Ingest You Become #4</h3>
+            <span class="room-desc-shop">$325.00 USD</span>
+          </div>
+        </a>
+        <a href="EBshop.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Print 2" draggable="false" />
+          </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Edition #02</span>
+            <h3 class="room-title-shop">Gargantua Bay #5</h3>
+            <span class="room-desc-shop">$325.00 USD</span>
+          </div>
+        </a>
+        <a href="EBshop.html" class="room-card-shop reveal-item">
+          <div class="product-img-container-portrait">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Print 3" draggable="false" />
+          </div>
+          <div class="room-info-box">
+            <span class="room-num-shop">Edition #03</span>
+            <h3 class="room-title-shop">Where You End and I Begin</h3>
+            <span class="room-desc-shop">$300.00 USD</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
+  <div class="modal-content-card">
+    <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    <span class="section-label" id="mGalleryLocation">Sala 01</span>
+    <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
+    <div class="modal-body-grid">
+      <div>
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails">
+          Artist: Triveat<br/>
+          Medium: Digital Oil on Canvas<br/>
+          Timeline: 2025
+        </p>
+        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;" id="mDescription">
+          Immersive exploration created in the Ebberkett laboratory for official art direction. This project investigates the use of organic textures and typographic distortion.
+        </p>
+      </div>
+      <div>
+        <span class="section-label">Creative Process &amp; Studio Log</span>
+        <div class="modal-bts-video-box" id="mVideoContainer">
+          [Video Process / Studio Log - Pending Upload]
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15); background-color: #f5f4f0;">
-    <div class="top" style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-      <div class="brand-block" style="max-width: 350px;">
-        <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
-        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio. San Francisco / Mexico City.</p>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Pavilion</h4>
-        <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Eloria Studio</a>
-        <a href="EBshop.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett Shop</a>
-        <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Inquiries</a>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Archives</h4>
-        <a href="#" style="text-decoration: none; color: #0e0e0e;">Instagram @ebberkett</a>
-        <a href="#" style="text-decoration: none; color: #0e0e0e;">Permanent Collection</a>
-      </div>
+<footer class="site-footer" style="padding: 80px 4vw 40px 4vw; border-top: 1px solid rgba(14, 14, 14, 0.15); background-color: #f5f4f0;">
+  <div class="top" style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+    <div class="brand-block" style="max-width: 350px;">
+      <span class="mark" style="font-size: 1.2rem; font-weight: 300;">EBBERKETT</span>
+      <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">An experimental pavilion and virtual museum by Eloria Brista Studio. San Francisco / Mexico City.</p>
     </div>
-    <div class="bottom" style="max-width: 1400px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
-      <span>© <span data-year>2026</span> / Dvision Archive</span>
-      <span>EBS Permanent Collection</span>
+    <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
+      <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Pavilion</h4>
+      <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Eloria Studio</a>
+      <a href="EBshop.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett Shop</a>
+      <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Inquiries</a>
     </div>
-  </footer>
+    <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
+      <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Archives</h4>
+      <a href="#" style="text-decoration: none; color: #0e0e0e;">@ebberkett Instagram</a>
+      <a href="#" style="text-decoration: none; color: #0e0e0e;">Permanent Collection</a>
+    </div>
+  </div>
+  <div class="bottom" style="max-width: 1400px; margin: 60px auto 0 auto; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
+    <span>© <span data-year>2026</span> / Dvision Archive</span>
+    <span>EBS Permanent Collection</span>
+  </div>
+</footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+  function toggleMobileMenu() {
+    const overlay = document.getElementById('mobileNavOverlay');
+    overlay.classList.toggle('active');
+  }
 
-  <script>
-    function toggleMobileMenu() {
-      const overlay = document.getElementById('mobileNavOverlay');
-      overlay.classList.toggle('active');
-    }
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-    document.addEventListener("DOMContentLoaded", function() {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -50px 0px',
-        threshold: 0.15
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.reveal-item').forEach(item => {
-        observer.observe(item);
-      });
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const items = document.querySelectorAll(".floating-artwork-item");
-      
-      items.forEach((item, index) => {
-        const delay = index * 1.6;
-        
-        gsap.timeline({ repeat: -1, delay: delay })
-          .fromTo(item, 
-            { 
-              z: -300, 
-              opacity: 0, 
-              scale: 0.8,
-              rotationZ: (index % 2 === 0 ? -3 : 3) 
-            }, 
-            { 
-              z: 250, 
-              opacity: 0.85, 
-              scale: 1.15,
-              rotationZ: (index % 2 === 0 ? 3 : -3),
-              duration: 12, 
-              ease: "sine.inOut" 
-            }
-          )
-          .to(item, {
-            z: 400,
-            opacity: 0,
-            scale: 1.3,
-            duration: 4,
-            ease: "sine.in"
-          });
-      });
-
-      gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power3.out" });
-      gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
-      gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1.2, delay: 0.7, ease: "power3.out" });
-      gsap.to("#dvBtnWrap", { opacity: 1, y: 0, duration: 1.2, delay: 0.9, ease: "power3.out" });
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
-      const targetElement = document.getElementById("codingHeroTitle");
-      const finalText = "Welcome to Ebberkett";
-      const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_#$&*@%";
-      
-      function runScrambleLoop() {
-        let currentFrame = 0;
-        const totalFrames = 40; 
-        const speed = 40; 
-
-        const interval = setInterval(() => {
-          let scrambledText = "";
-          for (let i = 0; i < finalText.length; i++) {
-            if (finalText[i] === " ") {
-              scrambledText += " ";
-            } else {
-              const progressRatio = currentFrame / totalFrames;
-              const letterThreshold = (i / finalText.length);
-
-              if (progressRatio > letterThreshold) {
-                scrambledText += finalText[i];
-              } else {
-                scrambledText += possibleChars[Math.floor(Math.random() * possibleChars.length)];
-              }
-            }
-          }
-          targetElement.innerText = scrambledText;
-          currentFrame++;
-
-          if (currentFrame > totalFrames) {
-            targetElement.innerText = finalText;
-            clearInterval(interval);
-            setTimeout(runScrambleLoop, 3500);
-          }
-        }, speed);
+  // Soporte de trackpad horizontal para el slider de exhibiciones
+  const exhibitionSlider = document.getElementById('exhibitionSlider');
+  if (exhibitionSlider) {
+    exhibitionSlider.addEventListener('wheel', (evt) => {
+      if (evt.deltaY !== 0) {
+        evt.preventDefault();
+        exhibitionSlider.scrollLeft += evt.deltaY;
       }
+    }, { passive: false });
+  }
 
-      runScrambleLoop();
-    });
+  document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.15
+    };
 
-    const dvisionSubtopics = [
-      "cover art",
-      "live visuals",
-      "concepts",
-      "textures",
-      "video art",
-      "graphic experiments",
-      "visuals"
-    ];
-
-    let topicIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const terminalElement = document.getElementById("terminalWord");
-
-    function terminalTypewriter() {
-      const currentWord = dvisionSubtopics[topicIndex];
-      
-      if (!isDeleting) {
-        terminalElement.innerText = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-
-        if (charIndex === currentWord.length) {
-          isDeleting = true;
-          setTimeout(terminalTypewriter, 2200);
-          return;
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
         }
-        setTimeout(terminalTypewriter, 100);
-      } else {
-        terminalElement.innerText = currentWord.substring(0, charIndex - 1);
-        charIndex--;
+      });
+    }, observerOptions);
 
-        if (charIndex === 0) {
-          isDeleting = false;
-          topicIndex = (topicIndex + 1) % dvisionSubtopics.length;
-          setTimeout(terminalTypewriter, 400);
-          return;
-        }
-        setTimeout(terminalTypewriter, 60);
-      }
-    }
+    document.querySelectorAll('.reveal-item').forEach(item => {
+      observer.observe(item);
+    });
+  });
 
-    document.addEventListener("DOMContentLoaded", terminalTypewriter);
+  window.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".floating-artwork-item");
+    items.forEach((item, index) => {
+      const delay = index * 1.6;
+      gsap.timeline({ repeat: -1, delay: delay })
+        .fromTo(item,
+          { z: -300, opacity: 0, scale: 0.8, rotationZ: (index % 2 === 0 ? -3 : 3) },
+          { z: 250, opacity: 0.85, scale: 1.15, rotationZ: (index % 2 === 0 ? 3 : -3), duration: 12, ease: "sine.inOut" }
+        )
+        .to(item, { z: 400, opacity: 0, scale: 1.3, duration: 4, ease: "sine.in" });
+    });
 
-    function openModal(title, artist, medium, year, location, videoUrl) {
-      document.getElementById('mTitle').innerText = title;
-      document.getElementById('mGalleryLocation').innerText = location;
-      document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+    gsap.to("#dvTag", { opacity: 1, y: 0, duration: 1.2, delay: 0.3, ease: "power3.out" });
+    gsap.to("#dvTitle", { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: "power3.out" });
+    gsap.to("#dvDesc", { opacity: 1, y: 0, duration: 1.2, delay: 0.7, ease: "power3.out" });
+    gsap.to("#dvBtnWrap", { opacity: 1, y: 0, duration: 1.2, delay: 0.9, ease: "power3.out" });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const targetElement = document.getElementById("codingHeroTitle");
+    const finalText = "Welcome to Ebberkett";
+    const possibleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_#$&*@%";
+    
+    function runScrambleLoop() {
+      let currentFrame = 0;
+      const totalFrames = 40;
+      const speed = 40;
       
-      const videoBox = document.getElementById('mVideoContainer');
-      if (videoUrl) {
-        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-      } else {
-        videoBox.innerHTML = `[ Video Process / Studio Log - Pending Upload ]`;
-      }
-
-      document.getElementById('caseModal').classList.add('active');
-    }
-
-    function closeModal() {
-      document.getElementById('caseModal').classList.remove('active');
-      document.getElementById('mVideoContainer').innerHTML = '';
-    }
-
-    function closeModalOnBackdrop(event) {
-      if (event.target === document.getElementById('caseModal')) {
-        closeModal();
-      }
-    }
-
-    /* MANEJO DE REGRESO AUTOMÁTICO A #SALAS CON SCROLL SUAVE */
-    window.addEventListener("load", function() {
-      if (window.location.hash === "#salas") {
-        window.scrollTo(0, 0);
-        setTimeout(() => {
-          const target = document.getElementById("salas");
-          if (target) {
-            if (typeof lenis !== "undefined") {
-              lenis.scrollTo(target, { immediate: false, duration: 1.0 });
+      const interval = setInterval(() => {
+        let scrambledText = "";
+        for (let i = 0; i < finalText.length; i++) {
+          if (finalText[i] === " ") {
+            scrambledText += " ";
+          } else {
+            const progressRatio = currentFrame / totalFrames;
+            const letterThreshold = (i / finalText.length);
+            if (progressRatio > letterThreshold) {
+              scrambledText += finalText[i];
             } else {
-              target.scrollIntoView({ behavior: 'smooth' });
+              scrambledText += possibleChars[Math.floor(Math.random() * possibleChars.length)];
             }
           }
-        }, 200);
+        }
+        targetElement.innerText = scrambledText;
+        currentFrame++;
+        if (currentFrame > totalFrames) {
+          targetElement.innerText = finalText;
+          clearInterval(interval);
+          setTimeout(runScrambleLoop, 3500);
+        }
+      }, speed);
+    }
+    runScrambleLoop();
+  });
+
+  const dvisionSubtopics = [
+    "cover art",
+    "live visuals",
+    "concepts",
+    "textures",
+    "video art",
+    "graphic experiments",
+    "visuals"
+  ];
+  let topicIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const terminalElement = document.getElementById("terminalWord");
+
+  function terminalTypewriter() {
+    const currentWord = dvisionSubtopics[topicIndex];
+    if (!isDeleting) {
+      terminalElement.innerText = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(terminalTypewriter, 2200);
+        return;
       }
-    });
-  </script>
+      setTimeout(terminalTypewriter, 100);
+    } else {
+      terminalElement.innerText = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        topicIndex = (topicIndex + 1) % dvisionSubtopics.length;
+        setTimeout(terminalTypewriter, 400);
+        return;
+      }
+      setTimeout(terminalTypewriter, 60);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", terminalTypewriter);
+
+  function openModal(title, artist, medium, year, location, videoUrl) {
+    document.getElementById('mTitle').innerText = title;
+    document.getElementById('mGalleryLocation').innerText = location;
+    document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+    const videoBox = document.getElementById('mVideoContainer');
+    if (videoUrl) {
+      videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+    } else {
+      videoBox.innerHTML = '[Video Process / Studio Log - Pending Upload]';
+    }
+    document.getElementById('caseModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('caseModal').classList.remove('active');
+    document.getElementById('mVideoContainer').innerHTML = '';
+  }
+
+  function closeModalOnBackdrop(event) {
+    if (event.target === document.getElementById('caseModal')) {
+      closeModal();
+    }
+  }
+
+  // Tecla Escape (Esc) para cerrar el modal de manera fluida
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('caseModal');
+    const modalActive = modal && modal.classList.contains('active');
+    if (e.key === 'Escape' && modalActive) {
+      closeModal();
+    }
+  });
+
+  // Manejo de regreso automático a #salas con scroll suave
+  window.addEventListener("load", function() {
+    if (window.location.hash === "#salas") {
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        const target = document.getElementById("salas");
+        if (target) {
+          if (typeof lenis !== "undefined") {
+            lenis.scrollTo(target, { immediate: false, duration: 1.0 });
+          } else {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 200);
+    }
+  });
+</script>
 </body>
 </html>
