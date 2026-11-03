@@ -1,1 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#EBEBEB" />
+  <title>Sala 02 — Ebberkett</title>
+  <meta name="description" content="Immersive exhibition of Sala 02 (Resident Works) in the Ebberkett virtual pavilion." />
+  
+  <!-- Vector Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #EBEBEB;
+      color: #0e0e0e;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      overflow: hidden;
+    }
+
+    /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
+    .gallery-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 14px 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      z-index: 100;
+      background-color: rgba(235, 235, 235, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
+    }
+
+    .back-pavilion-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0e0e0e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-pavilion-link:hover { opacity: 0.6; }
+
+    .gallery-indicator {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ==========================================================
+       ROOM INTRO OVERLAY (RESIDENT WORKS)
+       ========================================================== */
+    .room-intro-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(235, 235, 235, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 150;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+    }
+
+    .room-intro-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-card-content {
+      max-width: 630px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      cursor: default;
+    }
+
+    .intro-subtitle-welcome {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: lowercase;
+      letter-spacing: 0.15em;
+      color: #666;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    }
+
+    .intro-main-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: #0e0e0e;
+      line-height: 1;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .intro-description {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: #333;
+      margin: 6px 0 0 0;
+      text-wrap: balance;
+      text-wrap: pretty;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .intro-social-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+      line-height: 1.5;
+      margin: 0;
+      text-wrap: balance;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .intro-social-note a {
+      color: #0e0e0e;
+      text-decoration: underline;
+    }
+
+    .explore-gallery-btn {
+      margin-top: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #0e0e0e;
+      background: #ffffff;
+      border: 1px solid rgba(14, 14, 14, 0.15);
+      padding: 13px 26px;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .explore-gallery-btn:hover {
+      transform: translateY(-2px);
+      background: #0e0e0e;
+      color: #ffffff;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    @keyframes introFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MAIN GALLERY SLIDER CONTAINER */
+    .museum-slider-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      box-sizing: border-box;
+      transition: filter 0.6s ease;
+    }
+
+    .museum-slider-container.blurred {
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .museum-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .museum-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .museum-slide-item {
+      min-width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      scroll-snap-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 70px 6vw 30px 6vw;
+      gap: 50px;
+      position: relative;
+    }
+
+    .gallery-spotlight-effect {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 70%;
+      background: radial-gradient(ellipse at 50% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(235, 235, 235, 0.4) 50%, rgba(235, 235, 235, 0) 75%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.85;
+    }
+
+    .artwork-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .artwork-display-frame {
+      position: relative;
+      max-width: 50vw;
+      max-height: 55vh;
+      background: #ffffff;
+      padding: 14px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(14, 14, 14, 0.08);
+      box-sizing: border-box;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: box-shadow 0.4s ease;
+    }
+
+    .artwork-display-frame:hover {
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .artwork-display-frame img {
+      max-width: 100%;
+      max-height: 48vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .museum-wall-label {
+      position: relative;
+      z-index: 2;
+      max-width: 260px;
+      font-family: 'Inter', sans-serif;
+      text-align: left;
+      border-left: 1px solid rgba(14, 14, 14, 0.2);
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .label-artist {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #0e0e0e;
+      margin: 0;
+    }
+
+    .label-title-italic {
+      font-style: italic;
+      color: #444;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .label-medium, .label-desc {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .slider-nav-btn {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(14, 14, 14, 0.12);
+      color: #0e0e0e;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 50;
+      font-size: 0.8rem;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s ease, opacity 0.2s ease;
+    }
+
+    .slider-nav-btn:hover { background: rgba(255, 255, 255, 0.95); }
+
+    .nav-prev { left: 3vw; }
+    .nav-next { right: 3vw; }
+
+    /* POP-OUT MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(14, 14, 14, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-content-card {
+      background: #EBEBEB;
+      color: #0e0e0e;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: default;
+    }
+
+    .modal-close-btn {
+      position: sticky;
+      top: 0;
+      float: right;
+      background: #EBEBEB;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #0e0e0e;
+      z-index: 50;
+      transition: background 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: #0e0e0e;
+      color: #EBEBEB;
+    }
+
+    .modal-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 15px;
+      clear: both;
+    }
+
+    .modal-bts-video-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .museum-slide-item {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 60px 4vw 25px 4vw;
+      }
+      .artwork-display-frame {
+        max-width: 78vw;
+        max-height: 34vh;
+        padding: 7px;
+      }
+      .artwork-display-frame img {
+        max-height: 30vh;
+      }
+      .museum-wall-label {
+        max-width: 82vw;
+        border-left: none;
+        border-top: 1px solid rgba(14, 14, 14, 0.12);
+        padding-left: 0;
+        padding-top: 10px;
+        text-align: center;
+        align-items: center;
+      }
+      .slider-nav-btn {
+        top: 32%;
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+      }
+      .nav-prev { left: 2vw; }
+      .nav-next { right: 2vw; }
+      .modal-body-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER WITH "SALA 02" -->
+  <header class="gallery-header">
+    <a href="ebberkett.html#salas" class="back-pavilion-link">
+      <span>← Back</span>
+    </a>
+    <span class="gallery-indicator">Sala 02</span>
+  </header>
+
+  <!-- INTRO OVERLAY (RESIDENT WORKS) -->
+  <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
+    <div class="intro-card-content" onclick="event.stopPropagation()">
+      <span class="intro-subtitle-welcome">welcome to</span>
+      <h1 class="intro-main-title">SALA 02</h1>
+      
+      <p class="intro-description">
+        A space dedicated to exploring the vision, branding archives, and resident works of our internal studio.
+      </p>
+
+      <p class="intro-social-note">
+        to stay updated on new releases or explore our resident directory, visit us on instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
+      </p>
+
+      <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
+        Explore Gallery ↓
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN GALLERY SLIDER CONTAINER -->
+  <div class="museum-slider-container blurred" id="galleryContainer">
+    <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Previous">←</button>
+    <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Next">→</button>
+
+    <div class="museum-track" id="museumTrack">
+      
+      <!-- SLIDE 01 (OBRAS RESIDENTES) -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Studio Archives #01', 'Eloria Resident', 'Art direction & graphic identity', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Studio Archives #01" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">Eloria Resident</h3>
+          <p class="label-title-italic">"Studio Archives #01", 2026</p>
+          <span class="label-medium">Art direction &amp; graphic identity</span>
+          <p class="label-desc">Resident collection showcasing core brand direction and refined visual balance.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 02 -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Monochrome Balance', 'Eloria Resident', 'Digital print on museum canvas', '2026', '')">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop" alt="Monochrome Balance" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">Eloria Resident</h3>
+          <p class="label-title-italic">"Monochrome Balance", 2026</p>
+          <span class="label-medium">Digital print on museum canvas</span>
+          <p class="label-desc">Exploration of minimalist structures and clean studio aesthetics.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 03 -->
+      <div class="museum-slide-item">
+        <div class="gallery-spotlight-effect"></div>
+        <div class="artwork-stage">
+          <div class="artwork-display-frame" onclick="openArtworkModal('Permanent Archive #04', 'EBS Collective', 'Mixed media & typography', '2025', '')">
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop" alt="Permanent Archive #04" />
+          </div>
+        </div>
+        <div class="museum-wall-label">
+          <h3 class="label-artist">EBS Collective</h3>
+          <p class="label-title-italic">"Permanent Archive #04", 2025</p>
+          <span class="label-medium">Mixed media &amp; typography</span>
+          <p class="label-desc">Selected pieces from the internal studio portfolio focused on contemporary branding.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ZOOM / IMMERSION MODAL -->
+  <div class="modal-overlay" id="artworkModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-content-card">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Sala 02 / Detailed View</span>
+      <h2 id="modalTitle" style="font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 300; margin: 8px 0;">Artwork Title</h2>
+      
+      <div class="modal-body-grid">
+        <div>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5;" id="modalDetails">
+            Artist: Artist Name<br/>
+            Medium: Technique<br/>
+            Timeline: 2026
+          </p>
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.5; margin-top: 15px;">
+            Detailed inspection of the resident piece. Access studio records and documentation regarding internal production.
+          </p>
+        </div>
+
+        <div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Log / Process Record</span>
+          <div class="modal-bts-video-box" id="modalVideoContainer">
+            [ Video Process / Studio Log - Pending ]
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NATIVE NAVIGATION SCRIPT -->
+  <script>
+    function dismissRoomIntro() {
+      const overlay = document.getElementById('roomIntroOverlay');
+      const container = document.getElementById('galleryContainer');
+      if (overlay) overlay.classList.add('dismissed');
+      if (container) container.classList.remove('blurred');
+    }
+
+    const track = document.getElementById('museumTrack');
+
+    track.addEventListener('wheel', (evt) => {
+      if (evt.deltaY !== 0) {
+        evt.preventDefault();
+        track.scrollLeft += evt.deltaY;
+      }
+    }, { passive: false });
+
+    function scrollNext() {
+      track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+    }
+
+    function scrollPrev() {
+      track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') scrollNext();
+      if (e.key === 'ArrowLeft') scrollPrev();
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismissRoomIntro();
+    });
+
+    function openArtworkModal(title, artist, medium, year, videoUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
+      
+      const videoBox = document.getElementById('modalVideoContainer');
+      if (videoUrl) {
+        videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        videoBox.innerHTML = `[ Video Process / Studio Log - Pending Upload ]`;
+      }
+
+      document.getElementById('artworkModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('artworkModal').classList.remove('active');
+      document.getElementById('modalVideoContainer').innerHTML = '';
+    }
+
+    function closeModalOnBackdrop(event) {
+      if (event.target === document.getElementById('artworkModal')) {
+        closeModal();
+      }
+    }
+  </script>
+
+</body>
+</html>
