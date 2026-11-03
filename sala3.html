@@ -70,7 +70,7 @@
     }
 
     /* ==========================================================
-       EFECTO CRT / PANTALLA VIEJA Y SCANLINES
+       EFECTO CRT / PANTALLA VIEJA Y SCANLINES (ACTIVO EN TODO)
        ========================================================== */
     .crt-screen-overlay {
       position: fixed;
@@ -78,14 +78,14 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 130;
+      z-index: 160; /* Por encima de todo, incluyendo la intro */
       pointer-events: none;
       background: linear-gradient(
         rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.06) 50%
+        rgba(0, 0, 0, 0.07) 50%
       );
-      background-size: 100% 4px; /* Líneas de escaneo horizontales estilo TV */
-      opacity: 0.7;
+      background-size: 100% 4px;
+      opacity: 0.75;
     }
 
     /* Canvas para ruido de estática en vivo */
@@ -95,9 +95,9 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 135;
+      z-index: 165; /* Por encima de todo para envolver la intro y la galería */
       pointer-events: none;
-      opacity: 0.08;
+      opacity: 0.12;
       transition: opacity 0.2s ease;
     }
 
@@ -476,7 +476,7 @@
 </head>
 <body>
 
-  <!-- CAPA DE LÍNEAS CRT / TV VIEJA -->
+  <!-- CAPA DE LÍNEAS CRT / TV VIEJA (CUBRE TODA LA EXPERIENCIA) -->
   <div class="crt-screen-overlay"></div>
 
   <!-- CANVAS DE ESTÁTICA / RUIDO VINTAGE -->
@@ -490,7 +490,7 @@
     <span class="gallery-indicator">Sala 03</span>
   </header>
 
-  <!-- INTRO OVERLAY -->
+  <!-- INTRO OVERLAY (AHORA TAMBIÉN ENVUELTO EN EL FILTRO CRT) -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
@@ -604,47 +604,44 @@
     const ctx = canvas.getContext('2d');
 
     function resizeCanvas() {
-      canvas.width = Math.floor(window.innerWidth / 3); // Resolución baja optimizada para rendimiento
+      canvas.width = Math.floor(window.innerWidth / 3);
       canvas.height = Math.floor(window.innerHeight / 3);
     }
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // Dibuja ruido de estática en blanco y negro
     function renderStaticNoise() {
       const imgData = ctx.createImageData(canvas.width, canvas.height);
       const buffer = new Uint32Array(imgData.data.buffer);
       const len = buffer.length;
 
       for (let i = 0; i < len; i++) {
-        if (Math.random() < 0.12) { // Intensidad sutil de grano
-          buffer[i] = 0xff000000; // Píxel negro
+        if (Math.random() < 0.12) {
+          buffer[i] = 0xff000000;
         }
       }
 
       ctx.putImageData(imgData, 0, 0);
     }
 
-    // Bucle continuo de ruido analógico
     function loopNoise() {
       renderStaticNoise();
       requestAnimationFrame(loopNoise);
     }
     loopNoise();
 
-    // Ráfaga sutil de estática cada 6 segundos para dar efecto de TV buscando señal
     setInterval(() => {
-      canvas.style.opacity = '0.22';
+      canvas.style.opacity = '0.24';
       setTimeout(() => {
-        canvas.style.opacity = '0.08';
+        canvas.style.opacity = '0.12';
       }, 150);
     }, 6000);
 
     function triggerStaticGlitch() {
-      canvas.style.opacity = '0.35';
+      canvas.style.opacity = '0.38';
       setTimeout(() => {
-        canvas.style.opacity = '0.08';
-      }, 250);
+        canvas.style.opacity = '0.12';
+      }, 200);
     }
 
     function dismissRoomIntro() {
@@ -653,7 +650,6 @@
       if (overlay) overlay.classList.add('dismissed');
     }
 
-    // NAVEGACIÓN Y SLIDER
     const track = document.getElementById('museumTrack');
 
     track.addEventListener('wheel', (evt) => {
