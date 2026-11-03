@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
   <title>Sala 01 — Ebberkett</title>
   <meta name="description" content="Immersive exhibition of Sala 01 in the Ebberkett virtual pavilion." />
@@ -25,6 +25,13 @@
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       overflow: hidden;
+      -webkit-text-size-adjust: 100%;
+      /* PROTECCIÓN ANTI-SELECCIÓN GLOBAL */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
     }
 
     /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
@@ -67,9 +74,7 @@
       letter-spacing: 0.1em;
     }
 
-    /* ==========================================================
-       ROOM INTRO OVERLAY (PRESERVING "SALA 01" NAMING)
-       ========================================================== */
+    /* ROOM INTRO OVERLAY */
     .room-intro-overlay {
       position: fixed;
       top: 0;
@@ -221,9 +226,7 @@
       -ms-overflow-style: none;
     }
 
-    .museum-track::-webkit-scrollbar {
-      display: none;
-    }
+    .museum-track::-webkit-scrollbar { display: none; }
 
     .museum-slide-item {
       min-width: 100vw;
@@ -260,6 +263,7 @@
       justify-content: center;
     }
 
+    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA */
     .artwork-display-frame {
       position: relative;
       max-width: 50vw;
@@ -276,6 +280,18 @@
       transition: box-shadow 0.4s ease;
     }
 
+    /* Capa de cristal invisible sobre la imagen */
+    .artwork-display-frame::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
+    }
+
     .artwork-display-frame:hover {
       box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
     }
@@ -285,6 +301,9 @@
       max-height: 48vh;
       object-fit: contain;
       display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
 
     .museum-wall-label {
@@ -462,7 +481,7 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false;" ondragstart="return false;">
 
   <!-- HEADER WITH "SALA 01" -->
   <header class="gallery-header">
@@ -472,7 +491,7 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- INTRO OVERLAY (KEEPING "SALA 01" TITLE) -->
+  <!-- INTRO OVERLAY -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
@@ -504,7 +523,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Natureza Morta con Tulipanes', 'Álvaro Urbano', 'Oil and mixed media on linen', '2026', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" />
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Natureza Morta con Tulipanes" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -520,7 +539,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('The Whisper of 1000 Tulips', 'Haidar Hikmah', 'Pure pigments and resin on canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" />
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="The Whisper of 1000 Tulips" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -536,7 +555,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Geometry of Memory', 'Eloria Studio Resident', 'High-density pigment print', '2025', '')">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometry of Memory" />
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" alt="Geometry of Memory" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -552,7 +571,7 @@
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
           <div class="artwork-display-frame" onclick="openArtworkModal('Gargantua Fragment', 'Triveat', 'Digital textures on physical support', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop" alt="Gargantua Fragment" />
+            <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop" alt="Gargantua Fragment" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
@@ -596,7 +615,7 @@
     </div>
   </div>
 
-  <!-- NATIVE NAVIGATION SCRIPT -->
+  <!-- SCRIPT -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -604,6 +623,14 @@
       if (overlay) overlay.classList.add('dismissed');
       if (container) container.classList.remove('blurred');
     }
+
+    // PROTECCIÓN COMPLETA CONTRA DESCARGA
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+      });
+    });
 
     const track = document.getElementById('museumTrack');
 
@@ -622,10 +649,24 @@
       track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
+    // TECLA ESCAPAR PARA MODAL / INTRO Y NAVEGACIÓN
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') scrollNext();
-      if (e.key === 'ArrowLeft') scrollPrev();
-      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismissRoomIntro();
+      const modal = document.getElementById('artworkModal');
+      const modalActive = modal && modal.classList.contains('active');
+
+      if (e.key === 'Escape') {
+        if (modalActive) {
+          closeModal();
+        } else {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        if (!modalActive) dismissRoomIntro();
+      } else if (e.key === 'ArrowRight') {
+        scrollNext();
+      } else if (e.key === 'ArrowLeft') {
+        scrollPrev();
+      }
     });
 
     function openArtworkModal(title, artist, medium, year, videoUrl) {
