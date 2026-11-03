@@ -282,7 +282,7 @@
     /* SECCIÓN EXPANSIBIDA E INMERSIVA EN ESCRITORIO */
     .current-exhibition-section {
       width: 100%;
-      padding: 100px 2vw; /* Más extendido a lo ancho en desktop */
+      padding: 100px 2vw;
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
@@ -290,7 +290,7 @@
 
     .exhibition-inner-container {
       width: 100%;
-      max-width: 1650px; /* Expandido para ocupar más espacio horizontal */
+      max-width: 1650px;
       margin: 0 auto;
       padding: 0 2vw;
       box-sizing: border-box;
@@ -319,109 +319,7 @@
       box-sizing: border-box;
     }
 
-    /* ESTILO 1: HELEN (Ampliada e inmersiva) */
-    .slide-layout-helen {
-      position: relative;
-      width: 100%;
-      padding: 10px 0;
-    }
-
-    .helen-top-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 30px;
-    }
-
-    .helen-title-area h2 {
-      font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(3rem, 6.5vw, 6.5rem);
-      font-weight: normal;
-      color: #0e0e0e;
-      margin: 0;
-      line-height: 0.95;
-      text-transform: uppercase;
-    }
-
-    .helen-title-area span {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.82rem;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      display: block;
-      margin-top: 12px;
-    }
-
-    .helen-dates-top {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(2.5rem, 4.8vw, 4.8rem);
-      font-weight: 300;
-      color: #0e0e0e;
-      letter-spacing: -0.03em;
-    }
-
-    .helen-images-row {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1.1fr;
-      gap: 25px;
-      width: 100%;
-      height: 420px; /* Mayor altura para escritorio */
-      margin-bottom: 30px;
-    }
-
-    .helen-img-card {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background: #e0dfd9;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .helen-img-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 10;
-      background: rgba(0,0,0,0);
-    }
-
-    .helen-img-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      pointer-events: none;
-      -webkit-user-drag: none;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .helen-img-card:hover img {
-      transform: scale(1.03);
-    }
-
-    .helen-footer-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .helen-artist-name {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      color: #333;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .helen-footer-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    /* ESTILO 2: EL SUSURRO DE LOS 1000 TULIPANES (Idéntico a tu diseño con fecha arriba y artista abajo derecha) */
+    /* ESTILO: EL SUSURRO DE LOS 1000 TULIPANES (Ajustado según tus indicaciones) */
     .slide-layout-tulips {
       position: relative;
       width: 100%;
@@ -456,6 +354,7 @@
       margin-top: 15px;
     }
 
+    /* Enlace "Visit Exhibition" con separación mejorada (más abajo) */
     .tulips-visit-link-left {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
@@ -465,7 +364,7 @@
       border-bottom: 1px solid #0e0e0e;
       padding-bottom: 2px;
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 38px;
       transition: opacity 0.2s ease;
     }
     .tulips-visit-link-left:hover { opacity: 0.6; }
@@ -557,6 +456,7 @@
       -webkit-user-drag: none;
     }
 
+    /* Nombre del artista con interletrado de -50 (-0.05em) */
     .tulips-artist-bottom {
       position: absolute;
       bottom: 25px;
@@ -564,6 +464,7 @@
       font-family: 'Inter', sans-serif;
       font-size: clamp(2rem, 3.8vw, 3.8rem);
       font-weight: 400;
+      letter-spacing: -0.05em;
       color: #0e0e0e;
       text-align: right;
       line-height: 1.1;
@@ -1012,8 +913,6 @@
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      .helen-images-row { grid-template-columns: 1fr; height: auto; }
-      .helen-img-card { height: 220px; }
       .tulips-collage-stage { height: auto; display: flex; flex-direction: column; gap: 15px; position: relative; }
       .tulips-title-block, .tulips-dates-top, .tulips-artist-bottom, .tulips-slide-hint { position: relative; top: auto; left: auto; right: auto; bottom: auto; text-align: left; }
       .t-img-1, .t-img-2, .t-img-3, .t-img-4 { position: relative; width: 100%; height: 220px; top: auto; left: auto; }
@@ -1084,7 +983,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES AMPLIADA E INMERSIVA -->
+  <!-- SECCIÓN NOVEDADES (EXHIBICIÓN ÚNICA: EL SUSURRO DE LOS 1000 TULIPANES) -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -1095,43 +994,7 @@
       <div class="exhibition-slider-outer" id="exhibitionSlider">
         <div class="exhibition-track">
           
-          <!-- SLIDE 1: HELEN -->
-          <div class="exhibition-slide">
-            <div class="slide-layout-helen reveal-item">
-              
-              <div class="helen-top-header">
-                <div class="helen-title-area">
-                  <h2>Helen</h2>
-                  <span>Exhibition exclusively in Sala 01</span>
-                </div>
-                <div class="helen-dates-top">16.OCT — 07.FEB</div>
-              </div>
-
-              <!-- Fila central de 3 imágenes amplias -->
-              <div class="helen-images-row">
-                <div class="helen-img-card" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen main" draggable="false" />
-                </div>
-                <div class="helen-img-card">
-                  <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Helen detail 1" draggable="false" />
-                </div>
-                <div class="helen-img-card">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Helen detail 2" draggable="false" />
-                </div>
-              </div>
-
-              <div class="helen-footer-row">
-                <div class="helen-artist-name">Artist: Álvaro Urbano</div>
-                <div class="helen-footer-links">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #777;">→ slide for more</span>
-                  <a href="sala1.html" class="poster-visit-btn">VISIT EXHIBITION</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES (Mockup exacto) -->
+          <!-- SLIDE ÚNICO: EL SUSURRO DE LOS 1000 TULIPANES -->
           <div class="exhibition-slide">
             <div class="slide-layout-tulips reveal-item">
               
@@ -1147,7 +1010,7 @@
                 08.AUG — 31.OCT
               </div>
 
-              <!-- Collage superpuesto idéntico a tu diseño -->
+              <!-- Collage superpuesto exacto a tu diseño -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
@@ -1442,17 +1305,6 @@
   }
   requestAnimationFrame(raf);
 
-  // Trackpad horizontal scroll para el slider de novedades
-  const exhibitionSlider = document.getElementById('exhibitionSlider');
-  if (exhibitionSlider) {
-    exhibitionSlider.addEventListener('wheel', (evt) => {
-      if (evt.deltaY !== 0) {
-        evt.preventDefault();
-        exhibitionSlider.scrollLeft += evt.deltaY;
-      }
-    }, { passive: false });
-  }
-
   document.addEventListener("DOMContentLoaded", function() {
     const observerOptions = {
       root: null,
@@ -1593,7 +1445,6 @@
     }
   }
 
-  // Tecla Escape (Esc) para cerrar el modal de manera fluida
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('caseModal');
     const modalActive = modal && modal.classList.contains('active');
@@ -1602,7 +1453,6 @@
     }
   });
 
-  // Manejo de regreso automático a #salas con scroll suave
   window.addEventListener("load", function() {
     if (window.location.hash === "#salas") {
       window.scrollTo(0, 0);
