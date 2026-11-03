@@ -273,7 +273,6 @@
       line-height: 1.2;
     }
 
-    /* REDISEÑO COMPLETO TIPO CARTEL PLANO VAN GOGH */
     .current-exhibition-section {
       width: 100%;
       padding: 90px 0;
@@ -312,81 +311,67 @@
       box-sizing: border-box;
     }
 
-    /* Estructura Plana Expandida */
-    .van-gogh-poster-flat {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      grid-template-rows: auto auto;
-      gap: 20px 40px;
+    /* ESTILO 1: HELEN (3 Columnas ordenadas según tu mockup) */
+    .slide-layout-helen {
+      position: relative;
       width: 100%;
-      min-height: 480px;
-      align-items: stretch;
+      padding: 10px 0;
     }
 
-    .poster-left-column {
+    .helen-top-header {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 25px;
     }
 
-    .poster-huge-title-flat {
+    .helen-title-area h2 {
       font-family: 'GeistPixelLocal', monospace;
       font-size: clamp(2.8rem, 5.5vw, 5.5rem);
       font-weight: normal;
       color: #0e0e0e;
-      line-height: 0.95;
       margin: 0;
+      line-height: 1;
       text-transform: uppercase;
-      letter-spacing: -0.01em;
     }
 
-    .poster-subtitle-flat {
+    .helen-title-area span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #666;
+      font-size: 0.78rem;
+      color: #555;
       text-transform: uppercase;
-      margin-top: 15px;
       letter-spacing: 0.05em;
+      display: block;
+      margin-top: 10px;
     }
 
-    .poster-right-column {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .poster-dates-flat {
+    .helen-dates-top {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+      font-size: clamp(2rem, 4vw, 4rem);
       font-weight: 300;
       color: #0e0e0e;
-      line-height: 0.95;
       letter-spacing: -0.03em;
     }
 
-    /* Collage de Imágenes Planas e Integradas */
-    .poster-collage-grid-flat {
-      grid-column: 1 / -1;
+    .helen-images-row {
       display: grid;
-      grid-template-columns: 2fr 1fr 1.2fr;
-      gap: 15px;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 20px;
       width: 100%;
-      height: 320px;
-      margin: 10px 0;
+      height: 340px;
+      margin-bottom: 25px;
     }
 
-    .flat-img-box {
+    .helen-img-card {
       position: relative;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       background: #e0dfd9;
+      overflow: hidden;
       cursor: pointer;
     }
 
-    .flat-img-box::after {
+    .helen-img-card::after {
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -394,7 +379,7 @@
       background: rgba(0,0,0,0);
     }
 
-    .flat-img-box img {
+    .helen-img-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -404,50 +389,190 @@
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .flat-img-box:hover img {
+    .helen-img-card:hover img {
       transform: scale(1.03);
     }
 
-    .poster-footer-flat {
-      grid-column: 1 / -1;
+    .helen-footer-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      padding-top: 5px;
+      align-items: center;
     }
 
-    .poster-artist-flat {
+    .helen-artist-name {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
-      color: #444;
+      color: #333;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .poster-links-flat {
+    .helen-footer-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 25px;
     }
 
-    .poster-slide-hint {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #777;
+    /* ESTILO 2: EL SUSURRO DE LOS 1000 TULIPANES (Collage vanguardista superpuesto exacto a tu mockup) */
+    .slide-layout-tulips {
+      position: relative;
+      width: 100%;
+      min-height: 540px;
     }
 
-    .poster-visit-btn {
+    .tulips-title-block {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 420px;
+      z-index: 5;
+    }
+
+    .tulips-title-block h2 {
+      font-family: 'GeistPixelLocal', monospace;
+      font-size: clamp(2rem, 3.8vw, 3.8rem);
+      font-weight: normal;
+      color: #0e0e0e;
+      margin: 0;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .tulips-title-block span {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-top: 15px;
+    }
+
+    .tulips-visit-link-left {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
       text-transform: uppercase;
       color: #0e0e0e;
       text-decoration: none;
       border-bottom: 1px solid #0e0e0e;
       padding-bottom: 2px;
+      display: inline-block;
+      margin-top: 25px;
       transition: opacity 0.2s ease;
     }
+    .tulips-visit-link-left:hover { opacity: 0.6; }
 
-    .poster-visit-btn:hover { opacity: 0.6; }
+    .tulips-dates-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.2vw, 4.2rem);
+      font-weight: 300;
+      color: #0e0e0e;
+      text-align: right;
+      letter-spacing: -0.03em;
+      z-index: 5;
+    }
+
+    /* Contenedor central del collage encimado */
+    .tulips-collage-stage {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      margin-top: 20px;
+    }
+
+    /* Imágenes posicionadas exactamente como en tu diseño de referencia */
+    .t-img-1 {
+      position: absolute;
+      top: 0px;
+      left: 28%;
+      width: 32%;
+      height: 130px;
+      background: #e0dfd9;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .t-img-2 {
+      position: absolute;
+      top: 100px;
+      left: 33%;
+      width: 38%;
+      height: 220px;
+      background: #e0dfd9;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .t-img-3 {
+      position: absolute;
+      top: 180px;
+      left: 54%;
+      width: 44%;
+      height: 260px;
+      background: #e0dfd9;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .t-img-4 {
+      position: absolute;
+      top: 250px;
+      left: 12%;
+      width: 28%;
+      height: 190px;
+      background: #e0dfd9;
+      overflow: hidden;
+      z-index: 4;
+      cursor: pointer;
+    }
+
+    .t-img-box {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .t-img-box::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0);
+    }
+    .t-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .tulips-artist-bottom {
+      position: absolute;
+      bottom: 20px;
+      right: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+      font-weight: 400;
+      color: #0e0e0e;
+      text-align: right;
+      line-height: 1.1;
+      z-index: 5;
+    }
+
+    .tulips-slide-hint {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #777;
+      z-index: 5;
+    }
+
 
     /* SALAS (#SALAS) */
     .immersive-salas-section {
@@ -698,7 +823,7 @@
 
     .dvision-explore-btn:hover { border-color: #f5f4f0; opacity: 0.8; }
 
-    /* THE HUMAN TAPES (RADIO) - CON TIPOGRAFÍA ORIGINAL Y FORMATO CON GUIÓN */
+    /* THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -880,10 +1005,11 @@
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      .van-gogh-poster-flat { grid-template-columns: 1fr; }
-      .poster-dates-flat { text-align: left; }
-      .poster-collage-grid-flat { grid-template-columns: 1fr; height: auto; }
-      .flat-img-box { height: 220px; }
+      .helen-images-row { grid-template-columns: 1fr; height: auto; }
+      .helen-img-card { height: 220px; }
+      .tulips-collage-stage { height: auto; display: flex; flex-direction: column; gap: 15px; position: relative; }
+      .tulips-title-block, .tulips-dates-top, .tulips-artist-bottom, .tulips-slide-hint { position: relative; top: auto; left: auto; right: auto; bottom: auto; text-align: left; }
+      .t-img-1, .t-img-2, .t-img-3, .t-img-4 { position: relative; width: 100%; height: 220px; top: auto; left: auto; }
       .floating-artwork-item { width: 140px; }
       .item-1 { top: 12%; left: 4%; }
       .item-2 { top: 10%; right: 4%; }
@@ -951,7 +1077,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES REDISEÑADA COMPLETAMENTE PLANO (ESTILO VAN GOGH COMPACTO Y EXPANDIDO) -->
+  <!-- SECCIÓN NOVEDADES CON LOS DOS DISEÑOS EXACTOS DE TUS MOCKUPS -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -962,75 +1088,87 @@
       <div class="exhibition-slider-outer" id="exhibitionSlider">
         <div class="exhibition-track">
           
-          <!-- SLIDE 1: HELEN -->
+          <!-- SLIDE 1: HELEN (Estilo de tu primera imagen de referencia) -->
           <div class="exhibition-slide">
-            <div class="van-gogh-poster-flat reveal-item">
+            <div class="slide-layout-helen reveal-item">
               
-              <div class="poster-left-column">
-                <h2 class="poster-huge-title-flat">Helen</h2>
-                <span class="poster-subtitle-flat">Exhibition exclusively in Sala 01</span>
+              <div class="helen-top-header">
+                <div class="helen-title-area">
+                  <h2>Helen</h2>
+                  <span>Exhibition exclusively in Sala 01</span>
+                </div>
+                <div class="helen-dates-top">16.OCT — 07.FEB</div>
               </div>
 
-              <div class="poster-right-column">
-                <div class="poster-dates-flat">16.OCT — 07.FEB</div>
-              </div>
-
-              <!-- Grid de imágenes encimadas planas sin inclinación ni sombras feas -->
-              <div class="poster-collage-grid-flat">
-                <div class="flat-img-box" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+              <!-- Fila central de 3 imágenes exactas -->
+              <div class="helen-images-row">
+                <div class="helen-img-card" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                   <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen main" draggable="false" />
                 </div>
-                <div class="flat-img-box">
+                <div class="helen-img-card">
                   <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Helen detail 1" draggable="false" />
                 </div>
-                <div class="flat-img-box">
+                <div class="helen-img-card">
                   <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Helen detail 2" draggable="false" />
                 </div>
               </div>
 
-              <div class="poster-footer-flat">
-                <span class="poster-artist-flat">Artist: Álvaro Urbano</span>
-                <div class="poster-links-flat">
-                  <span class="poster-slide-hint">→ slide for more</span>
-                  <a href="sala1.html" class="poster-visit-btn">visit exhibition</a>
+              <div class="helen-footer-row">
+                <div class="helen-artist-name">Artist: Álvaro Urbano</div>
+                <div class="helen-footer-links">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #777;">→ slide for more</span>
+                  <a href="sala1.html" class="poster-visit-btn">VISIT EXHIBITION</a>
                 </div>
               </div>
 
             </div>
           </div>
 
-          <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES -->
+          <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES (Estilo collage exacto de tu segunda imagen) -->
           <div class="exhibition-slide">
-            <div class="van-gogh-poster-flat reveal-item">
+            <div class="slide-layout-tulips reveal-item">
               
-              <div class="poster-left-column">
-                <h2 class="poster-huge-title-flat" style="font-size: clamp(2.2rem, 4.2vw, 4.5rem);">El susurro de los 1000 tulipanes</h2>
-                <span class="poster-subtitle-flat">Exhibition in Sala 01</span>
-              </div>
-
-              <div class="poster-right-column">
-                <div class="poster-dates-flat">08.AUG — 31.OCT</div>
-              </div>
-
-              <!-- Grid de imágenes encimadas planas -->
-              <div class="poster-collage-grid-flat">
-                <div class="flat-img-box" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
-                  <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Tulip main" draggable="false" />
-                </div>
-                <div class="flat-img-box">
-                  <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Tulip detail 1" draggable="false" />
-                </div>
-                <div class="flat-img-box">
-                  <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop" alt="Tulip detail 2" draggable="false" />
+              <div class="tulips-title-block">
+                <h2>El susurro de los 1000 tulipanes</h2>
+                <span>Exhibition exclusively in Sala 01</span>
+                <div>
+                  <a href="sala1.html" class="tulips-visit-link-left">Visit Exhibition</a>
                 </div>
               </div>
 
-              <div class="poster-footer-flat">
-                <span class="poster-artist-flat">Artist: Haidar Hikmah</span>
-                <div class="poster-links-flat">
-                  <span class="poster-slide-hint">→ slide for more</span>
-                  <a href="sala1.html" class="poster-visit-btn">visit exhibition</a>
+              <div class="tulips-dates-top">
+                08.AUG — 31.OCT
+              </div>
+
+              <!-- Collage superpuesto exacto a tu diseño -->
+              <div class="tulips-collage-stage">
+                <div class="t-img-1">
+                  <div class="t-img-box">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="Tulip top" draggable="false" />
+                  </div>
                 </div>
+                <div class="t-img-2">
+                  <div class="t-img-box">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Tulip center abstract" draggable="false" />
+                  </div>
+                </div>
+                <div class="t-img-3">
+                  <div class="t-img-box">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Tulip right red/orange" draggable="false" />
+                  </div>
+                </div>
+                <div class="t-img-4" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
+                  <div class="t-img-box">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Tulip bottom painting" draggable="false" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="tulips-artist-bottom">
+                Haidar Hikmah
+              </div>
+              <div class="tulips-slide-hint">
+                slide for more →
               </div>
 
             </div>
@@ -1106,7 +1244,7 @@
     </div>
   </section>
 
-  <!-- THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN 'Tape 01 — Digital Intuition' -->
+  <!-- THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN -->
   <section id="tapes" class="tapes-section">
     <div class="tapes-header-block">
       <span class="section-label reveal-item">Ebberkett Radio</span>
