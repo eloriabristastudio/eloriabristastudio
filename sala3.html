@@ -68,9 +68,9 @@
     }
 
     /* ==========================================================
-       PIXEL NOISE / GLITCH CANVAS OVERLAY
+       BLOQUES GEOMÉTRICOS NEGROS (ESTILO REFERENCIA)
        ========================================================== */
-    #glitchCanvas {
+    .block-glitch-layer {
       position: fixed;
       top: 0;
       left: 0;
@@ -78,7 +78,28 @@
       height: 100vh;
       z-index: 140;
       pointer-events: none;
-      transition: opacity 0.8s ease;
+      overflow: hidden;
+      transition: opacity 0.5s ease;
+    }
+
+    .block-glitch-layer.hidden {
+      opacity: 0;
+    }
+
+    /* Bloques individuales que simulan "comerse" partes de la pantalla */
+    .geom-block {
+      position: absolute;
+      background-color: #0e0e0e;
+      will-change: transform, opacity;
+    }
+
+    /* BLOQUES FIJOS / DINÁMICOS EN BORDES (PARA LA GALERÍA) */
+    .ambient-block {
+      position: fixed;
+      background-color: #0e0e0e;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0.92;
     }
 
     /* ROOM INTRO OVERLAY (CREATIVE LAB) */
@@ -88,9 +109,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(235, 235, 235, 0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background-color: rgba(235, 235, 235, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 150;
       display: flex;
       justify-content: center;
@@ -116,6 +137,8 @@
       align-items: center;
       gap: 16px;
       cursor: default;
+      position: relative;
+      z-index: 155;
     }
 
     .intro-subtitle-welcome {
@@ -218,7 +241,7 @@
     }
 
     .museum-slider-container.blurred {
-      filter: blur(8px);
+      filter: blur(6px);
       pointer-events: none;
     }
 
@@ -270,7 +293,6 @@
       justify-content: center;
     }
 
-    /* MARCOS CON EFECTO DISRUPTIVO EN HOVER */
     .artwork-display-frame {
       position: relative;
       max-width: 50vw;
@@ -476,8 +498,19 @@
 </head>
 <body>
 
-  <!-- CANVAS PARA EFECTO DE PÍXELES NEGROS/GLITCH -->
-  <canvas id="glitchCanvas"></canvas>
+  <!-- CAPA DE BLOQUES GEOMÉTRICOS NEGROS (ESTILO REFERENCIA) -->
+  <div class="block-glitch-layer" id="blockGlitchLayer">
+    <div class="geom-block" style="top: 0; left: 15vw; width: 35vw; height: 18vh;"></div>
+    <div class="geom-block" style="top: 10vh; right: 0; width: 28vw; height: 22vh;"></div>
+    <div class="geom-block" style="bottom: 0; left: 0; width: 25vw; height: 25vh;"></div>
+    <div class="geom-block" style="bottom: 12vh; right: 10vw; width: 30vw; height: 15vh;"></div>
+    <div class="geom-block" style="top: 40vh; left: 0; width: 12vw; height: 30vh;"></div>
+  </div>
+
+  <!-- BLOQUES SUTTILES EN LAS ESQUINAS PARA LA GALERÍA (NO MOLESTAN LA LECTURA) -->
+  <div class="ambient-block" style="top: 0; left: 0; width: 6vw; height: 4vh;"></div>
+  <div class="ambient-block" style="bottom: 0; right: 0; width: 8vw; height: 5vh;"></div>
+  <div class="ambient-block" style="top: 45vh; right: 0; width: 4vw; height: 12vh;"></div>
 
   <!-- HEADER WITH "SALA 03" -->
   <header class="gallery-header">
@@ -595,71 +628,12 @@
     </div>
   </div>
 
-  <!-- NATIVE NAVIGATION & GLITCH CANVAS SCRIPT -->
+  <!-- NATIVE NAVIGATION & SCRIPT -->
   <script>
-    // SCRIPT DEL EFECTO DE GLITCH DE PÍXELES NEGROS
-    const canvas = document.getElementById('glitchCanvas');
-    const ctx = canvas.getContext('2d');
-    let isIntroActive = true;
-    let animationId;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Renderiza la cuadrícula de píxeles oscuros aleatorios
-    function drawPixelGlitch() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      if (isIntroActive) {
-        const pixelSize = Math.floor(Math.random() * 20) + 12; // Tamaño del píxel aleatorio
-        const count = Math.floor((canvas.width * canvas.height) / (pixelSize * pixelSize) * 0.12);
-
-        for (let i = 0; i < count; i++) {
-          const x = Math.floor(Math.random() * (canvas.width / pixelSize)) * pixelSize;
-          const y = Math.floor(Math.random() * (canvas.height / pixelSize)) * pixelSize;
-          
-          const opacity = Math.random() * 0.45;
-          ctx.fillStyle = `rgba(14, 14, 14, ${opacity})`;
-          ctx.fillRect(x, y, pixelSize, pixelSize);
-        }
-        animationId = requestAnimationFrame(drawPixelGlitch);
-      }
-    }
-
-    drawPixelGlitch();
-
-    // Micro-glitch breve al hacer clic para entrar a la galería
-    function triggerFlashGlitch() {
-      let duration = 0;
-      const flashInterval = setInterval(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const pixelSize = Math.floor(Math.random() * 30) + 10;
-        const count = 40;
-        
-        for (let i = 0; i < count; i++) {
-          const x = Math.floor(Math.random() * (canvas.width / pixelSize)) * pixelSize;
-          const y = Math.floor(Math.random() * (canvas.height / pixelSize)) * pixelSize;
-          ctx.fillStyle = `rgba(14, 14, 14, ${Math.random() * 0.6})`;
-          ctx.fillRect(x, y, pixelSize, pixelSize * (Math.random() > 0.5 ? 2 : 1));
-        }
-        
-        duration += 50;
-        if (duration > 350) { // El destello dura solo 350 milisegundos
-          clearInterval(flashInterval);
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          canvas.style.opacity = '0';
-        }
-      }, 40);
-    }
-
     function dismissRoomIntro() {
-      isIntroActive = false;
-      cancelAnimationFrame(animationId);
-      triggerFlashGlitch();
+      // Oculta la capa de bloques grandes tipo "mordisco" al entrar
+      const glitchLayer = document.getElementById('blockGlitchLayer');
+      if (glitchLayer) glitchLayer.classList.add('hidden');
 
       const overlay = document.getElementById('roomIntroOverlay');
       const container = document.getElementById('galleryContainer');
