@@ -444,7 +444,7 @@
         display: none; /* Ocultamos flechas en móvil */
       }
 
-      /* TEXTO GUÍA CON ANIMACIÓN DE PALPITACIÓN */
+      /* TEXTO GUÍA CON ANIMACIÓN DE PALPITACIÓN Y LA FLECHITA ↓ */
       .mobile-top-hint {
         display: block;
         position: fixed;
@@ -495,8 +495,8 @@
         flex-direction: column;
         justify-content: center;
         gap: 16px;
-        /* AJUSTE DE CENTRADO VISTO EN CAPTURA: BAJAMOS TODO EL BLOQUE */
-        padding: 100px 5vw 40px 5vw; /* Aumentamos padding superior para bajar el contenido */
+        /* CENTRADO PERFECTO: Padding equilibrado para compensar el header superior */
+        padding: 95px 5vw 45px 5vw; 
       }
 
       .artwork-display-frame {
@@ -533,8 +533,8 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- MENSAJE DISCRETO EN CELULAR SOBRE SCROLL CON ANIMACIÓN -->
-  <div class="mobile-top-hint">↓ Scroll down (flechita)</div>
+  <!-- MENSAJE CON LA FLECHITA Y ANIMACIÓN DE PALPITACIÓN -->
+  <div class="mobile-top-hint">↓ SCROLL DOWN TO EXPLORE WORKS</div>
 
   <!-- INTRO OVERLAY -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
@@ -644,7 +644,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT CON SOPORTE HÍBRIDO ACTUALIZADO -->
+  <!-- SCRIPT -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
@@ -663,7 +663,6 @@
 
     const track = document.getElementById('museumTrack');
 
-    // MOUSEWHEEL EN ESCRITORIO (REDUCE O AVANZA HORIZONTALMENTE SOLO SI NO ES MÓVIL)
     track.addEventListener('wheel', (evt) => {
       if (window.innerWidth > 900 && evt.deltaY !== 0) {
         evt.preventDefault();
@@ -687,7 +686,6 @@
       }
     }
 
-    // TECLAS DE NAVEGACIÓN
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('artworkModal');
       const modalActive = modal && modal.classList.contains('active');
