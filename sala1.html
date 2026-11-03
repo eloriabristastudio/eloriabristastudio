@@ -362,6 +362,7 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
+    /* TEXTO DE AYUDA EN CELULAR */
     .mobile-top-hint {
       display: none;
     }
@@ -443,6 +444,7 @@
         display: none; /* Ocultamos flechas en móvil */
       }
 
+      /* TEXTO GUÍA CON ANIMACIÓN DE PALPITACIÓN */
       .mobile-top-hint {
         display: block;
         position: fixed;
@@ -459,6 +461,13 @@
         pointer-events: none;
         background: rgba(235, 235, 235, 0.8);
         padding: 4px 0;
+        /* Animación de palpitación */
+        animation: hintPulsate 2s infinite ease-in-out;
+      }
+
+      @keyframes hintPulsate {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
       }
 
       .museum-slider-container {
@@ -486,7 +495,8 @@
         flex-direction: column;
         justify-content: center;
         gap: 16px;
-        padding: 70px 5vw 30px 5vw;
+        /* AJUSTE DE CENTRADO VISTO EN CAPTURA: BAJAMOS TODO EL BLOQUE */
+        padding: 100px 5vw 40px 5vw; /* Aumentamos padding superior para bajar el contenido */
       }
 
       .artwork-display-frame {
@@ -523,8 +533,8 @@
     <span class="gallery-indicator">Sala 01</span>
   </header>
 
-  <!-- MENSJE DISCRETO EN CELULAR SOBRE SCROLL -->
-  <div class="mobile-top-hint">↓ Scroll down to explore works</div>
+  <!-- MENSAJE DISCRETO EN CELULAR SOBRE SCROLL CON ANIMACIÓN -->
+  <div class="mobile-top-hint">↓ Scroll down (flechita)</div>
 
   <!-- INTRO OVERLAY -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
@@ -634,7 +644,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT CON SOPORTE HÍBRIDO -->
+  <!-- SCRIPT CON SOPORTE HÍBRIDO ACTUALIZADO -->
   <script>
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
