@@ -247,7 +247,7 @@
       gap: 8px;
     }
 
-    /* Círculo verde con animación de brillo y latido (pulsing glow) */
+    /* Círculo verde con animación de brillo y latido */
     .live-indicator-dot {
       width: 8px;
       height: 8px;
@@ -279,7 +279,7 @@
       line-height: 1.2;
     }
 
-    /* SECCIÓN EXPANSIBIDA E INMERSIVA EN ESCRITORIO */
+    /* SECCIÓN NOVEDADES / EXHIBICIÓN */
     .current-exhibition-section {
       width: 100%;
       padding: 100px 2vw;
@@ -319,7 +319,7 @@
       box-sizing: border-box;
     }
 
-    /* ESTILO: EL SUSURRO DE LOS 1000 TULIPANES (Ajustado según tus indicaciones) */
+    /* ESTILO: EL SUSURRO DE LOS 1000 TULIPANES */
     .slide-layout-tulips {
       position: relative;
       width: 100%;
@@ -354,7 +354,7 @@
       margin-top: 15px;
     }
 
-    /* Enlace "Visit Exhibition" con separación mejorada (más abajo) */
+    /* Enlace "Visit Exhibition" con separación */
     .tulips-visit-link-left {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
@@ -382,7 +382,7 @@
       z-index: 5;
     }
 
-    /* Collage superpuesto exacto a tu diseño de referencia */
+    /* Collage superpuesto en escritorio */
     .tulips-collage-stage {
       position: relative;
       width: 100%;
@@ -456,7 +456,7 @@
       -webkit-user-drag: none;
     }
 
-    /* Nombre del artista con interletrado de -50 (-0.05em) */
+    /* Nombre del artista con interletrado -50 */
     .tulips-artist-bottom {
       position: absolute;
       bottom: 25px;
@@ -480,7 +480,6 @@
       color: #777;
       z-index: 5;
     }
-
 
     /* SALAS (#SALAS) */
     .immersive-salas-section {
@@ -731,7 +730,7 @@
 
     .dvision-explore-btn:hover { border-color: #f5f4f0; opacity: 0.8; }
 
-    /* THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN */
+    /* THE HUMAN TAPES (RADIO) */
     .tapes-section {
       padding: 110px 4vw;
       background-color: #f5f4f0;
@@ -906,6 +905,7 @@
       font-size: 0.75rem;
     }
 
+    /* ADAPTACIÓN CELULAR MEJORADA Y LIMPIA PARA LA SECCIÓN NOVEDADES */
     @media (max-width: 950px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
@@ -913,9 +913,71 @@
       .modal-body-grid { grid-template-columns: 1fr; }
       .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
-      .tulips-collage-stage { height: auto; display: flex; flex-direction: column; gap: 15px; position: relative; }
-      .tulips-title-block, .tulips-dates-top, .tulips-artist-bottom, .tulips-slide-hint { position: relative; top: auto; left: auto; right: auto; bottom: auto; text-align: left; }
-      .t-img-1, .t-img-2, .t-img-3, .t-img-4 { position: relative; width: 100%; height: 220px; top: auto; left: auto; }
+
+      /* SECCIÓN NOVEDADES MÓVIL: LIMPIA Y RESPIRABLE */
+      .current-exhibition-section {
+        padding: 60px 20px;
+      }
+
+      .slide-layout-tulips {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .tulips-title-block {
+        position: relative;
+        max-width: 100%;
+      }
+
+      .tulips-dates-top {
+        position: relative;
+        text-align: left;
+        font-size: 2.2rem;
+        margin-top: 10px;
+      }
+
+      .tulips-visit-link-left {
+        margin-top: 20px;
+      }
+
+      /* COLLAGE EN MÓVIL: GRILLA 2x2 LIMPIA Y ORDENADA */
+      .tulips-collage-stage {
+        position: relative;
+        height: auto;
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .t-img-1, .t-img-2, .t-img-3, .t-img-4 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 180px;
+      }
+
+      .t-img-3 {
+        grid-column: span 2;
+        height: 220px;
+      }
+
+      .tulips-artist-bottom {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        text-align: left;
+        font-size: 2.4rem;
+        margin-top: 20px;
+      }
+
+      .tulips-slide-hint {
+        display: none;
+      }
+
       .floating-artwork-item { width: 140px; }
       .item-1 { top: 12%; left: 4%; }
       .item-2 { top: 10%; right: 4%; }
@@ -1010,7 +1072,7 @@
                 08.AUG — 31.OCT
               </div>
 
-              <!-- Collage superpuesto exacto a tu diseño -->
+              <!-- Collage que se adapta limpia y elegantemente en escritorio y celular -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
@@ -1114,7 +1176,7 @@
     </div>
   </section>
 
-  <!-- THE HUMAN TAPES (RADIO) - FORMATO CON GUIÓN -->
+  <!-- THE HUMAN TAPES (RADIO) -->
   <section id="tapes" class="tapes-section">
     <div class="tapes-header-block">
       <span class="section-label reveal-item">Ebberkett Radio</span>
