@@ -247,20 +247,26 @@
       gap: 8px;
     }
 
+    /* Círculo verde con animación de brillo y latido (pulsing glow) */
     .live-indicator-dot {
       width: 8px;
       height: 8px;
       background-color: #22c55e;
       border-radius: 50%;
       display: inline-block;
-      box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
-      animation: pulseGreen 2s infinite;
+      box-shadow: 0 0 10px #22c55e, 0 0 20px rgba(34, 197, 94, 0.6);
+      animation: pulseGlow 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
     }
 
-    @keyframes pulseGreen {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.15); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
+    @keyframes pulseGlow {
+      0%, 100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 6px #22c55e, 0 0 12px rgba(34, 197, 94, 0.4);
+      }
+      50% {
+        transform: scale(1.3);
+        box-shadow: 0 0 14px #22c55e, 0 0 28px rgba(34, 197, 94, 0.8);
+      }
     }
 
     .section-main-title-pixel {
@@ -273,18 +279,20 @@
       line-height: 1.2;
     }
 
+    /* SECCIÓN EXPANSIBIDA E INMERSIVA EN ESCRITORIO */
     .current-exhibition-section {
       width: 100%;
-      padding: 90px 0;
+      padding: 100px 2vw; /* Más extendido a lo ancho en desktop */
       background-color: #f5f4f0;
       border-top: 1px solid rgba(14, 14, 14, 0.12);
       box-sizing: border-box;
     }
 
     .exhibition-inner-container {
-      max-width: 1400px;
+      width: 100%;
+      max-width: 1650px; /* Expandido para ocupar más espacio horizontal */
       margin: 0 auto;
-      padding: 0 4vw;
+      padding: 0 2vw;
       box-sizing: border-box;
     }
 
@@ -301,7 +309,7 @@
 
     .exhibition-track {
       display: flex;
-      gap: 40px;
+      gap: 60px;
       width: 100%;
     }
 
@@ -311,7 +319,7 @@
       box-sizing: border-box;
     }
 
-    /* ESTILO 1: HELEN (3 Columnas ordenadas según tu mockup) */
+    /* ESTILO 1: HELEN (Ampliada e inmersiva) */
     .slide-layout-helen {
       position: relative;
       width: 100%;
@@ -322,32 +330,32 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
     .helen-title-area h2 {
       font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      font-size: clamp(3rem, 6.5vw, 6.5rem);
       font-weight: normal;
       color: #0e0e0e;
       margin: 0;
-      line-height: 1;
+      line-height: 0.95;
       text-transform: uppercase;
     }
 
     .helen-title-area span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: #555;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .helen-dates-top {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4vw, 4rem);
+      font-size: clamp(2.5rem, 4.8vw, 4.8rem);
       font-weight: 300;
       color: #0e0e0e;
       letter-spacing: -0.03em;
@@ -355,11 +363,11 @@
 
     .helen-images-row {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: 1.5fr 1fr 1.1fr;
+      gap: 25px;
       width: 100%;
-      height: 340px;
-      margin-bottom: 25px;
+      height: 420px; /* Mayor altura para escritorio */
+      margin-bottom: 30px;
     }
 
     .helen-img-card {
@@ -401,7 +409,7 @@
 
     .helen-artist-name {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #333;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -413,24 +421,24 @@
       gap: 25px;
     }
 
-    /* ESTILO 2: EL SUSURRO DE LOS 1000 TULIPANES (Collage vanguardista superpuesto exacto a tu mockup) */
+    /* ESTILO 2: EL SUSURRO DE LOS 1000 TULIPANES (Idéntico a tu diseño con fecha arriba y artista abajo derecha) */
     .slide-layout-tulips {
       position: relative;
       width: 100%;
-      min-height: 540px;
+      min-height: 600px;
     }
 
     .tulips-title-block {
       position: absolute;
       top: 0;
       left: 0;
-      max-width: 420px;
+      max-width: 480px;
       z-index: 5;
     }
 
     .tulips-title-block h2 {
       font-family: 'GeistPixelLocal', monospace;
-      font-size: clamp(2rem, 3.8vw, 3.8rem);
+      font-size: clamp(2.2rem, 4vw, 4.2rem);
       font-weight: normal;
       color: #0e0e0e;
       margin: 0;
@@ -440,7 +448,7 @@
 
     .tulips-title-block span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #555;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -450,7 +458,7 @@
 
     .tulips-visit-link-left {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       color: #0e0e0e;
       text-decoration: none;
@@ -467,7 +475,7 @@
       top: 0;
       right: 0;
       font-family: 'Inter', sans-serif;
-      font-size: clamp(2rem, 4.2vw, 4.2rem);
+      font-size: clamp(2.5rem, 5vw, 5rem);
       font-weight: 300;
       color: #0e0e0e;
       text-align: right;
@@ -475,21 +483,20 @@
       z-index: 5;
     }
 
-    /* Contenedor central del collage encimado */
+    /* Collage superpuesto exacto a tu diseño de referencia */
     .tulips-collage-stage {
       position: relative;
       width: 100%;
-      height: 480px;
+      height: 520px;
       margin-top: 20px;
     }
 
-    /* Imágenes posicionadas exactamente como en tu diseño de referencia */
     .t-img-1 {
       position: absolute;
-      top: 0px;
-      left: 28%;
-      width: 32%;
-      height: 130px;
+      top: 10px;
+      left: 26%;
+      width: 34%;
+      height: 150px;
       background: #e0dfd9;
       overflow: hidden;
       z-index: 2;
@@ -497,10 +504,10 @@
 
     .t-img-2 {
       position: absolute;
-      top: 100px;
-      left: 33%;
-      width: 38%;
-      height: 220px;
+      top: 110px;
+      left: 32%;
+      width: 40%;
+      height: 240px;
       background: #e0dfd9;
       overflow: hidden;
       z-index: 3;
@@ -508,10 +515,10 @@
 
     .t-img-3 {
       position: absolute;
-      top: 180px;
-      left: 54%;
-      width: 44%;
-      height: 260px;
+      top: 190px;
+      left: 52%;
+      width: 46%;
+      height: 290px;
       background: #e0dfd9;
       overflow: hidden;
       z-index: 1;
@@ -519,10 +526,10 @@
 
     .t-img-4 {
       position: absolute;
-      top: 250px;
-      left: 12%;
-      width: 28%;
-      height: 190px;
+      top: 270px;
+      left: 8%;
+      width: 30%;
+      height: 210px;
       background: #e0dfd9;
       overflow: hidden;
       z-index: 4;
@@ -552,10 +559,10 @@
 
     .tulips-artist-bottom {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       right: 0;
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+      font-size: clamp(2rem, 3.8vw, 3.8rem);
       font-weight: 400;
       color: #0e0e0e;
       text-align: right;
@@ -568,7 +575,7 @@
       bottom: 0;
       right: 0;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #777;
       z-index: 5;
     }
@@ -1077,7 +1084,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES CON LOS DOS DISEÑOS EXACTOS DE TUS MOCKUPS -->
+  <!-- SECCIÓN NOVEDADES AMPLIADA E INMERSIVA -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -1088,7 +1095,7 @@
       <div class="exhibition-slider-outer" id="exhibitionSlider">
         <div class="exhibition-track">
           
-          <!-- SLIDE 1: HELEN (Estilo de tu primera imagen de referencia) -->
+          <!-- SLIDE 1: HELEN -->
           <div class="exhibition-slide">
             <div class="slide-layout-helen reveal-item">
               
@@ -1100,7 +1107,7 @@
                 <div class="helen-dates-top">16.OCT — 07.FEB</div>
               </div>
 
-              <!-- Fila central de 3 imágenes exactas -->
+              <!-- Fila central de 3 imágenes amplias -->
               <div class="helen-images-row">
                 <div class="helen-img-card" onclick="openModal('Helen', 'Álvaro Urbano', 'Architectural Installation & Archive', '2026', 'Sala 01', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                   <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Helen main" draggable="false" />
@@ -1124,7 +1131,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES (Estilo collage exacto de tu segunda imagen) -->
+          <!-- SLIDE 2: EL SUSURRO DE LOS 1000 TULIPANES (Mockup exacto) -->
           <div class="exhibition-slide">
             <div class="slide-layout-tulips reveal-item">
               
@@ -1140,7 +1147,7 @@
                 08.AUG — 31.OCT
               </div>
 
-              <!-- Collage superpuesto exacto a tu diseño -->
+              <!-- Collage superpuesto idéntico a tu diseño -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
