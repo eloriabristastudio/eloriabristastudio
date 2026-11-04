@@ -74,7 +74,7 @@
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     }
 
-    /* HEADER EDITORIAL ALINEADO Y CENTRADO PERFECTO */
+    /* HEADER EDITORIAL CON ALINEACIÓN VERTICAL ESTRICTA */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -103,6 +103,7 @@
       gap: 12px;
       text-decoration: none;
       transition: opacity 0.3s ease;
+      line-height: 1;
     }
 
     .header-editorial .brand-logo img {
@@ -118,6 +119,7 @@
       letter-spacing: -0.04em;
       text-transform: none;
       color: #0e0e0e;
+      display: inline-block;
       line-height: 1;
     }
 
@@ -147,7 +149,7 @@
       transform: translateY(-1px);
     }
 
-    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO AL CENTRO */
+    /* BOTÓN HAMBURGUESA MÓVIL NIVELADO EXACTAMENTE CON EL EJE DEL HEADER */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -157,12 +159,13 @@
       margin: 0;
       z-index: 101;
       color: #0e0e0e;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       line-height: 1;
       height: 26px;
       width: 26px;
       align-items: center;
       justify-content: center;
+      transform: translateY(-1px); /* Subido ligeramente para compensar simetría óptica */
     }
 
     /* OVERLAY MENÚ MÓVIL DESPLEGABLE */
@@ -207,7 +210,7 @@
 
     .mobile-nav-links a:hover { opacity: 0.5; }
 
-    /* HERO EDITORIAL CON FUENTE Y FUERZA EXACTA AL HEADER */
+    /* HERO EDITORIAL */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
@@ -229,8 +232,8 @@
     .hero-title {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: clamp(3.2rem, 7.8vw, 8.5rem);
-      font-weight: 500; /* Peso unificado con la marca del header */
-      letter-spacing: -0.04em; /* Kerning unificado */
+      font-weight: 300;
+      letter-spacing: -0.025em;
       line-height: 0.92;
       margin: 0;
     }
@@ -303,11 +306,10 @@
       font-weight: 400;
     }
 
-    /* ENLACES SECUNDARIOS SIN BOLD */
     .arrow-link {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.85rem;
-      font-weight: 400; /* Cambiado a regular sin negrita */
+      font-weight: 400;
       text-transform: uppercase;
       letter-spacing: -0.02em;
       text-decoration: none !important;
@@ -491,7 +493,6 @@
       padding-right: 40px;
     }
 
-    /* FLECHA DESKTOP */
     .discipline-arrow {
       font-size: 1.3rem;
       color: #EBEBEB;
@@ -629,7 +630,7 @@
     @media (max-width: 1024px) {
       .work-preview-grid { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
-      .mobile-menu-btn { display: inline-flex; } /* Alineación flexible centrada */
+      .mobile-menu-btn { display: inline-flex; }
       
       .discipline-row {
         grid-template-columns: 50px 1fr auto;
@@ -659,7 +660,7 @@
         opacity: 1;
       }
       .discipline-row.mobile-open .discipline-arrow {
-        transform: rotate(90deg); /* Apunta hacia abajo ↓ */
+        transform: rotate(90deg);
       }
     }
 
@@ -694,7 +695,7 @@
       <a href="contact.html">Contact</a>
     </nav>
 
-    <!-- Botón Hamburguesa Centrado -->
+    <!-- Botón Hamburguesa Móvil Alineado -->
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
       ☰
     </button>
@@ -715,7 +716,7 @@
     <div class="content">
       <main>
         
-        <!-- HERO EDITORIAL CON FUENTE TOTALMENTE UNIFICADA -->
+        <!-- HERO EDITORIAL -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left animate-hero-1">
@@ -929,7 +930,7 @@
       });
     });
 
-    // 4. ACORDEÓN DE DISCIPLINAS MÓVIL (FLECHA → A ↓)
+    // 4. ACORDEÓN DE DISCIPLINAS MÓVIL
     function toggleDiscipline(row) {
       if (window.innerWidth <= 1024) {
         document.querySelectorAll('.discipline-row').forEach(r => {
