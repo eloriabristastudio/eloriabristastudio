@@ -24,7 +24,7 @@
       background-color: #EBEBEB;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      overflow: hidden;
+      overflow: hidden; /* Mantiene la vista limpia de la sala */
       -webkit-text-size-adjust: 100%;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -75,7 +75,7 @@
     }
 
     /* ==========================================================
-       TV ESTÁTICA AL 25% Y BLOQUES NEGROS DE INTERFERENCIA ESPACIADA
+       TV ESTÁTICA AL 25% Y BLOQUES NEGROS PUROS ESPACIADOS
        ========================================================== */
     .crt-screen-overlay {
       position: fixed;
@@ -90,7 +90,7 @@
         rgba(0, 0, 0, 0.04) 50%
       );
       background-size: 100% 4px;
-      opacity: 0.25; /* Reducido al 25% */
+      opacity: 0.25;
     }
 
     #staticCanvas {
@@ -107,7 +107,7 @@
     /* CUADRADOS Y RECTÁNGULOS 100% NEGROS */
     .glitch-block-box {
       position: fixed;
-      background-color: #0e0e0e; /* Solo negro puro */
+      background-color: #0e0e0e;
       z-index: 170;
       pointer-events: none;
       opacity: 0;
@@ -241,12 +241,13 @@
       }
     }
 
-    /* CONTENEDOR DE GALERÍA Y SCROLL MAGNÉTICO (SALA 01 STYLE) */
+    /* CONTENEDOR DE GALERÍA CON SNAP MAGNÉTICO BLINDADO */
     .museum-slider-container {
       position: relative;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       height: 100dvh;
+      overflow: hidden;
       box-sizing: border-box;
     }
 
@@ -255,7 +256,8 @@
       width: 100%;
       height: 100%;
       overflow-x: auto;
-      scroll-snap-type: x mandatory; /* Acoplamiento magnético en escritorio */
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -266,9 +268,12 @@
 
     .museum-slide-item {
       min-width: 100vw;
+      width: 100vw;
       height: 100vh;
       height: 100dvh;
-      scroll-snap-align: center; /* Centrado automático garantizado */
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      scroll-snap-stop: always; /* Fuerza estricta: prohibido pasarse de largo */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -466,31 +471,25 @@
       font-size: 0.75rem;
     }
 
-    /* ADAPTACIÓN MÓVIL CON SCROLL MAGNÉTICO VERTICAL PROTEGIDO */
+    /* ADAPTACIÓN MÓVIL CON SCROLL MAGNÉTICO VERTICAL ESTRICTO */
     @media (max-width: 900px) {
-      body, html {
-        overflow-y: auto !important;
-        height: auto !important;
-      }
-      .museum-slider-container {
-        height: auto !important;
-      }
       .museum-track {
         flex-direction: column !important;
         overflow-x: hidden !important;
         overflow-y: auto !important;
-        height: auto !important;
-        scroll-snap-type: y mandatory !important; /* Acoplamiento magnético vertical en celular */
+        scroll-snap-type: y mandatory !important;
       }
       .museum-slide-item {
-        min-width: 100% !important;
+        min-width: 100vw !important;
+        width: 100vw !important;
         min-height: 100vh !important;
         min-height: 100dvh !important;
         flex-direction: column;
         justify-content: center;
         gap: 14px;
         padding: 60px 4vw 25px 4vw;
-        scroll-snap-align: center !important; /* Centrado automático de cada obra */
+        scroll-snap-align: center !important;
+        scroll-snap-stop: always !important;
       }
       .artwork-display-frame {
         max-width: 78vw;
@@ -635,7 +634,7 @@
         <div>
           <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Log / Process Record</span>
           <div class="modal-bts-video-box" id="modalVideoContainer">
-            [ Video Process / Studio Log - Pending ]
+            [ Video Process / Studio Log - Pending Upload ]
           </div>
         </div>
       </div>
@@ -678,7 +677,7 @@
     }
     loopNoise();
 
-    // APARICIÓN MUCHO MÁS ESPACIADA Y LENTA DE BLOQUES NEGROS
+    // APARICIÓN ESPACIADA DE BLOQUES NEGROS PUROS
     function triggerRandomGlitchBlocks() {
       const boxes = [
         document.getElementById('gb1'),
@@ -689,7 +688,7 @@
 
       boxes.forEach(box => {
         if (!box) return;
-        if (Math.random() < 0.25) { // Probabilidad más baja para menor constancia
+        if (Math.random() < 0.25) {
           const w = Math.floor(Math.random() * 260) + 50;
           const h = Math.floor(Math.random() * 60) + 12;
           const l = Math.floor(Math.random() * (window.innerWidth - w));
@@ -699,16 +698,15 @@
           box.style.height = h + 'px';
           box.style.left = l + 'px';
           box.style.top = t + 'px';
-          box.style.opacity = '1'; // Negro puro sólido
+          box.style.opacity = '1';
 
           setTimeout(() => {
             box.style.opacity = '0';
-          }, Math.floor(Math.random() * 90) + 30); // Duración muy rápida de destello
+          }, Math.floor(Math.random() * 90) + 30);
         }
       });
     }
 
-    // Intervalo más espaciado (cada 3.2 segundos en promedio)
     setInterval(() => {
       triggerRandomGlitchBlocks();
     }, 3200);
@@ -730,10 +728,21 @@
 
     const track = document.getElementById('museumTrack');
 
+    // CONTROL EXACTO DE RUEDA DE MOUSE PARA SALTO MAGNÉTICO DE UNA OBRA A LA VEZ
+    let isScrolling = false;
     track.addEventListener('wheel', (evt) => {
-      if (window.innerWidth > 900 && evt.deltaY !== 0) {
+      if (window.innerWidth > 900 && Math.abs(evt.deltaY) > 20) {
         evt.preventDefault();
-        track.scrollLeft += evt.deltaY;
+        if (isScrolling) return;
+        isScrolling = true;
+
+        const direction = evt.deltaY > 0 ? 1 : -1;
+        track.scrollBy({ left: direction * window.innerWidth, behavior: 'smooth' });
+        triggerRandomGlitchBlocks();
+
+        setTimeout(() => {
+          isScrolling = false;
+        }, 400); // Bloqueo de seguridad para evitar saltos múltiples indeseados
       }
     }, { passive: false });
 
