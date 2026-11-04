@@ -431,6 +431,7 @@
       width: 100%;
       height: 100%;
       position: relative;
+      background-color: #e0dfd9;
     }
     .t-img-box::after {
       content: '';
@@ -669,7 +670,7 @@
 
     .terminal-cursor {
       display: inline-block;
-      width: 100px; height: 4px;
+      width: 10px; height: 4px;
       background-color: #f5f4f0;
       margin-left: 4px;
       vertical-align: middle;
@@ -678,7 +679,7 @@
 
     @keyframes cursorBlink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
     .terminal-row-bottom { display: inline-block; width: 100%; text-align: center; white-space: pre; }
@@ -896,7 +897,7 @@
       font-size: 0.75rem;
     }
 
-    /* ADAPTACIÓN MÓVIL EXACTA: SUPERPOSICIÓN DE TEXTOS Y FECHA ARRIBA A LA DERECHA */
+    /* ADAPTACIÓN MÓVIL EXACTA: IMAGEN CORREGIDA Y NOMBRE DEL ARTISTA MÁS ARRIBA */
     @media (max-width: 950px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
@@ -909,15 +910,13 @@
         padding: 50px 15px 40px 15px;
       }
 
-      /* COMPOSICIÓN CONDENSADA EN UNA SOLA VISTA EN MÓVIL */
       .slide-layout-tulips {
-        min-height: 480px;
-        height: 480px;
+        min-height: 490px;
+        height: 490px;
         position: relative;
         overflow: hidden;
       }
 
-      /* TÍTULO SUPERPUESTO ARRIBA A LA IZQUIERDA */
       .tulips-title-block {
         position: absolute;
         top: 0px;
@@ -941,7 +940,6 @@
         margin-top: 14px;
       }
 
-      /* FECHA SUPERPUESTA ARRIBA A LA DERECHA (ALINEADA PERFECTAMENTE) */
       .tulips-dates-top {
         position: absolute;
         top: 0px;
@@ -952,7 +950,6 @@
         z-index: 30;
       }
 
-      /* COLLAGE DE FOTOS SUPERPUESTAS CONDENSADAS */
       .tulips-collage-stage {
         position: absolute;
         top: 40px;
@@ -986,6 +983,7 @@
         z-index: 1;
       }
 
+      /* Imagen 4 corregida con URL funcional */
       .t-img-4 {
         top: 190px;
         left: 5%;
@@ -994,10 +992,10 @@
         z-index: 4;
       }
 
-      /* FIRMA DEL ARTISTA SUPERPUESTA EN LA PARTE INFERIOR */
+      /* POSICIÓN REUBICADA DE HAIDAR HIKMAH (MÁS ARRIBA) */
       .tulips-artist-bottom {
         position: absolute;
-        bottom: 10px;
+        bottom: 50px; /* Subimos la firma para que quede pegada como en tu ajuste */
         right: 0px;
         font-size: 1.8rem;
         z-index: 30;
@@ -1103,7 +1101,7 @@
                 08.AUG —<br/>31.OCT
               </div>
 
-              <!-- COLLAGE DE IMÁGENES SUPERPUESTAS CONDENSADAS -->
+              <!-- COLLAGE DE IMÁGENES CON URLS DE ALTA RESOLUCIÓN VALIDADAS -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
@@ -1127,7 +1125,7 @@
                 </div>
               </div>
 
-              <!-- FIRMA EN CAPA INFERIOR DERECHA -->
+              <!-- FIRMA REUBICADA MÁS ARRIBA COMO EN TU CORRECCIÓN -->
               <div class="tulips-artist-bottom">
                 Haidar Hikmah
               </div>
