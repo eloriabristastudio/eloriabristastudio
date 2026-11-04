@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f5f4f0" />
   <title>Eloria Brista Studio</title>
   <meta name="description" content="Eloria Brista Studio — Multidisciplinary Boutique. Creative Direction, Branding, Worldbuilding, Music & Audio Engineering." />
@@ -182,7 +182,7 @@
 
     /* MANIFIESTO Y REVEAL POR LÍNEAS */
     .about-statement-section {
-      padding: 120px 4vw;
+      padding: 140px 4vw 100px 4vw;
       max-width: 1300px;
     }
 
@@ -335,13 +335,12 @@
       border-radius: 20px;
     }
 
-    /* SECCIÓN DE DISCIPLINAS CON KERNING -25px Y ANIMACIÓN DE FLECHA ↗ */
+    /* SECCIÓN DE DISCIPLINAS CON KERNING SÚPER COMPRIMIDO (-0.04em) Y ANIMACIÓN DE FLECHA ↗ */
     .disciplines-section {
       padding: 120px 4vw;
       background-color: #0e0e0e;
       color: #f5f4f0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      letter-spacing: -0.25px;
     }
 
     .disciplines-header {
@@ -351,7 +350,7 @@
     .disciplines-title {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       font-weight: 300;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
       margin: 0;
       color: #f5f4f0;
     }
@@ -379,14 +378,14 @@
 
     .discipline-num {
       font-size: 0.75rem;
-      letter-spacing: -0.25px;
+      letter-spacing: -0.04em;
       color: #888;
     }
 
     .discipline-name {
       font-size: clamp(1.4rem, 2.2vw, 2rem);
       font-weight: 400;
-      letter-spacing: -0.25px;
+      letter-spacing: -0.04em; /* Kerning ultra compacto como pediste */
       margin: 0;
       color: #f5f4f0;
     }
@@ -396,20 +395,20 @@
       color: #b0afaa;
       line-height: 1.5;
       margin: 0;
-      letter-spacing: -0.25px;
+      letter-spacing: -0.04em; /* Kerning ultra compacto */
       padding-right: 40px;
     }
 
     /* Animación fluida de la flecha hacia arriba a la derecha (↗) al hacer hover */
     .discipline-arrow {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #f5f4f0;
       display: inline-block;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
 
     .discipline-row:hover .discipline-arrow {
-      transform: translate(4px, -4px);
+      transform: translate(5px, -5px);
     }
 
     /* FOOTER REDISEÑADO Y UNIFICADO */
@@ -592,7 +591,7 @@
           </div>
         </section>
 
-        <!-- MANIFIESTO CON ENLACE A ABOUT.HTML -->
+        <!-- MANIFIESTO CON ENLACE A ABOUT.HTML (SIN LA CINTA) -->
         <section id="statement-section" class="about-statement-section">
           <div class="eyebrow-custom">About Studio</div>
           <h2 class="about-statement-text">
@@ -659,7 +658,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN DE DISCIPLINAS CON KERNING -25px Y ANIMACIÓN DE FLECHA ↗ -->
+        <!-- SECCIÓN DE DISCIPLINAS CON KERNING COMPRIMIDO Y ANIMACIÓN DE FLECHA ↗ -->
         <section class="disciplines-section">
           <div class="disciplines-header">
             <div class="eyebrow-custom" style="color: #aaa;">Practice Areas · 05</div>
