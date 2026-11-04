@@ -1,1067 +1,795 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8" />
-
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <meta name="theme-color" content="#0e0e0e" />
-
+  <meta name="theme-color" content="#f5f4f0" />
   <title>Eloria Brista Studio</title>
-
   <meta name="description" content="Eloria Brista Studio — Multidisciplinary Boutique. Creative Direction, Branding, Worldbuilding, Music & Audio Engineering." />
-
   
-
   <!-- Favicon vectorial -->
-
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
 
-
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="assets/css/styles.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
-
   <style>
-
     /* RESET & PANTALLA COMPLETA */
-
     body, html {
-
       margin: 0;
-
       padding: 0;
-
       width: 100%;
-
       background-color: #f5f4f0;
-
       color: #0e0e0e;
-
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-
       scroll-behavior: smooth;
-
+      -webkit-font-smoothing: antialiased;
     }
-
-
 
     .shell {
-
       display: block !important;
-
       width: 100% !important;
-
       max-width: 100% !important;
-
       padding: 0 !important;
-
       margin: 0 !important;
-
     }
-
-    
-
-    .rail { display: none !important; }
-
-    .content { margin-left: 0 !important; width: 100% !important; }
-
-
 
     /* ANIMACIONES DE ENTRADA HERO */
-
     @keyframes fadeInUp {
-
       0% {
-
         opacity: 0;
-
         transform: translateY(35px);
-
       }
-
       100% {
-
         opacity: 1;
-
         transform: translateY(0);
-
       }
-
     }
-
-
 
     @keyframes fadeInDown {
-
       0% {
-
         opacity: 0;
-
         transform: translateY(-20px);
-
       }
-
       100% {
-
         opacity: 1;
-
         transform: translateY(0);
-
       }
-
     }
-
-
 
     .animate-header {
-
       animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-
     }
-
-
 
     .animate-hero-1 {
-
       opacity: 0;
-
       animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-
     }
-
-
 
     .animate-hero-2 {
-
       opacity: 0;
-
       animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-
     }
-
-
 
     .animate-hero-3 {
-
       opacity: 0;
-
       animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-
     }
 
-
-
-    /* HEADER EDITORIAL UNIFICADO */
-
+    /* HEADER EDITORIAL UNIFICADO CON KERNING -50px EN LA MARCA */
     .header-editorial {
-
       position: fixed;
-
       top: 0;
-
       left: 0;
-
       width: 100%;
-
-      padding: 35px 3.5vw;
-
+      padding: 35px 4vw;
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       box-sizing: border-box;
-
       z-index: 100;
-
       background-color: rgba(245, 244, 240, 0.9);
-
       backdrop-filter: blur(8px);
-
     }
-
-
 
     .header-editorial .brand-logo {
-
-      display: block;
-
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
-
       transition: opacity 0.3s ease;
-
     }
-
-
 
     .header-editorial .brand-logo img {
-
-      height: 34px;
-
+      height: 28px;
       width: auto;
-
       display: block;
-
     }
 
-
-
-    .header-editorial .brand-logo:hover {
-
-      opacity: 0.5;
-
+    .header-editorial .brand-logo span {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: -0.50px;
+      text-transform: none;
+      color: #0e0e0e;
     }
 
+    .header-editorial .brand-logo:hover { opacity: 0.5; }
 
-
-    /* NAVEGACIÓN SUPERIOR */
-
+    /* NAVEGACIÓN SUPERIOR CON TIPOGRAFÍA INTER Y KERNING -0.25px */
     .nav-links {
-
       display: flex;
-
       align-items: center;
-
-      gap: 28px;
-
+      gap: 32px;
     }
-
-
 
     .nav-links a {
-
-      font-family: 'JetBrains Mono', monospace;
-
-      font-size: 0.75rem;
-
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.82rem;
       font-weight: 400;
-
-      letter-spacing: 0.05em;
-
+      letter-spacing: -0.25px;
       text-transform: uppercase;
-
       text-decoration: none;
-
-      color: #555;
-
+      color: #666;
       transition: color 0.3s ease;
-
     }
 
+    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
 
-
-    .nav-links a:hover { color: #0e0e0e; }
-
-
-
-    /* PRIMER SLIDE (HERO EDITORIAL) */
-
+    /* HERO EDITORIAL */
     .hero-editorial {
-
       min-height: 100vh;
-
       width: 100%;
-
-      padding: 0 3.5vw;
-
+      padding: 0 4vw;
       display: flex;
-
       flex-direction: column;
-
       justify-content: center;
-
       box-sizing: border-box;
-
       position: relative;
-
     }
-
-
 
     .hero-grid {
-
       display: grid;
-
       grid-template-columns: 1fr auto 1fr;
-
       align-items: baseline;
-
       width: 100%;
-
     }
-
-
 
     .hero-title {
-
-      font-size: clamp(2.8rem, 6.2vw, 7rem);
-
+      font-size: clamp(3rem, 7.5vw, 8rem);
       font-weight: 300;
-
       text-transform: none;
-
-      letter-spacing: -0.03em;
-
-      line-height: 0.9;
-
+      letter-spacing: -0.04em;
+      line-height: 0.92;
       margin: 0;
-
     }
-
-
 
     .hero-left { text-align: left; }
-
     .hero-center { text-align: center; }
-
     .hero-right { text-align: right; }
 
-
-
-    /* METADATOS INFERIORES DEL HERO */
-
     .hero-footer-meta {
-
       position: absolute;
-
-      bottom: 35px;
-
-      left: 3.5vw;
-
-      right: 3.5vw;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      font-family: 'JetBrains Mono', monospace;
-
-      font-size: 0.72rem;
-
-      color: #555;
-
-      letter-spacing: 0.02em;
-
+      bottom: 40px;
+      left: 4vw;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.85rem;
+      color: #777;
+      letter-spacing: -0.25px;
     }
 
-
-
-    /* CINTA ANIMADA ENMEDIO */
-
+    /* CINTA ANIMADA DE SERVICIOS */
     .ticker-connector {
-
       width: 100%;
-
       overflow: hidden;
-
       background: transparent;
-
-      border-top: 1px solid rgba(14, 14, 14, 0.15);
-
-      border-bottom: 1px solid rgba(14, 14, 14, 0.15);
-
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+      border-bottom: 1px solid rgba(14, 14, 14, 0.1);
       padding: 28px 0;
-
-      margin: 60px 0;
-
+      margin: 40px 0;
       white-space: nowrap;
-
       box-sizing: border-box;
-
     }
-
-
 
     .ticker-track {
-
       display: flex;
-
       width: max-content;
-
       animation: infiniteScroll 30s linear infinite;
-
     }
-
-
 
     .ticker-group {
-
       display: flex;
-
       align-items: center;
-
     }
-
-
 
     .ticker-item {
-
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-
-      font-size: 1.4rem;
-
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.3rem;
       font-weight: 400;
-
-      letter-spacing: -0.01em;
-
+      letter-spacing: -0.25px;
       color: #0e0e0e;
-
       padding: 0 30px;
-
       display: flex;
-
       align-items: center;
-
     }
-
-
 
     .ticker-dot {
-
       display: inline-block;
-
-      width: 5px;
-
-      height: 5px;
-
+      width: 4px;
+      height: 4px;
       background-color: #0e0e0e;
-
       border-radius: 50%;
-
       margin-left: 30px;
-
     }
-
-
 
     @keyframes infiniteScroll {
-
       0% { transform: translateX(0); }
-
       100% { transform: translateX(-50%); }
-
     }
 
-
-
-    /* BLOQUE DE MANIFIESTO CON EFECTO REVEAL RENGLÓN POR RENGLÓN */
-
+    /* MANIFIESTO Y REVEAL POR LÍNEAS */
     .about-statement-section {
-
-      padding: 120px 3.5vw;
-
+      padding: 120px 4vw;
       max-width: 1300px;
-
     }
 
-
-
-    .about-statement-section .eyebrow-custom {
-
-      font-family: 'JetBrains Mono', monospace;
-
-      font-size: 0.75rem;
-
+    .eyebrow-custom {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.8rem;
       text-transform: uppercase;
-
-      letter-spacing: 0.08em;
-
-      color: #666;
-
+      letter-spacing: -0.25px;
+      color: #888;
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
       margin-bottom: 24px;
-
     }
 
-
-
-    .about-statement-section .eyebrow-custom::after {
-
+    .eyebrow-custom::after {
       content: "";
-
       display: block;
-
-      width: 50px;
-
+      width: 40px;
       height: 1px;
-
-      background-color: #666;
-
+      background-color: #aaa;
     }
-
-
 
     .about-statement-text {
-
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: clamp(1.8rem, 3.2vw, 3.4rem);
-
       font-weight: 300;
-
       line-height: 1.35;
-
-      letter-spacing: -0.02em;
-
+      letter-spacing: -0.03em;
       color: #0e0e0e;
-
       margin: 0;
-
     }
-
-
 
     .reveal-line {
-
       display: block;
-
       opacity: 0.15;
-
       transform: translateY(15px);
-
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-
     }
-
-
 
     .reveal-line.active {
-
       opacity: 1;
-
       transform: translateY(0);
-
     }
-
-
 
     .about-statement-text em {
-
       font-style: italic;
-
       font-weight: 400;
-
     }
 
+    .arrow-link {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      text-decoration: none;
+      color: #0e0e0e;
+      border-bottom: 1px solid #0e0e0e;
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
+    }
 
+    .arrow-link:hover { opacity: 0.6; }
+
+    /* SECCIÓN FEATURED WORK (TEASER DE 3 PROYECTOS) */
+    .featured-work-section {
+      padding: 80px 4vw 120px 4vw;
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+    }
+
+    .section-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .work-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .work-preview-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .preview-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background-color: #e6e5e0;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .preview-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-preview-card:hover .preview-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .preview-meta {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .preview-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.25px;
+      margin: 0 0 6px 0;
+      color: #0e0e0e;
+    }
+
+    .preview-card-desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.45;
+      margin: 0;
+      letter-spacing: -0.25px;
+    }
+
+    /* SECCIÓN DE DISCIPLINAS (COMPLETA Y CLAVADA) */
+    .disciplines-section {
+      padding: 100px 4vw;
+      background-color: #0e0e0e;
+      color: #f5f4f0;
+    }
+
+    .disciplines-header {
+      margin-bottom: 80px;
+    }
+
+    .disciplines-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: #f5f4f0;
+    }
+
+    .disciplines-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discipline-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1.5fr auto;
+      align-items: center;
+      padding: 35px 0;
+      border-bottom: 1px solid rgba(245, 244, 240, 0.15);
+      text-decoration: none;
+      color: inherit;
+      transition: background-color 0.3s ease, padding-left 0.3s ease;
+    }
+
+    .discipline-row:hover {
+      padding-left: 15px;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .discipline-num {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: -0.25px;
+      color: #888;
+    }
+
+    .discipline-name {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.25px;
+      margin: 0;
+      color: #f5f4f0;
+    }
+
+    .discipline-desc {
+      font-size: 0.95rem;
+      color: #b0afaa;
+      line-height: 1.5;
+      margin: 0;
+      letter-spacing: -0.25px;
+      padding-right: 40px;
+    }
+
+    .discipline-arrow {
+      font-size: 1.2rem;
+      color: #f5f4f0;
+    }
+
+    /* FOOTER REDISEÑADO Y UNIFICADO */
+    .redesigned-footer {
+      width: 100%;
+      padding: 100px 4vw 50px 4vw;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #0e0e0e;
+    }
+
+    .footer-inner-content {
+      max-width: 850px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-decoration: none;
+      color: #0e0e0e;
+    }
+
+    .footer-logo-brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    .footer-brand-title {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+      font-weight: 500;
+      letter-spacing: -0.50px;
+      text-transform: none;
+      margin: 0;
+    }
+
+    .footer-email-link {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      font-weight: 400;
+      letter-spacing: -0.25px;
+      color: #0e0e0e;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+      margin-top: 5px;
+    }
+
+    .footer-email-link:hover { border-color: #0e0e0e; opacity: 0.6; }
+
+    .footer-location-text {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      color: #666;
+      margin: 0;
+    }
+
+    .footer-social-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icon {
+      color: #0e0e0e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-social-icon:hover { transform: translateY(-2px); opacity: 0.65; }
+    .footer-social-icon svg { width: 22px; height: 22px; fill: currentColor; }
+
+    .footer-legal-bar {
+      margin-top: 60px;
+      width: 100%;
+      border-top: 1px solid rgba(14, 14, 14, 0.08);
+      padding-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-legal-copy {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: -0.25px;
+      color: #666;
+      margin: 0;
+    }
+
+    .footer-legal-subtext {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: -0.25px;
+      color: #888;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    @media (max-width: 1024px) {
+      .work-preview-grid { grid-template-columns: repeat(2, 1fr); }
+      .discipline-row { grid-template-columns: 50px 1fr auto; }
+      .discipline-desc { display: none; }
+    }
 
     @media (max-width: 768px) {
-
       .header-editorial { padding: 20px; }
-
       .nav-links { display: none; }
-
       .hero-grid {
-
         grid-template-columns: 1fr;
-
         gap: 15px;
-
       }
-
       .hero-center, .hero-right { text-align: left; }
-
-      .hero-footer-meta { flex-direction: column; gap: 8px; position: static; margin-top: 40px; }
-
+      .hero-footer-meta { position: static; margin-top: 40px; }
       .ticker-item { font-size: 1.1rem; }
-
-      .ticker-connector { margin: 40px 0; }
-
+      .work-preview-grid { grid-template-columns: 1fr; }
+      .section-header-flex { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
-
   </style>
-
 </head>
-
 <body>
 
-
-
   <!-- HEADER EDITORIAL -->
-
   <header class="header-editorial animate-header">
-
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
-
-      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
-
+      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" />
+      <span>Eloria Brista Studio</span>
     </a>
-
     <nav class="nav-links">
-
       <a href="menu.html">Menu</a>
-
       <a href="work.html">Work</a>
-
       <a href="about.html">About</a>
-
-      <a href="ebberkett.html">Ebberkett</a>
-
+      <a href="ebberket.html">Ebberkett</a>
       <a href="contact.html">Contact</a>
-
     </nav>
-
   </header>
 
-
-
   <div class="shell">
-
     <div class="content">
-
       <main>
-
-        <!-- PRIMER SLIDE: HERO CON ANIMACIÓN -->
-
+        
+        <!-- HERO EDITORIAL -->
         <section class="hero-editorial">
-
           <div class="hero-grid">
-
             <div class="hero-col hero-left animate-hero-1">
-
               <h1 class="hero-title">Eloria</h1>
-
             </div>
-
             <div class="hero-col hero-center animate-hero-2">
-
               <h1 class="hero-title">Brista</h1>
-
             </div>
-
             <div class="hero-col hero-right animate-hero-3">
-
               <h1 class="hero-title">Studio</h1>
-
             </div>
-
           </div>
-
-
 
           <div class="hero-footer-meta animate-hero-3">
-
             <span>Multidisciplinary Boutique</span>
-
-            <span>MEX (UTC −5)</span>
-
           </div>
-
         </section>
 
-
-
-        <!-- BANDA DE SERVICIOS ENMEDIO -->
-
+        <!-- BANDA DE SERVICIOS -->
         <div class="ticker-connector">
-
           <div class="ticker-track">
-
-            <!-- Bloque 1 -->
-
             <div class="ticker-group">
-
               <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
-
             </div>
-
-            <!-- Bloque 2 (Bucle infinito) -->
-
             <div class="ticker-group">
-
               <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
-
               <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
-
             </div>
-
           </div>
-
         </div>
 
-
-
-        <!-- MANIFIESTO CON EFECTO REVEAL RENGLÓN POR RENGLÓN -->
-
+        <!-- MANIFIESTO CON ENLACE A ABOUT.HTML -->
         <section id="statement-section" class="about-statement-section">
-
           <div class="eyebrow-custom">About Studio</div>
-
           <h2 class="about-statement-text">
-
             <span class="reveal-line">We're a multidisciplinary boutique</span>
-
             <span class="reveal-line">and strategic partner whose mission is</span>
-
             <span class="reveal-line">summarized by our passion to create and connect.</span>
-
             <span class="reveal-line">We are dedicated to building <em>better brands,</em></span>
-
             <span class="reveal-line"><em>better stories, better experiences</em></span>
-
             <span class="reveal-line"><em>and better projects.</em></span>
-
           </h2>
-
-          <div style="margin-top: 30px;" class="reveal-line">
-
-            <a href="about.html" class="arrow-link" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; letter-spacing: 0.05em;">Read full studio philosophy <span>→</span></a>
-
+          <div style="margin-top: 40px;" class="reveal-line">
+            <a href="about.html" class="arrow-link">Meet the mind behind the studio <span>→</span></a>
           </div>
-
         </section>
 
+        <!-- TEASER DE TRABAJOS (3 PROYECTOS DESTACADOS) -->
+        <section class="featured-work-section">
+          <div class="section-header-flex">
+            <div>
+              <div class="eyebrow-custom" style="margin-bottom: 10px;">Selected Projects</div>
+              <h2 class="section-title">Featured Work</h2>
+            </div>
+            <div>
+              <a href="work.html" class="arrow-link">View All Archive →</a>
+            </div>
+          </div>
 
-
-        <!-- SECCIÓN: WORK (CASOS DE ESTUDIO DESTACADOS) -->
-
-        <section id="work-section" aria-labelledby="work-head" style="padding: 40px 3.5vw 120px 3.5vw;">
-
-          <header class="section-head">
-
-            <span class="eyebrow"><span class="dot"></span>Case02 — Selected Projects</span>
-
-            <h2 id="work-head" style="font-weight: 300; font-size: 2.5rem; margin-top: 10px;">Featured Work</h2>
-
-          </header>
-
-          
-
-          <!-- GALERÍA DE PROYECTOS DESTACADOS -->
-
-          <div class="work-strip" style="margin-top: 60px;">
-
-            <article class="work-card lg">
-
-              <div class="img-wrap">
-
+          <div class="work-preview-grid">
+            <a href="work.html" class="work-preview-card">
+              <div class="preview-img-wrap">
                 <img src="assets/img/work-1.svg" alt="Sukha branding" loading="lazy" />
-
               </div>
+              <span class="preview-meta">Branding · Creative Direction</span>
+              <h3 class="preview-card-title">Sukha</h3>
+              <p class="preview-card-desc">Raw underground identity built for the noise of CDMX.</p>
+            </a>
 
-              <div class="body">
-
-                <div class="meta"><span>Branding</span><span>·</span><span>Creative Direction</span></div>
-
-                <h3>Sukha</h3>
-
-                <p>Punk in the underground of CDMX. Full identity and visual system for the punk event held at Foro Bajo Circuito.</p>
-
-                <a class="arrow-link" href="work.html">Case study <span>→</span></a>
-
-              </div>
-
-            </article>
-
-            <article class="work-card">
-
-              <div class="img-wrap">
-
+            <a href="work.html" class="work-preview-card">
+              <div class="preview-img-wrap">
                 <img src="assets/img/work-2.svg" alt="Nueve Cero Nueve venue branding" loading="lazy" />
-
               </div>
+              <span class="preview-meta">Branding · Worldbuilding</span>
+              <h3 class="preview-card-title">Nueve Cero Nueve</h3>
+              <p class="preview-card-desc">Spatial narrative and visual pulse defining local nightlife architecture.</p>
+            </a>
 
-              <div class="body">
-
-                <div class="meta"><span>Branding</span><span>·</span><span>Worldbuilding</span></div>
-
-                <h3>Nueve Cero Nueve</h3>
-
-                <p>A club &amp; venue defining the nightlife scene in CDMX.</p>
-
-                <a class="arrow-link" href="work.html">Case study <span>→</span></a>
-
-              </div>
-
-            </article>
-
-            <article class="work-card">
-
-              <div class="img-wrap">
-
+            <a href="work.html" class="work-preview-card">
+              <div class="preview-img-wrap">
                 <img src="assets/img/work-3.svg" alt="Hypnia promoter" loading="lazy" />
-
               </div>
-
-              <div class="body">
-
-                <div class="meta"><span>Branding</span><span>·</span><span>Art Cover</span></div>
-
-                <h3>Hypnia</h3>
-
-                <p>Event promoter branding with presence at venues like Muli and Bar Oriente.</p>
-
-                <a class="arrow-link" href="work.html">Case study <span>→</span></a>
-
-              </div>
-
-            </article>
-
+              <span class="preview-meta">Branding</span>
+              <h3 class="preview-card-title">Hypnia</h3>
+              <p class="preview-card-desc">Sonic promoter branding echoing through intimate concrete spaces.</p>
+            </a>
           </div>
-
-
-
-          <!-- BOTÓN PARA VER TODOS LOS TRABAJOS -->
-
-          <div style="margin-top: 60px; text-align: center;">
-
-            <a href="work.html" style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; letter-spacing: 0.05em; border-bottom: 1px solid #0e0e0e; padding-bottom: 4px;">View All Selected Works (Archived) →</a>
-
-          </div>
-
-
-
-          <!-- BLOQUE DE DISCIPLINAS -->
-
-          <div id="disciplines-section" style="margin-top: 100px;">
-
-            <header class="section-head">
-
-              <span class="eyebrow"><span class="dot"></span>Case03 — Practice Areas · 05</span>
-
-              <h2 style="font-weight: 300; font-size: 2.2rem; margin-top: 8px;">Disciplines</h2>
-
-            </header>
-
-
-
-            <div class="services-list" style="margin-top: 40px;">
-
-              <article class="row">
-
-                <span class="num">01 / 05</span>
-
-                <h3>Creative Direction</h3>
-
-                <p>Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
-
-                <span class="arrow">→</span>
-
-              </article>
-
-              <article class="row">
-
-                <span class="num">02 / 05</span>
-
-                <h3>Branding</h3>
-
-                <p>Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
-
-                <span class="arrow">→</span>
-
-              </article>
-
-              <article class="row">
-
-                <span class="num">03 / 05</span>
-
-                <h3>Worldbuilding</h3>
-
-                <p>Immersive universe design, narrative environments, and speculative concept frameworks.</p>
-
-                <span class="arrow">→</span>
-
-              </article>
-
-              <article class="row">
-
-                <span class="num">04 / 05</span>
-
-                <h3>Music &amp; Sound Design</h3>
-
-                <p>Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
-
-                <span class="arrow">→</span>
-
-              </article>
-
-              <article class="row">
-
-                <span class="num">05 / 05</span>
-
-                <h3>Audio Production &amp; Engineering</h3>
-
-                <p>Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
-
-                <span class="arrow">→</span>
-
-              </article>
-
-            </div>
-
-          </div>
-
         </section>
 
-
-
-        <!-- MANIFESTO / PHILOSOPHY -->
-
-        <section id="manifesto-section" class="manifesto" aria-labelledby="manifesto-head" style="padding: 120px 3.5vw;">
-
-          <div class="grid">
-
-            <div>
-
-              <span class="label">— Philosophy</span>
-
-              <h2 id="manifesto-head" style="font-weight: 300;">We build multidisciplinary worlds through <span class="lime-text">design &amp; sound</span>.</h2>
-
-            </div>
-
-            <div>
-
-              <p>Eloria Brista Studio operates as a boutique practice. We merge spatial branding, worldbuilding, and sound engineering into unified creative direction.</p>
-
-              <div class="signature">
-
-                <span>↳ Eloria Brista Studio</span>
-
-              </div>
-
-            </div>
-
+        <!-- SECCIÓN DE DISCIPLINAS (COMPLETA Y CLAVADA) -->
+        <section class="disciplines-section">
+          <div class="disciplines-header">
+            <div class="eyebrow-custom" style="color: #aaa;">Practice Areas · 05</div>
+            <h2 class="disciplines-title">Disciplines</h2>
           </div>
 
+          <div class="disciplines-list">
+            <a href="work.html" class="discipline-row">
+              <span class="discipline-num">01 / 05</span>
+              <h3 class="discipline-name">Creative Direction</h3>
+              <p class="discipline-desc">Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
+              <span class="discipline-arrow">→</span>
+            </a>
+            <a href="work.html" class="discipline-row">
+              <span class="discipline-num">02 / 05</span>
+              <h3 class="discipline-name">Branding</h3>
+              <p class="discipline-desc">Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
+              <span class="discipline-arrow">→</span>
+            </a>
+            <a href="work.html" class="discipline-row">
+              <span class="discipline-num">03 / 05</span>
+              <h3 class="discipline-name">Worldbuilding</h3>
+              <p class="discipline-desc">Immersive universe design, narrative environments, and speculative concept frameworks.</p>
+              <span class="discipline-arrow">→</span>
+            </a>
+            <a href="work.html" class="discipline-row">
+              <span class="discipline-num">04 / 05</span>
+              <h3 class="discipline-name">Music &amp; Sound Design</h3>
+              <p class="discipline-desc">Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
+              <span class="discipline-arrow">→</span>
+            </a>
+            <a href="work.html" class="discipline-row">
+              <span class="discipline-num">05 / 05</span>
+              <h3 class="discipline-name">Audio Production &amp; Engineering</h3>
+              <p class="discipline-desc">Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
+              <span class="discipline-arrow">→</span>
+            </a>
+          </div>
         </section>
-
-
 
       </main>
 
-
-
-      <!-- FOOTER -->
-
-      <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw;">
-
-        <div class="top">
-
-          <div class="brand-block">
-
-            <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
-
-            <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
-
+      <!-- FOOTER UNIFICADO MINIMALISTA -->
+      <footer class="redesigned-footer">
+        <div class="footer-inner-content">
+          <a href="index.html" class="footer-logo-brand">
+            <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio Logo" />
+            <h3 class="footer-brand-title">Eloria Brista Studio</h3>
+          </a>
+          <a href="mailto:eloriabristastudio@gmail.com" class="footer-email-link">eloriabristastudio@gmail.com</a>
+          <p class="footer-location-text">• San Francisco • Mexico City</p>
+          
+          <div class="footer-social-bar">
+            <a href="https://instagram.com/eloriabristastudio" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://youtube.com/@eloriabristastudio" target="_blank" rel="noopener" class="footer-social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
-
-          <div class="col">
-
-            <h4>Navigation</h4>
-
-            <a href="menu.html">Menu</a>
-
-            <a href="work.html">Work</a>
-
-            <a href="about.html">About</a>
-
-            <a href="ebberkett.html">Ebberkett</a>
-
-            <a href="contact.html">Contact</a>
-
-          </div>
-
-          <div class="col">
-
-            <h4>Connect</h4>
-
-            <a href="#">Instagram</a>
-
-            <a href="#">Are.na</a>
-
-            <a href="#">LinkedIn</a>
-
-          </div>
-
         </div>
-
-        <div class="bottom" style="margin-top: 60px;">
-
-          <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-
-          <span class="right">v4.0</span>
-
+        <div class="footer-legal-bar">
+          <p class="footer-legal-copy">© 2026 Eloria Brista Studio.</p>
+          <p class="footer-legal-subtext">Eloria Brista Studio and associated entities.</p>
         </div>
-
       </footer>
-
     </div>
-
   </div>
 
-
-
-  <script src="assets/js/main.js"></script>
-
   <script>
-
     document.addEventListener("DOMContentLoaded", function() {
-
       const revealLines = document.querySelectorAll(".reveal-line");
 
-
-
       function checkLines() {
-
         revealLines.forEach(line => {
-
           const rect = line.getBoundingClientRect();
-
           const windowHeight = window.innerHeight;
-
           
-
           if (rect.top < windowHeight - 80) {
-
             line.classList.add("active");
-
           }
-
         });
-
       }
 
-
-
       window.addEventListener("scroll", checkLines);
-
       checkLines();
-
     });
-
   </script>
-
 </body>
-
-</html> 
+</html>
