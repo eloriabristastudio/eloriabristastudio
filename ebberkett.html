@@ -36,7 +36,6 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       scroll-behavior: auto;
       overflow-x: hidden;
-      /* Candado global anti-selección */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -247,7 +246,6 @@
       gap: 8px;
     }
 
-    /* Círculo verde animado */
     .live-indicator-dot {
       width: 8px;
       height: 8px;
@@ -318,7 +316,7 @@
       box-sizing: border-box;
     }
 
-    /* ESTRUCTURA EXACTA DE TU DISEÑO ORIGINAL */
+    /* COMPOSICIÓN BASE (ESCRITORIO) */
     .slide-layout-tulips {
       position: relative;
       width: 100%;
@@ -330,7 +328,7 @@
       top: 0;
       left: 0;
       max-width: 480px;
-      z-index: 5;
+      z-index: 20;
     }
 
     .tulips-title-block h2 {
@@ -364,6 +362,7 @@
       display: inline-block;
       margin-top: 45px;
       transition: opacity 0.2s ease;
+      pointer-events: auto;
     }
     .tulips-visit-link-left:hover { opacity: 0.6; }
 
@@ -377,10 +376,9 @@
       color: #0e0e0e;
       text-align: right;
       letter-spacing: -0.03em;
-      z-index: 5;
+      z-index: 20;
     }
 
-    /* COLLAGE FLOTANTE / SUPERPUESTO REAL */
     .tulips-collage-stage {
       position: relative;
       width: 100%;
@@ -450,7 +448,6 @@
       -webkit-user-drag: none;
     }
 
-    /* FIRMA ARTISTA (-50 INTERLETRADO) */
     .tulips-artist-bottom {
       position: absolute;
       bottom: 25px;
@@ -462,7 +459,7 @@
       color: #0e0e0e;
       text-align: right;
       line-height: 1.1;
-      z-index: 5;
+      z-index: 20;
     }
 
     .tulips-slide-hint {
@@ -672,7 +669,7 @@
 
     .terminal-cursor {
       display: inline-block;
-      width: 10px; height: 4px;
+      width: 100px; height: 4px;
       background-color: #f5f4f0;
       margin-left: 4px;
       vertical-align: middle;
@@ -681,7 +678,7 @@
 
     @keyframes cursorBlink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     .terminal-row-bottom { display: inline-block; width: 100%; text-align: center; white-space: pre; }
@@ -899,7 +896,7 @@
       font-size: 0.75rem;
     }
 
-    /* ADAPTACIÓN EXCLUSIVA PARA MÓVIL SIN ARRUINAR TU COLLAGE NI EL ESTILO */
+    /* ADAPTACIÓN MÓVIL EXACTA: SUPERPOSICIÓN DE TEXTOS Y FECHA ARRIBA A LA DERECHA */
     @media (max-width: 950px) {
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
@@ -909,76 +906,102 @@
       .salas-grid-shop { grid-template-columns: 1fr; }
 
       .current-exhibition-section {
-        padding: 50px 20px 70px 20px;
+        padding: 50px 15px 40px 15px;
       }
 
+      /* COMPOSICIÓN CONDENSADA EN UNA SOLA VISTA EN MÓVIL */
       .slide-layout-tulips {
-        min-height: auto;
+        min-height: 480px;
+        height: 480px;
+        position: relative;
+        overflow: hidden;
       }
 
+      /* TÍTULO SUPERPUESTO ARRIBA A LA IZQUIERDA */
       .tulips-title-block {
-        position: relative;
-        top: auto;
-        left: auto;
-        max-width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        max-width: 60%;
+        z-index: 30;
       }
 
-      .tulips-dates-top {
-        position: relative;
-        top: auto;
-        right: auto;
-        text-align: left;
-        font-size: 2.5rem;
-        margin-top: 15px;
+      .tulips-title-block h2 {
+        font-size: 1.6rem;
+        line-height: 1.05;
+      }
+
+      .tulips-title-block span {
+        font-size: 0.65rem;
+        margin-top: 6px;
       }
 
       .tulips-visit-link-left {
-        margin-top: 22px;
+        font-size: 0.68rem;
+        margin-top: 14px;
       }
 
-      /* COLLAGE SUPERPUESTO ADAPTADO A MÓVIL (MISMOS NIVELES DE CAPAS Y PROPORCIONES) */
+      /* FECHA SUPERPUESTA ARRIBA A LA DERECHA (ALINEADA PERFECTAMENTE) */
+      .tulips-dates-top {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 1.4rem;
+        line-height: 1.1;
+        text-align: right;
+        z-index: 30;
+      }
+
+      /* COLLAGE DE FOTOS SUPERPUESTAS CONDENSADAS */
       .tulips-collage-stage {
-        position: relative;
+        position: absolute;
+        top: 40px;
+        left: 0;
         width: 100%;
         height: 380px;
-        margin-top: 30px;
+        margin-top: 0;
       }
 
       .t-img-1 {
-        top: 0;
-        left: 0%;
-        width: 65%;
-        height: 120px;
+        top: 20px;
+        left: 15%;
+        width: 48%;
+        height: 130px;
+        z-index: 2;
       }
 
       .t-img-2 {
-        top: 60px;
-        left: 20%;
-        width: 75%;
-        height: 160px;
+        top: 80px;
+        left: 25%;
+        width: 55%;
+        height: 170px;
+        z-index: 3;
       }
 
       .t-img-3 {
-        top: 150px;
-        left: 35%;
-        width: 65%;
-        height: 200px;
+        top: 140px;
+        left: 45%;
+        width: 50%;
+        height: 190px;
+        z-index: 1;
       }
 
       .t-img-4 {
-        top: 210px;
+        top: 190px;
         left: 5%;
-        width: 55%;
-        height: 140px;
+        width: 45%;
+        height: 150px;
+        z-index: 4;
       }
 
+      /* FIRMA DEL ARTISTA SUPERPUESTA EN LA PARTE INFERIOR */
       .tulips-artist-bottom {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        text-align: right;
-        font-size: 2.6rem;
-        margin-top: 30px;
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+        font-size: 1.8rem;
+        z-index: 30;
+        letter-spacing: -0.05em;
       }
 
       .tulips-slide-hint {
@@ -1063,10 +1086,10 @@
       <div class="exhibition-slider-outer" id="exhibitionSlider">
         <div class="exhibition-track">
           
-          <!-- SLIDE ÚNICO CON TU COMPOSICIÓN REAL Y ORIGINAL -->
           <div class="exhibition-slide">
             <div class="slide-layout-tulips reveal-item">
               
+              <!-- TÍTULO EN CAPA SUPERIOR -->
               <div class="tulips-title-block">
                 <h2>El susurro de los 1000 tulipanes</h2>
                 <span>Exhibition exclusively in Sala 01</span>
@@ -1075,11 +1098,12 @@
                 </div>
               </div>
 
+              <!-- FECHA EN CAPA SUPERIOR DERECHA -->
               <div class="tulips-dates-top">
-                08.AUG — 31.OCT
+                08.AUG —<br/>31.OCT
               </div>
 
-              <!-- COLLAGE CON TUS 4 CAPAS SUPERPUESTAS intactas -->
+              <!-- COLLAGE DE IMÁGENES SUPERPUESTAS CONDENSADAS -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
@@ -1103,11 +1127,9 @@
                 </div>
               </div>
 
+              <!-- FIRMA EN CAPA INFERIOR DERECHA -->
               <div class="tulips-artist-bottom">
                 Haidar Hikmah
-              </div>
-              <div class="tulips-slide-hint">
-                slide for more →
               </div>
 
             </div>
@@ -1517,26 +1539,4 @@
   document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('caseModal');
     const modalActive = modal && modal.classList.contains('active');
-    if (e.key === 'Escape' && modalActive) {
-      closeModal();
-    }
-  });
-
-  window.addEventListener("load", function() {
-    if (window.location.hash === "#salas") {
-      window.scrollTo(0, 0);
-      setTimeout(() => {
-        const target = document.getElementById("salas");
-        if (target) {
-          if (typeof lenis !== "undefined") {
-            lenis.scrollTo(target, { immediate: false, duration: 1.0 });
-          } else {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }, 200);
-    }
-  });
-</script>
-</body>
-</html>
+    if (
