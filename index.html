@@ -297,7 +297,7 @@
 
     .arrow-link:hover { opacity: 0.6; }
 
-    /* SECCIÓN FEATURED WORK (TEASER DE 3 PROYECTOS) */
+    /* SECCIÓN FEATURED WORK (ESTILO MAQUETADO DE WORK) */
     .featured-work-section {
       padding: 80px 4vw 120px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
@@ -320,7 +320,7 @@
     .work-preview-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 40px 24px;
     }
 
     .work-preview-card {
@@ -349,15 +349,6 @@
       transform: scale(1.03);
     }
 
-    .preview-meta {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: -0.25px;
-      color: #777;
-      margin-bottom: 4px;
-    }
-
     .preview-card-title {
       font-size: 1.25rem;
       font-weight: 600;
@@ -370,15 +361,36 @@
       font-size: 0.9rem;
       color: #666;
       line-height: 1.45;
-      margin: 0;
+      margin: 0 0 14px 0;
       letter-spacing: -0.25px;
     }
 
-    /* SECCIÓN DE DISCIPLINAS (COMPLETA Y CLAVADA) */
+    .work-pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-pill {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      color: #333;
+      background: transparent;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* SECCIÓN DE DISCIPLINAS CON KERNING -25px Y ANIMACIÓN DE FLECHA ↗ */
     .disciplines-section {
-      padding: 100px 4vw;
+      padding: 120px 4vw;
       background-color: #0e0e0e;
       color: #f5f4f0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: -0.25px;
     }
 
     .disciplines-header {
@@ -415,7 +427,6 @@
     }
 
     .discipline-num {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.75rem;
       letter-spacing: -0.25px;
       color: #888;
@@ -438,9 +449,16 @@
       padding-right: 40px;
     }
 
+    /* Animación fluida de la flecha hacia arriba a la derecha (↗) al hacer hover */
     .discipline-arrow {
       font-size: 1.2rem;
       color: #f5f4f0;
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    .discipline-row:hover .discipline-arrow {
+      transform: translate(4px, -4px);
     }
 
     /* FOOTER REDISEÑADO Y UNIFICADO */
@@ -660,7 +678,7 @@
           </div>
         </section>
 
-        <!-- TEASER DE TRABAJOS (3 PROYECTOS DESTACADOS) -->
+        <!-- TEASER DE TRABAJOS (3 PROYECTOS MAQUETADOS COMO WORK) -->
         <section class="featured-work-section">
           <div class="section-header-flex">
             <div>
@@ -677,32 +695,41 @@
               <div class="preview-img-wrap">
                 <img src="assets/img/work-1.svg" alt="Sukha branding" loading="lazy" />
               </div>
-              <span class="preview-meta">Branding · Creative Direction</span>
               <h3 class="preview-card-title">Sukha</h3>
               <p class="preview-card-desc">Raw underground identity built for the noise of CDMX.</p>
+              <div class="work-pills-container">
+                <span class="work-pill">Branding</span>
+                <span class="work-pill">Creative Direction</span>
+              </div>
             </a>
 
             <a href="work.html" class="work-preview-card">
               <div class="preview-img-wrap">
                 <img src="assets/img/work-2.svg" alt="Nueve Cero Nueve venue branding" loading="lazy" />
               </div>
-              <span class="preview-meta">Branding · Worldbuilding</span>
               <h3 class="preview-card-title">Nueve Cero Nueve</h3>
               <p class="preview-card-desc">Spatial narrative and visual pulse defining local nightlife architecture.</p>
+              <div class="work-pills-container">
+                <span class="work-pill">Branding</span>
+                <span class="work-pill">Worldbuilding</span>
+                <span class="work-pill">Art Direction</span>
+              </div>
             </a>
 
             <a href="work.html" class="work-preview-card">
               <div class="preview-img-wrap">
                 <img src="assets/img/work-3.svg" alt="Hypnia promoter" loading="lazy" />
               </div>
-              <span class="preview-meta">Branding</span>
               <h3 class="preview-card-title">Hypnia</h3>
               <p class="preview-card-desc">Sonic promoter branding echoing through intimate concrete spaces.</p>
+              <div class="work-pills-container">
+                <span class="work-pill">Branding</span>
+              </div>
             </a>
           </div>
         </section>
 
-        <!-- SECCIÓN DE DISCIPLINAS (COMPLETA Y CLAVADA) -->
+        <!-- SECCIÓN DE DISCIPLINAS CON KERNING -25px Y ANIMACIÓN DE FLECHA ↗ -->
         <section class="disciplines-section">
           <div class="disciplines-header">
             <div class="eyebrow-custom" style="color: #aaa;">Practice Areas · 05</div>
@@ -714,31 +741,31 @@
               <span class="discipline-num">01 / 05</span>
               <h3 class="discipline-name">Creative Direction</h3>
               <p class="discipline-desc">Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
-              <span class="discipline-arrow">→</span>
+              <span class="discipline-arrow">↗</span>
             </a>
             <a href="work.html" class="discipline-row">
               <span class="discipline-num">02 / 05</span>
               <h3 class="discipline-name">Branding</h3>
               <p class="discipline-desc">Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
-              <span class="discipline-arrow">→</span>
+              <span class="discipline-arrow">↗</span>
             </a>
             <a href="work.html" class="discipline-row">
               <span class="discipline-num">03 / 05</span>
               <h3 class="discipline-name">Worldbuilding</h3>
               <p class="discipline-desc">Immersive universe design, narrative environments, and speculative concept frameworks.</p>
-              <span class="discipline-arrow">→</span>
+              <span class="discipline-arrow">↗</span>
             </a>
             <a href="work.html" class="discipline-row">
               <span class="discipline-num">04 / 05</span>
               <h3 class="discipline-name">Music &amp; Sound Design</h3>
               <p class="discipline-desc">Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
-              <span class="discipline-arrow">→</span>
+              <span class="discipline-arrow">↗</span>
             </a>
             <a href="work.html" class="discipline-row">
               <span class="discipline-num">05 / 05</span>
               <h3 class="discipline-name">Audio Production &amp; Engineering</h3>
               <p class="discipline-desc">Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
-              <span class="discipline-arrow">→</span>
+              <span class="discipline-arrow">↗</span>
             </a>
           </div>
         </section>
