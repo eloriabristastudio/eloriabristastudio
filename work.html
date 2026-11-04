@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0e0e0e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f4f0" />
   <title>Work — Eloria Brista Studio</title>
   <meta name="description" content="Selected projects and case studies — Eloria Brista Studio." />
   
@@ -13,10 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
   
   <style>
-    /* RESET & PANTALLA COMPLETA */
     body, html {
       margin: 0;
       padding: 0;
@@ -24,18 +22,8 @@
       background-color: #f5f4f0;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-
-    .shell {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-    
-    .rail { display: none !important; }
-    .content { margin-left: 0 !important; width: 100% !important; }
 
     /* HEADER EDITORIAL UNIFICADO */
     .header-editorial {
@@ -43,7 +31,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 35px 3.5vw;
+      padding: 35px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -54,15 +42,26 @@
     }
 
     .header-editorial .brand-logo {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
       transition: opacity 0.3s ease;
     }
 
     .header-editorial .brand-logo img {
-      height: 34px;
+      height: 28px;
       width: auto;
       display: block;
+    }
+
+    .header-editorial .brand-logo span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: -0.25px; /* Kerning ajustado a -0.25px */
+      text-transform: uppercase;
+      color: #0e0e0e;
     }
 
     .header-editorial .brand-logo:hover {
@@ -72,44 +71,289 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
 
     .nav-links a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 400;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #555;
+      color: #666;
       transition: color 0.3s ease;
     }
 
     .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
 
-    /* CONTENEDOR DE LA PÁGINA WORK */
+    /* CONTENEDOR PRINCIPAL */
     .page-container {
-      padding: 160px 3.5vw 100px 3.5vw;
-      max-width: 1400px;
+      padding: 180px 4vw 120px 4vw;
+      max-width: 1600px;
       margin: 0 auto;
     }
 
     .page-header {
-      margin-bottom: 50px;
+      margin-bottom: 90px;
     }
 
     .page-title {
-      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      font-size: clamp(3rem, 6vw, 6rem);
       font-weight: 300;
       letter-spacing: -0.03em;
       margin: 15px 0 0 0;
+      line-height: 1.05;
     }
 
-    @media (max-width: 768px) {
+    /* REJILLA DE PROYECTOS MODERNA (ESTILO REFERENCIA) */
+    .work-grid-modern {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 80px 5vw;
+    }
+
+    .work-item-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      group: true;
+    }
+
+    .work-img-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      background-color: #e6e5e0;
+      overflow: hidden;
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .work-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-item-card:hover .work-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .work-meta-tags {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .work-item-title {
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px 0;
+      color: #0e0e0e;
+    }
+
+    .work-item-desc {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 600px;
+    }
+
+    /* BANNER DE ARCHIVO OSCURO (ESTILO EBBERKETT) */
+    .archive-cta-section {
+      margin-top: 140px;
+      background-color: #0e0e0e;
+      color: #f5f4f0;
+      padding: 100px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      box-sizing: border-box;
+    }
+
+    .archive-cta-title {
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .archive-cta-title em {
+      font-style: italic;
+      font-family: serif;
+    }
+
+    .archive-cta-content {
+      max-width: 480px;
+    }
+
+    .archive-cta-content p {
+      color: #b0afaa;
+      margin: 0 0 28px 0;
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    .archive-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      color: #0e0e0e;
+      background: #f5f4f0;
+      padding: 14px 28px;
+      font-weight: 500;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .archive-btn:hover {
+      background: #ffffff;
+    }
+
+    /* FOOTER ESTILO EBBERKETT (ADAPTADO A ELORIA BRISTA STUDIO) */
+    .redesigned-footer {
+      width: 100%;
+      padding: 100px 4vw 50px 4vw;
+      background-color: #f5f4f0;
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-inner-content {
+      max-width: 850px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-logo-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #0e0e0e;
+    }
+
+    .footer-logo-brand img {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-brand-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      font-weight: 500;
+      letter-spacing: -0.25px; /* Kerning ajustado a -0.25px */
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .footer-email-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      color: #0e0e0e;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.4);
+      padding-bottom: 3px;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-email-link:hover {
+      border-color: #0e0e0e;
+      opacity: 0.6;
+    }
+
+    .footer-location-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #666;
+      margin: 0;
+    }
+
+    .footer-social-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .footer-social-icon {
+      color: #0e0e0e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-social-icon:hover {
+      transform: translateY(-2px);
+      opacity: 0.65;
+    }
+
+    .footer-social-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-legal-bar {
+      margin-top: 60px;
+      width: 100%;
+      border-top: 1px solid rgba(14, 14, 14, 0.08);
+      padding-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-legal-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .footer-legal-subtext {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: #888;
+      margin: 0;
+      font-weight: 300;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
       .header-editorial { padding: 20px; }
       .nav-links { display: none; }
-      .page-container { padding: 120px 20px 60px 20px; }
+      .page-container { padding: 130px 20px 80px 20px; }
+      .work-grid-modern { grid-template-columns: 1fr; gap: 60px; }
+      .archive-cta-section { padding: 60px 20px; }
     }
   </style>
 </head>
@@ -118,7 +362,8 @@
   <!-- HEADER EDITORIAL -->
   <header class="header-editorial">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
-      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+      <img src="assets/Ebs_logo.svg" alt="Ebs Logo" />
+      <span>Eloria Brista Studio</span>
     </a>
     <nav class="nav-links">
       <a href="index.html">Index</a>
@@ -129,162 +374,151 @@
     </nav>
   </header>
 
-  <div class="shell">
-    <div class="content">
-      <main class="page-container">
-        
-        <!-- HERO DE LA SECCIÓN WORK -->
-        <section class="page-hero" aria-labelledby="ph" style="margin-bottom: 40px;">
-          <p class="crumb" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #777;">Index → <span style="color:var(--ink)">Selected Works</span></p>
-          <h1 id="ph" class="page-title">Selected Works</h1>
-          <p class="lede" style="font-size: 1.15rem; color: #555; margin-top: 20px; max-width: 750px; line-height: 1.5;">A curated archive of multidisciplinary case studies spanning branding, creative direction, worldbuilding, art covers, and professional sound design.</p>
-        </section>
+  <main class="page-container">
+    
+    <!-- HERO DE LA SECCIÓN WORK -->
+    <header class="page-header">
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: #777; letter-spacing: 0.08em; margin-bottom: 15px;">
+        Index → <span style="color:#0e0e0e;">Selected Works</span>
+      </p>
+      <h1 class="page-title">Selected Works</h1>
+      <p style="font-size: 1.15rem; color: #555; margin-top: 20px; max-width: 750px; line-height: 1.6;">
+        A curated archive of multidisciplinary case studies spanning branding, creative direction, worldbuilding, art covers, and professional sound design.
+      </p>
+    </header>
 
-        <!-- FILTROS CON LAS 5 DISCIPLINAS -->
-        <div class="work-filters" role="toolbar" aria-label="Filter work" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
-          <button data-filter="all" aria-pressed="true" style="background: none; border: 1px solid #0e0e0e; padding: 8px 16px; cursor: pointer; text-transform: uppercase;">All</button>
-          <button data-filter="branding" aria-pressed="false" style="background: none; border: 1px solid rgba(14,14,14,0.2); padding: 8px 16px; cursor: pointer; text-transform: uppercase;">Branding</button>
-          <button data-filter="creative" aria-pressed="false" style="background: none; border: 1px solid rgba(14,14,14,0.2); padding: 8px 16px; cursor: pointer; text-transform: uppercase;">Creative Direction</button>
-          <button data-filter="worldbuilding" aria-pressed="false" style="background: none; border: 1px solid rgba(14,14,14,0.2); padding: 8px 16px; cursor: pointer; text-transform: uppercase;">Worldbuilding</button>
-          <button data-filter="artcover" aria-pressed="false" style="background: none; border: 1px solid rgba(14,14,14,0.2); padding: 8px 16px; cursor: pointer; text-transform: uppercase;">Art Cover</button>
-          <button data-filter="sound" aria-pressed="false" style="background: none; border: 1px solid rgba(14,14,14,0.2); padding: 8px 16px; cursor: pointer; text-transform: uppercase;">Music &amp; Sound Design</button>
+    <!-- REJILLA DE LOS 8 PROYECTOS (LIMPIA Y EDITORIAL) -->
+    <section class="work-grid-modern" aria-label="Project archive">
+      
+      <!-- 1. SUKHA -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
         </div>
+        <div class="work-meta-tags">Branding · Creative Direction</div>
+        <h3 class="work-item-title">Sukha</h3>
+        <p class="work-item-desc">Punk in the underground of CDMX. Full identity and visual system for the punk event held at Foro Bajo Circuito.</p>
+      </article>
 
-        <!-- REJILLA DE LOS 8 PROYECTOS (TÍTULO PRINCIPAL COMO NOMBRE Y DESCRIPCIÓN COMO SUBTÍTULO) -->
-        <section class="work-grid" aria-label="Project archive">
-          
-          <!-- 1. SUKHA -->
-          <article data-tags="branding,creative">
-            <div class="img-wrap">
-              <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
-            </div>
-            <div class="meta"><span>Branding · Creative Direction</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Sukha</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Punk in the underground of CDMX. Full identity and visual system for the punk event held at Foro Bajo Circuito.</p>
-          </article>
-
-          <!-- 2. NUEVE CERO NUEVE -->
-          <article data-tags="branding,worldbuilding,creative">
-            <div class="img-wrap">
-              <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
-            </div>
-            <div class="meta"><span>Branding · Worldbuilding · Art Direction</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Nueve Cero Nueve</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">A club &amp; venue defining the nightlife scene. Comprehensive branding, spatial narrative, and art direction for flyers in CDMX.</p>
-          </article>
-
-          <!-- 3. HYPNIA -->
-          <article data-tags="branding">
-            <div class="img-wrap">
-              <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
-            </div>
-            <div class="meta"><span>Branding</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Hypnia</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Promoter of sonic spaces across the city. Event promoter branding with presence at venues like Muli and Bar Oriente.</p>
-          </article>
-
-          <!-- 4. ART COVER (INDEPENDIENTE) -->
-          <article data-tags="artcover,creative">
-            <div class="img-wrap">
-              <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
-            </div>
-            <div class="meta"><span>Art Cover · Creative Direction</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Art Cover Collections</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Custom visual design for singles, EPs, and artist covers. Translating sonic universes into striking cover art.</p>
-          </article>
-
-          <!-- 5. VIBIN: THE AMBIENTS -->
-          <article data-tags="sound,artcover">
-            <div class="img-wrap">
-              <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
-            </div>
-            <div class="meta"><span>Music Production · Sound Design · Art Cover</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Vibin: The Ambients</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Complete music production, mixing, mastering, sound design, and custom cover art for the ambient album.</p>
-          </article>
-
-          <!-- 6. THE HUMAN TAPES -->
-          <article data-tags="branding,creative">
-            <div class="img-wrap">
-              <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
-            </div>
-            <div class="meta"><span>Branding · Creative Direction</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">The Human Tapes</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Podcast branding and visual identity system, crafting a distinct voice and aesthetic for digital audio storytelling.</p>
-          </article>
-
-          <!-- 7. EBBERKETT -->
-          <article data-tags="branding,worldbuilding">
-            <div class="img-wrap">
-              <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
-            </div>
-            <div class="meta"><span>Branding · Worldbuilding</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Ebberkett</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Digital Gallery &amp; Main Pavilion. Art, Research, and Featured Artists operating between San Francisco and CDMX.</p>
-          </article>
-
-          <!-- 8. CELESTE -->
-          <article data-tags="sound">
-            <div class="img-wrap">
-              <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
-            </div>
-            <div class="meta"><span>Original Soundtrack · Sound Design</span></div>
-            <h3 style="font-size: 1.6rem; font-weight: 400; margin: 8px 0;">Celeste</h3>
-            <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">Original cinematic score and sound design for the short film produced by independent studio Arcanos.</p>
-          </article>
-
-        </section>
-
-        <!-- BANNER DE ARCHIVO -->
-        <section class="cta-band" aria-labelledby="cta-head" style="margin-top: 100px; background: #0e0e0e; color: #f5f4f0; padding: 80px 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;">
-          <div class="inner">
-            <h2 id="cta-head" style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; margin: 0;">Want the <em>full</em> archive?</h2>
-          </div>
-          <div class="right" style="max-width: 450px;">
-            <p style="color: #b0afaa; margin: 0; line-height: 1.6;">The site shows a curated selection of our work. Ask for the full portfolio deck — we send it the same day.</p>
-            <a class="btn btn-ink" href="contact.html" style="display: inline-block; margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; text-decoration: none; color: #0e0e0e; background: #f5f4f0; padding: 12px 24px; font-weight: 500;">Request the archive →</a>
-          </div>
-        </section>
-
-      </main>
-
-      <!-- FOOTER UNIFICADO -->
-      <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15); margin-top: 80px;">
-        <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-          <div class="brand-block" style="max-width: 350px;">
-            <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
-            <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
-          </div>
-          <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
-            <a href="index.html" style="text-decoration: none; color: #0e0e0e;">Index</a>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Work</a>
-            <a href="about.html" style="text-decoration: none; color: #0e0e0e;">About</a>
-            <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Contact</a>
-          </div>
-          <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Disciplines</h4>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Creative Direction</a>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Branding</a>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Worldbuilding</a>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Art Cover</a>
-            <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Music &amp; Sound Design</a>
-          </div>
-          <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Connect</h4>
-            <a href="#" style="text-decoration: none; color: #0e0e0e;">Instagram</a>
-            <a href="#" style="text-decoration: none; color: #0e0e0e;">Are.na</a>
-            <a href="#" style="text-decoration: none; color: #0e0e0e;">LinkedIn</a>
-          </div>
+      <!-- 2. NUEVE CERO NUEVE -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
         </div>
-        <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
-          <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-          <span>MEX (UTC −5)</span>
+        <div class="work-meta-tags">Branding · Worldbuilding · Art Direction</div>
+        <h3 class="work-item-title">Nueve Cero Nueve</h3>
+        <p class="work-item-desc">A club &amp; venue defining the nightlife scene. Comprehensive branding, spatial narrative, and art direction for flyers in CDMX.</p>
+      </article>
+
+      <!-- 3. HYPNIA -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
         </div>
-      </footer>
+        <div class="work-meta-tags">Branding</div>
+        <h3 class="work-item-title">Hypnia</h3>
+        <p class="work-item-desc">Promoter of sonic spaces across the city. Event promoter branding with presence at venues like Muli and Bar Oriente.</p>
+      </article>
+
+      <!-- 4. ART COVER -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
+        </div>
+        <div class="work-meta-tags">Art Cover · Creative Direction</div>
+        <h3 class="work-item-title">Art Cover Collections</h3>
+        <p class="work-item-desc">Custom visual design for singles, EPs, and artist covers. Translating sonic universes into striking cover art.</p>
+      </article>
+
+      <!-- 5. VIBIN: THE AMBIENTS -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
+        </div>
+        <div class="work-meta-tags">Music Production · Sound Design · Art Cover</div>
+        <h3 class="work-item-title">Vibin: The Ambients</h3>
+        <p class="work-item-desc">Complete music production, mixing, mastering, sound design, and custom cover art for the ambient album.</p>
+      </article>
+
+      <!-- 6. THE HUMAN TAPES -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
+        </div>
+        <div class="work-meta-tags">Branding · Creative Direction</div>
+        <h3 class="work-item-title">The Human Tapes</h3>
+        <p class="work-item-desc">Podcast branding and visual identity system, crafting a distinct voice and aesthetic for digital audio storytelling.</p>
+      </article>
+
+      <!-- 7. EBBERKETT -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
+        </div>
+        <div class="work-meta-tags">Branding · Worldbuilding</div>
+        <h3 class="work-item-title">Ebberkett</h3>
+        <p class="work-item-desc">Digital Gallery &amp; Main Pavilion. Art, Research, and Featured Artists operating between San Francisco and CDMX.</p>
+      </article>
+
+      <!-- 8. CELESTE -->
+      <article class="work-item-card">
+        <div class="work-img-wrapper">
+          <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
+        </div>
+        <div class="work-meta-tags">Original Soundtrack · Sound Design</div>
+        <h3 class="work-item-title">Celeste</h3>
+        <p class="work-item-desc">Original cinematic score and sound design for the short film produced by independent studio Arcanos.</p>
+      </article>
+
+    </section>
+
+    <!-- BANNER DE ARCHIVO OSCURO -->
+    <section class="archive-cta-section" aria-labelledby="cta-head">
+      <div>
+        <h2 id="cta-head" class="archive-cta-title">Want the <em>full</em> archive?</h2>
+      </div>
+      <div class="archive-cta-content">
+        <p>The site shows a curated selection of our work. Ask for the full portfolio deck — we send it the same day.</p>
+        <a class="archive-btn" href="contact.html">Request the archive →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER ESTILO EBBERKETT ADAPTADO -->
+  <footer class="redesigned-footer">
+    <div class="footer-inner-content">
+      <a href="index.html" class="footer-logo-brand">
+        <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio Logo" />
+        <h3 class="footer-brand-title">Eloria Brista Studio</h3>
+      </a>
+      <a href="mailto:studio@eloriabrista.com" class="footer-email-link">studio@eloriabrista.com</a>
+      <p class="footer-location-text">• San Francisco • Mexico City</p>
+      
+      <div class="footer-social-bar">
+        <!-- VSCO -->
+        <a href="https://vsco.co" target="_blank" rel="noopener" class="footer-social-icon" aria-label="VSCO">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+        </a>
+        <!-- Pinterest -->
+        <a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
     </div>
-  </div>
+    <div class="footer-legal-bar">
+      <p class="footer-legal-copy">© 2026 Eloria Brista Studio.</p>
+      <p class="footer-legal-subtext">Eloria Brista Studio and associated entities.</p>
+    </div>
+  </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
