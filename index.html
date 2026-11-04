@@ -25,6 +25,7 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     .shell {
@@ -39,7 +40,7 @@
     @keyframes fadeInUp {
       0% {
         opacity: 0;
-        transform: translateY(35px);
+        transform: translateY(40px);
       }
       100% {
         opacity: 1;
@@ -58,39 +59,42 @@
       }
     }
 
-    .animate-header {
-      animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
     .animate-hero-1 {
       opacity: 0;
-      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     }
 
     .animate-hero-2 {
       opacity: 0;
-      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
     }
 
     .animate-hero-3 {
       opacity: 0;
-      animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     }
 
-    /* HEADER EDITORIAL UNIFICADO */
+    /* HEADER EDITORIAL INTELIGENTE (SE OCULTA EN SCROLL DOWN Y APRECE EN SCROLL UP) */
     .header-editorial {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 35px 4vw;
+      padding: 30px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(235, 235, 235, 0.9);
-      backdrop-filter: blur(8px);
+      background-color: rgba(235, 235, 235, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+      animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .header-editorial.nav-hidden {
+      transform: translateY(-100%);
     }
 
     .header-editorial .brand-logo {
@@ -102,7 +106,7 @@
     }
 
     .header-editorial .brand-logo img {
-      height: 28px;
+      height: 26px;
       width: auto;
       display: block;
     }
@@ -118,7 +122,7 @@
 
     .header-editorial .brand-logo:hover { opacity: 0.5; }
 
-    /* NAVEGACIÓN SUPERIOR */
+    /* NAVEGACIÓN SUPERIOR CON HOVER SUAVE */
     .nav-links {
       display: flex;
       align-items: center;
@@ -133,10 +137,14 @@
       text-transform: uppercase;
       text-decoration: none;
       color: #666;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
+    .nav-links a:hover, .nav-links a.active {
+      color: #0e0e0e;
+      transform: translateY(-1px);
+    }
 
     /* HERO EDITORIAL */
     .hero-editorial {
@@ -158,7 +166,7 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 7.5vw, 8rem);
+      font-size: clamp(3.2rem, 7.8vw, 8.5rem);
       font-weight: 300;
       text-transform: none;
       letter-spacing: -0.05em;
@@ -180,9 +188,9 @@
       letter-spacing: -0.02em;
     }
 
-    /* MANIFIESTO Y REVEAL POR LÍNEAS */
+    /* MANIFIESTO Y REVEAL POR LÍNEAS AL HACER SCROLL */
     .about-statement-section {
-      padding: 140px 4vw 100px 4vw;
+      padding: 160px 4vw 120px 4vw;
       max-width: 1300px;
     }
 
@@ -218,9 +226,10 @@
 
     .reveal-line {
       display: block;
-      opacity: 0.15;
-      transform: translateY(15px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.08;
+      transform: translateY(25px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
 
     .reveal-line.active {
@@ -233,7 +242,7 @@
       font-weight: 400;
     }
 
-    /* ENLACES SIN SUBRAYADO */
+    /* ENLACES SIN SUBRAYADO Y CON ANIMACIÓN LIGERA DE FLECHA */
     .arrow-link {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.85rem;
@@ -247,14 +256,20 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.3s ease;
+    }
+
+    .arrow-link span {
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .arrow-link:hover { opacity: 0.6; }
+    .arrow-link:hover span { transform: translateX(4px); }
 
-    /* SECCIÓN FEATURED WORK */
+    /* SECCIÓN FEATURED WORK CON ANIMACIÓN EN TARJETAS */
     .featured-work-section {
-      padding: 80px 4vw 120px 4vw;
+      padding: 100px 4vw 140px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
     }
 
@@ -285,6 +300,14 @@
       flex-direction: column;
       text-decoration: none;
       color: inherit;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .work-preview-card.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .preview-img-wrap {
@@ -293,17 +316,18 @@
       background-color: #dcdbd7;
       overflow: hidden;
       margin-bottom: 16px;
+      border-radius: 2px;
     }
 
     .preview-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .work-preview-card:hover .preview-img-wrap img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     .preview-card-title {
@@ -341,11 +365,11 @@
       border-radius: 20px;
     }
 
-    /* SECCIÓN DE DISCIPLINAS (TEXTOS EN #EBEBEB) */
+    /* SECCIÓN DE DISCIPLINAS */
     .disciplines-section {
       padding: 120px 4vw;
       background-color: #0e0e0e;
-      color: #EBEBEB; /* Textos de la sección oscura en #EBEBEB */
+      color: #EBEBEB;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
@@ -374,11 +398,11 @@
       border-bottom: 1px solid rgba(235, 235, 235, 0.15);
       text-decoration: none;
       color: inherit;
-      transition: background-color 0.3s ease, padding-left 0.3s ease;
+      transition: background-color 0.4s ease, padding-left 0.4s ease;
     }
 
     .discipline-row:hover {
-      padding-left: 15px;
+      padding-left: 16px;
       background-color: rgba(255, 255, 255, 0.04);
     }
 
@@ -405,12 +429,12 @@
       padding-right: 40px;
     }
 
-    /* ANIMACIÓN DE FLECHA CON #EBEBEB */
+    /* ANIMACIÓN INTERACTIVA DE FLECHA */
     .discipline-arrow {
       font-size: 1.3rem;
       color: #EBEBEB;
       display: inline-block;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .discipline-row:hover .discipline-arrow {
@@ -560,8 +584,8 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL -->
-  <header class="header-editorial animate-header">
+  <!-- HEADER EDITORIAL (AUTOHIDE EN SCROLL) -->
+  <header class="header-editorial" id="mainHeader">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" />
       <span>Eloria Brista Studio</span>
@@ -735,23 +759,44 @@
     </div>
   </div>
 
+  <!-- SCRIPT DE NAVEGACIÓN Y REVELACIÓN EN SCROLL -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const revealLines = document.querySelectorAll(".reveal-line");
+      // 1. REVELADO SUAVE DE TEXTOS Y TARJETAS AL HACER SCROLL
+      const revealElements = document.querySelectorAll(".reveal-line, .work-preview-card");
 
-      function checkLines() {
-        revealLines.forEach(line => {
-          const rect = line.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          
-          if (rect.top < windowHeight - 80) {
-            line.classList.add("active");
+      function checkScroll() {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < windowHeight - 60) {
+            el.classList.add("active");
           }
         });
       }
 
-      window.addEventListener("scroll", checkLines);
-      checkLines();
+      window.addEventListener("scroll", checkScroll, { passive: true });
+      checkScroll();
+
+      // 2. COMPORTAMIENTO INTELIGENTE DEL HEADER (SE OCULTA ABAJO, APARECE ARRIBA)
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById("mainHeader");
+
+      window.addEventListener("scroll", function() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > 120) {
+          if (currentScrollY > lastScrollY) {
+            header.classList.add("nav-hidden"); // Scroll hacia abajo: oculta el menú
+          } else {
+            header.classList.remove("nav-hidden"); // Scroll hacia arriba: muestra el menú
+          }
+        } else {
+          header.classList.remove("nav-hidden"); // Arriba del todo: menú visible
+        }
+
+        lastScrollY = currentScrollY;
+      }, { passive: true });
     });
   </script>
 </body>
