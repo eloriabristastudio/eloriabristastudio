@@ -93,10 +93,10 @@
       box-sizing: border-box;
     }
 
-    /* EFECTO DE APARICIÓN PARA EL TÍTULO Y FILTROS */
+    /* EFECTO DE APARICIÓN INICIAL PARA TÍTULOS Y FILTROS */
     .fade-in-up {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(35px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
                   transform 1s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
@@ -185,12 +185,12 @@
     .work-grid-modern {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px 24px;
+      gap: 50px 24px;
       width: 100%;
       box-sizing: border-box;
     }
 
-    /* TARJETA DE PROYECTO CON APARICIÓN EN FILAS */
+    /* TARJETAS CON EFECTO SCROLL FADE-IN POR FILA */
     .work-item-card {
       display: flex;
       flex-direction: column;
@@ -198,7 +198,7 @@
       color: inherit;
       position: relative;
       opacity: 0;
-      transform: translateY(35px);
+      transform: translateY(40px);
       transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
                   transform 1s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
@@ -472,12 +472,12 @@
 
   <main class="page-container">
     
-    <!-- HERO CON EFECTO DE APARICIÓN -->
+    <!-- HERO CON TÍTULO ANIMADO -->
     <header class="page-header fade-in-up">
       <h1 class="page-title">Selected Works</h1>
     </header>
 
-    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN CON EFECTO DE APARICIÓN -->
+    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN CON ANIMACIÓN -->
     <div class="editorial-filter-bar fade-in-up" style="transition-delay: 150ms;">
       <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
@@ -497,7 +497,7 @@
     <section class="work-grid-modern" id="workGrid" aria-label="Project archive">
       
       <!-- 1. SUKHA -->
-      <article class="work-item-card" data-category="branding creative" data-index="0">
+      <article class="work-item-card" data-category="branding creative" data-row="1">
         <div class="work-img-wrapper">
           <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
         </div>
@@ -510,7 +510,7 @@
       </article>
 
       <!-- 2. NUEVE CERO NUEVE -->
-      <article class="work-item-card" data-category="branding worldbuilding creative" data-index="1">
+      <article class="work-item-card" data-category="branding worldbuilding creative" data-row="1">
         <div class="work-img-wrapper">
           <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
         </div>
@@ -524,7 +524,7 @@
       </article>
 
       <!-- 3. HYPNIA -->
-      <article class="work-item-card" data-category="branding" data-index="2">
+      <article class="work-item-card" data-category="branding" data-row="1">
         <div class="work-img-wrapper">
           <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
         </div>
@@ -536,7 +536,7 @@
       </article>
 
       <!-- 4. ART COVER -->
-      <article class="work-item-card" data-category="artcover creative" data-index="3">
+      <article class="work-item-card" data-category="artcover creative" data-row="2">
         <div class="work-img-wrapper">
           <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
         </div>
@@ -549,7 +549,7 @@
       </article>
 
       <!-- 5. VIBIN: THE AMBIENTS -->
-      <article class="work-item-card" data-category="sound artcover" data-index="4">
+      <article class="work-item-card" data-category="sound artcover" data-row="2">
         <div class="work-img-wrapper">
           <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
         </div>
@@ -563,7 +563,7 @@
       </article>
 
       <!-- 6. THE HUMAN TAPES -->
-      <article class="work-item-card" data-category="branding creative" data-index="5">
+      <article class="work-item-card" data-category="branding creative" data-row="2">
         <div class="work-img-wrapper">
           <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
         </div>
@@ -576,7 +576,7 @@
       </article>
 
       <!-- 7. EBBERKETT -->
-      <article class="work-item-card" data-category="branding worldbuilding" data-index="6">
+      <article class="work-item-card" data-category="branding worldbuilding" data-row="3">
         <div class="work-img-wrapper">
           <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
         </div>
@@ -589,7 +589,7 @@
       </article>
 
       <!-- 8. CELESTE -->
-      <article class="work-item-card" data-category="sound" data-index="7">
+      <article class="work-item-card" data-category="sound" data-row="3">
         <div class="work-img-wrapper">
           <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
         </div>
@@ -604,7 +604,7 @@
     </section>
 
     <!-- BANNER DE INICIO DE PROYECTO -->
-    <section class="archive-cta-section" aria-labelledby="cta-head">
+    <section class="archive-cta-section fade-in-up" aria-labelledby="cta-head">
       <div>
         <h2 id="cta-head" class="archive-cta-title">Want to start a <em>project?</em></h2>
       </div>
@@ -641,64 +641,69 @@
     </div>
   </footer>
 
-  <!-- SCRIPT CON ANIMACIÓN POR FILAS (GRUPOS DE 3) Y HEADER -->
+  <!-- SCRIPT DE INTERSECTION OBSERVER PARA SCROLL Y FILTRADO -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const fadeElements = document.querySelectorAll(".fade-in-up");
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
       const workItems = Array.from(document.querySelectorAll(".work-item-card"));
+      const fadeElements = document.querySelectorAll(".fade-in-up");
 
-      // 1. Animamos primero el Título y los Filtros al cargar
-      fadeElements.forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add("is-visible");
-        }, i * 150);
-      });
-
-      // 2. Función para animar los proyectos agrupados por filas (de 3 en 3)
-      const animateCardsByRow = (cards) => {
-        cards.forEach((item, index) => {
-          item.classList.remove("is-visible");
-          item.style.display = "flex";
-
-          // Calculamos la fila dividiendo el índice entre 3 para que aparezcan juntos por fila
-          const rowIndex = Math.floor(index / 3);
-          
-          // Retraso base de 300ms para el título y luego 150ms extra por cada fila completa
-          const delay = 300 + (rowIndex * 140);
-
-          setTimeout(() => {
-            item.classList.add("is-visible");
-          }, delay);
+      // Observer para elementos generales (títulos, filtros, cta)
+      const generalObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
         });
-      };
+      }, { threshold: 0.15 });
 
-      // Animación inicial de la retícula
-      animateCardsByRow(workItems);
+      fadeElements.forEach(el => generalObserver.observe(el));
 
-      // Lógica de filtrado con re-animación por filas
+      // Observer específico para las tarjetas de proyectos (por fila con retraso escalonado)
+      const cardObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const row = card.getAttribute("data-row") || "1";
+            
+            // Retraso basado en la fila para que aparezcan progresivamente al hacer scroll
+            const delayMap = { "1": 0, "2": 150, "3": 300 };
+            const baseDelay = delayMap[row] || 0;
+
+            setTimeout(() => {
+              card.classList.add("is-visible");
+            }, baseDelay);
+
+            observer.unobserve(card);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      workItems.forEach(item => cardObserver.observe(item));
+
+      // Lógica de filtrado con re-activación limpia
       serviceButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           serviceButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
 
           const filterValue = btn.getAttribute("data-filter");
-          const visibleCards = [];
 
           workItems.forEach(item => {
             const categories = item.getAttribute("data-category");
             item.classList.remove("is-visible");
 
             if (filterValue === "all" || categories.includes(filterValue)) {
-              visibleCards.push(item);
+              item.style.display = "flex";
+              // Pequeño respiro para disparar la animación de nuevo limpiamente
+              setTimeout(() => {
+                item.classList.add("is-visible");
+              }, 60);
             } else {
               item.style.display = "none";
             }
           });
-
-          setTimeout(() => {
-            animateCardsByRow(visibleCards);
-          }, 50);
         });
       });
     });
