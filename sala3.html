@@ -8,12 +8,12 @@
   <meta name="description" content="Immersive exhibition of Sala 03 (Creative Lab & Avant-garde Archives) in the Ebberkett virtual pavilion." />
   
   <!-- Vector Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/EBRKT_logo.svg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   
   <style>
     body, html {
@@ -33,7 +33,7 @@
       -webkit-touch-callout: none;
     }
 
-    /* COMPACT HEADER */
+    /* HEADER */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -74,61 +74,7 @@
       letter-spacing: 0.1em;
     }
 
-    /* ==========================================================
-       EFECTO CRT Y MARGIN GLITCH / ESPACIO NEGATIVO
-       ========================================================== */
-    .crt-screen-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 160;
-      pointer-events: none;
-      background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.04) 50%
-      );
-      background-size: 100% 4px;
-      opacity: 0.38;
-    }
-
-    #staticCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 165;
-      pointer-events: none;
-      opacity: 0.05;
-      transition: opacity 0.2s ease;
-    }
-
-    /* ACENTOS GLITCH EN BORDES Y ESPACIO NEGATIVO */
-    .edge-glitch-accent {
-      position: fixed;
-      z-index: 170;
-      pointer-events: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: rgba(14, 14, 14, 0.35);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .edge-top-left { top: 20px; left: 24px; }
-    .edge-top-right { top: 20px; right: 24px; }
-    .edge-bottom-left { bottom: 20px; left: 24px; animation: glitchBlink 2.4s infinite; }
-    .edge-bottom-right { bottom: 20px; right: 24px; animation: glitchBlink 1.8s infinite; }
-
-    @keyframes glitchBlink {
-      0%, 100% { opacity: 0.2; transform: translateX(0); }
-      50% { opacity: 0.7; transform: translateX(3px); }
-      52% { opacity: 0.1; transform: translateX(-4px); }
-      54% { opacity: 0.6; transform: translateX(1px); }
-    }
-
-    /* ROOM INTRO OVERLAY */
+    /* OVERLAY INTRO CON FONDO BLUR Y ESPACIO NEGATIVO LIMPIO */
     .room-intro-overlay {
       position: fixed;
       top: 0;
@@ -155,7 +101,7 @@
     }
 
     .intro-card-content {
-      max-width: 630px;
+      max-width: 650px;
       width: 100%;
       text-align: center;
       display: flex;
@@ -178,12 +124,12 @@
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     }
 
-    /* EFECTO GLITCH KINETICO EN EL TÍTULO (INSPIRADO EN DRIBBBLE) */
+    /* EFECTO GLITCH SLICE TIPOGRÁFICO EXACTO A LA REFERENCIA (TURQUESA / FUCSIA) */
     .intro-main-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
       margin: 0;
       color: #0e0e0e;
       line-height: 1;
@@ -204,47 +150,61 @@
       width: 100%;
       height: 100%;
       background: transparent;
+      pointer-events: none;
     }
 
+    /* Capa de desplazamiento Turquesa */
     .intro-main-title::before {
-      left: 2px;
-      text-shadow: -2px 0 #ff0055;
-      clip: rect(24px, 550px, 90px, 0);
-      animation: glitchAnim1 3s infinite linear alternate-reverse;
+      color: #00e5ff;
+      clip-path: inset(38% 0 38% 0);
+      transform: translate(6px, -2px);
+      animation: vectorSliceOne 3.2s infinite ease-in-out alternate;
     }
 
+    /* Capa de desplazamiento Fucsia */
     .intro-main-title::after {
-      left: -2px;
-      text-shadow: -2px 0 #00ffff, 0 2px #ff0055;
-      clip: rect(85px, 550px, 140px, 0);
-      animation: glitchAnim2 2.5s infinite linear alternate-reverse;
+      color: #ff007f;
+      clip-path: inset(42% 0 34% 0);
+      transform: translate(-5px, 2px);
+      animation: vectorSliceTwo 2.6s infinite ease-in-out alternate;
     }
 
-    @keyframes glitchAnim1 {
-      0% { clip: rect(12px, 9999px, 44px, 0); transform: skew(0.3deg); }
-      10% { clip: rect(65px, 9999px, 12px, 0); transform: skew(0.8deg); }
-      20% { clip: rect(2px, 9999px, 80px, 0); transform: skew(-0.5deg); }
-      30% { clip: rect(40px, 9999px, 25px, 0); transform: skew(0.2deg); }
-      40% { clip: rect(90px, 9999px, 15px, 0); transform: skew(-0.9deg); }
-      50% { clip: rect(30px, 9999px, 70px, 0); transform: skew(0.4deg); }
-      60% { clip: rect(75px, 9999px, 5px, 0); transform: skew(-0.3deg); }
-      70% { clip: rect(18px, 9999px, 95px, 0); transform: skew(0.6deg); }
-      80% { clip: rect(50px, 9999px, 35px, 0); transform: skew(-0.4deg); }
-      90% { clip: rect(5px, 9999px, 60px, 0); transform: skew(0.2deg); }
-      100% { clip: rect(42px, 9999px, 88px, 0); transform: skew(-0.5deg); }
+    @keyframes vectorSliceOne {
+      0%, 80% {
+        clip-path: inset(40% 0 38% 0);
+        transform: translate(0, 0);
+      }
+      83% {
+        clip-path: inset(25% 0 55% 0);
+        transform: translate(12px, -1px);
+      }
+      86% {
+        clip-path: inset(60% 0 15% 0);
+        transform: translate(-8px, 1px);
+      }
+      90%, 100% {
+        clip-path: inset(40% 0 38% 0);
+        transform: translate(0, 0);
+      }
     }
 
-    @keyframes glitchAnim2 {
-      0% { clip: rect(70px, 9999px, 20px, 0); transform: skew(-0.4deg); }
-      11% { clip: rect(10px, 9999px, 85px, 0); transform: skew(0.7deg); }
-      22% { clip: rect(55px, 9999px, 5px, 0); transform: skew(-0.2deg); }
-      33% { clip: rect(30px, 9999px, 90px, 0); transform: skew(0.5deg); }
-      44% { clip: rect(80px, 9999px, 40px, 0); transform: skew(-0.8deg); }
-      55% { clip: rect(5px, 9999px, 65px, 0); transform: skew(0.3deg); }
-      66% { clip: rect(45px, 9999px, 15px, 0); transform: skew(-0.6deg); }
-      77% { clip: rect(95px, 9999px, 50px, 0); transform: skew(0.2deg); }
-      88% { clip: rect(22px, 9999px, 75px, 0); transform: skew(-0.5deg); }
-      100% { clip: rect(60px, 9999px, 30px, 0); transform: skew(0.4deg); }
+    @keyframes vectorSliceTwo {
+      0%, 75% {
+        clip-path: inset(42% 0 35% 0);
+        transform: translate(0, 0);
+      }
+      78% {
+        clip-path: inset(50% 0 20% 0);
+        transform: translate(-10px, 2px);
+      }
+      82% {
+        clip-path: inset(18% 0 62% 0);
+        transform: translate(7px, -2px);
+      }
+      88%, 100% {
+        clip-path: inset(42% 0 35% 0);
+        transform: translate(0, 0);
+      }
     }
 
     .intro-description {
@@ -277,7 +237,7 @@
       text-decoration: underline;
     }
 
-    /* EL BOTÓN DE EXPLORAR SE MANTIENE 100% ESTABLE Y LIMPIO */
+    /* EL BOTÓN DE EXPLORAR PERMANECE TOTALMENTE LIMPIO Y ESTABLE */
     .explore-gallery-btn {
       margin-top: 12px;
       font-family: 'JetBrains Mono', monospace;
@@ -311,7 +271,7 @@
       }
     }
 
-    /* MAIN GALLERY SLIDER CONTAINER (ESTILO MAGNÉTICO SALA 01) */
+    /* CONTENEDOR DE GALERÍA (ESTILO MAGNÉTICO DE SALA 01) */
     .museum-slider-container {
       position: relative;
       width: 100%;
@@ -463,7 +423,7 @@
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
 
-    /* POP-OUT MODAL */
+    /* MODAL DETALLES DE OBRA */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -573,18 +533,6 @@
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-  <!-- ACENTOS GLITCH EN BORDES Y ESPACIO NEGATIVO -->
-  <span class="edge-glitch-accent edge-top-left">[SYS_03 // LAB]</span>
-  <span class="edge-glitch-accent edge-top-right">EBS_ARCHIVE</span>
-  <span class="edge-glitch-accent edge-bottom-left">ERR: 0x00F // STABLE</span>
-  <span class="edge-glitch-accent edge-bottom-right">LIVE_FEED</span>
-
-  <!-- CAPA DE LÍNEAS CRT / TV VIEJA -->
-  <div class="crt-screen-overlay"></div>
-
-  <!-- CANVAS DE ESTÁTICA / RUIDO VINTAGE -->
-  <canvas id="staticCanvas"></canvas>
-
   <!-- HEADER -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
@@ -593,7 +541,7 @@
     <span class="gallery-indicator">Sala 03</span>
   </header>
 
-  <!-- INTRO OVERLAY -->
+  <!-- INTRO OVERLAY CON EFECTO TIPOGRÁFICO EXACTO A TU REFERENCIA -->
   <div class="room-intro-overlay" id="roomIntroOverlay" onclick="dismissRoomIntro()">
     <div class="intro-card-content" onclick="event.stopPropagation()">
       <span class="intro-subtitle-welcome">welcome to</span>
@@ -701,64 +649,18 @@
     </div>
   </div>
 
-  <!-- SCRIPT DE ESTÁTICA, NAVEGACIÓN Y TECLADO -->
+  <!-- SCRIPT -->
   <script>
-    // Forzar scroll arriba al cargar la página
     window.addEventListener("load", function() {
       window.scrollTo(0, 0);
     });
 
-    const canvas = document.getElementById('staticCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = Math.floor(window.innerWidth / 3);
-      canvas.height = Math.floor(window.innerHeight / 3);
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function renderStaticNoise() {
-      const imgData = ctx.createImageData(canvas.width, canvas.height);
-      const buffer = new Uint32Array(imgData.data.buffer);
-      const len = buffer.length;
-
-      for (let i = 0; i < len; i++) {
-        if (Math.random() < 0.08) {
-          buffer[i] = 0xff000000;
-        }
-      }
-
-      ctx.putImageData(imgData, 0, 0);
-    }
-
-    function loopNoise() {
-      renderStaticNoise();
-      requestAnimationFrame(loopNoise);
-    }
-    loopNoise();
-
-    setInterval(() => {
-      canvas.style.opacity = '0.12';
-      setTimeout(() => {
-        canvas.style.opacity = '0.05';
-      }, 150);
-    }, 6000);
-
-    function triggerStaticGlitch() {
-      canvas.style.opacity = '0.20';
-      setTimeout(() => {
-        canvas.style.opacity = '0.05';
-      }, 200);
-    }
-
     function dismissRoomIntro() {
-      triggerStaticGlitch();
       const overlay = document.getElementById('roomIntroOverlay');
       if (overlay) overlay.classList.add('dismissed');
     }
 
-    // PROTECCIÓN COMPLETA CONTRA DESCARGA Y SELECCIÓN
+    // PROTECCIÓN DE CONTENIDO
     document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo(0, 0);
       document.addEventListener('contextmenu', e => e.preventDefault());
@@ -777,12 +679,10 @@
     }, { passive: false });
 
     function scrollNext() {
-      triggerStaticGlitch();
       track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
     }
 
     function scrollPrev() {
-      triggerStaticGlitch();
       track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
     }
 
