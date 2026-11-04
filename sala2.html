@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
   <title>Sala 02 — Ebberkett</title>
-  <meta name="description" content="Immersive exhibition of Sala 02 (Resident Archives & Fine Art) in the Ebberkett virtual pavilion." />
+  <meta name="description" content="Immersive exhibition of Sala 02 (Resident Works & Permanent Collection) in the Ebberkett virtual pavilion." />
   
   <!-- Vector Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/EBRKT_logo.svg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;650&display=swap" rel="stylesheet" />
   
   <style>
     body, html {
@@ -34,7 +34,7 @@
       -webkit-touch-callout: none;
     }
 
-    /* COMPACT HEADER WITH DIRECT ANCHOR BACK LINK */
+    /* COMPACT HEADER */
     .gallery-header {
       position: fixed;
       top: 0;
@@ -48,6 +48,7 @@
       z-index: 100;
       background-color: rgba(235, 235, 235, 0.92);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(14, 14, 14, 0.08);
     }
 
@@ -81,9 +82,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(235, 235, 235, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background-color: rgba(235, 235, 235, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 150;
       display: flex;
       justify-content: center;
@@ -91,7 +92,7 @@
       padding: 24px;
       box-sizing: border-box;
       cursor: pointer;
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
     .room-intro-overlay.dismissed {
@@ -109,6 +110,8 @@
       align-items: center;
       gap: 16px;
       cursor: default;
+      position: relative;
+      z-index: 155;
     }
 
     .intro-subtitle-welcome {
@@ -144,7 +147,6 @@
       color: #333;
       margin: 6px 0 0 0;
       text-wrap: balance;
-      text-wrap: pretty;
       opacity: 0;
       transform: translateY(15px);
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
@@ -200,19 +202,14 @@
       }
     }
 
-    /* MAIN GALLERY SLIDER CONTAINER */
+    /* MAIN GALLERY SLIDER CONTAINER CON SCROLL SNAP ESTRICTO */
     .museum-slider-container {
       position: relative;
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       height: 100dvh;
+      overflow: hidden;
       box-sizing: border-box;
-      transition: filter 0.6s ease;
-    }
-
-    .museum-slider-container.blurred {
-      filter: blur(12px);
-      pointer-events: none;
     }
 
     .museum-track {
@@ -220,19 +217,24 @@
       width: 100%;
       height: 100%;
       overflow-x: auto;
+      overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     .museum-track::-webkit-scrollbar { display: none; }
 
     .museum-slide-item {
       min-width: 100vw;
+      width: 100vw;
       height: 100vh;
       height: 100dvh;
+      flex-shrink: 0;
       scroll-snap-align: center;
+      scroll-snap-stop: always;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -263,7 +265,7 @@
       justify-content: center;
     }
 
-    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA */
+    /* MARCO DE OBRAS CON CAPA PROTECTORA ANTI-DESCARGA (CANDADO) */
     .artwork-display-frame {
       position: relative;
       max-width: 50vw;
@@ -280,7 +282,7 @@
       transition: box-shadow 0.4s ease;
     }
 
-    /* Capa de cristal invisible sobre la imagen */
+    /* Capa de cristal invisible sobre la imagen para impedir arrastrarla */
     .artwork-display-frame::after {
       content: '';
       position: absolute;
@@ -290,10 +292,6 @@
       height: 100%;
       z-index: 10;
       background: rgba(0,0,0,0);
-    }
-
-    .artwork-display-frame:hover {
-      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18), 0 15px 35px rgba(0, 0, 0, 0.08);
     }
 
     .artwork-display-frame img {
@@ -358,10 +356,7 @@
       z-index: 50;
       font-size: 0.8rem;
       backdrop-filter: blur(4px);
-      transition: background 0.2s ease, opacity 0.2s ease;
     }
-
-    .slider-nav-btn:hover { background: rgba(255, 255, 255, 0.95); }
 
     .nav-prev { left: 3vw; }
     .nav-next { right: 3vw; }
@@ -416,12 +411,6 @@
       cursor: pointer;
       color: #0e0e0e;
       z-index: 50;
-      transition: background 0.2s ease;
-    }
-
-    .modal-close-btn:hover {
-      background: #0e0e0e;
-      color: #EBEBEB;
     }
 
     .modal-body-grid {
@@ -445,12 +434,25 @@
       font-size: 0.75rem;
     }
 
+    /* ADAPTACIÓN MÓVIL CON SCROLL SNAP VERTICAL ESTRICTO */
     @media (max-width: 900px) {
+      .museum-track {
+        flex-direction: column !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        scroll-snap-type: y mandatory !important;
+      }
       .museum-slide-item {
+        min-width: 100vw !important;
+        width: 100vw !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
         flex-direction: column;
         justify-content: center;
         gap: 14px;
         padding: 60px 4vw 25px 4vw;
+        scroll-snap-align: center !important;
+        scroll-snap-stop: always !important;
       }
       .artwork-display-frame {
         max-width: 78vw;
@@ -469,21 +471,14 @@
         text-align: center;
         align-items: center;
       }
-      .slider-nav-btn {
-        top: 32%;
-        width: 32px;
-        height: 32px;
-        font-size: 0.75rem;
-      }
-      .nav-prev { left: 2vw; }
-      .nav-next { right: 2vw; }
+      .slider-nav-btn { display: none; }
       .modal-body-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-  <!-- HEADER WITH "SALA 02" -->
+  <!-- HEADER -->
   <header class="gallery-header">
     <a href="ebberkett.html#salas" class="back-pavilion-link">
       <span>← Back</span>
@@ -498,11 +493,11 @@
       <h1 class="intro-main-title">SALA 02</h1>
       
       <p class="intro-description">
-        A space dedicated to the resident archives and visual exploration of our studio—showcasing standalone artwork, refined graphics, and fine art pieces born from internal research.
+        Works by the internal collective and EBS permanent collections, showcasing our foundational visual trajectory.
       </p>
 
       <p class="intro-social-note">
-        to stay updated on new releases or explore our resident directory, visit us on instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
+        to explore our permanent archive, follow us on instagram <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" onclick="event.stopPropagation()">@ebberkett</a>.
       </p>
 
       <button class="explore-gallery-btn" onclick="dismissRoomIntro()">
@@ -512,7 +507,7 @@
   </div>
 
   <!-- MAIN GALLERY SLIDER CONTAINER -->
-  <div class="museum-slider-container blurred" id="galleryContainer">
+  <div class="museum-slider-container" id="galleryContainer">
     <button class="slider-nav-btn nav-prev" onclick="scrollPrev()" aria-label="Previous">←</button>
     <button class="slider-nav-btn nav-next" onclick="scrollNext()" aria-label="Next">→</button>
 
@@ -522,15 +517,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Studio Archives #01', 'Eloria Resident', 'Visual exploration & digital canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Studio Archives #01" draggable="false" />
+          <div class="artwork-display-frame" onclick="openArtworkModal('Permanent Archive #01', 'Eloria Brista Studio', 'Archival pigment print', '2025', '')">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1200&auto=format&fit=crop" alt="Permanent Archive #01" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
-          <h3 class="label-artist">Eloria Resident</h3>
-          <p class="label-title-italic">"Studio Archives #01", 2026</p>
-          <span class="label-medium">Visual exploration &amp; digital canvas</span>
-          <p class="label-desc">Resident collection showcasing standalone visual research and refined composition.</p>
+          <h3 class="label-artist">Eloria Brista Studio</h3>
+          <p class="label-title-italic">"Permanent Archive #01", 2025</p>
+          <span class="label-medium">Archival pigment print</span>
+          <p class="label-desc">Foundational study on structural symmetry and tonal restraint.</p>
         </div>
       </div>
 
@@ -538,15 +533,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Monochrome Balance', 'Eloria Resident', 'Digital print on museum canvas', '2026', '')">
-            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1200&auto=format&fit=crop" alt="Monochrome Balance" draggable="false" />
+          <div class="artwork-display-frame" onclick="openArtworkModal('Monolith Series #04', 'Resident Collective', 'Fine art photography', '2025', '')">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=1200&auto=format&fit=crop" alt="Monolith Series #04" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
-          <h3 class="label-artist">Eloria Resident</h3>
-          <p class="label-title-italic">"Monochrome Balance", 2026</p>
-          <span class="label-medium">Digital print on museum canvas</span>
-          <p class="label-desc">Exploration of minimalist structures and clean studio aesthetics.</p>
+          <h3 class="label-artist">Resident Collective</h3>
+          <p class="label-title-italic">"Monolith Series #04", 2025</p>
+          <span class="label-medium">Fine art photography</span>
+          <p class="label-desc">Exploration of brutalist forms translated into digital canvas.</p>
         </div>
       </div>
 
@@ -554,15 +549,15 @@
       <div class="museum-slide-item">
         <div class="gallery-spotlight-effect"></div>
         <div class="artwork-stage">
-          <div class="artwork-display-frame" onclick="openArtworkModal('Permanent Archive #04', 'EBS Collective', 'Mixed media & fine graphics', '2025', '')">
-            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200&auto=format&fit=crop" alt="Permanent Archive #04" draggable="false" />
+          <div class="artwork-display-frame" onclick="openArtworkModal('Silent Horizon', 'EBS Permanent', 'Mixed media collective work', '2024', '')">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1200&auto=format&fit=crop" alt="Silent Horizon" draggable="false" />
           </div>
         </div>
         <div class="museum-wall-label">
-          <h3 class="label-artist">EBS Collective</h3>
-          <p class="label-title-italic">"Permanent Archive #04", 2025</p>
-          <span class="label-medium">Mixed media &amp; fine graphics</span>
-          <p class="label-desc">Selected standalone pieces from the internal studio archive focused on visual form.</p>
+          <h3 class="label-artist">EBS Permanent</h3>
+          <p class="label-title-italic">"Silent Horizon", 2024</p>
+          <span class="label-medium">Mixed media collective work</span>
+          <p class="label-desc">Documenting landscape transformations through minimalist abstraction.</p>
         </div>
       </div>
 
@@ -582,17 +577,17 @@
           <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #555; line-height: 1.5;" id="modalDetails">
             Artist: Artist Name<br/>
             Medium: Technique<br/>
-            Timeline: 2026
+            Timeline: 2025
           </p>
           <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #333; line-height: 1.5; margin-top: 15px;">
-            Detailed inspection of the resident piece. Access studio records and documentation regarding internal production.
+            Permanent collection registry record. Preserved under the standards of Eloria Brista Studio.
           </p>
         </div>
 
         <div>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Log / Process Record</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; text-transform: uppercase;">Studio Archive / Registry</span>
           <div class="modal-bts-video-box" id="modalVideoContainer">
-            [ Video Process / Studio Log - Pending ]
+            [ Archival Document - Pending ]
           </div>
         </div>
       </div>
@@ -601,15 +596,18 @@
 
   <!-- SCRIPT -->
   <script>
+    window.addEventListener("load", function() {
+      window.scrollTo(0, 0);
+    });
+
     function dismissRoomIntro() {
       const overlay = document.getElementById('roomIntroOverlay');
-      const container = document.getElementById('galleryContainer');
       if (overlay) overlay.classList.add('dismissed');
-      if (container) container.classList.remove('blurred');
     }
 
-    // PROTECCIÓN COMPLETA CONTRA DESCARGA
+    // PROTECCIÓN DE CONTENIDO (CANDADO)
     document.addEventListener('DOMContentLoaded', () => {
+      window.scrollTo(0, 0);
       document.addEventListener('contextmenu', e => e.preventDefault());
       document.querySelectorAll('img').forEach(img => {
         img.addEventListener('dragstart', e => e.preventDefault());
@@ -618,22 +616,40 @@
 
     const track = document.getElementById('museumTrack');
 
+    // CONTROL EXACTO DE RUEDA DE MOUSE PARA SALTO MAGNÉTICO DE UNA OBRA A LA VEZ
+    let isScrolling = false;
     track.addEventListener('wheel', (evt) => {
-      if (evt.deltaY !== 0) {
+      if (window.innerWidth > 900 && Math.abs(evt.deltaY) > 20) {
         evt.preventDefault();
-        track.scrollLeft += evt.deltaY;
+        if (isScrolling) return;
+        isScrolling = true;
+
+        const direction = evt.deltaY > 0 ? 1 : -1;
+        track.scrollBy({ left: direction * window.innerWidth, behavior: 'smooth' });
+
+        setTimeout(() => {
+          isScrolling = false;
+        }, 400);
       }
     }, { passive: false });
 
     function scrollNext() {
-      track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+      if (window.innerWidth > 900) {
+        track.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      }
     }
 
     function scrollPrev() {
-      track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+      if (window.innerWidth > 900) {
+        track.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
     }
 
-    // TECLA ESCAPAR PARA MODAL / INTRO Y NAVEGACIÓN
+    // MANEJO DE TECLAS
     document.addEventListener('keydown', (e) => {
       const modal = document.getElementById('artworkModal');
       const modalActive = modal && modal.classList.contains('active');
@@ -645,10 +661,12 @@
           dismissRoomIntro();
         }
       } else if (e.key === 'Enter' || e.key === ' ') {
-        if (!modalActive) dismissRoomIntro();
-      } else if (e.key === 'ArrowRight') {
+        if (!modalActive) {
+          dismissRoomIntro();
+        }
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
         scrollNext();
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         scrollPrev();
       }
     });
@@ -661,7 +679,7 @@
       if (videoUrl) {
         videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
       } else {
-        videoBox.innerHTML = `[ Video Process / Studio Log - Pending Upload ]`;
+        videoBox.innerHTML = `[ Archival Document - Pending Upload ]`;
       }
 
       document.getElementById('artworkModal').classList.add('active');
