@@ -1,14 +1,3 @@
-¡Tienes toda la razón! Viendo la captura queda claro el problema: en celular el contenido se estira verticalmente a lo largo de varios *viewports*, rompiendo la composición única donde la fecha, las imágenes superpuestas, el título y el nombre del artista coexisten en una sola vista armónica.
-
-Para solucionar esto y mantener la estética exacta del escritorio en pantallas móviles:
-
-1. **Superposición completa (`z-index` elevado):** La fecha (`08.AUG — 31.OCT`), el título (*El susurro de los 1000 tulipanes*) y el nombre del artista (**Haidar Hikmah**) flotarán por encima del collage con `position: absolute` y `pointer-events: none` (para permitir interacción con las fotos).
-2. **Escalado proporcional (`Container Queries` / `vw` reducidos):** Las fotos del collage mantendrán sus posiciones relativas superpuestas, pero compactadas dentro del ancho móvil sin provocar desbordamiento ni scroll vertical excesivo.
-3. **Control del header fijo:** Se ajustan los márgenes superiores para que la barra de navegación no tape la fecha ni el título superior.
-
-Aquí tienes el código completo y corregido para **`ebberkett.html`**:
-
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -1573,5 +1562,3 @@ Aquí tienes el código completo y corregido para **`ebberkett.html`**:
 </script>
 </body>
 </html>
-
-```
