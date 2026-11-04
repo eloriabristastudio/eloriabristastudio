@@ -93,6 +93,20 @@
       box-sizing: border-box;
     }
 
+    /* EFECTO DE APARICIÓN EN CASCADA PARA EL TÍTULO Y FILTROS */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .page-header {
       margin-bottom: 90px;
       padding: 0 1vw;
@@ -184,7 +198,6 @@
       position: relative;
     }
 
-    /* EFECTO APLICADO ÚNICAMENTE AL CONTENEDOR DE LA IMAGEN */
     .work-img-wrapper {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -194,12 +207,11 @@
       position: relative;
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
-    /* ESTADO VISIBLE SOLO PARA LA IMAGEN */
     .work-item-card.is-visible .work-img-wrapper {
       opacity: 1;
       transform: translateY(0);
@@ -459,13 +471,13 @@
 
   <main class="page-container">
     
-    <!-- HERO CON TÍTULO APRETADO -->
-    <header class="page-header">
+    <!-- HERO CON TÍTULO APRETADO Y EFECTO -->
+    <header class="page-header fade-in-up" id="pageHeader">
       <h1 class="page-title">Selected Works</h1>
     </header>
 
-    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN -->
-    <div class="editorial-filter-bar">
+    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN CON EFECTO -->
+    <div class="editorial-filter-bar fade-in-up" id="filterBar">
       <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
         <button class="active" data-filter="all">All</button>
@@ -628,11 +640,22 @@
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT DE APARICIÓN ESCALONADA (TÍTULO, FILTROS Y TARJETAS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const pageHeader = document.getElementById("pageHeader");
+      const filterBar = document.getElementById("filterBar");
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
       const workItems = Array.from(document.querySelectorAll(".work-item-card"));
+
+      // Animación inicial en cascada para el encabezado, filtros y tarjetas
+      setTimeout(() => {
+        pageHeader.classList.add("is-visible");
+      }, 100);
+
+      setTimeout(() => {
+        filterBar.classList.add("is-visible");
+      }, 250);
 
       const animateCards = (cards) => {
         cards.forEach((item, index) => {
@@ -641,12 +664,13 @@
 
           setTimeout(() => {
             item.classList.add("is-visible");
-          }, index * 80);
+          }, 400 + (index * 90));
         });
       };
 
       animateCards(workItems);
 
+      // Lógica de filtrado
       serviceButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           serviceButtons.forEach(b => b.classList.remove("active"));
