@@ -93,7 +93,7 @@
       box-sizing: border-box;
     }
 
-    /* EFECTO DE APARICIÓN EN CASCADA PARA EL TÍTULO Y FILTROS */
+    /* EFECTO DE APARICIÓN PARA EL TÍTULO Y FILTROS */
     .fade-in-up {
       opacity: 0;
       transform: translateY(30px);
@@ -190,12 +190,23 @@
       box-sizing: border-box;
     }
 
+    /* TARJETA DE PROYECTO CON APARICIÓN EN FILAS */
     .work-item-card {
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
       position: relative;
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .work-item-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .work-img-wrapper {
@@ -205,16 +216,6 @@
       overflow: hidden;
       margin-bottom: 16px;
       position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-
-    .work-item-card.is-visible .work-img-wrapper {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .work-img-wrapper img {
@@ -471,13 +472,13 @@
 
   <main class="page-container">
     
-    <!-- HERO CON TÍTULO APRETADO Y EFECTO -->
-    <header class="page-header fade-in-up" id="pageHeader">
+    <!-- HERO CON EFECTO DE APARICIÓN -->
+    <header class="page-header fade-in-up">
       <h1 class="page-title">Selected Works</h1>
     </header>
 
-    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN CON EFECTO -->
-    <div class="editorial-filter-bar fade-in-up" id="filterBar">
+    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN CON EFECTO DE APARICIÓN -->
+    <div class="editorial-filter-bar fade-in-up" style="transition-delay: 150ms;">
       <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
         <button class="active" data-filter="all">All</button>
@@ -496,7 +497,7 @@
     <section class="work-grid-modern" id="workGrid" aria-label="Project archive">
       
       <!-- 1. SUKHA -->
-      <article class="work-item-card" data-category="branding creative">
+      <article class="work-item-card" data-category="branding creative" data-index="0">
         <div class="work-img-wrapper">
           <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
         </div>
@@ -509,7 +510,7 @@
       </article>
 
       <!-- 2. NUEVE CERO NUEVE -->
-      <article class="work-item-card" data-category="branding worldbuilding creative">
+      <article class="work-item-card" data-category="branding worldbuilding creative" data-index="1">
         <div class="work-img-wrapper">
           <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
         </div>
@@ -523,7 +524,7 @@
       </article>
 
       <!-- 3. HYPNIA -->
-      <article class="work-item-card" data-category="branding">
+      <article class="work-item-card" data-category="branding" data-index="2">
         <div class="work-img-wrapper">
           <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
         </div>
@@ -535,7 +536,7 @@
       </article>
 
       <!-- 4. ART COVER -->
-      <article class="work-item-card" data-category="artcover creative">
+      <article class="work-item-card" data-category="artcover creative" data-index="3">
         <div class="work-img-wrapper">
           <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
         </div>
@@ -548,7 +549,7 @@
       </article>
 
       <!-- 5. VIBIN: THE AMBIENTS -->
-      <article class="work-item-card" data-category="sound artcover">
+      <article class="work-item-card" data-category="sound artcover" data-index="4">
         <div class="work-img-wrapper">
           <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
         </div>
@@ -562,7 +563,7 @@
       </article>
 
       <!-- 6. THE HUMAN TAPES -->
-      <article class="work-item-card" data-category="branding creative">
+      <article class="work-item-card" data-category="branding creative" data-index="5">
         <div class="work-img-wrapper">
           <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
         </div>
@@ -575,7 +576,7 @@
       </article>
 
       <!-- 7. EBBERKETT -->
-      <article class="work-item-card" data-category="branding worldbuilding">
+      <article class="work-item-card" data-category="branding worldbuilding" data-index="6">
         <div class="work-img-wrapper">
           <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
         </div>
@@ -588,7 +589,7 @@
       </article>
 
       <!-- 8. CELESTE -->
-      <article class="work-item-card" data-category="sound">
+      <article class="work-item-card" data-category="sound" data-index="7">
         <div class="work-img-wrapper">
           <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
         </div>
@@ -640,37 +641,42 @@
     </div>
   </footer>
 
-  <!-- SCRIPT DE APARICIÓN ESCALONADA (TÍTULO, FILTROS Y TARJETAS) -->
+  <!-- SCRIPT CON ANIMACIÓN POR FILAS (GRUPOS DE 3) Y HEADER -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const pageHeader = document.getElementById("pageHeader");
-      const filterBar = document.getElementById("filterBar");
+      const fadeElements = document.querySelectorAll(".fade-in-up");
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
       const workItems = Array.from(document.querySelectorAll(".work-item-card"));
 
-      // Animación inicial en cascada para el encabezado, filtros y tarjetas
-      setTimeout(() => {
-        pageHeader.classList.add("is-visible");
-      }, 100);
+      // 1. Animamos primero el Título y los Filtros al cargar
+      fadeElements.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add("is-visible");
+        }, i * 150);
+      });
 
-      setTimeout(() => {
-        filterBar.classList.add("is-visible");
-      }, 250);
-
-      const animateCards = (cards) => {
+      // 2. Función para animar los proyectos agrupados por filas (de 3 en 3)
+      const animateCardsByRow = (cards) => {
         cards.forEach((item, index) => {
           item.classList.remove("is-visible");
           item.style.display = "flex";
 
+          // Calculamos la fila dividiendo el índice entre 3 para que aparezcan juntos por fila
+          const rowIndex = Math.floor(index / 3);
+          
+          // Retraso base de 300ms para el título y luego 150ms extra por cada fila completa
+          const delay = 300 + (rowIndex * 140);
+
           setTimeout(() => {
             item.classList.add("is-visible");
-          }, 400 + (index * 90));
+          }, delay);
         });
       };
 
-      animateCards(workItems);
+      // Animación inicial de la retícula
+      animateCardsByRow(workItems);
 
-      // Lógica de filtrado
+      // Lógica de filtrado con re-animación por filas
       serviceButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           serviceButtons.forEach(b => b.classList.remove("active"));
@@ -691,7 +697,7 @@
           });
 
           setTimeout(() => {
-            animateCards(visibleCards);
+            animateCardsByRow(visibleCards);
           }, 50);
         });
       });
