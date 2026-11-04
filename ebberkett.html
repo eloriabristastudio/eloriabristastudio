@@ -427,7 +427,6 @@
       height: 210px;
       overflow: hidden;
       z-index: 4;
-      cursor: pointer;
     }
 
     .t-img-box {
@@ -838,71 +837,6 @@
       border-top: 1px solid rgba(14, 14, 14, 0.12);
     }
 
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(14, 14, 14, 0.88);
-      backdrop-filter: blur(12px);
-      z-index: 200;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-      cursor: pointer;
-    }
-
-    .modal-overlay.active { display: flex; }
-
-    .modal-content-card {
-      background: #f5f4f0;
-      max-width: 950px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 55px;
-      box-sizing: border-box;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.2);
-      cursor: default;
-    }
-
-    .modal-close-btn {
-      position: sticky;
-      top: 0; float: right;
-      background: #f5f4f0;
-      border: 1px solid rgba(14, 14, 14, 0.2);
-      width: 40px; height: 40px;
-      display: flex; justify-content: center; align-items: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem;
-      cursor: pointer;
-      color: #0e0e0e;
-      z-index: 50;
-      transition: background 0.2s ease;
-    }
-
-    .modal-close-btn:hover { background: #0e0e0e; color: #f5f4f0; }
-
-    .modal-body-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 20px;
-      clear: both;
-    }
-
-    .modal-bts-video-box {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #000;
-      margin-top: 25px;
-      display: flex; justify-content: center; align-items: center;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-    }
-
     /* FOOTER */
     .redesigned-footer {
       width: 100%;
@@ -1031,8 +965,6 @@
       .ebberkett-header { padding: 18px 20px; }
       .ebberkett-nav-links { display: none; }
       .mobile-menu-btn { display: block; }
-      .modal-body-grid { grid-template-columns: 1fr; }
-      .modal-content-card { padding: 30px 20px; max-height: 90vh; }
       .salas-grid-shop { grid-template-columns: 1fr; }
 
       .current-exhibition-section {
@@ -1040,8 +972,8 @@
       }
 
       .slide-layout-tulips {
-        min-height: 440px;
-        height: 440px;
+        min-height: 420px;
+        height: 420px;
         position: relative;
         overflow: hidden;
       }
@@ -1120,11 +1052,13 @@
         z-index: 4;
       }
 
+      /* FIRMA DEL ARTISTA SUBIDA EN CELULAR (JUSTO DEBAJO DEL COLLAGE) */
       .tulips-artist-bottom {
         position: absolute;
-        bottom: 12px;
+        top: 360px;
+        bottom: auto;
         right: 0px;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         z-index: 30;
         letter-spacing: -0.05em;
       }
@@ -1236,7 +1170,7 @@
                 08.AUG —<br/>31.OCT
               </div>
 
-              <!-- COLLAGE DE IMÁGENES -->
+              <!-- COLLAGE DE IMÁGENES (SIN POP-UP NI CLIC) -->
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
                   <div class="t-img-box">
@@ -1253,7 +1187,7 @@
                     <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600&auto=format&fit=crop" alt="Tulip right red/orange" draggable="false" />
                   </div>
                 </div>
-                <div class="t-img-4" onclick="openModal('El susurro de los 1000 tulipanes', 'Haidar Hikmah', 'Mixed Media & Digital Canvas', '2026', 'Sala 01', '')">
+                <div class="t-img-4">
                   <div class="t-img-box">
                     <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=1000&auto=format&fit=crop" alt="Tulip bottom painting" draggable="false" />
                   </div>
@@ -1454,32 +1388,6 @@
   </section>
 </main>
 
-<div class="modal-overlay" id="caseModal" onclick="closeModalOnBackdrop(event)">
-  <div class="modal-content-card">
-    <button class="modal-close-btn" onclick="closeModal()">✕</button>
-    <span class="section-label" id="mGalleryLocation">Sala 01</span>
-    <h2 id="mTitle" style="font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; margin: 10px 0;">Project Title</h2>
-    <div class="modal-body-grid">
-      <div>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #555; line-height: 1.6;" id="mDetails">
-          Artist: Triveat<br/>
-          Medium: Digital Oil on Canvas<br/>
-          Timeline: 2025
-        </p>
-        <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #333; line-height: 1.6; margin-top: 20px;" id="mDescription">
-          Immersive exploration created in the Ebberkett laboratory for official art direction. This project investigates the use of organic textures and typographic distortion.
-        </p>
-      </div>
-      <div>
-        <span class="section-label">Creative Process &amp; Studio Log</span>
-        <div class="modal-bts-video-box" id="mVideoContainer">
-          [Video Process / Studio Log - Pending Upload]
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer class="redesigned-footer">
   <div class="footer-inner-content reveal-item">
@@ -1659,38 +1567,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", terminalTypewriter);
-
-  function openModal(title, artist, medium, year, location, videoUrl) {
-    document.getElementById('mTitle').innerText = title;
-    document.getElementById('mGalleryLocation').innerText = location;
-    document.getElementById('mDetails').innerHTML = `Artist: ${artist}<br/>Medium: ${medium}<br/>Timeline: ${year}`;
-    const videoBox = document.getElementById('mVideoContainer');
-    if (videoUrl) {
-      videoBox.innerHTML = `<iframe width="100%" height="100%" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-    } else {
-      videoBox.innerHTML = '[Video Process / Studio Log - Pending Upload]';
-    }
-    document.getElementById('caseModal').classList.add('active');
-  }
-
-  function closeModal() {
-    document.getElementById('caseModal').classList.remove('active');
-    document.getElementById('mVideoContainer').innerHTML = '';
-  }
-
-  function closeModalOnBackdrop(event) {
-    if (event.target === document.getElementById('caseModal')) {
-      closeModal();
-    }
-  }
-
-  document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('caseModal');
-    const modalActive = modal && modal.classList.contains('active');
-    if (e.key === 'Escape' && modalActive) {
-      closeModal();
-    }
-  });
 
   window.addEventListener("load", function() {
     if (window.location.hash === "#salas") {
