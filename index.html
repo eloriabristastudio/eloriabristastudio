@@ -74,7 +74,7 @@
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     }
 
-    /* HEADER EDITORIAL CON ALINEACIÓN VERTICAL ESTRICTA */
+    /* HEADER EDITORIAL CON ALINEACIÓN SIMÉTRICA */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -149,7 +149,7 @@
       transform: translateY(-1px);
     }
 
-    /* BOTÓN HAMBURGUESA MÓVIL NIVELADO EXACTAMENTE CON EL EJE DEL HEADER */
+    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO Y SIMÉTRICO */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -165,7 +165,7 @@
       width: 26px;
       align-items: center;
       justify-content: center;
-      transform: translateY(-1px); /* Subido ligeramente para compensar simetría óptica */
+      transform: translateY(-1px);
     }
 
     /* OVERLAY MENÚ MÓVIL DESPLEGABLE */
@@ -210,7 +210,7 @@
 
     .mobile-nav-links a:hover { opacity: 0.5; }
 
-    /* HERO EDITORIAL */
+    /* HERO EDITORIAL - KERNING -0.07em Y PESO LIGERO (SIN BOLD) */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
@@ -232,8 +232,8 @@
     .hero-title {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: clamp(3.2rem, 7.8vw, 8.5rem);
-      font-weight: 300;
-      letter-spacing: -0.025em;
+      font-weight: 300; /* Regular / Light sin negritas */
+      letter-spacing: -0.07em; /* Kerning súper apretado (-7) */
       line-height: 0.92;
       margin: 0;
     }
@@ -716,7 +716,7 @@
     <div class="content">
       <main>
         
-        <!-- HERO EDITORIAL -->
+        <!-- HERO EDITORIAL CON KERNING DE -0.07em Y PESO LIGERO -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left animate-hero-1">
