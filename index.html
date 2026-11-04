@@ -180,55 +180,6 @@
       letter-spacing: -0.25px;
     }
 
-    /* CINTA ANIMADA DE SERVICIOS */
-    .ticker-connector {
-      width: 100%;
-      overflow: hidden;
-      background: transparent;
-      border-top: 1px solid rgba(14, 14, 14, 0.1);
-      border-bottom: 1px solid rgba(14, 14, 14, 0.1);
-      padding: 28px 0;
-      margin: 40px 0;
-      white-space: nowrap;
-      box-sizing: border-box;
-    }
-
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: infiniteScroll 30s linear infinite;
-    }
-
-    .ticker-group {
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-item {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      letter-spacing: -0.25px;
-      color: #0e0e0e;
-      padding: 0 30px;
-      display: flex;
-      align-items: center;
-    }
-
-    .ticker-dot {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      background-color: #0e0e0e;
-      border-radius: 50%;
-      margin-left: 30px;
-    }
-
-    @keyframes infiniteScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
     /* MANIFIESTO Y REVEAL POR LÍNEAS */
     .about-statement-section {
       padding: 120px 4vw;
@@ -297,7 +248,7 @@
 
     .arrow-link:hover { opacity: 0.6; }
 
-    /* SECCIÓN FEATURED WORK (ESTILO MAQUETADO DE WORK) */
+    /* SECCIÓN FEATURED WORK (MAQUETADO ESTILO WORK) */
     .featured-work-section {
       padding: 80px 4vw 120px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
@@ -596,7 +547,6 @@
       }
       .hero-center, .hero-right { text-align: left; }
       .hero-footer-meta { position: static; margin-top: 40px; }
-      .ticker-item { font-size: 1.1rem; }
       .work-preview-grid { grid-template-columns: 1fr; }
       .section-header-flex { flex-direction: column; align-items: flex-start; gap: 20px; }
     }
@@ -641,26 +591,6 @@
             <span>Multidisciplinary Boutique</span>
           </div>
         </section>
-
-        <!-- BANDA DE SERVICIOS -->
-        <div class="ticker-connector">
-          <div class="ticker-track">
-            <div class="ticker-group">
-              <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
-            </div>
-            <div class="ticker-group">
-              <span class="ticker-item">Creative Direction <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Branding <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Worldbuilding <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Music &amp; Sound Design <span class="ticker-dot"></span></span>
-              <span class="ticker-item">Audio Production &amp; Engineering <span class="ticker-dot"></span></span>
-            </div>
-          </div>
-        </div>
 
         <!-- MANIFIESTO CON ENLACE A ABOUT.HTML -->
         <section id="statement-section" class="about-statement-section">
