@@ -74,7 +74,7 @@
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     }
 
-    /* HEADER EDITORIAL INTELIGENTE (SE OCULTA EN SCROLL DOWN Y APRECE EN SCROLL UP) */
+    /* HEADER EDITORIAL INTELIGENTE */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -122,7 +122,7 @@
 
     .header-editorial .brand-logo:hover { opacity: 0.5; }
 
-    /* NAVEGACIÓN SUPERIOR CON HOVER SUAVE */
+    /* NAVEGACIÓN DESKTOP */
     .nav-links {
       display: flex;
       align-items: center;
@@ -146,7 +146,61 @@
       transform: translateY(-1px);
     }
 
-    /* HERO EDITORIAL */
+    /* BOTÓN HAMBURGUESA MÓVIL (OCULTO EN DESKTOP) */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 101;
+      color: #0e0e0e;
+      font-size: 1.4rem;
+    }
+
+    /* OVERLAY MENÚ MÓVIL DESPLEGABLE */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #EBEBEB;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 8vw;
+      box-sizing: border-box;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mobile-nav-links a {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+      color: #0e0e0e;
+      transition: opacity 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover { opacity: 0.5; }
+
+    /* HERO EDITORIAL CON KERNING AJUSTADO */
     .hero-editorial {
       min-height: 100vh;
       width: 100%;
@@ -166,10 +220,11 @@
     }
 
     .hero-title {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: clamp(3.2rem, 7.8vw, 8.5rem);
       font-weight: 300;
       text-transform: none;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.04em; /* Kerning refinado e idéntico al header/footer */
       line-height: 0.92;
       margin: 0;
     }
@@ -188,7 +243,7 @@
       letter-spacing: -0.02em;
     }
 
-    /* MANIFIESTO Y REVEAL POR LÍNEAS AL HACER SCROLL */
+    /* MANIFIESTO */
     .about-statement-section {
       padding: 160px 4vw 120px 4vw;
       max-width: 1300px;
@@ -242,7 +297,7 @@
       font-weight: 400;
     }
 
-    /* ENLACES SIN SUBRAYADO Y CON ANIMACIÓN LIGERA DE FLECHA */
+    /* ENLACES SIN SUBRAYADO */
     .arrow-link {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.85rem;
@@ -267,7 +322,7 @@
     .arrow-link:hover { opacity: 0.6; }
     .arrow-link:hover span { transform: translateX(4px); }
 
-    /* SECCIÓN FEATURED WORK CON ANIMACIÓN EN TARJETAS */
+    /* SECCIÓN WORKS (RENOMBRADO) */
     .featured-work-section {
       padding: 100px 4vw 140px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
@@ -398,6 +453,7 @@
       border-bottom: 1px solid rgba(235, 235, 235, 0.15);
       text-decoration: none;
       color: inherit;
+      cursor: pointer;
       transition: background-color 0.4s ease, padding-left 0.4s ease;
     }
 
@@ -429,7 +485,7 @@
       padding-right: 40px;
     }
 
-    /* ANIMACIÓN INTERACTIVA DE FLECHA */
+    /* FLECHA POR DEFECTO APUNTANDO A LA DERECHA (→) */
     .discipline-arrow {
       font-size: 1.3rem;
       color: #EBEBEB;
@@ -437,11 +493,14 @@
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .discipline-row:hover .discipline-arrow {
-      transform: rotate(-45deg) translate(2px, -2px);
+    /* EN DESKTOP: HOVER ROTATE ARRIBA-DERECHA (↗) */
+    @media (min-width: 1025px) {
+      .discipline-row:hover .discipline-arrow {
+        transform: rotate(-45deg) translate(2px, -2px);
+      }
     }
 
-    /* FOOTER */
+    /* FOOTER CON LOGOTIPO Y NOMBRE LIGERAMENTE MÁS GRANDES */
     .redesigned-footer {
       width: 100%;
       padding: 100px 4vw 50px 4vw;
@@ -469,19 +528,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
       text-decoration: none;
       color: #0e0e0e;
     }
 
     .footer-logo-brand img {
-      height: 32px;
+      height: 42px; /* Ligeramente más grande */
       width: auto;
     }
 
     .footer-brand-title {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.95rem;
+      font-size: 1.15rem; /* Ligeramente más grande con su kerning coherente */
       font-weight: 500;
       letter-spacing: -0.04em;
       text-transform: none;
@@ -564,13 +623,46 @@
     /* ADAPTATIVO PARA MÓVILES */
     @media (max-width: 1024px) {
       .work-preview-grid { grid-template-columns: repeat(2, 1fr); }
-      .discipline-row { grid-template-columns: 50px 1fr auto; }
-      .discipline-desc { display: none; }
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      
+      /* En móvil, la rejilla de disciplinas se reorganiza como acordeón */
+      .discipline-row {
+        grid-template-columns: 50px 1fr auto;
+        grid-template-areas: 
+          "num name arrow"
+          "desc desc desc";
+        align-items: start;
+        padding: 25px 0;
+      }
+      .discipline-num { grid-area: num; }
+      .discipline-name { grid-area: name; }
+      .discipline-arrow { grid-area: arrow; }
+      
+      /* Descripción oculta por defecto en móvil hasta hacer clic */
+      .discipline-desc {
+        grid-area: desc;
+        max-height: 0;
+        overflow: hidden;
+        padding-right: 0;
+        margin-top: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+      }
+
+      /* Estado activo al desplegarse en móvil (flecha apunta hacia abajo ↓) */
+      .discipline-row.mobile-open .discipline-desc {
+        max-height: 150px;
+        margin-top: 12px;
+        opacity: 1;
+      }
+      .discipline-row.mobile-open .discipline-arrow {
+        transform: rotate(90deg); /* Apunta hacia abajo */
+      }
     }
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .nav-links { display: none; }
       .hero-grid {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -584,12 +676,14 @@
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL (AUTOHIDE EN SCROLL) -->
+  <!-- HEADER EDITORIAL CON HAMBURGUESA MÓVIL -->
   <header class="header-editorial" id="mainHeader">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" />
       <span>Eloria Brista Studio</span>
     </a>
+    
+    <!-- Enlaces Desktop -->
     <nav class="nav-links">
       <a href="menu.html">Menu</a>
       <a href="work.html">Work</a>
@@ -597,13 +691,29 @@
       <a href="ebberket.html">Ebberkett</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <!-- Botón Hamburguesa Móvil -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
+      ☰
+    </button>
   </header>
+
+  <!-- MENÚ DESPLEGABLE MÓVIL A PANTALLA COMPLETA -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <nav class="mobile-nav-links">
+      <a href="menu.html">Menu</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="ebberket.html">Ebberkett</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
   <div class="shell">
     <div class="content">
       <main>
         
-        <!-- HERO EDITORIAL -->
+        <!-- HERO EDITORIAL CON KERNING COHERENTE -->
         <section class="hero-editorial">
           <div class="hero-grid">
             <div class="hero-col hero-left animate-hero-1">
@@ -638,12 +748,12 @@
           </div>
         </section>
 
-        <!-- TEASER DE TRABAJOS -->
+        <!-- TEASER DE TRABAJOS (RENOMBRADO A "Works") -->
         <section class="featured-work-section">
           <div class="section-header-flex">
             <div>
               <div class="eyebrow-custom" style="margin-bottom: 10px;">Selected Projects</div>
-              <h2 class="section-title">Selected Works</h2>
+              <h2 class="section-title">Works</h2>
             </div>
             <div>
               <a href="work.html" class="arrow-link">View All Archive <span>→</span></a>
@@ -689,7 +799,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN DE DISCIPLINAS -->
+        <!-- SECCIÓN DE DISCIPLINAS (ACORDEÓN INTERACTIVO EN MÓVIL) -->
         <section class="disciplines-section">
           <div class="disciplines-header">
             <div class="eyebrow-custom" style="color: #aaa;">Practice Areas · 05</div>
@@ -697,42 +807,42 @@
           </div>
 
           <div class="disciplines-list">
-            <a href="work.html" class="discipline-row">
+            <div class="discipline-row" onclick="toggleDiscipline(this)">
               <span class="discipline-num">01 / 05</span>
               <h3 class="discipline-name">Creative Direction</h3>
               <p class="discipline-desc">Visual narrative, identity strategy, and holistic concept curation for contemporary projects.</p>
               <span class="discipline-arrow">→</span>
-            </a>
-            <a href="work.html" class="discipline-row">
+            </div>
+            <div class="discipline-row" onclick="toggleDiscipline(this)">
               <span class="discipline-num">02 / 05</span>
               <h3 class="discipline-name">Branding</h3>
               <p class="discipline-desc">Custom identity systems, logotypes, spatial design rationale, and brand strategy.</p>
               <span class="discipline-arrow">→</span>
-            </a>
-            <a href="work.html" class="discipline-row">
+            </div>
+            <div class="discipline-row" onclick="toggleDiscipline(this)">
               <span class="discipline-num">03 / 05</span>
               <h3 class="discipline-name">Worldbuilding</h3>
               <p class="discipline-desc">Immersive universe design, narrative environments, and speculative concept frameworks.</p>
               <span class="discipline-arrow">→</span>
-            </a>
-            <a href="work.html" class="discipline-row">
+            </div>
+            <div class="discipline-row" onclick="toggleDiscipline(this)">
               <span class="discipline-num">04 / 05</span>
               <h3 class="discipline-name">Music &amp; Sound Design</h3>
               <p class="discipline-desc">Sonic branding, original scoring, soundscapes, and audio curation for digital spaces.</p>
               <span class="discipline-arrow">→</span>
-            </a>
-            <a href="work.html" class="discipline-row">
+            </div>
+            <div class="discipline-row" onclick="toggleDiscipline(this)">
               <span class="discipline-num">05 / 05</span>
               <h3 class="discipline-name">Audio Production &amp; Engineering</h3>
               <p class="discipline-desc">Professional mixing, mastering, acoustic direction, and high-fidelity audio engineering.</p>
               <span class="discipline-arrow">→</span>
-            </a>
+            </div>
           </div>
         </section>
 
       </main>
 
-      <!-- FOOTER -->
+      <!-- FOOTER CON LOGOTIPO Y TÍTULO LIGERAMENTE MÁS GRANDES -->
       <footer class="redesigned-footer">
         <div class="footer-inner-content">
           <a href="index.html" class="footer-logo-brand">
@@ -759,10 +869,10 @@
     </div>
   </div>
 
-  <!-- SCRIPT DE NAVEGACIÓN Y REVELACIÓN EN SCROLL -->
+  <!-- SCRIPT DE INTERACTIVIDAD, HAMBURGUESA Y ACORDEÓN -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. REVELADO SUAVE DE TEXTOS Y TARJETAS AL HACER SCROLL
+      // 1. REVELADO SUAVE EN SCROLL
       const revealElements = document.querySelectorAll(".reveal-line, .work-preview-card");
 
       function checkScroll() {
@@ -778,7 +888,7 @@
       window.addEventListener("scroll", checkScroll, { passive: true });
       checkScroll();
 
-      // 2. COMPORTAMIENTO INTELIGENTE DEL HEADER (SE OCULTA ABAJO, APARECE ARRIBA)
+      // 2. HEADER INTELIGENTE AUTOHIDE
       let lastScrollY = window.scrollY;
       const header = document.getElementById("mainHeader");
 
@@ -787,17 +897,48 @@
 
         if (currentScrollY > 120) {
           if (currentScrollY > lastScrollY) {
-            header.classList.add("nav-hidden"); // Scroll hacia abajo: oculta el menú
+            header.classList.add("nav-hidden");
           } else {
-            header.classList.remove("nav-hidden"); // Scroll hacia arriba: muestra el menú
+            header.classList.remove("nav-hidden");
           }
         } else {
-          header.classList.remove("nav-hidden"); // Arriba del todo: menú visible
+          header.classList.remove("nav-hidden");
         }
 
         lastScrollY = currentScrollY;
       }, { passive: true });
+
+      // 3. MENÚ HAMBURGUESA MÓVIL
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileNavOverlay = document.getElementById("mobileNavOverlay");
+
+      mobileMenuBtn.addEventListener("click", function() {
+        const isOpen = mobileNavOverlay.classList.toggle("open");
+        mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      // Cerrar menú al hacer clic en un enlace móvil
+      document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNavOverlay.classList.remove("open");
+          mobileMenuBtn.textContent = "☰";
+          document.body.style.overflow = "";
+        });
+      });
     });
+
+    // 4. ACORDEÓN DE DISCIPLINAS PARA CELULAR (FLECHA HACIA ABAJO)
+    function toggleDiscipline(row) {
+      if (window.innerWidth <= 1024) {
+        // Cierra los demás
+        document.querySelectorAll('.discipline-row').forEach(r => {
+          if (r !== row) r.classList.remove('mobile-open');
+        });
+        // Alterna el actual
+        row.classList.toggle('mobile-open');
+      }
+    }
   </script>
 </body>
 </html>
