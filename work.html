@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
   <style>
     body, html {
@@ -73,10 +73,10 @@
     }
 
     .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.05em;
+      letter-spacing: -0.25px;
       text-transform: uppercase;
       text-decoration: none;
       color: #666;
@@ -98,7 +98,7 @@
       padding: 0 1vw;
     }
 
-    /* TÍTULO PRINCIPAL APRETADO (-0.04em) */
+    /* TÍTULO PRINCIPAL APRETADO */
     .page-title {
       font-size: clamp(3.5rem, 7.5vw, 8rem);
       font-weight: 300;
@@ -107,7 +107,7 @@
       line-height: 0.95;
     }
 
-    /* SECCIÓN DE FILTROS Y BLOQUE DE DESCRIPCIÓN (2 COLUMNAS EDITORIALES) */
+    /* SECCIÓN DE FILTROS Y BLOQUE DE DESCRIPCIÓN */
     .editorial-filter-bar {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -157,7 +157,6 @@
       color: #0e0e0e;
     }
 
-    /* TEXTO DESCRIPTIVO EN LA COLUMNA DERECHA (JUGANDO CON ESPACIO NEGATIVO) */
     .archive-description {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 1.15rem;
@@ -172,7 +171,7 @@
     .work-grid-modern {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 40px 24px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -190,7 +189,7 @@
       aspect-ratio: 4 / 3;
       background-color: #e6e5e0;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       position: relative;
     }
 
@@ -206,28 +205,41 @@
       transform: scale(1.02);
     }
 
-    .work-meta-tags {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #777;
-      margin-bottom: 4px;
-    }
-
+    /* NUEVO ESTILO: TÍTULO EN BOLD Y SINOPSIS CATCHY */
     .work-item-title {
       font-size: 1.25rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
+      font-weight: 600; /* Título en bold */
+      letter-spacing: -0.25px;
       margin: 0 0 6px 0;
       color: #0e0e0e;
     }
 
     .work-item-desc {
-      font-size: 0.88rem;
-      color: #555;
-      line-height: 1.5;
-      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.45;
+      margin: 0 0 14px 0;
+      letter-spacing: -0.25px;
+    }
+
+    /* ESTILO DE LAS PEQUEÑAS PÍLDORAS (PILLS) ABAJO */
+    .work-pills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .work-pill {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      color: #333;
+      background: transparent;
+      border: 1px solid rgba(14, 14, 14, 0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
     }
 
     /* BANNER DE INICIO DE PROYECTO */
@@ -271,21 +283,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.75rem;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: -0.25px;
       text-decoration: none;
       color: #0e0e0e;
       background: #f5f4f0;
       padding: 14px 28px;
-      font-weight: 500;
       transition: background 0.3s ease;
     }
 
     .archive-btn:hover { background: #ffffff; }
 
-    /* FOOTER MINIMALISTA */
+    /* FOOTER */
     .redesigned-footer {
       width: 100%;
       padding: 100px 4vw 50px 4vw;
@@ -332,8 +344,10 @@
     }
 
     .footer-email-link {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      font-weight: 400;
+      letter-spacing: -0.25px;
       color: #0e0e0e;
       text-decoration: none;
       border-bottom: 1px solid rgba(14, 14, 14, 0.4);
@@ -345,10 +359,11 @@
     .footer-email-link:hover { border-color: #0e0e0e; opacity: 0.6; }
 
     .footer-location-text {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.75rem;
+      font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: -0.25px;
       color: #666;
       margin: 0;
     }
@@ -385,8 +400,9 @@
     }
 
     .footer-legal-copy {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.72rem;
+      letter-spacing: -0.25px;
       color: #666;
       margin: 0;
     }
@@ -394,6 +410,7 @@
     .footer-legal-subtext {
       font-family: 'Inter', sans-serif;
       font-size: 0.72rem;
+      letter-spacing: -0.25px;
       color: #888;
       margin: 0;
       font-weight: 300;
@@ -437,7 +454,7 @@
       <h1 class="page-title">Selected Works</h1>
     </header>
 
-    <!-- MENÚ DE FILTROS A LA IZQUIERDA Y TEXTO DESCRIPTIVO EN EL ESPACIO NEGATIVO DE LA DERECHA -->
+    <!-- MENÚ DE FILTROS Y DESCRIPCIÓN -->
     <div class="editorial-filter-bar">
       <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
@@ -453,7 +470,7 @@
       </div>
     </div>
 
-    <!-- RETÍCULA DE LOS 8 PROYECTOS (3 COLUMNAS) -->
+    <!-- RETÍCULA DE LOS 8 PROYECTOS -->
     <section class="work-grid-modern" id="workGrid" aria-label="Project archive">
       
       <!-- 1. SUKHA -->
@@ -461,9 +478,12 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Branding · Creative Direction</div>
         <h3 class="work-item-title">Sukha</h3>
-        <p class="work-item-desc">Punk in the underground of CDMX. Full identity and visual system for the punk event held at Foro Bajo Circuito.</p>
+        <p class="work-item-desc">Raw underground identity built for the noise of CDMX.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Branding</span>
+          <span class="work-pill">Creative Direction</span>
+        </div>
       </article>
 
       <!-- 2. NUEVE CERO NUEVE -->
@@ -471,9 +491,13 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Branding · Worldbuilding · Art Direction</div>
         <h3 class="work-item-title">Nueve Cero Nueve</h3>
-        <p class="work-item-desc">A club &amp; venue defining the nightlife scene. Comprehensive branding, spatial narrative, and art direction for flyers in CDMX.</p>
+        <p class="work-item-desc">Spatial narrative and visual pulse defining local nightlife architecture.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Branding</span>
+          <span class="work-pill">Worldbuilding</span>
+          <span class="work-pill">Art Direction</span>
+        </div>
       </article>
 
       <!-- 3. HYPNIA -->
@@ -481,9 +505,11 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Branding</div>
         <h3 class="work-item-title">Hypnia</h3>
-        <p class="work-item-desc">Promoter of sonic spaces across the city. Event promoter branding with presence at venues like Muli and Bar Oriente.</p>
+        <p class="work-item-desc">Sonic promoter branding echoing through intimate concrete spaces.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Branding</span>
+        </div>
       </article>
 
       <!-- 4. ART COVER -->
@@ -491,9 +517,12 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Art Cover · Creative Direction</div>
         <h3 class="work-item-title">Art Cover Collections</h3>
-        <p class="work-item-desc">Custom visual design for singles, EPs, and artist covers. Translating sonic universes into striking cover art.</p>
+        <p class="work-item-desc">Translating complex sonic universes into striking visual artifacts.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Art Cover</span>
+          <span class="work-pill">Creative Direction</span>
+        </div>
       </article>
 
       <!-- 5. VIBIN: THE AMBIENTS -->
@@ -501,9 +530,13 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Music Production · Sound Design · Art Cover</div>
         <h3 class="work-item-title">Vibin: The Ambients</h3>
-        <p class="work-item-desc">Complete music production, mixing, mastering, sound design, and custom cover art for the ambient album.</p>
+        <p class="work-item-desc">Immersive audio production paired with meditative cover artwork.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Music Production</span>
+          <span class="work-pill">Sound Design</span>
+          <span class="work-pill">Art Cover</span>
+        </div>
       </article>
 
       <!-- 6. THE HUMAN TAPES -->
@@ -511,9 +544,12 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Branding · Creative Direction</div>
         <h3 class="work-item-title">The Human Tapes</h3>
-        <p class="work-item-desc">Podcast branding and visual identity system, crafting a distinct voice and aesthetic for digital audio storytelling.</p>
+        <p class="work-item-desc">Distinct visual voice crafted for digital storytelling.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Branding</span>
+          <span class="work-pill">Creative Direction</span>
+        </div>
       </article>
 
       <!-- 7. EBBERKETT -->
@@ -521,9 +557,12 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Branding · Worldbuilding</div>
         <h3 class="work-item-title">Ebberkett</h3>
-        <p class="work-item-desc">Digital Gallery &amp; Main Pavilion. Art, Research, and Featured Artists operating between San Francisco and CDMX.</p>
+        <p class="work-item-desc">Digital pavilion and research space operating across borders.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Branding</span>
+          <span class="work-pill">Worldbuilding</span>
+        </div>
       </article>
 
       <!-- 8. CELESTE -->
@@ -531,9 +570,12 @@
         <div class="work-img-wrapper">
           <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
         </div>
-        <div class="work-meta-tags">Original Soundtrack · Sound Design</div>
         <h3 class="work-item-title">Celeste</h3>
-        <p class="work-item-desc">Original cinematic score and sound design for the short film produced by independent studio Arcanos.</p>
+        <p class="work-item-desc">Cinematic soundscapes engineered for independent film.</p>
+        <div class="work-pills-container">
+          <span class="work-pill">Original Soundtrack</span>
+          <span class="work-pill">Sound Design</span>
+        </div>
       </article>
 
     </section>
