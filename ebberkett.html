@@ -294,6 +294,7 @@
       box-sizing: border-box;
     }
 
+    /* CARRUSEL NOVEDADES CON SCROLL SNAP MAGNÉTICO */
     .exhibition-slider-outer {
       width: 100%;
       overflow-x: auto;
@@ -301,6 +302,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 
     .exhibition-slider-outer::-webkit-scrollbar { display: none; }
@@ -314,6 +316,7 @@
     .exhibition-slide {
       min-width: 100%;
       scroll-snap-align: center;
+      scroll-snap-stop: always;
       box-sizing: border-box;
     }
 
@@ -753,6 +756,7 @@
       align-items: center;
     }
 
+    /* CARRUSEL RADIO CON SCROLL SNAP MAGNÉTICO */
     .tapes-track-wrapper {
       width: 100%;
       overflow-x: auto;
@@ -760,6 +764,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 
     .tapes-track-wrapper::-webkit-scrollbar { display: none; }
@@ -772,6 +777,7 @@
     .tape-card-retro {
       min-width: 100%;
       scroll-snap-align: center;
+      scroll-snap-stop: always;
       background: transparent;
       padding: 10px;
       display: flex;
@@ -897,7 +903,7 @@
       font-size: 0.75rem;
     }
 
-    /* NUEVA SECCIÓN DE FOOTER RESTRUCTURADA */
+    /* FOOTER */
     .redesigned-footer {
       width: 100%;
       padding: 90px 4vw 45px 4vw;
@@ -1147,7 +1153,7 @@
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-<!-- HEADER CON EL NUEVO LOGO assets/EBRKT_logo.svg -->
+<!-- HEADER -->
 <header class="ebberkett-header">
   <a href="ebberkett.html" class="ebberkett-brand">
     <img src="assets/EBRKT_logo.svg" alt="Ebberkett Logo" onerror="this.onerror=null; this.src='assets/Ebs_logo.svg';" />
@@ -1346,7 +1352,7 @@
         <div class="tapes-track">
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape 01 — Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 01 - Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
             <h3 class="tape-card-title">Tape 01 — Digital Intuition</h3>
             <div class="tape-card-meta">
@@ -1360,7 +1366,7 @@
           </div>
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape 02 — Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 02 - Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
             <h3 class="tape-card-title">Tape 02 — Graphic Universes</h3>
             <div class="tape-card-meta">
@@ -1374,7 +1380,7 @@
           </div>
           <div class="tape-card-retro">
             <div class="tape-gif-container">
-              <img src="assets/TRT_beta.gif" alt="Tape 03 — Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
+              <img src="assets/TRT_beta.gif" alt="Tape 03 - Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
             <h3 class="tape-card-title">Tape 03 — Virtual Gallery Art</h3>
             <div class="tape-card-meta">
@@ -1474,54 +1480,39 @@
   </div>
 </div>
 
-<!-- NUEVO FOOTER RECONSTRUIDO SEGÚN TUS ESPECIFICACIONES Y REFERENCIAS -->
+<!-- FOOTER -->
 <footer class="redesigned-footer">
   <div class="footer-inner-content reveal-item">
-    
-    <!-- LOGO Y NOMBRE -->
     <a href="ebberkett.html" class="footer-logo-brand">
       <img src="assets/EBRKT_logo.svg" alt="Ebberkett Logo" onerror="this.onerror=null; this.src='assets/Ebs_logo.svg';" />
       <h3 class="footer-brand-title">EBBERKETT</h3>
     </a>
-
-    <!-- EMAIL DE CONTACTO -->
     <a href="mailto:ebberkett@gmail.com" class="footer-email-link">ebberkett@gmail.com</a>
-
-    <!-- UBICACIÓN INTERNACIONAL -->
     <p class="footer-location-text">• San Francisco • Mexico City</p>
-
-    <!-- REDES SOCIALES COMO ÍCONOS MINIMALISTAS (VSCO, Pinterest, Instagram, YouTube) -->
     <div class="footer-social-bar">
-      <!-- VSCO -->
       <a href="https://vsco.co/ebberkett" target="_blank" rel="noopener" class="footer-social-icon" aria-label="VSCO">
         <svg viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
           <circle cx="12" cy="12" r="4" fill="currentColor"/>
         </svg>
       </a>
-      <!-- Pinterest -->
       <a href="https://pinterest.com/ebberkett" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Pinterest">
         <svg viewBox="0 0 24 24">
           <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
         </svg>
       </a>
-      <!-- Instagram -->
       <a href="https://instagram.com/ebberkett" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
         <svg viewBox="0 0 24 24">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
       </a>
-      <!-- YouTube -->
       <a href="https://youtube.com/@ebberkett" target="_blank" rel="noopener" class="footer-social-icon" aria-label="YouTube">
         <svg viewBox="0 0 24 24">
           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
       </a>
     </div>
-
   </div>
-
-  <!-- AVISO LEGAL Y DERECHOS -->
   <div class="footer-legal-bar reveal-item">
     <p class="footer-legal-copy">© 2026 Eloria Brista Group.</p>
     <p class="footer-legal-subtext">Ebberkett and Eloria Brista Studio are member entities of Eloria Brista Group.</p>
