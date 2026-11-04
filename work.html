@@ -87,7 +87,7 @@
 
     /* CONTENEDOR PRINCIPAL CON ESPACIO NEGATIVO MASIVO */
     .page-container {
-      padding: 240px 3vw 140px 3vw;
+      padding: 260px 3vw 140px 3vw;
       max-width: 100%;
       margin: 0 auto;
       box-sizing: border-box;
@@ -98,25 +98,25 @@
       padding: 0 1vw;
     }
 
-    /* TÍTULO PRINCIPAL APRETADO (ESTILO EDITORIAL DENSO) */
+    /* TÍTULO PRINCIPAL APRETADO (-0.04em) */
     .page-title {
       font-size: clamp(3.5rem, 7.5vw, 8rem);
       font-weight: 300;
-      letter-spacing: -0.04em; /* Letras bien juntas y apretadas */
+      letter-spacing: -0.04em;
       margin: 0;
       line-height: 0.95;
     }
 
-    /* MENÚ TIPOGRÁFICO DE SERVICIOS CON BUEN ESPACIO NEGATIVO */
+    /* SECCIÓN DE FILTROS Y BLOQUE DE DESCRIPCIÓN (2 COLUMNAS EDITORIALES) */
     .editorial-filter-bar {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 120px; /* Más espacio negativo para respirar antes de los proyectos */
+      gap: 60px;
+      margin-bottom: 120px;
       padding: 0 1vw;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 1.05rem;
       letter-spacing: -0.25px;
+      align-items: start;
     }
 
     .filter-col {
@@ -133,7 +133,7 @@
       letter-spacing: -0.25px;
     }
 
-    .filter-col button, .filter-col a {
+    .filter-col button {
       background: none;
       border: none;
       padding: 0;
@@ -143,19 +143,29 @@
       letter-spacing: -0.25px;
       color: #888;
       cursor: pointer;
-      text-decoration: none;
       transition: color 0.2s ease;
       width: fit-content;
       line-height: 1.4;
     }
 
-    .filter-col button.active, .filter-col a.active {
+    .filter-col button.active {
       color: #0e0e0e;
       font-weight: 500;
     }
 
-    .filter-col button:hover, .filter-col a:hover {
+    .filter-col button:hover {
       color: #0e0e0e;
+    }
+
+    /* TEXTO DESCRIPTIVO EN LA COLUMNA DERECHA (JUGANDO CON ESPACIO NEGATIVO) */
+    .archive-description {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.15rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 520px;
+      letter-spacing: -0.25px;
     }
 
     /* RETÍCULA DE 3 COLUMNAS */
@@ -165,13 +175,6 @@
       gap: 16px;
       width: 100%;
       box-sizing: border-box;
-    }
-
-    .work-grid-modern.list-view {
-      grid-template-columns: 1fr;
-      max-width: 900px;
-      margin: 0 auto;
-      gap: 60px;
     }
 
     .work-item-card {
@@ -189,11 +192,6 @@
       overflow: hidden;
       margin-bottom: 12px;
       position: relative;
-    }
-
-    .work-grid-modern.list-view .work-img-wrapper {
-      aspect-ratio: 16 / 9;
-      margin-bottom: 18px;
     }
 
     .work-img-wrapper img {
@@ -223,10 +221,6 @@
       letter-spacing: -0.01em;
       margin: 0 0 6px 0;
       color: #0e0e0e;
-    }
-
-    .work-grid-modern.list-view .work-item-title {
-      font-size: 1.6rem;
     }
 
     .work-item-desc {
@@ -443,7 +437,7 @@
       <h1 class="page-title">Selected Works</h1>
     </header>
 
-    <!-- MENÚ DE FILTROS -->
+    <!-- MENÚ DE FILTROS A LA IZQUIERDA Y TEXTO DESCRIPTIVO EN EL ESPACIO NEGATIVO DE LA DERECHA -->
     <div class="editorial-filter-bar">
       <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
@@ -454,14 +448,12 @@
         <button data-filter="artcover">Art Cover</button>
         <button data-filter="sound">Music &amp; Sound Design</button>
       </div>
-      <div class="filter-col" id="viewFilters">
-        <span class="label">View</span>
-        <a href="#" class="active" data-view="grid">Grid</a>
-        <a href="#" data-view="list">List</a>
+      <div class="filter-col">
+        <p class="archive-description">A curated archive of multidisciplinary case studies spanning branding, creative direction, worldbuilding, art covers, and professional sound design.</p>
       </div>
     </div>
 
-    <!-- RETÍCULA DE 3 COLUMNAS -->
+    <!-- RETÍCULA DE LOS 8 PROYECTOS (3 COLUMNAS) -->
     <section class="work-grid-modern" id="workGrid" aria-label="Project archive">
       
       <!-- 1. SUKHA -->
@@ -584,12 +576,10 @@
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPT DE FILTRADO -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
-      const viewLinks = document.querySelectorAll("#viewFilters a");
-      const workGrid = document.getElementById("workGrid");
       const workItems = document.querySelectorAll(".work-item-card");
 
       serviceButtons.forEach(btn => {
@@ -607,21 +597,6 @@
               item.style.display = "none";
             }
           });
-        });
-      });
-
-      viewLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          viewLinks.forEach(l => l.classList.remove("active"));
-          link.classList.add("active");
-
-          const viewType = link.getAttribute("data-view");
-          if (viewType === "list") {
-            workGrid.classList.add("list-view");
-          } else {
-            workGrid.classList.remove("list-view");
-          }
         });
       });
     });
