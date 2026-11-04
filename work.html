@@ -85,74 +85,93 @@
 
     .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
 
-    /* CONTENEDOR PRINCIPAL CON AMPLIO ESPACIO NEGATIVO */
+    /* CONTENEDOR PRINCIPAL CON ESPACIO NEGATIVO MASIVO */
     .page-container {
-      padding: 210px 4vw 140px 4vw;
-      max-width: 1600px;
+      padding: 240px 3vw 140px 3vw;
+      max-width: 100%;
       margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .page-header {
-      margin-bottom: 120px;
+      margin-bottom: 90px;
+      padding: 0 1vw;
     }
 
     .page-title {
-      font-size: clamp(3.2rem, 6.5vw, 6.8rem);
+      font-size: clamp(3.5rem, 7.5vw, 8rem);
       font-weight: 300;
       letter-spacing: -0.03em;
-      margin: 18px 0 0 0;
-      line-height: 1.02;
+      margin: 0;
+      line-height: 0.98;
     }
 
-    /* MENÚ TIPOGRÁFICO DE SERVICIOS (ESTILO REFERENCIA) */
+    /* MENÚ TIPOGRÁFICO DE SERVICIOS (ESTILO REFERENCIA EXACTO) */
     .editorial-filter-bar {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
-      margin-bottom: 110px;
+      margin-bottom: 80px;
+      padding: 0 1vw;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      letter-spacing: -0.01em;
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
-      padding-bottom: 50px;
     }
 
     .filter-col {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .filter-col span.label {
-      color: #888;
-      margin-bottom: 4px;
+      color: #999;
+      margin-bottom: 6px;
+      font-size: 0.75rem;
     }
 
-    .filter-col a, .filter-col button {
+    .filter-col button, .filter-col a {
       background: none;
       border: none;
       padding: 0;
       text-align: left;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      color: #666;
+      color: #888;
       cursor: pointer;
       text-decoration: none;
       transition: color 0.2s ease;
       width: fit-content;
+      line-height: 1.4;
     }
 
-    .filter-col a:hover, .filter-col button:hover, .filter-col button.active {
+    /* ESTADO ACTIVO / RELLENO COMO LA REFERENCIA */
+    .filter-col button.active, .filter-col a.active {
+      color: #0e0e0e;
+      font-weight: 500;
+    }
+
+    .filter-col button:hover, .filter-col a:hover {
       color: #0e0e0e;
     }
 
-    /* REJILLA DE PROYECTOS MODERNA */
+    /* RETÍCULA DE 3 COLUMNAS SIN MARCOS MASIVOS (ANCHO COMPLETO) */
     .work-grid-modern {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 90px 5vw;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* MODO LISTA DINÁMICO */
+    .work-grid-modern.list-view {
+      grid-template-columns: 1fr;
+      max-width: 900px;
+      margin: 0 auto;
+      gap: 60px;
     }
 
     .work-item-card {
@@ -160,15 +179,21 @@
       flex-direction: column;
       text-decoration: none;
       color: inherit;
+      position: relative;
     }
 
     .work-img-wrapper {
       width: 100%;
-      aspect-ratio: 16 / 11;
+      aspect-ratio: 4 / 3;
       background-color: #e6e5e0;
       overflow: hidden;
-      margin-bottom: 22px;
+      margin-bottom: 12px;
       position: relative;
+    }
+
+    .work-grid-modern.list-view .work-img-wrapper {
+      aspect-ratio: 16 / 9;
+      margin-bottom: 18px;
     }
 
     .work-img-wrapper img {
@@ -176,44 +201,47 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .work-item-card:hover .work-img-wrapper img {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .work-meta-tags {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.05em;
       color: #777;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .work-item-title {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       font-weight: 400;
-      letter-spacing: -0.02em;
-      margin: 0 0 10px 0;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px 0;
       color: #0e0e0e;
     }
 
+    .work-grid-modern.list-view .work-item-title {
+      font-size: 1.6rem;
+    }
+
     .work-item-desc {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: #555;
-      line-height: 1.6;
+      line-height: 1.5;
       margin: 0;
-      max-width: 600px;
     }
 
     /* BANNER DE ARCHIVO OSCURO */
     .archive-cta-section {
-      margin-top: 150px;
+      margin-top: 160px;
       background-color: #0e0e0e;
       color: #f5f4f0;
-      padding: 100px 5vw;
+      padding: 100px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -375,12 +403,16 @@
       font-weight: 300;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+      .work-grid-modern { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
       .nav-links { display: none; }
-      .page-container { padding: 140px 20px 80px 20px; }
+      .page-container { padding: 140px 15px 80px 15px; }
       .editorial-filter-bar { grid-template-columns: 1fr; gap: 30px; }
-      .work-grid-modern { grid-template-columns: 1fr; gap: 60px; }
+      .work-grid-modern { grid-template-columns: 1fr; gap: 40px; }
       .archive-cta-section { padding: 60px 20px; }
     }
   </style>
@@ -404,20 +436,14 @@
 
   <main class="page-container">
     
-    <!-- HERO DE LA SECCIÓN WORK -->
+    <!-- HERO DE LA SECCIÓN WORK (CON ESPACIO NEGATIVO MASIVO) -->
     <header class="page-header">
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: #777; letter-spacing: 0.08em; margin-bottom: 15px;">
-        Index → <span style="color:#0e0e0e;">Selected Works</span>
-      </p>
       <h1 class="page-title">Selected Works</h1>
-      <p style="font-size: 1.15rem; color: #555; margin-top: 20px; max-width: 750px; line-height: 1.6;">
-        A curated archive of multidisciplinary case studies spanning branding, creative direction, worldbuilding, art covers, and professional sound design.
-      </p>
     </header>
 
-    <!-- MENÚ TIPOGRÁFICO DE SERVICIOS (ESTILO REFERENCIA) -->
+    <!-- MENÚ TIPOGRÁFICO DE SERVICIOS Y VISTA (FUNCIONALES) -->
     <div class="editorial-filter-bar">
-      <div class="filter-col">
+      <div class="filter-col" id="serviceFilters">
         <span class="label">Service</span>
         <button class="active" data-filter="all">All</button>
         <button data-filter="branding">Branding</button>
@@ -426,18 +452,18 @@
         <button data-filter="artcover">Art Cover</button>
         <button data-filter="sound">Music &amp; Sound Design</button>
       </div>
-      <div class="filter-col">
+      <div class="filter-col" id="viewFilters">
         <span class="label">View</span>
-        <a href="#" style="color: #0e0e0e;">Grid</a>
-        <a href="#">List</a>
+        <a href="#" class="active" data-view="grid">Grid</a>
+        <a href="#" data-view="list">List</a>
       </div>
     </div>
 
-    <!-- REJILLA DE LOS 8 PROYECTOS -->
-    <section class="work-grid-modern" aria-label="Project archive">
+    <!-- RETÍCULA DE LOS 8 PROYECTOS (3 COLUMNAS) -->
+    <section class="work-grid-modern" id="workGrid" aria-label="Project archive">
       
       <!-- 1. SUKHA -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="branding creative">
         <div class="work-img-wrapper">
           <img src="assets/img/work-1.svg" alt="Sukha punk event branding" loading="lazy" />
         </div>
@@ -447,7 +473,7 @@
       </article>
 
       <!-- 2. NUEVE CERO NUEVE -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="branding worldbuilding creative">
         <div class="work-img-wrapper">
           <img src="assets/img/work-2.svg" alt="Nueve Cero Nuebe venue branding" loading="lazy" />
         </div>
@@ -457,7 +483,7 @@
       </article>
 
       <!-- 3. HYPNIA -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="branding">
         <div class="work-img-wrapper">
           <img src="assets/img/work-3.svg" alt="Hypnia promoter branding" loading="lazy" />
         </div>
@@ -467,7 +493,7 @@
       </article>
 
       <!-- 4. ART COVER -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="artcover creative">
         <div class="work-img-wrapper">
           <img src="assets/img/work-4.svg" alt="Art Cover single and album design" loading="lazy" />
         </div>
@@ -477,7 +503,7 @@
       </article>
 
       <!-- 5. VIBIN: THE AMBIENTS -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="sound artcover">
         <div class="work-img-wrapper">
           <img src="assets/img/work-5.svg" alt="Vibin The Ambients album production" loading="lazy" />
         </div>
@@ -487,7 +513,7 @@
       </article>
 
       <!-- 6. THE HUMAN TAPES -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="branding creative">
         <div class="work-img-wrapper">
           <img src="assets/img/work-6.svg" alt="The Human Tapes podcast branding" loading="lazy" />
         </div>
@@ -497,7 +523,7 @@
       </article>
 
       <!-- 7. EBBERKETT -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="branding worldbuilding">
         <div class="work-img-wrapper">
           <img src="assets/img/work-7.svg" alt="Ebberkett digital gallery" loading="lazy" />
         </div>
@@ -507,7 +533,7 @@
       </article>
 
       <!-- 8. CELESTE -->
-      <article class="work-item-card">
+      <article class="work-item-card" data-category="sound">
         <div class="work-img-wrapper">
           <img src="assets/img/work-8.svg" alt="Celeste short film soundtrack" loading="lazy" />
         </div>
@@ -542,19 +568,15 @@
       <p class="footer-location-text">• San Francisco • Mexico City</p>
       
       <div class="footer-social-bar">
-        <!-- VSCO -->
         <a href="https://vsco.co" target="_blank" rel="noopener" class="footer-social-icon" aria-label="VSCO">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
         </a>
-        <!-- Pinterest -->
         <a href="https://pinterest.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Pinterest">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
         </a>
-        <!-- Instagram -->
         <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <!-- YouTube -->
         <a href="https://youtube.com" target="_blank" rel="noopener" class="footer-social-icon" aria-label="YouTube">
           <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
@@ -566,5 +588,49 @@
     </div>
   </footer>
 
+  <!-- SCRIPT PARA FILTROS Y VISTA (GRID / LIST) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const serviceButtons = document.querySelectorAll("#serviceFilters button");
+      const viewLinks = document.querySelectorAll("#viewFilters a");
+      const workGrid = document.getElementById("workGrid");
+      const workItems = document.querySelectorAll(".work-item-card");
+
+      // Lógica de Filtros por Servicio
+      serviceButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          serviceButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filterValue = btn.getAttribute("data-filter");
+
+          workItems.forEach(item => {
+            const categories = item.getAttribute("data-category");
+            if (filterValue === "all" || categories.includes(filterValue)) {
+              item.style.display = "flex";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Lógica de Vista (Grid de 3 columnas vs List)
+      viewLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          viewLinks.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
+
+          const viewType = link.getAttribute("data-view");
+          if (viewType === "list") {
+            workGrid.classList.add("list-view");
+          } else {
+            workGrid.classList.remove("list-view");
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
