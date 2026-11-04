@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Mesa-de-trabajo1" affinity:id="Mesa de trabajo1" transform="matrix(0.99082,0,0,0.99082,-3149.816115,-46.56853)">
+        <rect x="3179" y="47" width="1089.3" height="1089.3" style="fill:none;"/>
+        <g transform="matrix(3.129024,0,0,3.129024,-1541.823519,-2422.043861)">
+            <path d="M1698.121,1090.288L1667.699,1090.288L1667.699,967.64L1615.324,1020.088L1615.324,1108.844L1584.828,1108.844L1584.828,1007.499L1584.902,1007.499L1661.308,930.987L1661.271,930.95L1667.699,924.532L1667.699,863.867L1534.924,996.828L1513.398,975.331L1661.3,827.222L1661.263,827.185L1682.793,805.691L1852.171,975.35L1830.642,996.844L1698.121,864.104L1698.121,924.802L1780.682,1007.499L1781.049,1007.499L1781.049,1108.844L1750.553,1108.844L1750.553,1020.379L1698.121,967.861L1698.121,1090.288ZM1698.121,1090.288L1682.916,1120.592L1667.699,1090.293L1698.121,1090.288Z"/>
+        </g>
+    </g>
+</svg>
