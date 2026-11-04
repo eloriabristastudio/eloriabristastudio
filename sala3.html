@@ -75,7 +75,7 @@
     }
 
     /* ==========================================================
-       EFECTO DE TV ESTÁTICA AL 50% Y BLOQUES/RECTÁNGULOS DE GLITCH
+       TV ESTÁTICA AL 25% Y BLOQUES NEGROS DE INTERFERENCIA ESPACIADA
        ========================================================== */
     .crt-screen-overlay {
       position: fixed;
@@ -87,10 +87,10 @@
       pointer-events: none;
       background: linear-gradient(
         rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.08) 50%
+        rgba(0, 0, 0, 0.04) 50%
       );
       background-size: 100% 4px;
-      opacity: 0.50; /* Opacidad al 50% solicitada */
+      opacity: 0.25; /* Reducido al 25% */
     }
 
     #staticCanvas {
@@ -101,17 +101,17 @@
       height: 100vh;
       z-index: 162;
       pointer-events: none;
-      opacity: 0.12;
+      opacity: 0.07;
     }
 
-    /* RECTÁNGULOS Y CUADRADOS NEGROS/GRISES DE INTERFERENCIA REPENTINA */
+    /* CUADRADOS Y RECTÁNGULOS 100% NEGROS */
     .glitch-block-box {
       position: fixed;
-      background-color: #0e0e0e;
+      background-color: #0e0e0e; /* Solo negro puro */
       z-index: 170;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.05s ease;
+      transition: opacity 0.08s ease;
     }
 
     /* INTRO OVERLAY */
@@ -164,7 +164,6 @@
       animation: introFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
     }
 
-    /* TÍTULO LIMPIO (SIN RAYAS EN LA TIPOGRAFÍA) */
     .intro-main-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(3.2rem, 8vw, 5.8rem);
@@ -242,7 +241,7 @@
       }
     }
 
-    /* CONTENEDOR DE GALERÍA Y SLIDER */
+    /* CONTENEDOR DE GALERÍA Y SCROLL MAGNÉTICO (SALA 01 STYLE) */
     .museum-slider-container {
       position: relative;
       width: 100%;
@@ -256,7 +255,7 @@
       width: 100%;
       height: 100%;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory; /* Acoplamiento magnético en escritorio */
       scroll-behavior: smooth;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -269,7 +268,7 @@
       min-width: 100vw;
       height: 100vh;
       height: 100dvh;
-      scroll-snap-align: center;
+      scroll-snap-align: center; /* Centrado automático garantizado */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -467,7 +466,7 @@
       font-size: 0.75rem;
     }
 
-    /* ADAPTACIÓN MÓVIL Y SCROLL FLUIDO */
+    /* ADAPTACIÓN MÓVIL CON SCROLL MAGNÉTICO VERTICAL PROTEGIDO */
     @media (max-width: 900px) {
       body, html {
         overflow-y: auto !important;
@@ -481,7 +480,7 @@
         overflow-x: hidden !important;
         overflow-y: auto !important;
         height: auto !important;
-        scroll-snap-type: y mandatory !important;
+        scroll-snap-type: y mandatory !important; /* Acoplamiento magnético vertical en celular */
       }
       .museum-slide-item {
         min-width: 100% !important;
@@ -491,7 +490,7 @@
         justify-content: center;
         gap: 14px;
         padding: 60px 4vw 25px 4vw;
-        scroll-snap-align: center !important;
+        scroll-snap-align: center !important; /* Centrado automático de cada obra */
       }
       .artwork-display-frame {
         max-width: 78vw;
@@ -517,13 +516,13 @@
 </head>
 <body oncontextmenu="return false;" ondragstart="return false;">
 
-  <!-- CONTENEDORES MÚLTIPLES DE BLOQUES / RECTÁNGULOS NEGROS DE INTERFERENCIA -->
+  <!-- BLOQUES NEGROS DE INTERFERENCIA ESPACIADOS -->
   <div class="glitch-block-box" id="gb1"></div>
   <div class="glitch-block-box" id="gb2"></div>
   <div class="glitch-block-box" id="gb3"></div>
   <div class="glitch-block-box" id="gb4"></div>
 
-  <!-- CAPA DE TV ESTÁTICA AL 50% -->
+  <!-- CAPA DE TV ESTÁTICA AL 25% -->
   <div class="crt-screen-overlay"></div>
   <canvas id="staticCanvas"></canvas>
 
@@ -649,7 +648,7 @@
       window.scrollTo(0, 0);
     });
 
-    // RENDERIZADO DE ESTÁTICA DE TV EN CANVAS
+    // RENDERIZADO DE ESTÁTICA DE TV EN CANVAS (OPACIDAD 25%)
     const canvas = document.getElementById('staticCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -666,7 +665,7 @@
       const len = buffer.length;
 
       for (let i = 0; i < len; i++) {
-        if (Math.random() < 0.12) {
+        if (Math.random() < 0.08) {
           buffer[i] = 0xff000000;
         }
       }
@@ -679,7 +678,7 @@
     }
     loopNoise();
 
-    // APARICIÓN REPENTINA DE RECTÁNGULOS Y CUADRADOS NEGROS / GRISES EN PANTALLA
+    // APARICIÓN MUCHO MÁS ESPACIADA Y LENTA DE BLOQUES NEGROS
     function triggerRandomGlitchBlocks() {
       const boxes = [
         document.getElementById('gb1'),
@@ -690,9 +689,9 @@
 
       boxes.forEach(box => {
         if (!box) return;
-        if (Math.random() < 0.6) {
-          const w = Math.floor(Math.random() * 300) + 40;
-          const h = Math.floor(Math.random() * 80) + 10;
+        if (Math.random() < 0.25) { // Probabilidad más baja para menor constancia
+          const w = Math.floor(Math.random() * 260) + 50;
+          const h = Math.floor(Math.random() * 60) + 12;
           const l = Math.floor(Math.random() * (window.innerWidth - w));
           const t = Math.floor(Math.random() * (window.innerHeight - h));
 
@@ -700,18 +699,19 @@
           box.style.height = h + 'px';
           box.style.left = l + 'px';
           box.style.top = t + 'px';
-          box.style.opacity = (Math.random() * 0.85 + 0.15).toString();
+          box.style.opacity = '1'; // Negro puro sólido
 
           setTimeout(() => {
             box.style.opacity = '0';
-          }, Math.floor(Math.random() * 140) + 40);
+          }, Math.floor(Math.random() * 90) + 30); // Duración muy rápida de destello
         }
       });
     }
 
+    // Intervalo más espaciado (cada 3.2 segundos en promedio)
     setInterval(() => {
       triggerRandomGlitchBlocks();
-    }, 900);
+    }, 3200);
 
     function dismissRoomIntro() {
       triggerRandomGlitchBlocks();
