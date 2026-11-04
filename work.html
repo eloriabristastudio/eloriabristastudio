@@ -176,26 +176,15 @@
       box-sizing: border-box;
     }
 
-    /* EFECTO DE APARICIÓN DRAMÁTICO / ALTA GAMA */
     .work-item-card {
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
       position: relative;
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
     }
 
-    /* CLASE ACTIVA QUE ACTIVA LA APARICIÓN EN PANTALLA */
-    .work-item-card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* EFECTO APLICADO ÚNICAMENTE AL CONTENEDOR DE LA IMAGEN */
     .work-img-wrapper {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -203,6 +192,17 @@
       overflow: hidden;
       margin-bottom: 16px;
       position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    /* ESTADO VISIBLE SOLO PARA LA IMAGEN */
+    .work-item-card.is-visible .work-img-wrapper {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .work-img-wrapper img {
@@ -628,37 +628,31 @@
     </div>
   </footer>
 
-  <!-- SCRIPT CON ANIMACIÓN ESCALONADA DRAMÁTICA -->
+  <!-- SCRIPT -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
       const workItems = Array.from(document.querySelectorAll(".work-item-card"));
 
-      // Función para animar elementos con un retraso escalonado (stagger)
       const animateCards = (cards) => {
         cards.forEach((item, index) => {
-          // Reseteamos el estado visual
           item.classList.remove("is-visible");
           item.style.display = "flex";
 
-          // Aplicamos retraso escalonado de 90ms por tarjeta
           setTimeout(() => {
             item.classList.add("is-visible");
-          }, index * 90);
+          }, index * 80);
         });
       };
 
-      // Animación inicial al cargar la página
       animateCards(workItems);
 
-      // Lógica de filtrado con re-animación fluida
       serviceButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           serviceButtons.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
 
           const filterValue = btn.getAttribute("data-filter");
-
           const visibleCards = [];
 
           workItems.forEach(item => {
@@ -672,7 +666,6 @@
             }
           });
 
-          // Re-animamos las tarjetas visibles
           setTimeout(() => {
             animateCards(visibleCards);
           }, 50);
