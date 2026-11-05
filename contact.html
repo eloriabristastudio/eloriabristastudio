@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0e0e0e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f4f0" />
   <title>Contact — Eloria Brista Studio</title>
   <meta name="description" content="Initiate project enquiry — Eloria Brista Studio." />
   
@@ -12,70 +12,157 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   
   <style>
     body, html {
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
       background-color: #f5f4f0;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* HEADER EDITORIAL UNIFICADO */
+    /* HEADER EDITORIAL UNIFICADO CON EXACTO DISEÑO DE ABOUT */
     .header-editorial {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      padding: 35px 3.5vw;
+      padding: 26px 4vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
       background-color: rgba(245, 244, 240, 0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .header-editorial .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+      line-height: 1;
     }
 
     .header-editorial .brand-logo img {
-      height: 34px;
+      height: 26px;
       width: auto;
       display: block;
     }
 
+    .header-editorial .brand-logo span {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      color: #0e0e0e;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .header-editorial .brand-logo:hover { opacity: 0.5; }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
 
     .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.82rem;
       font-weight: 400;
-      letter-spacing: 0.05em;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #555;
-      transition: color 0.3s ease;
+      color: #666;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
+    .nav-links a:hover, .nav-links a.active {
+      color: #0e0e0e;
+      transform: translateY(-1px);
+    }
+
+    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO Y SIMÉTRICO */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      z-index: 101;
+      color: #0e0e0e;
+      font-size: 1.4rem;
+      line-height: 1;
+      height: 26px;
+      width: 26px;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-1px);
+    }
+
+    /* OVERLAY MENÚ MÓVIL DESPLEGABLE */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #f5f4f0;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 8vw;
+      box-sizing: border-box;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mobile-nav-links a {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+      color: #0e0e0e;
+      transition: opacity 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover { opacity: 0.5; }
 
     /* CONTENEDOR MULTI-STEP FULLSCREEN */
     .multistep-wrapper {
-      min-height: 100vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 140px 3.5vw 80px 3.5vw;
+      padding: 160px 4vw 80px 4vw;
       box-sizing: border-box;
       max-width: 900px;
       margin: 0 auto;
@@ -83,17 +170,17 @@
 
     .progress-bar-container {
       width: 100%;
-      max-width: 600px;
-      height: 2px;
-      background-color: rgba(14, 14, 14, 0.1);
-      margin-bottom: 50px;
+      max-width: 550px;
+      height: 1px;
+      background-color: rgba(14, 14, 14, 0.15);
+      margin-bottom: 60px;
       position: relative;
     }
 
     .progress-bar-fill {
       height: 100%;
       background-color: #0e0e0e;
-      width: 12.5%; /* 1/8 pasos */
+      width: 12.5%; 
       transition: width 0.4s ease;
     }
 
@@ -103,7 +190,7 @@
       width: 100%;
       max-width: 650px;
       text-align: center;
-      animation: fadeInStep 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeInStep 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .step-panel.active {
@@ -111,40 +198,47 @@
     }
 
     @keyframes fadeInStep {
-      0% { opacity: 0; transform: translateY(20px); }
+      0% { opacity: 0; transform: translateY(25px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
     .step-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
       font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin: 0 0 16px 0;
     }
 
     .step-subtitle {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
       color: #666;
-      margin-bottom: 35px;
-      letter-spacing: 0.02em;
+      margin-bottom: 40px;
     }
 
-    /* INPUTS & CONTROLES ESTÍLO BRUTALISTA */
+    /* INPUTS & CONTROLES ESTILO EDITORIAL */
     .input-line {
       width: 100%;
       background: transparent;
       border: none;
-      border-bottom: 1px solid #0e0e0e;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.3);
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
       font-weight: 300;
-      padding: 12px 0;
+      letter-spacing: -0.02em;
+      padding: 14px 0;
       text-align: center;
       outline: none;
       color: #0e0e0e;
       box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-line:focus {
+      border-color: #0e0e0e;
     }
 
     .input-textarea {
@@ -154,8 +248,9 @@
       font-family: 'Inter', sans-serif;
       font-size: 1.1rem;
       font-weight: 300;
-      padding: 16px;
-      min-height: 120px;
+      letter-spacing: -0.02em;
+      padding: 18px;
+      min-height: 140px;
       outline: none;
       color: #0e0e0e;
       resize: vertical;
@@ -165,94 +260,121 @@
     .checkbox-group {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       text-align: left;
-      max-width: 450px;
+      max-width: 480px;
       margin: 0 auto;
     }
 
     .checkbox-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 1.1rem;
+      gap: 14px;
+      font-size: 1.05rem;
       font-weight: 300;
+      letter-spacing: -0.02em;
       cursor: pointer;
       user-select: none;
+      color: #1a1a1a;
     }
 
     .checkbox-item input[type="checkbox"], .checkbox-item input[type="radio"] {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       accent-color: #0e0e0e;
       cursor: pointer;
     }
 
     .budget-note {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      background: rgba(14, 14, 14, 0.06);
-      padding: 8px 14px;
+      letter-spacing: -0.02em;
+      color: #666;
+      background: rgba(14, 14, 14, 0.05);
+      padding: 8px 16px;
       display: inline-block;
-      margin-bottom: 20px;
-      letter-spacing: 0.05em;
+      margin-bottom: 25px;
     }
 
-    /* BOTONES DE NAVEGACIÓN */
+    /* BOTONES DE NAVEGACIÓN EDITORIALES */
     .nav-buttons-row {
       display: flex;
       justify-content: center;
       gap: 16px;
-      margin-top: 40px;
+      margin-top: 45px;
     }
 
     .btn-step {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 14px 28px;
+      letter-spacing: -0.02em;
+      padding: 16px 32px;
       cursor: pointer;
-      border: 1px solid #0e0e0e;
-      transition: all 0.25s ease;
       font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
     }
 
     .btn-next {
       background: #0e0e0e;
       color: #f5f4f0;
+      border: 1px solid #0e0e0e;
     }
 
-    .btn-next:hover { opacity: 0.8; }
+    .btn-next:hover {
+      background: #252525;
+      transform: translateY(-2px);
+    }
 
     .btn-back {
       background: transparent;
       color: #0e0e0e;
+      border: 1px solid rgba(14, 14, 14, 0.3);
     }
 
-    .btn-back:hover { background: rgba(14, 14, 14, 0.05); }
+    .btn-back:hover {
+      border-color: #0e0e0e;
+      transform: translateY(-2px);
+    }
 
-    /* ESTADO FINAL COMPLETO */
-    .success-panel {
-      display: none;
-      text-align: center;
+    /* FOOTER SOBRIO MÍNIMO */
+    .minimal-footer {
+      width: 100%;
+      padding: 40px 4vw;
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
+      color: #666;
+      letter-spacing: -0.02em;
+      background-color: #f5f4f0;
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
     }
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .nav-links { display: none; }
-      .multistep-wrapper { padding-top: 120px; }
+      .multistep-wrapper { padding-top: 130px; }
+      .minimal-footer { flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER EDITORIAL -->
-  <header class="header-editorial">
+  <!-- HEADER EDITORIAL UNIFICADO -->
+  <header class="header-editorial" id="mainHeader">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
-      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" onerror="this.onerror=null; this.src='assets/EBS_Logo.png';" />
+      <img src="assets/Ebs_logo.svg" alt="Eloria Brista Studio" />
+      <span>Eloria Brista Studio</span>
     </a>
+    
     <nav class="nav-links">
       <a href="menu.html">Menu</a>
       <a href="work.html">Work</a>
@@ -260,7 +382,22 @@
       <a href="ebberkett.html">Ebberkett</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
+      ☰
+    </button>
   </header>
+
+  <!-- OVERLAY MÓVIL -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <nav class="mobile-nav-links">
+      <a href="menu.html">Menu</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="ebberkett.html">Ebberkett</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </div>
 
   <main class="multistep-wrapper">
     
@@ -269,12 +406,12 @@
       <div class="progress-bar-fill" id="progressFill"></div>
     </div>
 
-    <form id="enquiryForm" action="mailto:george@eloriabrista.com" method="POST" enctype="text/plain">
+    <form id="enquiryForm" action="mailto:eloriabristastudio@gmail.com" method="POST" enctype="text/plain">
 
       <!-- PASO 1: NOMBRE -->
       <div class="step-panel active" data-step="1">
         <h1 class="step-title">Hello, what's your name?</h1>
-        <p class="step-subtitle">FIRST AND LAST NAME</p>
+        <p class="step-subtitle">First and last name</p>
         <input type="text" name="Name" class="input-line" placeholder="Type your full name..." required />
         <div class="nav-buttons-row">
           <button type="button" class="btn-step btn-next" onclick="nextStep(1)">Next →</button>
@@ -284,7 +421,7 @@
       <!-- PASO 2: EMAIL -->
       <div class="step-panel" data-step="2">
         <h2 class="step-title">What is your email address?</h2>
-        <p class="step-subtitle">WE'LL GET BACK TO YOU WITHIN 48 HOURS</p>
+        <p class="step-subtitle">We'll get back to you within 48 hours</p>
         <input type="email" name="Email" class="input-line" placeholder="name@domain.com" required />
         <div class="nav-buttons-row">
           <button type="button" class="btn-step btn-back" onclick="prevStep(2)">Back</button>
@@ -294,9 +431,9 @@
 
       <!-- PASO 3: PROJECT NAME -->
       <div class="step-panel" data-step="3">
-        <h2 class="step-title">What is your Project or Brand name?</h2>
-        <p class="step-subtitle">COMPANY, ORGANIZATION, OR ARTIST ALIAS</p>
-        <input type="text" name="Project_Name" class="input-line" placeholder="e.g. Sukha / Nueve Cero Nueve..." />
+        <h2 class="step-title">What is your project or brand name?</h2>
+        <p class="step-subtitle">Company, organization, or artist alias</p>
+        <input type="text" name="Project_Name" class="input-line" placeholder="e.g. Sukha / Studio..." />
         <div class="nav-buttons-row">
           <button type="button" class="btn-step btn-back" onclick="prevStep(3)">Back</button>
           <button type="button" class="btn-step btn-next" onclick="nextStep(3)">Next →</button>
@@ -306,7 +443,7 @@
       <!-- PASO 4: YOUR ROLE -->
       <div class="step-panel" data-step="4">
         <h2 class="step-title">What is your role in this project?</h2>
-        <p class="step-subtitle">E.G. FOUNDER, CREATIVE DIRECTOR, PRODUCER</p>
+        <p class="step-subtitle">e.g. Founder, Creative Director, Producer</p>
         <input type="text" name="Role" class="input-line" placeholder="Type your role..." />
         <div class="nav-buttons-row">
           <button type="button" class="btn-step btn-back" onclick="prevStep(4)">Back</button>
@@ -314,10 +451,10 @@
         </div>
       </div>
 
-      <!-- PASO 5: SERVICES OF INTEREST (MULTIPLE CHOICE) -->
+      <!-- PASO 5: SERVICES OF INTEREST -->
       <div class="step-panel" data-step="5">
         <h2 class="step-title">What core services are you interested in?</h2>
-        <p class="step-subtitle">SELECT ALL THAT APPLY</p>
+        <p class="step-subtitle">Select all that apply</p>
         
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="Service" value="Creative Direction"> Creative Direction</label>
@@ -334,10 +471,10 @@
         </div>
       </div>
 
-      <!-- PASO 6: ESTIMATED BUDGET (USD Explicit) -->
+      <!-- PASO 6: ESTIMATED BUDGET -->
       <div class="step-panel" data-step="6">
         <h2 class="step-title">What is your estimated budget?</h2>
-        <div class="budget-note">Note: All estimations are calculated in USD ($)</div>
+        <div class="budget-note">All estimations are calculated in USD ($)</div>
         
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="radio" name="Budget_USD" value="Under $5,000 USD"> Under $5,000 USD</label>
@@ -355,8 +492,8 @@
 
       <!-- PASO 7: CURRENT WEBSITE / INSTAGRAM -->
       <div class="step-panel" data-step="7">
-        <h2 class="step-title">Current Website or Instagram page?</h2>
-        <p class="step-subtitle">OPTIONAL — HELPS US REVIEW YOUR CURRENT PRESENCE</p>
+        <h2 class="step-title">Current Website or Instagram?</h2>
+        <p class="step-subtitle">Optional — helps us review your presence</p>
         <input type="text" name="Reference_URL" class="input-line" placeholder="https://instagram.com/yourhandle" />
         <div class="nav-buttons-row">
           <button type="button" class="btn-step btn-back" onclick="prevStep(7)">Back</button>
@@ -367,7 +504,7 @@
       <!-- PASO 8: PROJECT DETAILS & SUBMIT -->
       <div class="step-panel" data-step="8">
         <h2 class="step-title">Tell us more about your brand &amp; vision</h2>
-        <p class="step-subtitle">WHAT ARE YOU WORKING ON? WHAT DOES SUCCESS LOOK LIKE?</p>
+        <p class="step-subtitle">What are you working on? What does success look like?</p>
         <textarea name="Project_Details" class="input-textarea" placeholder="Feel free to share timelines, inspiration, or specific deliverables..."></textarea>
         
         <div class="nav-buttons-row">
@@ -379,47 +516,44 @@
     </form>
 
     <!-- PANTALLA DE CONFIRMACIÓN -->
-    <div class="success-panel" id="successPanel">
-      <h2 style="font-size: 2.5rem; font-weight: 300;">Enquiry Received.</h2>
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #555; margin-top: 15px;">
-        Thank you for reaching out. Most project enquiries receive a written response within 48 hours.
-      </p>
-      <div style="margin-top: 30px;">
+    <div class="step-panel" id="successPanel" style="text-align: center;">
+      <h2 class="step-title">Enquiry Received.</h2>
+      <p class="step-subtitle" style="margin-bottom: 30px;">Thank you for reaching out. Most project enquiries receive a written response within 48 hours.</p>
+      <div class="nav-buttons-row">
         <a href="index.html" class="btn-step btn-next" style="text-decoration: none;">Return to Home →</a>
       </div>
     </div>
 
   </main>
 
-  <!-- FOOTER UNIFICADO -->
-  <footer class="site-footer" style="padding: 80px 3.5vw 40px 3.5vw; border-top: 1px solid rgba(14, 14, 14, 0.15); margin-top: 80px;">
-    <div class="top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-      <div class="brand-block" style="max-width: 350px;">
-        <span class="mark" style="font-size: 1.2rem; font-weight: 300;">Eloria Brista Studio</span>
-        <p style="color:#b0afaa;margin-top:10px;line-height:1.55;">Multidisciplinary boutique specializing in Creative Direction, Branding, Worldbuilding, and Audio Engineering.</p>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Navigation</h4>
-        <a href="menu.html" style="text-decoration: none; color: #0e0e0e;">Menu</a>
-        <a href="work.html" style="text-decoration: none; color: #0e0e0e;">Work</a>
-        <a href="about.html" style="text-decoration: none; color: #0e0e0e;">About</a>
-        <a href="ebberkett.html" style="text-decoration: none; color: #0e0e0e;">Ebberkett</a>
-        <a href="contact.html" style="text-decoration: none; color: #0e0e0e;">Contact</a>
-      </div>
-      <div class="col" style="display: flex; flex-direction: column; gap: 10px;">
-        <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: #555;">Direct Contact</h4>
-        <a href="mailto:george@eloriabrista.com" style="text-decoration: none; color: #0e0e0e;">george@eloriabrista.com</a>
-        <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #777;">MEX (UTC −5)</span>
-      </div>
-    </div>
-    <div class="bottom" style="margin-top: 60px; display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #555;">
-      <span>© <span data-year>2026</span> Eloria Brista Studio</span>
-      <span>CDMX / San Francisco</span>
-    </div>
+  <!-- FOOTER MÍNIMO SOBRIO -->
+  <footer class="minimal-footer">
+    <span>© 2026 Eloria Brista Studio.</span>
+    <span>Mexico City (CDMX)</span>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- SCRIPT DE NAVEGACIÓN PASO A PASO Y MENÚ MÓVIL -->
   <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. MENÚ MÓVIL
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileNavOverlay = document.getElementById("mobileNavOverlay");
+
+      mobileMenuBtn.addEventListener("click", function() {
+        const isOpen = mobileNavOverlay.classList.toggle("open");
+        mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNavOverlay.classList.remove("open");
+          mobileMenuBtn.textContent = "☰";
+          document.body.style.overflow = "";
+        });
+      });
+    });
+
     const totalSteps = 8;
 
     function updateProgress(step) {
@@ -431,7 +565,6 @@
       const currentPanel = document.querySelector(`.step-panel[data-step="${currentStep}"]`);
       const input = currentPanel.querySelector("input[required]");
 
-      // Validar si es requerido antes de avanzar
       if (input && !input.value.trim()) {
         input.reportValidity();
         return;
