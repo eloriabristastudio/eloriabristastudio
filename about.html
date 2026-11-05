@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#EBEBEB" />
   <title>About — Eloria Brista Studio</title>
-  <meta name="description" content="About George — Audio Engineer, Producer & Creative Director behind Eloria Brista Studio." />
+  <meta name="description" content="About George — Founder, Audio Engineer & Creative Director behind Eloria Brista Studio." />
   
   <!-- Favicon vectorial -->
   <link rel="icon" type="image/svg+xml" href="assets/Ebs_logo.svg" />
@@ -69,7 +69,7 @@
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
     }
 
-    /* HEADER EDITORIAL UNIFICADO Y CON TAMAÑO IDÉNTICO AL INDEX */
+    /* HEADER EDITORIAL UNIFICADO CON TAMAÑO IDÉNTICO AL INDEX */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -235,7 +235,7 @@
     }
 
     .hero-intro-box {
-      max-width: 900px;
+      max-width: 920px;
     }
 
     .main-hero-text {
@@ -252,7 +252,7 @@
       line-height: 1.5;
       color: #444;
       margin: 0 auto;
-      max-width: 750px;
+      max-width: 780px;
       letter-spacing: -0.02em;
     }
 
@@ -319,6 +319,11 @@
       letter-spacing: -0.03em;
     }
 
+    .about-text-block em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
     .about-meta-list {
       list-style: none;
       padding: 0;
@@ -345,6 +350,57 @@
       font-size: 0.95rem;
     }
 
+    /* SECCIÓN DE INVESTIGACIÓN & ACADEMIA */
+    .research-grid-section {
+      position: relative;
+      z-index: 2;
+      padding: 40px 4vw 140px 4vw;
+      max-width: 1250px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    .research-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      border-top: 1px solid rgba(14, 14, 14, 0.15);
+      padding-top: 40px;
+    }
+
+    .research-card h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px 0;
+    }
+
+    .research-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    /* ACCIONES DUALES (CLIENTES + RESIDENCIAS) */
+    .actions-flex {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
     .cta-btn-editorial {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.78rem;
@@ -361,6 +417,26 @@
 
     .cta-btn-editorial:hover {
       background: #252525;
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-outline {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      background: transparent;
+      color: #0e0e0e;
+      border: 1px solid rgba(14, 14, 14, 0.3);
+      padding: 15px 30px;
+      display: inline-block;
+      font-weight: 500;
+      transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-btn-outline:hover {
+      border-color: #0e0e0e;
       transform: translateY(-2px);
     }
 
@@ -491,7 +567,7 @@
     }
 
     @media (max-width: 900px) {
-      .about-intro-grid {
+      .about-intro-grid, .research-block {
         grid-template-columns: 1fr;
         gap: 50px;
       }
@@ -542,7 +618,7 @@
   </div>
 
   <main>
-    <!-- 1. PANTALLA PRINCIPAL -->
+    <!-- 1. PANTALLA PRINCIPAL (HERO) -->
     <section class="hero-center-screen">
       <div class="hero-intro-box">
         <h1 class="main-hero-text animate-hero-1">
@@ -560,7 +636,7 @@
       </a>
     </section>
 
-    <!-- 2. SEGUNDA PANTALLA: INFORMACIÓN DETALLADA CON ANIMACIÓN EN SCROLL -->
+    <!-- 2. SEGUNDA PANTALLA: MANIFIESTO & FACTOR HUMANO -->
     <section id="more-info" class="about-details-section">
       <div class="about-intro-grid">
         
@@ -570,11 +646,11 @@
             Eloria Brista Studio operates as a boutique practice rooted in the underground and contemporary culture of CDMX. As the sole founder and creative force behind the studio, I bridge the gap between high-end sonic architecture and compelling visual worldbuilding.
           </p>
           <p>
-            From mixing records and producing immersive soundscapes to designing complete brand identities and album art covers, every project is treated as an end-to-end universe where sound and aesthetics speak the exact same language.
+            From mixing records and producing immersive soundscapes to designing complete brand identities and album art covers, every project is treated as an <em>end-to-end universe</em> where sound and aesthetics speak the exact same language.
           </p>
         </div>
 
-        <!-- BLOQUE META INFOS Y CALL TO ACTION -->
+        <!-- BLOQUE META INFOS Y DOSSIER -->
         <div class="fade-in-on-scroll" style="transition-delay: 150ms;">
           <ul class="about-meta-list">
             <li>
@@ -586,21 +662,41 @@
               <span>Creative Direction &amp; Audio Engineering</span>
             </li>
             <li>
-              FOCUS
+              PRACTICE
               <span>Branding, Worldbuilding &amp; Sound Design</span>
             </li>
             <li>
               STATUS
-              <span>Available for selected commissions &amp; research collaborations</span>
+              <span>Available for commissions &amp; research residencies</span>
             </li>
           </ul>
           
-          <div style="margin-top: 45px;">
+          <div class="actions-flex">
             <a href="contact.html" class="cta-btn-editorial">Start a Project →</a>
+            <!-- Botón clave para Becas/NABA/Residencias -->
+            <a href="assets/docs/George_Studio_Dossier.pdf" target="_blank" class="cta-btn-outline">Download Dossier / CV</a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- 3. TERCERA PANTALLA: INVESTIGACIÓN & METODOLOGÍA (ACADEMIC FOCUS) -->
+    <section class="research-grid-section">
+      <div class="section-eyebrow fade-in-on-scroll">Research &amp; Methodology</div>
+      
+      <div class="research-block fade-in-on-scroll" style="transition-delay: 100ms;">
+        <div class="research-card">
+          <h3>Sonic Architecture</h3>
+          <p>Exploring how acoustic environments and frequencies shape spatial visual identity. My work approaches audio engineering not just as a technical mix, but as a structural material for brand environments and digital art.</p>
+        </div>
+        
+        <div class="research-card">
+          <h3>Speculative Worldbuilding</h3>
+          <p>Through experimental initiatives like <em>Ebberkett</em>, I investigate narrative systems, digital pavilions, and cultural artifacts. This research feeds directly into commercial commissions, ensuring brands feel like living universes.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- FOOTER REDISEÑADO -->
