@@ -169,12 +169,13 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    // Cerrar menú y regresar a Home al presionar la tecla ESC
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
+    // Cierra el menú al primer toque de la tecla ESC de forma inmediata
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' || event.keyCode === 27) {
+        event.preventDefault();
         window.location.href = 'index.html';
       }
-    });
+    }, true);
   </script>
 </body>
 </html>
