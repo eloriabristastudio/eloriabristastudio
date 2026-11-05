@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0e0e0e" />
+  <meta name="theme-color" content="#f5f4f0" />
   <title>Menu — Eloria Brista Studio</title>
   <meta name="description" content="Navigation directory — Eloria Brista Studio." />
   
@@ -86,7 +86,7 @@
     .directory-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
 
     .directory-item-group {
@@ -94,7 +94,7 @@
       flex-direction: column;
     }
 
-    /* ENLACES PRINCIPALES */
+    /* ENLACES PRINCIPALES LIMPIOS Y SIN FLECHAS */
     .directory-link {
       font-family: 'Inter', sans-serif;
       font-size: clamp(2.5rem, 5.2vw, 4.8rem);
@@ -116,50 +116,6 @@
     .directory-link:hover, .directory-link.active-main {
       color: #0e0e0e;
       transform: translateX(8px);
-    }
-
-    /* FLECHA VECTORIAL IDÉNTICA EN GROSOR Y PROPORCIÓN */
-    .custom-arrow-icon {
-      display: inline-block;
-      width: 0.55em;
-      height: 0.55em;
-      stroke: currentColor;
-      stroke-width: 2.2; /* Mismo grosor robusto que la flecha de Work */
-      fill: none;
-      margin-left: 6px;
-      vertical-align: middle;
-      transform: translateY(-4px);
-    }
-
-    /* SUBLISTA DE PROYECTOS */
-    .sub-projects-list {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
-      margin-left: 12px;
-      padding-left: 20px;
-      border-left: 1px solid rgba(14, 14, 14, 0.2);
-    }
-
-    .sub-projects-list.open {
-      display: flex;
-    }
-
-    .sub-project-item {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.1rem, 2vw, 1.6rem);
-      font-weight: 300;
-      color: #666;
-      text-decoration: none;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .sub-project-item:hover {
-      color: #0e0e0e;
-      transform: translateX(6px);
     }
 
     @media (max-width: 768px) {
@@ -187,19 +143,9 @@
           <a href="index.html" class="directory-link">Home</a>
         </div>
 
-        <!-- 02. WORK -->
+        <!-- 02. WORK (DIRECTO SIN ACORDEÓN) -->
         <div class="directory-item-group">
-          <button type="button" class="directory-link" id="workToggle" onclick="toggleWork()">Work <span>↓</span></button>
-          
-          <div class="sub-projects-list" id="workSubList">
-            <a href="work.html" class="sub-project-item">Case 01 — Sukha</a>
-            <a href="work.html" class="sub-project-item">Case 02 — Nueve Cero Nueve</a>
-            <a href="work.html" class="sub-project-item">Case 03 — Hypnia</a>
-            <a href="work.html" class="sub-project-item">Case 04 — Art Cover Collections</a>
-            <a href="work.html" class="sub-project-item">Case 05 — Vibin: The Ambients</a>
-            <a href="work.html" class="sub-project-item">Case 06 — The Human Tapes</a>
-            <a href="work.html" class="sub-project-item">Case 07 — Celeste</a>
-          </div>
+          <a href="work.html" class="directory-link">Work</a>
         </div>
 
         <!-- 03. ABOUT -->
@@ -207,13 +153,9 @@
           <a href="about.html" class="directory-link">About</a>
         </div>
 
-        <!-- 04. EBBERKETT CON FLECHA VECTORIAL PROPORCIONADA -->
+        <!-- 04. EBBERKETT (SIN FLECHA) -->
         <div class="directory-item-group">
-          <a href="ebberkett.html" class="directory-link">Ebberkett 
-            <svg class="custom-arrow-icon" viewBox="0 0 24 24">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+          <a href="ebberkett.html" class="directory-link">Ebberkett</a>
         </div>
 
         <!-- 05. CONTACT -->
@@ -227,16 +169,12 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    function toggleWork() {
-      const subList = document.getElementById('workSubList');
-      const toggleBtn = document.getElementById('workToggle');
-      subList.classList.toggle('open');
-      if (subList.classList.contains('open')) {
-        toggleBtn.innerHTML = 'Work <span>↑</span>';
-      } else {
-        toggleBtn.innerHTML = 'Work <span>↓</span>';
+    // Cerrar menú y regresar a Home al presionar la tecla ESC
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        window.location.href = 'index.html';
       }
-    }
+    });
   </script>
 </body>
 </html>
