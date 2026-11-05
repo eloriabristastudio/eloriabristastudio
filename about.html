@@ -392,6 +392,27 @@
       letter-spacing: -0.02em;
     }
 
+    /* ESTILO DE ENLACES SOBRIOS CORTOS (EXPLORE / LISTEN) */
+    .research-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #0e0e0e;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(14, 14, 14, 0.35);
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    .research-link:hover {
+      opacity: 0.55;
+      border-color: #0e0e0e;
+    }
+
     /* ACCIONES DUALES (CLIENTES + RESIDENCIAS) */
     .actions-flex {
       display: flex;
@@ -687,15 +708,21 @@
       <div class="section-eyebrow fade-in-on-scroll">Research &amp; Methodology</div>
       
       <div class="research-block fade-in-on-scroll" style="transition-delay: 100ms;">
+        
+        <!-- TARJETA 1: EBBERKETT PAVILION -->
         <div class="research-card">
           <h3>Ebberkett Pavilion</h3>
           <p>Beyond commercial practice, <em>Ebberkett</em> serves as the studio's experimental wing and virtual exhibition pavilion. It is a territory where our expertise with digital tools constantly dialogues with human intuition and organic textures.</p>
+          <a href="ebberkett.html" class="research-link">Explore →</a>
         </div>
         
+        <!-- TARJETA 2: THE HUMAN TAPES (LINK DIRECTO AL ANCLAJE #TAPES) -->
         <div class="research-card">
           <h3>The Human Tapes</h3>
           <p>This space operates as a live archive platform and open conversations with national and international creators, exploring the human experience and the process behind creation. Designed to connect regions, record sonic cartographies, and expand contemporary visual and acoustic narratives.</p>
+          <a href="https://eloriabristastudio.github.io/eloriabristastudio/ebberkett.html#tapes" class="research-link">Listen →</a>
         </div>
+
       </div>
     </section>
 
