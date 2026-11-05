@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f4f0" />
+  <meta name="theme-color" content="#EBEBEB" />
   <title>Contact — Eloria Brista Studio</title>
   <meta name="description" content="Initiate project enquiry — Eloria Brista Studio." />
   
@@ -19,7 +19,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      background-color: #f5f4f0;
+      background-color: #EBEBEB;
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       scroll-behavior: smooth;
@@ -39,7 +39,7 @@
       align-items: center;
       box-sizing: border-box;
       z-index: 100;
-      background-color: rgba(245, 244, 240, 0.85);
+      background-color: rgba(235, 235, 235, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -120,7 +120,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: #f5f4f0;
+      background-color: #EBEBEB;
       z-index: 99;
       display: flex;
       flex-direction: column;
@@ -168,12 +168,13 @@
       margin: 0 auto;
     }
 
+    /* BARRA DE PROGRESO PEQUEÑA Y ESTÉTICA */
     .progress-bar-container {
       width: 100%;
-      max-width: 550px;
+      max-width: 180px;
       height: 1px;
-      background-color: rgba(14, 14, 14, 0.15);
-      margin-bottom: 60px;
+      background-color: rgba(14, 14, 14, 0.2);
+      margin-bottom: 50px;
       position: relative;
     }
 
@@ -202,12 +203,22 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
+    /* COMPOSICIÓN DE TÍTULOS EDITORIALES */
     .step-title {
       font-size: clamp(2.2rem, 4.5vw, 3.5rem);
       font-weight: 300;
       letter-spacing: -0.04em;
-      line-height: 1.1;
+      line-height: 1.15;
       margin: 0 0 16px 0;
+    }
+
+    .step-title span.greeting {
+      display: block;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 300;
+      color: #666;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
 
     .step-subtitle {
@@ -318,7 +329,7 @@
 
     .btn-next {
       background: #0e0e0e;
-      color: #f5f4f0;
+      color: #EBEBEB;
       border: 1px solid #0e0e0e;
     }
 
@@ -338,20 +349,17 @@
       transform: translateY(-2px);
     }
 
-    /* FOOTER SOBRIO MÍNIMO */
+    /* FOOTER MÍNIMO LIMPIO (SIN LÍNEA NI INFO EXTRA) */
     .minimal-footer {
       width: 100%;
-      padding: 40px 4vw;
-      border-top: 1px solid rgba(14, 14, 14, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 30px 4vw;
+      text-align: center;
       box-sizing: border-box;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.72rem;
-      color: #666;
+      color: #777;
       letter-spacing: -0.02em;
-      background-color: #f5f4f0;
+      background-color: #EBEBEB;
     }
 
     @media (max-width: 1024px) {
@@ -362,7 +370,6 @@
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
       .multistep-wrapper { padding-top: 130px; }
-      .minimal-footer { flex-direction: column; gap: 10px; text-align: center; }
     }
   </style>
 </head>
@@ -401,7 +408,7 @@
 
   <main class="multistep-wrapper">
     
-    <!-- BARRA DE PROGRESO -->
+    <!-- BARRA DE PROGRESO PEQUEÑA Y ESTÉTICA -->
     <div class="progress-bar-container">
       <div class="progress-bar-fill" id="progressFill"></div>
     </div>
@@ -410,7 +417,10 @@
 
       <!-- PASO 1: NOMBRE -->
       <div class="step-panel active" data-step="1">
-        <h1 class="step-title">Hello, what's your name?</h1>
+        <h1 class="step-title">
+          <span class="greeting">Hello,</span>
+          what's your name?
+        </h1>
         <p class="step-subtitle">First and last name</p>
         <input type="text" name="Name" class="input-line" placeholder="Type your full name..." required />
         <div class="nav-buttons-row">
@@ -420,7 +430,10 @@
 
       <!-- PASO 2: EMAIL -->
       <div class="step-panel" data-step="2">
-        <h2 class="step-title">What is your email address?</h2>
+        <h2 class="step-title">
+          <span class="greeting">Get in touch,</span>
+          what is your email address?
+        </h2>
         <p class="step-subtitle">We'll get back to you within 48 hours</p>
         <input type="email" name="Email" class="input-line" placeholder="name@domain.com" required />
         <div class="nav-buttons-row">
@@ -431,7 +444,10 @@
 
       <!-- PASO 3: PROJECT NAME -->
       <div class="step-panel" data-step="3">
-        <h2 class="step-title">What is your project or brand name?</h2>
+        <h2 class="step-title">
+          <span class="greeting">The venture,</span>
+          what is your project or brand name?
+        </h2>
         <p class="step-subtitle">Company, organization, or artist alias</p>
         <input type="text" name="Project_Name" class="input-line" placeholder="e.g. Sukha / Studio..." />
         <div class="nav-buttons-row">
@@ -442,7 +458,10 @@
 
       <!-- PASO 4: YOUR ROLE -->
       <div class="step-panel" data-step="4">
-        <h2 class="step-title">What is your role in this project?</h2>
+        <h2 class="step-title">
+          <span class="greeting">Your position,</span>
+          what is your role in this project?
+        </h2>
         <p class="step-subtitle">e.g. Founder, Creative Director, Producer</p>
         <input type="text" name="Role" class="input-line" placeholder="Type your role..." />
         <div class="nav-buttons-row">
@@ -453,7 +472,10 @@
 
       <!-- PASO 5: SERVICES OF INTEREST -->
       <div class="step-panel" data-step="5">
-        <h2 class="step-title">What core services are you interested in?</h2>
+        <h2 class="step-title">
+          <span class="greeting">The scope,</span>
+          what core services are you interested in?
+        </h2>
         <p class="step-subtitle">Select all that apply</p>
         
         <div class="checkbox-group">
@@ -473,7 +495,10 @@
 
       <!-- PASO 6: ESTIMATED BUDGET -->
       <div class="step-panel" data-step="6">
-        <h2 class="step-title">What is your estimated budget?</h2>
+        <h2 class="step-title">
+          <span class="greeting">Investment,</span>
+          what is your estimated budget?
+        </h2>
         <div class="budget-note">All estimations are calculated in USD ($)</div>
         
         <div class="checkbox-group">
@@ -492,7 +517,10 @@
 
       <!-- PASO 7: CURRENT WEBSITE / INSTAGRAM -->
       <div class="step-panel" data-step="7">
-        <h2 class="step-title">Current Website or Instagram?</h2>
+        <h2 class="step-title">
+          <span class="greeting">Digital footprint,</span>
+          current website or Instagram?
+        </h2>
         <p class="step-subtitle">Optional — helps us review your presence</p>
         <input type="text" name="Reference_URL" class="input-line" placeholder="https://instagram.com/yourhandle" />
         <div class="nav-buttons-row">
@@ -503,7 +531,10 @@
 
       <!-- PASO 8: PROJECT DETAILS & SUBMIT -->
       <div class="step-panel" data-step="8">
-        <h2 class="step-title">Tell us more about your brand &amp; vision</h2>
+        <h2 class="step-title">
+          <span class="greeting">Final details,</span>
+          tell us more about your brand &amp; vision
+        </h2>
         <p class="step-subtitle">What are you working on? What does success look like?</p>
         <textarea name="Project_Details" class="input-textarea" placeholder="Feel free to share timelines, inspiration, or specific deliverables..."></textarea>
         
@@ -517,7 +548,10 @@
 
     <!-- PANTALLA DE CONFIRMACIÓN -->
     <div class="step-panel" id="successPanel" style="text-align: center;">
-      <h2 class="step-title">Enquiry Received.</h2>
+      <h2 class="step-title">
+        <span class="greeting">Success,</span>
+        Enquiry Received.
+      </h2>
       <p class="step-subtitle" style="margin-bottom: 30px;">Thank you for reaching out. Most project enquiries receive a written response within 48 hours.</p>
       <div class="nav-buttons-row">
         <a href="index.html" class="btn-step btn-next" style="text-decoration: none;">Return to Home →</a>
@@ -526,10 +560,9 @@
 
   </main>
 
-  <!-- FOOTER MÍNIMO SOBRIO -->
+  <!-- FOOTER MÍNIMO LIMPIO (SIN LÍNEA NI INFO EXTRA) -->
   <footer class="minimal-footer">
     <span>© 2026 Eloria Brista Studio.</span>
-    <span>Mexico City (CDMX)</span>
   </footer>
 
   <!-- SCRIPT DE NAVEGACIÓN PASO A PASO Y MENÚ MÓVIL -->
