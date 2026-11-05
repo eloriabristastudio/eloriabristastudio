@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f5f4f0" />
-  <title>Work — Eloria Brista Studio</title>
+  <title>Works — Eloria Brista Studio</title>
   <meta name="description" content="Selected projects and case studies — Eloria Brista Studio." />
   
   <!-- Favicon vectorial -->
@@ -23,9 +23,10 @@
       color: #0e0e0e;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* HEADER EDITORIAL UNIFICADO CON KERNING -50px EN ELORIA BRISTA STUDIO */
+    /* HEADER EDITORIAL UNIFICADO Y ALINEACIÓN SIMÉTRICA */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -39,6 +40,7 @@
       z-index: 100;
       background-color: rgba(245, 244, 240, 0.9);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .header-editorial .brand-logo {
@@ -47,6 +49,7 @@
       gap: 12px;
       text-decoration: none;
       transition: opacity 0.3s ease;
+      line-height: 1;
     }
 
     .header-editorial .brand-logo img {
@@ -62,6 +65,8 @@
       letter-spacing: -0.50px;
       text-transform: none;
       color: #0e0e0e;
+      display: inline-block;
+      line-height: 1;
     }
 
     .header-editorial .brand-logo:hover { opacity: 0.5; }
@@ -84,6 +89,67 @@
     }
 
     .nav-links a:hover, .nav-links a.active { color: #0e0e0e; }
+
+    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO Y SIMÉTRICO */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin: 0;
+      z-index: 101;
+      color: #0e0e0e;
+      font-size: 1.4rem;
+      line-height: 1;
+      height: 28px;
+      width: 28px;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-1px);
+    }
+
+    /* OVERLAY MENÚ MÓVIL DESPLEGABLE */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #f5f4f0;
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 8vw;
+      box-sizing: border-box;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-nav-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mobile-nav-links a {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2rem, 8vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+      color: #0e0e0e;
+      transition: opacity 0.2s ease;
+    }
+
+    .mobile-nav-links a:hover { opacity: 0.5; }
 
     /* CONTENEDOR PRINCIPAL CON ESPACIO NEGATIVO MASIVO */
     .page-container {
@@ -441,11 +507,12 @@
 
     @media (max-width: 1024px) {
       .work-grid-modern { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
     }
 
     @media (max-width: 768px) {
       .header-editorial { padding: 20px; }
-      .nav-links { display: none; }
       .page-container { padding: 140px 15px 80px 15px; }
       .editorial-filter-bar { grid-template-columns: 1fr; gap: 30px; }
       .work-grid-modern { grid-template-columns: 1fr; gap: 40px; }
@@ -456,19 +523,36 @@
 <body>
 
   <!-- HEADER EDITORIAL -->
-  <header class="header-editorial">
+  <header class="header-editorial" id="mainHeader">
     <a href="index.html" class="brand-logo" title="Eloria Brista Studio">
       <img src="assets/Ebs_logo.svg" alt="Ebs Logo" />
       <span>Eloria Brista Studio</span>
     </a>
+    
+    <!-- Enlaces Desktop -->
     <nav class="nav-links">
       <a href="menu.html">Menu</a>
-      <a href="work.html" class="active">Work</a>
+      <a href="work.html" class="active">Works</a>
       <a href="about.html">About</a>
-      <a href="ebberket.html">Ebberkett</a>
+      <a href="ebberkett.html">Ebberkett</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <!-- Botón Hamburguesa Móvil Alineado -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
+      ☰
+    </button>
   </header>
+
+  <!-- OVERLAY MÓVIL -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay">
+    <nav class="mobile-nav-links">
+      <a href="work.html" class="active">Works</a>
+      <a href="about.html">About</a>
+      <a href="ebberkett.html">Ebberkett</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 
   <main class="page-container">
     
@@ -624,7 +708,7 @@
         <h3 class="footer-brand-title">Eloria Brista Studio</h3>
       </a>
       <a href="mailto:eloriabristastudio@gmail.com" class="footer-email-link">eloriabristastudio@gmail.com</a>
-      <p class="footer-location-text">• San Francisco • Mexico City</p>
+      <p class="footer-location-text">• Mexico City</p>
       
       <div class="footer-social-bar">
         <a href="https://instagram.com/eloriabristastudio" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
@@ -641,14 +725,32 @@
     </div>
   </footer>
 
-  <!-- SCRIPT DE INTERSECTION OBSERVER PARA SCROLL Y FILTRADO -->
+  <!-- SCRIPTS DE INTERACTIVIDAD (HAMBURGUESA Y FILTROS) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // 1. MENÚ HAMBURGUESA MÓVIL
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileNavOverlay = document.getElementById("mobileNavOverlay");
+
+      mobileMenuBtn.addEventListener("click", function() {
+        const isOpen = mobileNavOverlay.classList.toggle("open");
+        mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileNavOverlay.classList.remove("open");
+          mobileMenuBtn.textContent = "☰";
+          document.body.style.overflow = "";
+        });
+      });
+
+      // 2. FILTRADO Y ANIMACIONES
       const serviceButtons = document.querySelectorAll("#serviceFilters button");
       const workItems = Array.from(document.querySelectorAll(".work-item-card"));
       const fadeElements = document.querySelectorAll(".fade-in-up");
 
-      // Observer para elementos generales (títulos, filtros, cta)
       const generalObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -660,14 +762,12 @@
 
       fadeElements.forEach(el => generalObserver.observe(el));
 
-      // Observer específico para las tarjetas de proyectos (por fila con retraso escalonado)
       const cardObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const card = entry.target;
             const row = card.getAttribute("data-row") || "1";
             
-            // Retraso basado en la fila para que aparezcan progresivamente al hacer scroll
             const delayMap = { "1": 0, "2": 150, "3": 300 };
             const baseDelay = delayMap[row] || 0;
 
@@ -682,7 +782,6 @@
 
       workItems.forEach(item => cardObserver.observe(item));
 
-      // Lógica de filtrado con re-activación limpia
       serviceButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           serviceButtons.forEach(b => b.classList.remove("active"));
@@ -696,7 +795,6 @@
 
             if (filterValue === "all" || categories.includes(filterValue)) {
               item.style.display = "flex";
-              // Pequeño respiro para disparar la animación de nuevo limpiamente
               setTimeout(() => {
                 item.classList.add("is-visible");
               }, 60);
