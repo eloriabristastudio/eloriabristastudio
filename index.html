@@ -431,20 +431,16 @@
       justify-content: flex-end;
     }
 
-    /* SECCIÓN ACTIVE PROJECT LOCATIONS (MAPA FULL-WIDTH DE FONDO) */
+    /* SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 HORIZONTAL CON MAPA EXPANDIDO) */
     .locations-section {
-      position: relative;
-      padding: 140px 4vw 160px 4vw;
+      padding: 140px 4vw 120px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
       background-color: #EBEBEB;
-      overflow: hidden; /* Contiene el mapa de fondo */
     }
 
     .locations-header {
-      position: relative;
-      z-index: 2;
-      margin-bottom: 30px;
-      max-width: 700px;
+      margin-bottom: 60px;
+      max-width: 900px;
     }
 
     .locations-title {
@@ -466,31 +462,29 @@
       letter-spacing: -0.01em;
     }
 
-    /* CONTENEDOR FULL-WIDTH DEL MAPA DE FONDO */
-    .map-bg-wrapper {
-      position: absolute;
-      bottom: 0;
-      left: 0;
+    /* CONTENEDOR TIPO 16:9 HORIZONTAL PARA EL MAPA */
+    .map-container-horizontal {
       width: 100%;
-      height: 100%;
-      z-index: 1;
+      aspect-ratio: 16 / 7;
+      background-color: rgba(14, 14, 14, 0.02);
+      border: 1px solid rgba(14, 14, 14, 0.08);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      pointer-events: none; /* Permite clics a través si es necesario */
     }
 
     .regional-map-svg {
       width: 100%;
-      height: auto;
-      max-height: 85%;
+      height: 100%;
       display: block;
-      opacity: 0.9;
     }
 
     .country {
-      fill: rgba(14, 14, 14, 0.025);
-      stroke: rgba(14, 14, 14, 0.18);
+      fill: rgba(14, 14, 14, 0.03);
+      stroke: rgba(14, 14, 14, 0.2);
       stroke-width: 1;
     }
 
@@ -500,7 +494,7 @@
 
     .pulse-ring {
       fill: none;
-      stroke: rgba(14, 14, 14, 0.35);
+      stroke: rgba(14, 14, 14, 0.4);
       stroke-width: 1.5px;
       transform-box: fill-box;
       transform-origin: center;
@@ -529,8 +523,6 @@
 
     /* SECCIÓN DE DISCIPLINAS */
     .disciplines-section {
-      position: relative;
-      z-index: 2; /* Por encima del mapa de fondo */
       padding: 140px 4vw;
       background-color: #0e0e0e;
       color: #EBEBEB;
@@ -776,7 +768,8 @@
       .work-preview-grid { grid-template-columns: 1fr; }
       .works-footer-action { justify-content: flex-start; margin-top: 36px; }
       
-      .locations-section { padding: 90px 5vw 120px 5vw; }
+      .locations-section { padding: 90px 5vw; }
+      .map-container-horizontal { aspect-ratio: 4 / 3; } /* Formato más cómodo verticalmente en celulares */
       .city-label { font-size: 10px; }
     }
   </style>
@@ -907,7 +900,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (MAPA FULL-WIDTH DE FONDO) -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 CON GUION Y SUBTÍTULO) -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
             <div class="eyebrow-custom" style="margin-bottom: 10px;">Global Reach</div>
@@ -915,17 +908,17 @@
             <p class="locations-subtitle">Available worldwide & for global commissions.</p>
           </div>
 
-          <!-- MAPA EXTENDIDO COMO FONDO FLOTANTE -->
-          <div class="map-bg-wrapper">
-            <!-- viewBox ampliado (zoom out) para que el mapa abarque con amplitud y no se corte -->
-            <svg viewBox="50 80 800 520" class="regional-map-svg" aria-label="Project Locations Map">
+          <!-- CONTENEDOR 16:9 HORIZONTAL CON EL MAPA AMPLIADO -->
+          <div class="map-container-horizontal">
+            <!-- viewBox expandido para mostrar más territorio y centrar de forma orgánica las ciudades -->
+            <svg viewBox="0 80 950 500" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
                 <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
                   <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0e0e0e" flood-opacity="0.04" />
                 </filter>
               </defs>
 
-              <!-- SILUETAS GEOGRÁFICAS -->
+              <!-- SILUETAS GEOGRÁFICAS AMPLIADAS -->
               <g class="landmasses" filter="url(#subtle-shadow)">
                 <!-- EUA -->
                 <path class="country" d="M 120 180 L 160 160 L 220 150 L 300 140 L 380 135 L 450 130 L 520 135 L 600 130 L 680 120 L 760 110 L 820 90 L 850 120 L 880 160 L 890 220 L 860 260 L 830 300 L 810 320 L 770 340 L 720 330 L 680 350 L 640 370 L 600 370 L 580 340 L 520 330 L 460 320 L 400 300 L 350 280 L 300 270 L 260 260 L 220 230 L 180 210 Z" />
