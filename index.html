@@ -431,7 +431,7 @@
       justify-content: flex-end;
     }
 
-    /* SECCIÓN PROJECT LOCATIONS */
+    /* SECCIÓN ACTIVE PROJECT LOCATIONS */
     .locations-section {
       padding: 120px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
@@ -449,7 +449,7 @@
       letter-spacing: -0.05em;
       color: #0e0e0e;
       margin: 0 0 8px 0;
-      text-transform: uppercase;
+      text-transform: none;
     }
 
     .locations-subtitle {
@@ -465,19 +465,6 @@
       position: relative;
       max-width: 950px;
       margin: 0 auto;
-    }
-
-    .status-badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: #666666;
-      text-transform: uppercase;
-      z-index: 2;
     }
 
     .regional-map-svg {
@@ -773,13 +760,6 @@
       .works-footer-action { justify-content: flex-start; margin-top: 36px; }
       
       .locations-section { padding: 80px 6vw; }
-      .status-badge {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-bottom: 24px;
-        display: inline-block;
-      }
       .city-label { font-size: 10px; }
     }
   </style>
@@ -808,7 +788,7 @@
     </button>
   </header>
 
-  <!-- OVERLAY MÓVIL (CORREGIDO "WORKS") -->
+  <!-- OVERLAY MÓVIL -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay">
     <nav class="mobile-nav-links">
       <a href="work.html">Works</a>
@@ -910,17 +890,14 @@
           </div>
         </section>
 
-        <!-- SECCIÓN PROJECT LOCATIONS -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
-            <div class="eyebrow-custom" style="margin-bottom: 10px;">Geographic Footprint</div>
-            <h2 class="locations-title">PROJECT LOCATIONS</h2>
-            <p class="locations-subtitle">Active projects executed & Available worldwide.</p>
+            <h2 class="locations-title">Active project locations</h2>
+            <p class="locations-subtitle">Available worldwide & for global commissions.</p>
           </div>
 
           <div class="map-wrapper">
-            <div class="status-badge">[ OPEN FOR GLOBAL COLLABORATIONS & COMMISSIONS ]</div>
-
             <svg viewBox="0 0 1000 650" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
                 <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
