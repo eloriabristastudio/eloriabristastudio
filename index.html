@@ -332,14 +332,11 @@
 
     /* SECCIÓN WORKS */
     .featured-work-section {
-      padding: 100px 4vw 140px 4vw;
+      padding: 100px 4vw 100px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
     }
 
     .section-header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
       margin-bottom: 60px;
     }
 
@@ -426,6 +423,106 @@
       border: 1px solid rgba(14, 14, 14, 0.2);
       padding: 4px 10px;
       border-radius: 20px;
+    }
+
+    .works-footer-action {
+      margin-top: 50px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* SECCIÓN PROJECT LOCATIONS */
+    .locations-section {
+      padding: 120px 4vw;
+      border-top: 1px solid rgba(14, 14, 14, 0.1);
+      background-color: #EBEBEB;
+    }
+
+    .locations-header {
+      margin-bottom: 48px;
+    }
+
+    .locations-title {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.05em;
+      color: #0e0e0e;
+      margin: 0 0 8px 0;
+      text-transform: uppercase;
+    }
+
+    .locations-subtitle {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+      color: #555555;
+      font-weight: 300;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .map-wrapper {
+      position: relative;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #666666;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .regional-map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .country {
+      fill: rgba(14, 14, 14, 0.03);
+      stroke: rgba(14, 14, 14, 0.22);
+      stroke-width: 1.2;
+    }
+
+    .dot {
+      fill: #0e0e0e;
+    }
+
+    .pulse-ring {
+      fill: none;
+      stroke: rgba(14, 14, 14, 0.4);
+      stroke-width: 1.5px;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pulseAnimation 2.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .city-label {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      fill: #0e0e0e;
+      text-transform: uppercase;
+    }
+
+    @keyframes pulseAnimation {
+      0% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(3.5);
+        opacity: 0;
+      }
     }
 
     /* SECCIÓN DE DISCIPLINAS */
@@ -673,7 +770,17 @@
       .hero-center, .hero-right { text-align: left; }
       .hero-footer-meta { position: static; margin-top: 40px; }
       .work-preview-grid { grid-template-columns: 1fr; }
-      .section-header-flex { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .works-footer-action { justify-content: flex-start; margin-top: 36px; }
+      
+      .locations-section { padding: 80px 6vw; }
+      .status-badge {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: 24px;
+        display: inline-block;
+      }
+      .city-label { font-size: 10px; }
     }
   </style>
 </head>
@@ -686,7 +793,7 @@
       <span>Eloria Brista Studio</span>
     </a>
     
-    <!-- Enlaces Desktop (HREF corregido a ebberkett.html) -->
+    <!-- Enlaces Desktop -->
     <nav class="nav-links">
       <a href="menu.html">Menu</a>
       <a href="work.html">Works</a>
@@ -701,7 +808,7 @@
     </button>
   </header>
 
-  <!-- OVERLAY MÓVIL (HREF corregido a ebberkett.html) -->
+  <!-- OVERLAY MÓVIL (CORREGIDO "WORKS") -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay">
     <nav class="mobile-nav-links">
       <a href="work.html">Works</a>
@@ -757,9 +864,6 @@
               <div class="eyebrow-custom" style="margin-bottom: 10px;">Selected Projects</div>
               <h2 class="section-title">Works</h2>
             </div>
-            <div>
-              <a href="work.html" class="arrow-link">View All Archive <span>→</span></a>
-            </div>
           </div>
 
           <div class="work-preview-grid">
@@ -798,6 +902,64 @@
                 <span class="work-pill">Branding</span>
               </div>
             </a>
+          </div>
+
+          <!-- ENLACE VIEW ALL ARCHIVE REUBICADO DEBAJO DE HYPNIA -->
+          <div class="works-footer-action reveal-line">
+            <a href="work.html" class="arrow-link">View All Archive <span>→</span></a>
+          </div>
+        </section>
+
+        <!-- SECCIÓN PROJECT LOCATIONS -->
+        <section class="locations-section" id="locations">
+          <div class="locations-header">
+            <div class="eyebrow-custom" style="margin-bottom: 10px;">Geographic Footprint</div>
+            <h2 class="locations-title">PROJECT LOCATIONS</h2>
+            <p class="locations-subtitle">Active projects executed & Available worldwide.</p>
+          </div>
+
+          <div class="map-wrapper">
+            <div class="status-badge">[ OPEN FOR GLOBAL COLLABORATIONS & COMMISSIONS ]</div>
+
+            <svg viewBox="0 0 1000 650" class="regional-map-svg" aria-label="Project Locations Map">
+              <defs>
+                <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0e0e0e" flood-opacity="0.04" />
+                </filter>
+              </defs>
+
+              <!-- SILUETAS GEOGRÁFICAS -->
+              <g class="landmasses" filter="url(#subtle-shadow)">
+                <!-- EUA -->
+                <path class="country" d="M 120 180 L 160 160 L 220 150 L 300 140 L 380 135 L 450 130 L 520 135 L 600 130 L 680 120 L 760 110 L 820 90 L 850 120 L 880 160 L 890 220 L 860 260 L 830 300 L 810 320 L 770 340 L 720 330 L 680 350 L 640 370 L 600 370 L 580 340 L 520 330 L 460 320 L 400 300 L 350 280 L 300 270 L 260 260 L 220 230 L 180 210 Z" />
+                <!-- México -->
+                <path class="country" d="M 260 260 L 300 270 L 350 280 L 400 300 L 460 320 L 520 330 L 550 360 L 580 400 L 600 450 L 630 480 L 660 500 L 680 520 L 650 530 L 600 520 L 550 490 L 510 460 L 470 430 L 430 390 L 380 340 L 330 310 L 290 280 Z" />
+                <!-- Península de Baja California -->
+                <path class="country" d="M 230 250 L 250 290 L 270 340 L 290 380 L 280 390 L 260 350 L 240 300 L 220 260 Z" />
+              </g>
+
+              <!-- NODOS ACTIVOS -->
+              <!-- San Francisco -->
+              <g class="city-node">
+                <circle class="pulse-ring" cx="235" cy="235" r="5" />
+                <circle class="dot" cx="235" cy="235" r="4.5" />
+                <text x="249" y="239" class="city-label">SAN FRANCISCO</text>
+              </g>
+
+              <!-- Los Angeles -->
+              <g class="city-node">
+                <circle class="pulse-ring" cx="265" cy="275" r="5" />
+                <circle class="dot" cx="265" cy="275" r="4.5" />
+                <text x="279" y="279" class="city-label">LOS ANGELES</text>
+              </g>
+
+              <!-- Mexico City -->
+              <g class="city-node">
+                <circle class="pulse-ring" cx="540" cy="465" r="5" />
+                <circle class="dot" cx="540" cy="465" r="4.5" />
+                <text x="554" y="469" class="city-label">MEXICO CITY</text>
+              </g>
+            </svg>
           </div>
         </section>
 
