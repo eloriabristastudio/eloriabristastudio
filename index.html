@@ -431,7 +431,7 @@
       justify-content: flex-end;
     }
 
-    /* SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 HORIZONTAL CON MAPA EXPANDIDO) */
+    /* SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 HORIZONTAL CON REVELADO ANIMADO) */
     .locations-section {
       padding: 140px 4vw 120px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
@@ -462,7 +462,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* CONTENEDOR TIPO 16:9 HORIZONTAL PARA EL MAPA */
+    /* CONTENEDOR TIPO 16:9 HORIZONTAL PARA EL MAPA CON ANIMACIÓN DE ENTRADA */
     .map-container-horizontal {
       width: 100%;
       aspect-ratio: 16 / 7;
@@ -474,6 +474,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      /* Animación integrada usando el sistema de scroll reveal del sitio */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .map-container-horizontal.active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .regional-map-svg {
@@ -769,7 +778,7 @@
       .works-footer-action { justify-content: flex-start; margin-top: 36px; }
       
       .locations-section { padding: 90px 5vw; }
-      .map-container-horizontal { aspect-ratio: 4 / 3; } /* Formato más cómodo verticalmente en celulares */
+      .map-container-horizontal { aspect-ratio: 4 / 3; }
       .city-label { font-size: 10px; }
     }
   </style>
@@ -900,17 +909,16 @@
           </div>
         </section>
 
-        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 CON GUION Y SUBTÍTULO) -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
-            <div class="eyebrow-custom" style="margin-bottom: 10px;">Global Reach</div>
-            <h2 class="locations-title">Active project locations</h2>
-            <p class="locations-subtitle">Available worldwide & for global commissions.</p>
+            <div class="eyebrow-custom reveal-line" style="margin-bottom: 10px;">Global Reach</div>
+            <h2 class="locations-title reveal-line">Active project locations</h2>
+            <p class="locations-subtitle reveal-line">Available worldwide and for global commissions.</p>
           </div>
 
-          <!-- CONTENEDOR 16:9 HORIZONTAL CON EL MAPA AMPLIADO -->
-          <div class="map-container-horizontal">
-            <!-- viewBox expandido para mostrar más territorio y centrar de forma orgánica las ciudades -->
+          <!-- CONTENEDOR 16:9 HORIZONTAL CON ANIMACIÓN DE REVELADO -->
+          <div class="map-container-horizontal reveal-line">
             <svg viewBox="0 80 950 500" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
                 <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
@@ -1026,8 +1034,8 @@
   <!-- SCRIPT DE INTERACTIVIDAD -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. REVELADO SUAVE EN SCROLL
-      const revealElements = document.querySelectorAll(".reveal-line, .work-preview-card");
+      // 1. REVELADO SUAVE EN SCROLL (INCLUYE HEADER Y MAPA DE LOCATIONS)
+      const revealElements = document.querySelectorAll(".reveal-line, .work-preview-card, .map-container-horizontal");
 
       function checkScroll() {
         const windowHeight = window.innerHeight;
