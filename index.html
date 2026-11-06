@@ -431,15 +431,15 @@
       justify-content: flex-end;
     }
 
-    /* SECCIÓN ACTIVE PROJECT LOCATIONS */
+    /* SECCIÓN ACTIVE PROJECT LOCATIONS (MAPA AMPLIADO Y CON ZOOM) */
     .locations-section {
-      padding: 120px 4vw;
+      padding: 140px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
       background-color: #EBEBEB;
     }
 
     .locations-header {
-      margin-bottom: 48px;
+      margin-bottom: 56px;
     }
 
     .locations-title {
@@ -463,7 +463,7 @@
 
     .map-wrapper {
       position: relative;
-      max-width: 950px;
+      max-width: 1050px; /* Ampliado para mayor presencia visual */
       margin: 0 auto;
     }
 
@@ -494,7 +494,7 @@
 
     .city-label {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 11px;
+      font-size: 13px; /* Letras un poco más grandes para legibilidad en móvil y desktop */
       font-weight: 600;
       letter-spacing: 0.06em;
       fill: #0e0e0e;
@@ -514,7 +514,7 @@
 
     /* SECCIÓN DE DISCIPLINAS */
     .disciplines-section {
-      padding: 120px 4vw;
+      padding: 140px 4vw;
       background-color: #0e0e0e;
       color: #EBEBEB;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -759,8 +759,8 @@
       .work-preview-grid { grid-template-columns: 1fr; }
       .works-footer-action { justify-content: flex-start; margin-top: 36px; }
       
-      .locations-section { padding: 80px 6vw; }
-      .city-label { font-size: 10px; }
+      .locations-section { padding: 90px 5vw; }
+      .city-label { font-size: 11px; } /* Ajuste de etiquetas legibles en móviles pequeños */
     }
   </style>
 </head>
@@ -890,7 +890,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (CON ZOOM Y ZOOM OPTIMIZADO) -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
             <h2 class="locations-title">Active project locations</h2>
@@ -898,7 +898,8 @@
           </div>
 
           <div class="map-wrapper">
-            <svg viewBox="0 0 1000 650" class="regional-map-svg" aria-label="Project Locations Map">
+            <!-- viewBox ajustado a un rango más cercano (zoom a USA y México) -->
+            <svg viewBox="150 130 550 420" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
                 <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
                   <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0e0e0e" flood-opacity="0.04" />
@@ -920,30 +921,30 @@
               <g class="city-node">
                 <circle class="pulse-ring" cx="235" cy="235" r="5" />
                 <circle class="dot" cx="235" cy="235" r="4.5" />
-                <text x="249" y="239" class="city-label">SAN FRANCISCO</text>
+                <text x="248" y="239" class="city-label">SAN FRANCISCO</text>
               </g>
 
               <!-- Los Angeles -->
               <g class="city-node">
                 <circle class="pulse-ring" cx="265" cy="275" r="5" />
                 <circle class="dot" cx="265" cy="275" r="4.5" />
-                <text x="279" y="279" class="city-label">LOS ANGELES</text>
+                <text x="278" y="279" class="city-label">LOS ANGELES</text>
               </g>
 
               <!-- Mexico City -->
               <g class="city-node">
                 <circle class="pulse-ring" cx="540" cy="465" r="5" />
                 <circle class="dot" cx="540" cy="465" r="4.5" />
-                <text x="554" y="469" class="city-label">MEXICO CITY</text>
+                <text x="553" y="469" class="city-label">MEXICO CITY</text>
               </g>
             </svg>
           </div>
         </section>
 
-        <!-- SECCIÓN DE DISCIPLINAS -->
+        <!-- SECCIÓN DE DISCIPLINAS (PRACTICE AREAS SIN 05) -->
         <section class="disciplines-section">
           <div class="disciplines-header">
-            <div class="eyebrow-custom" style="color: #aaa;">Practice Areas · 05</div>
+            <div class="eyebrow-custom" style="color: #aaa;">Practice Areas</div>
             <h2 class="disciplines-title">Disciplines</h2>
           </div>
 
