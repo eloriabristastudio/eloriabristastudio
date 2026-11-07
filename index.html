@@ -258,7 +258,7 @@
       max-width: 1300px;
     }
 
-    /* ESTILO EXACTO DEL EYEBROW CON GUION LARGO A LA DERECHA */
+    /* ESTILO EXACTO DEL EYEBROW CON GUION A LA DERECHA (LÍNEA EDITORIAL) */
     .eyebrow-custom {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.8rem;
@@ -465,7 +465,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* MAPA EN ESCRITORIO (TAL CUAL LO QUEDÓ, PERFECTO) */
+    /* MAPA EN ESCRITORIO */
     .map-container-horizontal {
       width: 100%;
       aspect-ratio: 16 / 7.5;
@@ -778,8 +778,13 @@
       .works-footer-action { justify-content: flex-start; margin-top: 36px; }
       
       .locations-section { padding: 80px 5vw 90px 5vw; }
-      /* VARIANTE MÓVIL: viewBox más cercano para que el mapa y los nombres de las ciudades luzcan grandes e imponentes */
-      .map-container-horizontal { aspect-ratio: 4 / 3.4; }
+
+      /* CORRECCIÓN FULL-WIDTH DE BORDE A BORDE EN CELULARES */
+      .map-container-horizontal { 
+        width: 100vw;
+        margin-left: -5vw; /* Expande la caja rompiendo los márgenes laterales */
+        aspect-ratio: 4 / 3.4;
+      }
       .regional-map-svg {
         transform: scale(1.65);
         transform-origin: 35% 42%;
@@ -922,7 +927,7 @@
             <p class="locations-subtitle reveal-line">Available worldwide and for global commissions.</p>
           </div>
 
-          <!-- MAPAMUNDI VECTORIAL CON VARIANTE MÓVIL OPTIMIZADA Y ESCRITORIO INTACTO -->
+          <!-- MAPAMUNDI VECTORIAL FULL-WIDTH EN MÓVILES -->
           <div class="map-container-horizontal reveal-line">
             <svg viewBox="-50 0 1300 650" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
