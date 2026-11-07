@@ -258,7 +258,7 @@
       max-width: 1300px;
     }
 
-    /* ESTILO EXACTO DEL EYEBROW CON GUION A LA DERECHA (LÍNEA EDITORIAL) */
+    /* EYEBROW CON LÍNEA HORIZONTAL VÍA CSS ::AFTER */
     .eyebrow-custom {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 0.8rem;
@@ -779,10 +779,10 @@
       
       .locations-section { padding: 80px 5vw 90px 5vw; }
 
-      /* CORRECCIÓN FULL-WIDTH DE BORDE A BORDE EN CELULARES */
+      /* FULL-WIDTH EN MÓVILES (BORDE A BORDE HORIZONTAL) */
       .map-container-horizontal { 
         width: 100vw;
-        margin-left: -5vw; /* Expande la caja rompiendo los márgenes laterales */
+        margin-left: -5vw;
         aspect-ratio: 4 / 3.4;
       }
       .regional-map-svg {
@@ -919,7 +919,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (EYEBROW DE GLOBAL REACH TOTALMENTE LIMPIO) -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
             <div class="eyebrow-custom reveal-line" style="margin-bottom: 10px;">Global Reach</div>
