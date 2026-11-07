@@ -222,10 +222,11 @@ font-size: 0.85rem;
 color: #777;
 letter-spacing: -0.02em;
 }
-/* MANIFIESTO Y TEXTOS ESPACIADOS */
+/* MANIFIESTO Y CONTENEDOR AMPLIO EN ESCRITORIO */
 .about-statement-section {
 padding: 160px 4vw 120px 4vw;
-max-width: 1400px; /* Aumentado para mayor inmersión en escritorio */
+width: 100%;
+box-sizing: border-box;
 }
 .eyebrow-custom {
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -249,13 +250,13 @@ background-color: #888;
 }
 .about-statement-text {
 font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: clamp(1.8rem, 3.5vw, 4rem); /* Ligeramente más grande para escritorio */
+font-size: clamp(2rem, 3.8vw, 4.2rem); /* Escritorio amplio y cómodo */
 font-weight: 300;
 line-height: 1.35;
 letter-spacing: -0.04em;
 color: #0e0e0e;
 margin: 0;
-max-width: 1100px; /* Ahora el texto fluye mucho más, eliminando el gran espacio a la derecha */
+max-width: 1250px; /* Ancho extendido para ocupar los lados de la pantalla */
 width: 100%;
 }
 .reveal-line {
@@ -264,10 +265,6 @@ opacity: 0.08;
 transform: translateY(25px);
 transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 will-change: opacity, transform;
-}
-/* Clase para forzar un renglón vacío de separación */
-.space-after {
-margin-bottom: 2.2rem;
 }
 .reveal-line.active {
 opacity: 1;
@@ -699,12 +696,9 @@ transform-origin: 35% 42%;
 }
 .city-label { font-size: 7.5px; letter-spacing: 0.05em; }
 .about-statement-text {
-font-size: 1.6rem;
+font-size: 1.55rem;
 line-height: 1.35;
-}
-/* Espacio en móvil más ajustado pero que mantiene el salto */
-.space-after {
-margin-bottom: 1.5rem;
+max-width: 100%;
 }
 }
 </style>
@@ -758,21 +752,21 @@ margin-bottom: 1.5rem;
 <span>Multidisciplinary Boutique</span>
 </div>
 </section>
-<!-- MANIFESTO ESPACIADO E INMERSIVO -->
+<!-- MANIFESTO -->
 <section id="statement-section" class="about-statement-section">
   <div class="eyebrow-custom">About Studio</div>
   
   <h2 class="about-statement-text">
-    <span class="reveal-line space-after">Eloria Brista Studio is a multidisciplinary boutique.</span>
-    <span class="reveal-line">We collaborate with international creators, cultural spaces, and auteur projects, developing visual and sonic identities.</span>
+    <span class="reveal-line">Eloria Brista Studio is a multidisciplinary boutique.</span>
+    <span class="reveal-line" style="margin-bottom: 1.8rem;">We collaborate with international creators, cultural spaces, and auteur projects, developing visual and sonic identities.</span>
   </h2>
 
-  <h2 class="about-statement-text" style="margin-top: 3.5rem;">
-    <span class="reveal-line space-after">We fuse modernist rigor with an organic approach.</span>
+  <h2 class="about-statement-text" style="margin-top: 2.5rem;">
+    <span class="reveal-line">We fuse modernist rigor with an organic approach.</span>
     <span class="reveal-line">In an ephemeral environment, we build structured brands designed to <em>evolve and adapt.</em></span>
   </h2>
 
-  <div style="margin-top: 50px;" class="reveal-line">
+  <div style="margin-top: 40px;" class="reveal-line">
     <a href="about.html" class="arrow-link">Discover the vision &amp; background <span>&rarr;</span></a>
   </div>
 </section>
