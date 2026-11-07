@@ -431,11 +431,12 @@
       justify-content: flex-end;
     }
 
-    /* SECCIÓN ACTIVE PROJECT LOCATIONS (ESTRUCTURA 16:9 HORIZONTAL CON REVELADO ANIMADO) */
+    /* SECCIÓN ACTIVE PROJECT LOCATIONS (FONDO DISTINTO SIN MARCOS/RECUADROS) */
     .locations-section {
-      padding: 140px 4vw 120px 4vw;
+      padding: 140px 4vw 140px 4vw;
       border-top: 1px solid rgba(14, 14, 14, 0.1);
-      background-color: #EBEBEB;
+      /* Cambio de tono de fondo elegante para diferenciarlo del #EBEBEB general sin usar recuadros */
+      background-color: #E2E2E2;
     }
 
     .locations-header {
@@ -462,19 +463,15 @@
       letter-spacing: -0.01em;
     }
 
-    /* CONTENEDOR TIPO 16:9 HORIZONTAL PARA EL MAPA CON ANIMACIÓN DE ENTRADA */
+    /* CONTENEDOR 16:9 LIMPIO SIN BORDES NI MARCOS, INTEGRADO AL NUEVO FONDO */
     .map-container-horizontal {
       width: 100%;
       aspect-ratio: 16 / 7;
-      background-color: rgba(14, 14, 14, 0.02);
-      border: 1px solid rgba(14, 14, 14, 0.08);
-      border-radius: 4px;
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Animación integrada usando el sistema de scroll reveal del sitio */
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
@@ -492,8 +489,8 @@
     }
 
     .country {
-      fill: rgba(14, 14, 14, 0.03);
-      stroke: rgba(14, 14, 14, 0.2);
+      fill: rgba(14, 14, 14, 0.025);
+      stroke: rgba(14, 14, 14, 0.18);
       stroke-width: 1;
     }
 
@@ -503,7 +500,7 @@
 
     .pulse-ring {
       fill: none;
-      stroke: rgba(14, 14, 14, 0.4);
+      stroke: rgba(14, 14, 14, 0.35);
       stroke-width: 1.5px;
       transform-box: fill-box;
       transform-origin: center;
@@ -909,7 +906,7 @@
           </div>
         </section>
 
-        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS -->
+        <!-- SECCIÓN ACTIVE PROJECT LOCATIONS (FONDO LIMPIO SIN MARCOS) -->
         <section class="locations-section" id="locations">
           <div class="locations-header">
             <div class="eyebrow-custom reveal-line" style="margin-bottom: 10px;">Global Reach</div>
@@ -917,7 +914,7 @@
             <p class="locations-subtitle reveal-line">Available worldwide and for global commissions.</p>
           </div>
 
-          <!-- CONTENEDOR 16:9 HORIZONTAL CON ANIMACIÓN DE REVELADO -->
+          <!-- CONTENEDOR 16:9 HORIZONTAL LIBRE DE RECUADROS CON ANIMACIÓN -->
           <div class="map-container-horizontal reveal-line">
             <svg viewBox="0 80 950 500" class="regional-map-svg" aria-label="Project Locations Map">
               <defs>
@@ -1034,7 +1031,7 @@
   <!-- SCRIPT DE INTERACTIVIDAD -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // 1. REVELADO SUAVE EN SCROLL (INCLUYE HEADER Y MAPA DE LOCATIONS)
+      // 1. REVELADO SUAVE EN SCROLL
       const revealElements = document.querySelectorAll(".reveal-line, .work-preview-card, .map-container-horizontal");
 
       function checkScroll() {
