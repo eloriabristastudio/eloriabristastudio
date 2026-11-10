@@ -54,7 +54,7 @@
       animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
     }
 
-    /* HEADER EDITORIAL UNIFICADO (ESTÁTICO Y FIJO DESDE EL INICIO) */
+    /* HEADER EDITORIAL UNIFICADO */
     .header-editorial {
       position: fixed;
       top: 0;
@@ -122,7 +122,7 @@
       transform: translateY(-1px);
     }
 
-    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO Y SIMÉTRICO */
+    /* BOTÓN HAMBURGUESA MÓVIL ALINEADO */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -204,7 +204,7 @@
       object-fit: cover;
     }
 
-    /* 1. SECCIÓN HERO: PANTALLA COMPLETA Y CENTRADA */
+    /* 1. SECCIÓN HERO */
     .hero-center-screen {
       position: relative;
       z-index: 2;
@@ -241,7 +241,6 @@
       letter-spacing: -0.02em;
     }
 
-    /* INDICADOR SCROLL */
     .scroll-indicator-right {
       position: absolute;
       bottom: 40px;
@@ -262,7 +261,7 @@
       opacity: 0.5;
     }
 
-    /* 2. SECCIÓN DETALLES CON ANIMACIÓN DE ENTRADA SUAVE */
+    /* 2. SECCIÓN DETALLES & MANIFIESTO */
     .about-details-section {
       position: relative;
       z-index: 2;
@@ -281,7 +280,6 @@
       padding-top: 60px;
     }
 
-    /* CLASE DE ANIMACIÓN FADE-IN SCROLL */
     .fade-in-on-scroll {
       opacity: 0;
       transform: translateY(35px);
@@ -309,30 +307,121 @@
       font-weight: 400;
     }
 
-    .about-meta-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.85rem;
-      color: #666;
+    /* CAJITA DE STATUS EXCLUSIVA (ESTILO UI EDITORIAL) */
+    .studio-status-card {
+      background: rgba(14, 14, 14, 0.03);
+      border: 1px solid rgba(14, 14, 14, 0.1);
+      padding: 24px;
+      box-sizing: border-box;
+      margin-bottom: 28px;
+      position: relative;
+      transition: border-color 0.3s ease;
+    }
+
+    .studio-status-card:hover {
+      border-color: rgba(14, 14, 14, 0.3);
+    }
+
+    .status-header {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      letter-spacing: -0.02em;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
-    .about-meta-list li {
-      border-bottom: 1px solid rgba(14, 14, 14, 0.08);
-      padding-bottom: 12px;
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #2e7d32;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+      animation: pulseDot 2s infinite ease-in-out;
     }
 
-    .about-meta-list li span {
-      color: #0e0e0e;
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(46, 125, 50, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+    }
+
+    .status-label {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #666;
       font-weight: 500;
-      display: block;
-      margin-top: 4px;
-      font-size: 0.95rem;
+    }
+
+    .status-content .status-main-text {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #0e0e0e;
+      margin: 0 0 6px 0;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .status-content .status-main-text strong {
+      font-weight: 600;
+      color: #0e0e0e;
+    }
+
+    .status-content .status-sub-text {
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #777;
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    /* ACCIONES DUALES */
+    .actions-flex {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-editorial {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      background: #0e0e0e;
+      color: #EBEBEB;
+      padding: 16px 32px;
+      display: inline-block;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-btn-editorial:hover {
+      background: #252525;
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-outline {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      background: transparent;
+      color: #0e0e0e;
+      border: 1px solid rgba(14, 14, 14, 0.3);
+      padding: 15px 30px;
+      display: inline-block;
+      font-weight: 500;
+      transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-btn-outline:hover {
+      border-color: #0e0e0e;
+      transform: translateY(-2px);
     }
 
     /* SECCIÓN DE INVESTIGACIÓN & ACADEMIA */
@@ -377,7 +466,6 @@
       letter-spacing: -0.02em;
     }
 
-    /* ESTILO DE ENLACES SOBRIOS CORTOS (EXPLORE / LISTEN) */
     .research-link {
       display: inline-block;
       margin-top: 20px;
@@ -396,54 +484,6 @@
     .research-link:hover {
       opacity: 0.55;
       border-color: #0e0e0e;
-    }
-
-    /* ACCIONES DUALES (CLIENTES + RESIDENCIAS) */
-    .actions-flex {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .cta-btn-editorial {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      text-decoration: none;
-      background: #0e0e0e;
-      color: #EBEBEB;
-      padding: 16px 32px;
-      display: inline-block;
-      font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .cta-btn-editorial:hover {
-      background: #252525;
-      transform: translateY(-2px);
-    }
-
-    .cta-btn-outline {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      text-decoration: none;
-      background: transparent;
-      color: #0e0e0e;
-      border: 1px solid rgba(14, 14, 14, 0.3);
-      padding: 15px 30px;
-      display: inline-block;
-      font-weight: 500;
-      transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-
-    .cta-btn-outline:hover {
-      border-color: #0e0e0e;
-      transform: translateY(-2px);
     }
 
     /* FOOTER REDISEÑADO */
@@ -597,7 +637,7 @@
       <a href="contact.html">Contact</a>
     </nav>
 
-    <!-- Botón Hamburguesa Móvil Alineado -->
+    <!-- Botón Hamburguesa Móvil -->
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
       ☰
     </button>
@@ -637,7 +677,7 @@
     <section id="more-info" class="about-details-section">
       <div class="about-intro-grid">
         
-        <!-- BLOQUE DE TEXTO NARRATIVO ANIMADO CON EL NUEVO MANIFIESTO ACTUALIZADO -->
+        <!-- BLOQUE DE TEXTO NARRATIVO -->
         <div class="about-text-block fade-in-on-scroll">
           <p>
             Eloria Brista Studio is a multidisciplinary boutique studio. In the environments where we work, public attention is ephemeral, which is why brands need to evolve constantly to remain relevant.
@@ -653,36 +693,28 @@
           </p>
         </div>
 
-        <!-- BLOQUE META INFOS Y DOSSIER -->
+        <!-- BLOQUE STATUS EXCLUSIVO Y ACCIONES -->
         <div class="fade-in-on-scroll" style="transition-delay: 150ms;">
-          <ul class="about-meta-list">
-            <li>
-              PRACTICE
-              <span>Multidisciplinary Boutique Studio</span>
-            </li>
-            <li>
-              DISCIPLINE
-              <span>Creative Direction &amp; Audio Engineering</span>
-            </li>
-            <li>
-              FOCUS
-              <span>Dynamic Branding, Worldbuilding &amp; Sound Design</span>
-            </li>
-            <li>
-              STATUS
-              <span>Available for commissions &amp; research residencies</span>
-            </li>
-          </ul>
+          <div class="studio-status-card">
+            <div class="status-header">
+              <span class="live-dot"></span>
+              <span class="status-label">STUDIO CAPACITY</span>
+            </div>
+            <div class="status-content">
+              <p class="status-main-text">Q2/Q3 Cohort: <strong>2 slots remaining</strong> for active development &amp; residencies.</p>
+              <p class="status-sub-text">Currently collaborating with selected international partners.</p>
+            </div>
+          </div>
           
           <div class="actions-flex">
-            <a href="contact.html" class="cta-btn-editorial">Start a Project →</a>
+            <a href="contact.html" class="cta-btn-editorial">Secure a Slot →</a>
             <a href="assets/docs/George_Studio_Dossier.pdf" target="_blank" class="cta-btn-outline">Download Dossier / CV</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. TERCERA PANTALLA: INVESTIGACIÓN & METODOLOGÍA (ACADEMIC FOCUS) -->
+    <!-- 3. TERCERA PANTALLA: INVESTIGACIÓN & METODOLOGÍA -->
     <section class="research-grid-section">
       <div class="section-eyebrow fade-in-on-scroll">Research &amp; Methodology</div>
       
