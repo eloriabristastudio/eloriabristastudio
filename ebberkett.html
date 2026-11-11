@@ -247,7 +247,7 @@ body, html {
   line-height: 1.2;
 }
 
-/* SECCIÓN NOVEDADES / EXHIBICIÓN */
+/* SECCIÓN NOVEDADES / EXHIBICIÓN (CON SEPARACIÓN Y MARGEN ENTRE SLIDES) */
 .current-exhibition-section {
   width: 100%;
   padding: 100px 4vw;
@@ -274,6 +274,7 @@ body, html {
 .exhibition-slider-outer::-webkit-scrollbar { display: none; }
 .exhibition-track {
   display: flex;
+  gap: 80px; /* Margen de separación limpio entre cada slide de noticias */
   width: 100%;
 }
 .exhibition-slide {
@@ -283,6 +284,7 @@ body, html {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   box-sizing: border-box;
+  padding-right: 20px;
 }
 .slide-layout-tulips {
   position: relative;
@@ -417,7 +419,7 @@ body, html {
   z-index: 20;
 }
 .news-nav-controls {
-  margin-top: 15px;
+  margin-top: 25px;
   display: flex;
   justify-content: flex-end;
   gap: 15px;
@@ -525,7 +527,7 @@ body, html {
   line-height: 1.5;
 }
 
-/* DVISION HERO */
+/* DVISION HERO (INTACTO) */
 .dvision-immersive-hero {
   position: relative;
   width: 100%;
@@ -658,7 +660,7 @@ body, html {
 }
 .dvision-explore-btn:hover { border-color: #f5f4f0; opacity: 0.8; }
 
-/* THE HUMAN TAPES (RADIO) */
+/* THE HUMAN TAPES (RADIO - CON AUTO-SCROLL SUAVE Y GIFS) */
 .tapes-section {
   padding: 110px 4vw;
   background-color: #f5f4f0;
@@ -697,10 +699,12 @@ body, html {
 .tapes-track-wrapper::-webkit-scrollbar { display: none; }
 .tapes-track {
   display: flex;
+  gap: 50px;
   width: 100%;
 }
 .tape-card-retro {
   min-width: 100%;
+  flex-shrink: 0;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   background: transparent;
@@ -746,7 +750,7 @@ body, html {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   color: #888;
-  margin-top: 10px;
+  margin-top: 15px;
   letter-spacing: 0.05em;
 }
 .tapes-platforms-container {
@@ -1034,7 +1038,7 @@ body, html {
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES (NEWS: SLIDE POR SLIDE AUTOMÁTICO) -->
+  <!-- SECCIÓN NOVEDADES (NEWS: SLIDE POR SLIDE AUTOMÁTICO CON MARGEN) -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -1090,15 +1094,14 @@ body, html {
           <div class="exhibition-slide">
             <div class="slide-layout-tulips reveal-item">
               <div class="tulips-title-block">
-                <h2>OUR FIRST POP OUT</h2>
-                <span>3200 FOLSOM ST, San Francisco</span>
+                <h2>SF POP-UP: 08.08 // 08:08</h2>
+                <span>FIRST INTERNATIONAL POP-UP — 3200 FOLSOM ST, SF</span>
                 <div>
                   <a href="#shop" class="tulips-visit-link-left">VIEW ARCHIVE</a>
                 </div>
               </div>
               <div class="tulips-dates-top">
-                08.08
-                08:08
+                08.AUG
               </div>
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
@@ -1199,7 +1202,7 @@ body, html {
     </div>
   </section>
 
-  <!-- THE HUMAN TAPES (RADIO) -->
+  <!-- THE HUMAN TAPES (RADIO - CON ANIMACIÓN Y GIFS) -->
   <section id="tapes" class="tapes-section">
     <div class="tapes-header-block">
       <span class="section-label reveal-item">Ebberkett Radio</span>
@@ -1210,7 +1213,7 @@ body, html {
     </div>
     <div class="tapes-carousel-frame">
       <div class="tapes-track-wrapper" id="tapesTrackWrapper">
-        <div class="tapes-track">
+        <div class="tapes-track" id="tapesTrack">
           <div class="tape-card-retro">
             <div class="tape-gif-container">
               <img src="assets/TRT_beta.gif" alt="Tape 01 - Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
@@ -1392,7 +1395,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-/* SLIDER AUTOMÁTICO DE NOTICIAS (PAGE-BY-PAGE SLIDE CON PAUSA EN HOVER) */
+/* SLIDER AUTOMÁTICO DE NOTICIAS (CON GAPS / SEPARACIÓN) */
 let newsIndex = 0;
 let newsTimer = null;
 const newsContainer = document.getElementById('exhibitionSlider');
@@ -1400,7 +1403,7 @@ const newsSlides = document.querySelectorAll('.exhibition-slide');
 
 function scrollToNewsIndex(index) {
   if (!newsContainer || newsSlides.length === 0) return;
-  const slideWidth = newsSlides[0].clientWidth;
+  const slideWidth = newsSlides[0].getBoundingClientRect().width + 80; // incluye el gap del track
   newsContainer.scrollTo({
     left: slideWidth * index,
     behavior: 'smooth'
@@ -1419,7 +1422,7 @@ function prevNewsSlide() {
 
 function startNewsAutoPlay() {
   stopNewsAutoPlay();
-  newsTimer = setInterval(nextNewsSlide, 5000); // Avanza cada 5 segundos
+  newsTimer = setInterval(nextNewsSlide, 5000);
 }
 
 function stopNewsAutoPlay() {
@@ -1432,6 +1435,43 @@ if (newsContainer) {
   newsContainer.addEventListener('mouseleave', startNewsAutoPlay);
   newsContainer.addEventListener('touchstart', stopNewsAutoPlay, {passive: true});
   newsContainer.addEventListener('touchend', startNewsAutoPlay, {passive: true});
+}
+
+/* SLIDER AUTOMÁTICO DE THE HUMAN TAPES (RADIO) */
+let tapesIndex = 0;
+let tapesTimer = null;
+const tapesContainer = document.getElementById('tapesTrackWrapper');
+const tapeSlides = document.querySelectorAll('.tape-card-retro');
+
+function scrollToTapesIndex(index) {
+  if (!tapesContainer || tapeSlides.length === 0) return;
+  const tapeWidth = tapeSlides[0].getBoundingClientRect().width + 50; // incluye el gap
+  tapesContainer.scrollTo({
+    left: tapeWidth * index,
+    behavior: 'smooth'
+  });
+}
+
+function nextTapeSlide() {
+  tapesIndex = (tapesIndex + 1) % tapeSlides.length;
+  scrollToTapesIndex(tapesIndex);
+}
+
+function startTapesAutoPlay() {
+  stopTapesAutoPlay();
+  tapesTimer = setInterval(nextTapeSlide, 4500);
+}
+
+function stopTapesAutoPlay() {
+  if (tapesTimer) clearInterval(tapesTimer);
+}
+
+if (tapesContainer && tapeSlides.length > 0) {
+  startTapesAutoPlay();
+  tapesContainer.addEventListener('mouseenter', stopTapesAutoPlay);
+  tapesContainer.addEventListener('mouseleave', startTapesAutoPlay);
+  tapesContainer.addEventListener('touchstart', stopTapesAutoPlay, {passive: true});
+  tapesContainer.addEventListener('touchend', startTapesAutoPlay, {passive: true});
 }
 
 /* ANIMACIONES GSAP DVISION (INTACTAS) */
