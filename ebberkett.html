@@ -1,20 +1,3 @@
-Para solucionar de una vez por todas lo del celular y los nombres de las obras, vamos a atacar las dos cosas de raíz:
-
-### 1. ¿Por qué el GIF seguía viéndose enorme o cortado en el celular?
-
-Porque como el contenedor de las tarjetas de *The Human Tapes* tiene configurado un ancho del 100%, la regla anterior ocultaba la imagen pero el espacio vacío seguía ahí o el navegador intentaba mantener proporciones extrañas.
-
-La solución definitiva en diseño web para móviles es **reducir drásticamente el tamaño del contenedor del GIF y de la tarjeta misma** en la regla de celulares para que no domine toda la pantalla.
-
-### 2. ¿Por qué no se veían reflejados los nombres de las obras en la tienda?
-
-Si ya guardaste y actualizaste pero sigues viendo los títulos viejos, es porque al copiar y pegar el código anterior, los títulos de la tienda se sobrescribieron con los genéricos de la versión base. Aquí abajo **ya van fijos tus títulos nuevos** (`Lamine Yamal`, `THNK BAG`, `The Lion` y `TOP SELLINGS`) para que no tengas que batallar con eso.
-
----
-
-Copia todo este código actualizado, reemplázalo por completo en tu archivo `ebberkett.html`, guárdalo y recarga tu navegador (y tu cel):
-
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -995,12 +978,12 @@ body, html {
     gap: 20px;
   }
   
-  /* REGLA DEFINITIVA PARA CELULARES: Oculta el GIF y ajusta la tarjeta de radio perfectamente */
+  /* OCULTAMIENTO TOTAL DEL GIF EN MÓVIL (EVITA DEFORMACIONES) */
   .tape-gif-container {
     display: none !important;
   }
   .tapes-carousel-frame {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }
 </style>
@@ -1616,5 +1599,3 @@ window.addEventListener("load", function() {
 </script>
 </body>
 </html>
-
-```
