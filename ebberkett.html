@@ -977,6 +977,11 @@ body, html {
   .footer-social-bar {
     gap: 20px;
   }
+  
+  /* Variante optimizada para celulares: oculta el GIF pesado y deja limpio el bloque de radio */
+  .tape-gif-container {
+    display: none;
+  }
 }
 </style>
 </head>
@@ -991,7 +996,7 @@ body, html {
   <nav class="ebberkett-nav-links">
     <a href="#manifesto">About</a>
     <a href="#salas">Salas</a>
-    <a href="#dvision Hero">/ Dvision</a>
+    <a href="#dvision Hero">/Dvision</a>
     <a href="#tapes">Radio</a>
     <a href="EBshop.html">Shop</a>
     <a href="index.html" class="back-to-studio" style="color: #0e0e0e; text-decoration: none;">← Eloria Brista Studio</a>
@@ -1101,8 +1106,8 @@ body, html {
                 </div>
               </div>
               <div class="tulips-dates-top" style="font-family: 'GeistPixelLocal', monospace;">
-              08.08<br/>
-              08:08
+                08.08<br/>
+                08:08
               </div>
               <div class="tulips-collage-stage">
                 <div class="t-img-1">
@@ -1396,7 +1401,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-/* SLIDER AUTOMÁTICO DE NOTICIAS (CADA 5 SEGUNDOS) */
+/* SLIDER AUTOMÁTICO DE NOTICIAS (CADA 3 SEGUNDOS) */
 let newsIndex = 0;
 let newsTimer = null;
 const newsContainer = document.getElementById('exhibitionSlider');
@@ -1438,7 +1443,7 @@ if (newsContainer) {
   newsContainer.addEventListener('touchend', startNewsAutoPlay, {passive: true});
 }
 
-/* SLIDER AUTOMÁTICO DE THE HUMAN TAPES (CADA 4.5 SEGUNDOS) */
+/* SLIDER AUTOMÁTICO DE THE HUMAN TAPES (CADA 2.5 SEGUNDOS) */
 let tapesIndex = 0;
 let tapesTimer = null;
 const tapesContainer = document.getElementById('tapesTrackWrapper');
