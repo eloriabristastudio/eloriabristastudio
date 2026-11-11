@@ -247,7 +247,7 @@ body, html {
   line-height: 1.2;
 }
 
-/* SECCIÓN NOVEDADES / EXHIBICIÓN (CON SEPARACIÓN Y MARGEN ENTRE SLIDES) */
+/* SECCIÓN NOVEDADES / EXHIBICIÓN */
 .current-exhibition-section {
   width: 100%;
   padding: 100px 4vw;
@@ -274,7 +274,7 @@ body, html {
 .exhibition-slider-outer::-webkit-scrollbar { display: none; }
 .exhibition-track {
   display: flex;
-  gap: 80px; /* Margen de separación limpio entre cada slide de noticias */
+  gap: 80px;
   width: 100%;
 }
 .exhibition-slide {
@@ -660,7 +660,7 @@ body, html {
 }
 .dvision-explore-btn:hover { border-color: #f5f4f0; opacity: 0.8; }
 
-/* THE HUMAN TAPES (RADIO - CON AUTO-SCROLL SUAVE Y GIFS) */
+/* THE HUMAN TAPES (RADIO) */
 .tapes-section {
   padding: 110px 4vw;
   background-color: #f5f4f0;
@@ -1038,7 +1038,7 @@ body, html {
     </div>
   </section>
 
-  <!-- SECCIÓN NOVEDADES (NEWS: SLIDE POR SLIDE AUTOMÁTICO CON MARGEN) -->
+  <!-- SECCIÓN NOVEDADES (NEWS) -->
   <section id="exhibicion" class="current-exhibition-section">
     <div class="exhibition-inner-container">
       <span class="section-label reveal-item">
@@ -1049,7 +1049,7 @@ body, html {
       <div class="exhibition-slider-outer" id="exhibitionSlider">
         <div class="exhibition-track" id="newsTrack">
           
-          <!-- SLIDE 1: HAIDAR HIKMAH -->
+          <!-- SLIDE 1: HAIDAR HIKMAH (CON REVEAL) -->
           <div class="exhibition-slide">
             <div class="slide-layout-tulips reveal-item">
               <div class="tulips-title-block">
@@ -1090,9 +1090,9 @@ body, html {
             </div>
           </div>
 
-          <!-- SLIDE 2: POP-UP SAN FRANCISCO (08.08 // 08:08) -->
+          <!-- SLIDE 2: POP-UP SAN FRANCISCO (SIN REVEAL, DIRECTO) -->
           <div class="exhibition-slide">
-            <div class="slide-layout-tulips reveal-item">
+            <div class="slide-layout-tulips">
               <div class="tulips-title-block">
                 <h2>SF POP-UP: 08.08 // 08:08</h2>
                 <span>FIRST INTERNATIONAL POP-UP — 3200 FOLSOM ST, SF</span>
@@ -1202,7 +1202,7 @@ body, html {
     </div>
   </section>
 
-  <!-- THE HUMAN TAPES (RADIO - CON ANIMACIÓN Y GIFS) -->
+  <!-- THE HUMAN TAPES (RADIO) -->
   <section id="tapes" class="tapes-section">
     <div class="tapes-header-block">
       <span class="section-label reveal-item">Ebberkett Radio</span>
@@ -1395,7 +1395,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-/* SLIDER AUTOMÁTICO DE NOTICIAS (CON GAPS / SEPARACIÓN) */
+/* SLIDER AUTOMÁTICO DE NOTICIAS (CADA 5 SEGUNDOS) */
 let newsIndex = 0;
 let newsTimer = null;
 const newsContainer = document.getElementById('exhibitionSlider');
@@ -1403,7 +1403,7 @@ const newsSlides = document.querySelectorAll('.exhibition-slide');
 
 function scrollToNewsIndex(index) {
   if (!newsContainer || newsSlides.length === 0) return;
-  const slideWidth = newsSlides[0].getBoundingClientRect().width + 80; // incluye el gap del track
+  const slideWidth = newsSlides[0].getBoundingClientRect().width + 80;
   newsContainer.scrollTo({
     left: slideWidth * index,
     behavior: 'smooth'
@@ -1437,7 +1437,7 @@ if (newsContainer) {
   newsContainer.addEventListener('touchend', startNewsAutoPlay, {passive: true});
 }
 
-/* SLIDER AUTOMÁTICO DE THE HUMAN TAPES (RADIO) */
+/* SLIDER AUTOMÁTICO DE THE HUMAN TAPES (CADA 4.5 SEGUNDOS) */
 let tapesIndex = 0;
 let tapesTimer = null;
 const tapesContainer = document.getElementById('tapesTrackWrapper');
@@ -1445,7 +1445,7 @@ const tapeSlides = document.querySelectorAll('.tape-card-retro');
 
 function scrollToTapesIndex(index) {
   if (!tapesContainer || tapeSlides.length === 0) return;
-  const tapeWidth = tapeSlides[0].getBoundingClientRect().width + 50; // incluye el gap
+  const tapeWidth = tapeSlides[0].getBoundingClientRect().width + 50;
   tapesContainer.scrollTo({
     left: tapeWidth * index,
     behavior: 'smooth'
