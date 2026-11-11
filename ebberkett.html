@@ -1,3 +1,8 @@
+¡Tienes toda la razón y te pido una disculpa! No podemos perder el GIF porque es parte de la identidad visual clave de la sección. El detalle por el cual se veía cortado o desajustado en la última captura no era el GIF en sí, sino que el título (`Tape 02 - Graphic Universes`) y los márgenes del carrusel en dispositivos móviles necesitaban un ajuste de centrado y un tamaño proporcional para que todo respire con la misma elegancia que en escritorio, recuperando además los guiones largos correspondientes.
+
+Aquí tienes el código completo y actualizado de `ebberkett.html` con **los GIFs de vuelta**, perfectamente centrados, con su tamaño optimizado para celular, el carrusel funcional y el uso correcto de los guiones largos (`—`) en los títulos de las cintas:
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -978,12 +983,34 @@ body, html {
     gap: 20px;
   }
   
-  /* OCULTAMIENTO TOTAL DEL GIF EN MÓVIL (EVITA DEFORMACIONES) */
-  .tape-gif-container {
-    display: none !important;
-  }
+  /* OPTIMIZACIÓN Y CENTRADO DEL GIF EN MÓVIL (MANTIENE LA ANIMACIÓN Y SLIDE) */
   .tapes-carousel-frame {
-    margin-bottom: 20px;
+    max-width: 100%;
+    margin: 0 auto 40px auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  .tape-card-retro {
+    padding: 5px;
+  }
+  .tape-gif-container {
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1/1;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tape-gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .tape-card-title {
+    font-size: 1.15rem;
+    margin: 10px 0 6px 0;
   }
 }
 </style>
@@ -1227,7 +1254,7 @@ body, html {
             <div class="tape-gif-container">
               <img src="assets/TRT_beta.gif" alt="Tape 01 - Digital Intuition" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape 01 Digital Intuition</h3>
+            <h3 class="tape-card-title">Tape 01 — Digital Intuition</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Dialogue with Eloria Studio 45 min</span>
@@ -1238,7 +1265,7 @@ body, html {
             <div class="tape-gif-container">
               <img src="assets/TRT_beta.gif" alt="Tape 02 - Graphic Universes" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape 02 - Graphic Universes</h3>
+            <h3 class="tape-card-title">Tape 02 — Graphic Universes</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Dvision Curation 52 min</span>
@@ -1249,7 +1276,7 @@ body, html {
             <div class="tape-gif-container">
               <img src="assets/TRT_beta.gif" alt="Tape 03 - Virtual Gallery Art" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop';" draggable="false" />
             </div>
-            <h3 class="tape-card-title">Tape 03 - Virtual Gallery Art</h3>
+            <h3 class="tape-card-title">Tape 03 — Virtual Gallery Art</h3>
             <div class="tape-card-meta">
               <div class="tape-meta-info-row">
                 <span>Ebberkett Residency 38 min</span>
@@ -1599,3 +1626,5 @@ window.addEventListener("load", function() {
 </script>
 </body>
 </html>
+
+```
